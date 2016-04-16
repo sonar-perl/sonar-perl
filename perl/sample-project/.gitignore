@@ -1,0 +1,8 @@
+sonar-scanner-2.5.1
+blib/
+cover_db/
+pm_to_blib
+MYMETA.json
+MYMETA.yml
+Makefile
+test_report.tap

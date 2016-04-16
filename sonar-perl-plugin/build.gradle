@@ -1,0 +1,114 @@
+plugins {
+    id "java"
+    id "eclipse"
+    id "com.iadams.sonar-packaging" version "0.1.4"
+    id 'com.bmuschko.docker-remote-api' version '2.6.8'
+//    id "com.github.johnrengelman.shadow" version "1.2.3"
+}
+
+repositories { 
+    jcenter()
+}
+
+dependencies { 
+    provided 'org.sonarsource.sonarqube:sonar-plugin-api:5.4'
+    compile 'com.google.guava:guava:18.0'
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+version = '0.1'
+group = 'com.epages'
+
+sonarPackaging {
+    serverUrl = 'http://localhost:9000'
+//    pluginDir = '/tmp/sonarqube-5.4/extensions/plugins'
+    pluginKey = 'perl'
+    pluginClass = 'com.epages.sonar.perl.PerlPlugin'
+    pluginName = 'Perl Plugin'
+    pluginDescription = 'There is more than one camel to do it.'
+    pluginParent = null
+    pluginLicense = 'Apache'
+    requirePlugins = null
+    pluginUrl = 'http://github.com/otrosien/sonar-perl'
+    pluginIssueTrackerUrl = 'http://mypluginwebsite.com/issues'
+    pluginTermsConditionsUrl = 'http://mypluginwebsite.com/terms'
+    pluginSourceUrl = 'http://github.com'
+    pluginDevelopers = 'Oliver Trosien'
+    skipDependenciesPackaging = false
+    useChildFirstClassLoader = false
+    basePlugin = ''
+    organization{
+        name = 'epages'
+        url = 'http://www.epages.com'
+    }
+}
+
+import com.bmuschko.gradle.docker.tasks.image.*
+import com.bmuschko.gradle.docker.tasks.container.*
+
+
+docker {
+    if (System.env.DOCKER_HOST) {
+        url = "$System.env.DOCKER_HOST".replace("tcp","https")
+        if (System.env.DOCKER_CERT_PATH) {
+            certPath = new File(System.env.DOCKER_CERT_PATH)
+        }
+    } else {
+        url = 'unix:///var/run/docker.sock'
+    }
+}
+
+task copyDockerfile (type: Copy) {
+    group = 'Docker'
+    description = 'Copies the Dockerfile into its target directory.'
+    from 'Dockerfile'
+    into 'build/docker'
+}
+
+task copyDockerTargetArtifacts(type: Copy) {
+    group = 'Docker'
+    description = 'Assembles contents for docker image.'
+    dependsOn copyDockerfile, jar
+    from "build/libs/"
+    into "build/docker/build/libs/"
+}
+
+task buildDockerImage(type: DockerBuildImage) {
+    description = 'Builds a new docker image.'
+    dependsOn copyDockerTargetArtifacts
+    inputDir = file('build/docker')
+    tag = "epages/sonar-perl:latest"
+    noCache = true
+}
+
+task createDockerContainer(type: DockerCreateContainer) {
+    dependsOn buildDockerImage
+    targetImageId { buildDockerImage.getImageId() }
+    portBindings = [ '9000:9000', '9002:9002' ]
+}
+
+build.dependsOn(createDockerContainer)
+
+task startDockerContainer(type: DockerStartContainer) {
+    dependsOn createDockerContainer
+    targetContainerId { createDockerContainer.getContainerId() }
+}
+
+task run {}
+run.dependsOn(startDockerContainer)
+
+task stopDockerContainer(type: DockerStopContainer) {
+    targetContainerId { createDockerContainer.getContainerId() }
+}
+
+task stop {}
+stop.dependsOn stopDockerContainer
+
+task removeDockerImage (type:DockerRemoveImage) {
+    description = 'Removes the docker image from the local filesystem.'
+    imageId 'epages/sonar-perl:latest'
+}
+
+clean.dependsOn removeDockerImage
