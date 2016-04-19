@@ -7,6 +7,7 @@ import org.sonar.api.Properties;
 import org.sonar.api.Property;
 import org.sonar.api.SonarPlugin;
 
+import com.epages.sonar.perl.colorizer.PerlCodeColorizer;
 import com.epages.sonar.perl.rules.PerlLintProfile;
 import com.epages.sonar.perl.rules.PerlLintRulesDefinition;
 
@@ -21,7 +22,7 @@ public class PerlPlugin extends SonarPlugin {
 
     public static final String FILE_SUFFIXES_KEY = "com.epages.sonar.perl.suffixes";
 
-    public static final String DEFAULT_FILE_SUFFIXES = "pm";
+    public static final String DEFAULT_FILE_SUFFIXES = "pm,pl,t";
 
     @SuppressWarnings("rawtypes")
     @Override
@@ -29,7 +30,8 @@ public class PerlPlugin extends SonarPlugin {
         return Arrays.asList(
                 PerlLanguage.class,
                 PerlLintRulesDefinition.class, 
-                PerlLintProfile.class
+                PerlLintProfile.class,
+                PerlCodeColorizer.class
         );
     }
 

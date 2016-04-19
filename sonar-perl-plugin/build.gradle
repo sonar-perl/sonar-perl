@@ -23,10 +23,9 @@ group = 'com.epages'
 
 sonarPackaging {
     serverUrl = 'http://localhost:9000'
-//    pluginDir = '/tmp/sonarqube-5.4/extensions/plugins'
     pluginKey = 'perl'
     pluginClass = 'com.epages.sonar.perl.PerlPlugin'
-    pluginName = 'Perl Plugin'
+    pluginName = 'Perl'
     pluginDescription = 'There is more than one camel to do it.'
     pluginParent = null
     pluginLicense = 'Apache'
