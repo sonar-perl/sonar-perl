@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/otrosien/sonar-perl.svg)](https://travis-ci.org/otrosien/sonar-perl)
 
-# SonarQube Perl Plugin (0.0.0.1.pre-alpha :)
+# SonarQube Perl Plugin (alpha)
 
 This is a spike to figure out how easy features like code coverage
 and Perl::Critic and test reporting can be integrated into sonarqube.
@@ -12,7 +12,15 @@ from the Perl Eclipse integration (EPIC)
 
 ## Current State
 
-Nothing to see yet :)
+* LOC reporting
+* Syntax highlighting of imported code
+* Perl::Critic issues can be attached
+
+## Next steps
+
+* The clover report does not contain line-based coverage information. This is crucial for sonarqube to calculate coverage details. Thus, either the clover report needs to be enhanced or we need to find a different solution altogether.
+
+* Test reporting
 
 ## Links
 
