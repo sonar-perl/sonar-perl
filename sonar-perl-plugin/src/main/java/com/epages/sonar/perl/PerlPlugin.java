@@ -31,7 +31,8 @@ public class PerlPlugin extends SonarPlugin {
                 PerlLanguage.class,
                 PerlLintRulesDefinition.class, 
                 PerlLintProfile.class,
-                PerlCodeColorizer.class
+                PerlCodeColorizer.class,
+                GlobalSensor.class
         );
     }
 

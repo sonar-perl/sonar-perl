@@ -3,7 +3,6 @@ plugins {
     id "eclipse"
     id "com.iadams.sonar-packaging" version "0.1.4"
     id 'com.bmuschko.docker-remote-api' version '2.6.8'
-//    id "com.github.johnrengelman.shadow" version "1.2.3"
 }
 
 repositories { 
@@ -13,6 +12,7 @@ repositories {
 dependencies { 
     provided 'org.sonarsource.sonarqube:sonar-plugin-api:5.4'
     compile 'com.google.guava:guava:18.0'
+    compile 'org.slf4j:slf4j-api:1.7.21'
 }
 
 sourceCompatibility = 1.8
@@ -93,6 +93,9 @@ build.dependsOn(createDockerContainer)
 task startDockerContainer(type: DockerStartContainer) {
     dependsOn createDockerContainer
     targetContainerId { createDockerContainer.getContainerId() }
+    doLast {
+        println createDockerContainer.getContainerId()
+    }
 }
 
 task run {}
