@@ -68,7 +68,7 @@ return << "EOL";
     <name>%p></name>
     <configKey>%p</configKey>
     <description>
-      <![CDATA[%a]]>
+      <![CDATA[%p: %a]]>
     </description>
     <priority>%s</priority>
   </rule>

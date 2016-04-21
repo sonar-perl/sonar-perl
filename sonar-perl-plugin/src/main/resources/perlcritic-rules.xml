@@ -5,7 +5,7 @@
     <name>Prohibit Boolean Grep></name>
     <configKey>BuiltinFunctions::ProhibitBooleanGrep</configKey>
     <description>
-      <![CDATA[Use `List::MoreUtils::any' instead of `grep' in boolean context.]]>
+      <![CDATA[BuiltinFunctions::ProhibitBooleanGrep: Use `List::MoreUtils::any' instead of `grep' in boolean context.]]>
     </description>
     <priority>MINOR</priority>
   </rule>
@@ -15,7 +15,7 @@
     <name>Prohibit Complex Mappings></name>
     <configKey>BuiltinFunctions::ProhibitComplexMappings</configKey>
     <description>
-      <![CDATA[Map blocks should have a single statement.]]>
+      <![CDATA[BuiltinFunctions::ProhibitComplexMappings: Map blocks should have a single statement.]]>
     </description>
     <priority>MAJOR</priority>
   </rule>
@@ -25,7 +25,7 @@
     <name>Prohibit Lvalue Substr></name>
     <configKey>BuiltinFunctions::ProhibitLvalueSubstr</configKey>
     <description>
-      <![CDATA[Use 4-argument `substr' instead of writing `substr($foo, 2, 6) = $bar'.]]>
+      <![CDATA[BuiltinFunctions::ProhibitLvalueSubstr: Use 4-argument `substr' instead of writing `substr($foo, 2, 6) = $bar'.]]>
     </description>
     <priority>MAJOR</priority>
   </rule>
@@ -35,7 +35,7 @@
     <name>Prohibit Reverse Sort Block></name>
     <configKey>BuiltinFunctions::ProhibitReverseSortBlock</configKey>
     <description>
-      <![CDATA[Forbid $b before $a in sort blocks.]]>
+      <![CDATA[BuiltinFunctions::ProhibitReverseSortBlock: Forbid $b before $a in sort blocks.]]>
     </description>
     <priority>INFO</priority>
   </rule>
@@ -45,7 +45,7 @@
     <name>Prohibit Sleep Via Select></name>
     <configKey>BuiltinFunctions::ProhibitSleepViaSelect</configKey>
     <description>
-      <![CDATA[Use Time::HiRes instead of something like `select(undef, undef, undef, .05)'.]]>
+      <![CDATA[BuiltinFunctions::ProhibitSleepViaSelect: Use Time::HiRes instead of something like `select(undef, undef, undef, .05)'.]]>
     </description>
     <priority>BLOCKER</priority>
   </rule>
@@ -55,7 +55,7 @@
     <name>Prohibit Stringy Eval></name>
     <configKey>BuiltinFunctions::ProhibitStringyEval</configKey>
     <description>
-      <![CDATA[Write `eval { my $foo; bar($foo) }' instead of `eval "my $foo; bar($foo);"'.]]>
+      <![CDATA[BuiltinFunctions::ProhibitStringyEval: Write `eval { my $foo; bar($foo) }' instead of `eval "my $foo; bar($foo);"'.]]>
     </description>
     <priority>BLOCKER</priority>
   </rule>
@@ -65,7 +65,7 @@
     <name>Prohibit Stringy Split></name>
     <configKey>BuiltinFunctions::ProhibitStringySplit</configKey>
     <description>
-      <![CDATA[Write `split /-/, $string' instead of `split '-', $string'.]]>
+      <![CDATA[BuiltinFunctions::ProhibitStringySplit: Write `split /-/, $string' instead of `split '-', $string'.]]>
     </description>
     <priority>MINOR</priority>
   </rule>
@@ -75,7 +75,7 @@
     <name>Prohibit Universal Can></name>
     <configKey>BuiltinFunctions::ProhibitUniversalCan</configKey>
     <description>
-      <![CDATA[Write `eval { $foo->can($name) }' instead of `UNIVERSAL::can($foo, $name)'.]]>
+      <![CDATA[BuiltinFunctions::ProhibitUniversalCan: Write `eval { $foo->can($name) }' instead of `UNIVERSAL::can($foo, $name)'.]]>
     </description>
     <priority>MAJOR</priority>
   </rule>
@@ -85,7 +85,7 @@
     <name>Prohibit Universal Isa></name>
     <configKey>BuiltinFunctions::ProhibitUniversalIsa</configKey>
     <description>
-      <![CDATA[Write `eval { $foo->isa($pkg) }' instead of `UNIVERSAL::isa($foo, $pkg)'.]]>
+      <![CDATA[BuiltinFunctions::ProhibitUniversalIsa: Write `eval { $foo->isa($pkg) }' instead of `UNIVERSAL::isa($foo, $pkg)'.]]>
     </description>
     <priority>MAJOR</priority>
   </rule>
@@ -95,7 +95,7 @@
     <name>Prohibit Void Grep></name>
     <configKey>BuiltinFunctions::ProhibitVoidGrep</configKey>
     <description>
-      <![CDATA[Don't use `grep' in void contexts.]]>
+      <![CDATA[BuiltinFunctions::ProhibitVoidGrep: Don't use `grep' in void contexts.]]>
     </description>
     <priority>MAJOR</priority>
   </rule>
@@ -105,7 +105,7 @@
     <name>Prohibit Void Map></name>
     <configKey>BuiltinFunctions::ProhibitVoidMap</configKey>
     <description>
-      <![CDATA[Don't use `map' in void contexts.]]>
+      <![CDATA[BuiltinFunctions::ProhibitVoidMap: Don't use `map' in void contexts.]]>
     </description>
     <priority>MAJOR</priority>
   </rule>
@@ -115,7 +115,7 @@
     <name>Require Block Grep></name>
     <configKey>BuiltinFunctions::RequireBlockGrep</configKey>
     <description>
-      <![CDATA[Write `grep { $_ =~ /$pattern/ } @list' instead of `grep /$pattern/, @list'.]]>
+      <![CDATA[BuiltinFunctions::RequireBlockGrep: Write `grep { $_ =~ /$pattern/ } @list' instead of `grep /$pattern/, @list'.]]>
     </description>
     <priority>CRITICAL</priority>
   </rule>
@@ -125,7 +125,7 @@
     <name>Require Block Map></name>
     <configKey>BuiltinFunctions::RequireBlockMap</configKey>
     <description>
-      <![CDATA[Write `map { $_ =~ /$pattern/ } @list' instead of `map /$pattern/, @list'.]]>
+      <![CDATA[BuiltinFunctions::RequireBlockMap: Write `map { $_ =~ /$pattern/ } @list' instead of `map /$pattern/, @list'.]]>
     </description>
     <priority>CRITICAL</priority>
   </rule>
@@ -135,7 +135,7 @@
     <name>Require Glob Function></name>
     <configKey>BuiltinFunctions::RequireGlobFunction</configKey>
     <description>
-      <![CDATA[Use `glob q{*}' instead of <*>.]]>
+      <![CDATA[BuiltinFunctions::RequireGlobFunction: Use `glob q{*}' instead of <*>.]]>
     </description>
     <priority>BLOCKER</priority>
   </rule>
@@ -145,7 +145,7 @@
     <name>Require Simple Sort Block></name>
     <configKey>BuiltinFunctions::RequireSimpleSortBlock</configKey>
     <description>
-      <![CDATA[Sort blocks should have a single statement.]]>
+      <![CDATA[BuiltinFunctions::RequireSimpleSortBlock: Sort blocks should have a single statement.]]>
     </description>
     <priority>MAJOR</priority>
   </rule>
@@ -155,7 +155,7 @@
     <name>Prohibit Autoloading></name>
     <configKey>ClassHierarchies::ProhibitAutoloading</configKey>
     <description>
-      <![CDATA[AUTOLOAD methods should be avoided.]]>
+      <![CDATA[ClassHierarchies::ProhibitAutoloading: AUTOLOAD methods should be avoided.]]>
     </description>
     <priority>MAJOR</priority>
   </rule>
@@ -165,7 +165,7 @@
     <name>Prohibit Explicit ISA></name>
     <configKey>ClassHierarchies::ProhibitExplicitISA</configKey>
     <description>
-      <![CDATA[Employ `use base' instead of `@ISA'.]]>
+      <![CDATA[ClassHierarchies::ProhibitExplicitISA: Employ `use base' instead of `@ISA'.]]>
     </description>
     <priority>MAJOR</priority>
   </rule>
@@ -175,7 +175,7 @@
     <name>Prohibit One Arg Bless></name>
     <configKey>ClassHierarchies::ProhibitOneArgBless</configKey>
     <description>
-      <![CDATA[Write `bless {}, $class;' instead of just `bless {};'.]]>
+      <![CDATA[ClassHierarchies::ProhibitOneArgBless: Write `bless {}, $class;' instead of just `bless {};'.]]>
     </description>
     <priority>BLOCKER</priority>
   </rule>
@@ -185,7 +185,7 @@
     <name>Prohibit Hard Tabs></name>
     <configKey>CodeLayout::ProhibitHardTabs</configKey>
     <description>
-      <![CDATA[Use spaces instead of tabs.]]>
+      <![CDATA[CodeLayout::ProhibitHardTabs: Use spaces instead of tabs.]]>
     </description>
     <priority>MAJOR</priority>
   </rule>
@@ -195,7 +195,7 @@
     <name>Prohibit Parens With Builtins></name>
     <configKey>CodeLayout::ProhibitParensWithBuiltins</configKey>
     <description>
-      <![CDATA[Write `open $handle, $path' instead of `open($handle, $path)'.]]>
+      <![CDATA[CodeLayout::ProhibitParensWithBuiltins: Write `open $handle, $path' instead of `open($handle, $path)'.]]>
     </description>
     <priority>INFO</priority>
   </rule>
@@ -205,7 +205,7 @@
     <name>Prohibit Quoted Word Lists></name>
     <configKey>CodeLayout::ProhibitQuotedWordLists</configKey>
     <description>
-      <![CDATA[Write `qw(foo bar baz)' instead of `('foo', 'bar', 'baz')'.]]>
+      <![CDATA[CodeLayout::ProhibitQuotedWordLists: Write `qw(foo bar baz)' instead of `('foo', 'bar', 'baz')'.]]>
     </description>
     <priority>MINOR</priority>
   </rule>
@@ -215,7 +215,7 @@
     <name>Prohibit Trailing Whitespace></name>
     <configKey>CodeLayout::ProhibitTrailingWhitespace</configKey>
     <description>
-      <![CDATA[Don't use whitespace at the end of lines.]]>
+      <![CDATA[CodeLayout::ProhibitTrailingWhitespace: Don't use whitespace at the end of lines.]]>
     </description>
     <priority>INFO</priority>
   </rule>
@@ -225,7 +225,7 @@
     <name>Require Consistent Newlines></name>
     <configKey>CodeLayout::RequireConsistentNewlines</configKey>
     <description>
-      <![CDATA[Use the same newline through the source.]]>
+      <![CDATA[CodeLayout::RequireConsistentNewlines: Use the same newline through the source.]]>
     </description>
     <priority>CRITICAL</priority>
   </rule>
@@ -235,7 +235,7 @@
     <name>Require Tidy Code></name>
     <configKey>CodeLayout::RequireTidyCode</configKey>
     <description>
-      <![CDATA[Must run code through perltidy.]]>
+      <![CDATA[CodeLayout::RequireTidyCode: Must run code through perltidy.]]>
     </description>
     <priority>INFO</priority>
   </rule>
@@ -245,7 +245,7 @@
     <name>Require Trailing Commas></name>
     <configKey>CodeLayout::RequireTrailingCommas</configKey>
     <description>
-      <![CDATA[Put a comma at the end of every multi-line list declaration, including the last one.]]>
+      <![CDATA[CodeLayout::RequireTrailingCommas: Put a comma at the end of every multi-line list declaration, including the last one.]]>
     </description>
     <priority>INFO</priority>
   </rule>
@@ -255,7 +255,7 @@
     <name>Prohibit CStyle For Loops></name>
     <configKey>ControlStructures::ProhibitCStyleForLoops</configKey>
     <description>
-      <![CDATA[Write `for(0..20)' instead of `for($i=0; $i<=20; $i++)'.]]>
+      <![CDATA[ControlStructures::ProhibitCStyleForLoops: Write `for(0..20)' instead of `for($i=0; $i<=20; $i++)'.]]>
     </description>
     <priority>MINOR</priority>
   </rule>
@@ -265,7 +265,7 @@
     <name>Prohibit Cascading If Else></name>
     <configKey>ControlStructures::ProhibitCascadingIfElse</configKey>
     <description>
-      <![CDATA[Don't write long "if-elsif-elsif-elsif-elsif...else" chains.]]>
+      <![CDATA[ControlStructures::ProhibitCascadingIfElse: Don't write long "if-elsif-elsif-elsif-elsif...else" chains.]]>
     </description>
     <priority>MAJOR</priority>
   </rule>
@@ -275,7 +275,7 @@
     <name>Prohibit Deep Nests></name>
     <configKey>ControlStructures::ProhibitDeepNests</configKey>
     <description>
-      <![CDATA[Don't write deeply nested loops and conditionals.]]>
+      <![CDATA[ControlStructures::ProhibitDeepNests: Don't write deeply nested loops and conditionals.]]>
     </description>
     <priority>MAJOR</priority>
   </rule>
@@ -285,7 +285,7 @@
     <name>Prohibit Labels With Special Block Names></name>
     <configKey>ControlStructures::ProhibitLabelsWithSpecialBlockNames</configKey>
     <description>
-      <![CDATA[Don't use labels that are the same as the special block names.]]>
+      <![CDATA[ControlStructures::ProhibitLabelsWithSpecialBlockNames: Don't use labels that are the same as the special block names.]]>
     </description>
     <priority>CRITICAL</priority>
   </rule>
@@ -295,7 +295,7 @@
     <name>Prohibit Mutating List Functions></name>
     <configKey>ControlStructures::ProhibitMutatingListFunctions</configKey>
     <description>
-      <![CDATA[Don't modify `$_' in list functions.]]>
+      <![CDATA[ControlStructures::ProhibitMutatingListFunctions: Don't modify `$_' in list functions.]]>
     </description>
     <priority>BLOCKER</priority>
   </rule>
@@ -305,7 +305,7 @@
     <name>Prohibit Negative Expressions In Unless And Until Conditions></name>
     <configKey>ControlStructures::ProhibitNegativeExpressionsInUnlessAndUntilConditions</configKey>
     <description>
-      <![CDATA[Don't use operators like `not', `!~', and `le' within `until' and `unless'.]]>
+      <![CDATA[ControlStructures::ProhibitNegativeExpressionsInUnlessAndUntilConditions: Don't use operators like `not', `!~', and `le' within `until' and `unless'.]]>
     </description>
     <priority>MAJOR</priority>
   </rule>
@@ -315,7 +315,7 @@
     <name>Prohibit Postfix Controls></name>
     <configKey>ControlStructures::ProhibitPostfixControls</configKey>
     <description>
-      <![CDATA[Write `if($condition){ do_something() }' instead of `do_something() if $condition'.]]>
+      <![CDATA[ControlStructures::ProhibitPostfixControls: Write `if($condition){ do_something() }' instead of `do_something() if $condition'.]]>
     </description>
     <priority>MINOR</priority>
   </rule>
@@ -325,7 +325,7 @@
     <name>Prohibit Unless Blocks></name>
     <configKey>ControlStructures::ProhibitUnlessBlocks</configKey>
     <description>
-      <![CDATA[Write `if(! $condition)' instead of `unless($condition)'.]]>
+      <![CDATA[ControlStructures::ProhibitUnlessBlocks: Write `if(! $condition)' instead of `unless($condition)'.]]>
     </description>
     <priority>MINOR</priority>
   </rule>
@@ -335,7 +335,7 @@
     <name>Prohibit Unreachable Code></name>
     <configKey>ControlStructures::ProhibitUnreachableCode</configKey>
     <description>
-      <![CDATA[Don't write code after an unconditional `die, exit, or next'.]]>
+      <![CDATA[ControlStructures::ProhibitUnreachableCode: Don't write code after an unconditional `die, exit, or next'.]]>
     </description>
     <priority>CRITICAL</priority>
   </rule>
@@ -345,7 +345,7 @@
     <name>Prohibit Until Blocks></name>
     <configKey>ControlStructures::ProhibitUntilBlocks</configKey>
     <description>
-      <![CDATA[Write `while(! $condition)' instead of `until($condition)'.]]>
+      <![CDATA[ControlStructures::ProhibitUntilBlocks: Write `while(! $condition)' instead of `until($condition)'.]]>
     </description>
     <priority>MINOR</priority>
   </rule>
@@ -355,7 +355,7 @@
     <name>Prohibit Foreach Qw></name>
     <configKey>DE_EPAGES::BuiltinFunctions::ProhibitForeachQw</configKey>
     <description>
-      <![CDATA[]]>
+      <![CDATA[DE_EPAGES::BuiltinFunctions::ProhibitForeachQw: ]]>
     </description>
     <priority>MAJOR</priority>
   </rule>
@@ -365,7 +365,7 @@
     <name>Prohibit Universal Can Use Perl Tools></name>
     <configKey>DE_EPAGES::BuiltinFunctions::ProhibitUniversalCanUsePerlTools</configKey>
     <description>
-      <![CDATA[]]>
+      <![CDATA[DE_EPAGES::BuiltinFunctions::ProhibitUniversalCanUsePerlTools: ]]>
     </description>
     <priority>MAJOR</priority>
   </rule>
@@ -375,7 +375,7 @@
     <name>Prohibit Universal Isa Use Perl Tools></name>
     <configKey>DE_EPAGES::BuiltinFunctions::ProhibitUniversalIsaUsePerlTools</configKey>
     <description>
-      <![CDATA[]]>
+      <![CDATA[DE_EPAGES::BuiltinFunctions::ProhibitUniversalIsaUsePerlTools: ]]>
     </description>
     <priority>MAJOR</priority>
   </rule>
@@ -385,7 +385,7 @@
     <name>Require Exists Error></name>
     <configKey>DE_EPAGES::ErrorHandling::RequireExistsError</configKey>
     <description>
-      <![CDATA[]]>
+      <![CDATA[DE_EPAGES::ErrorHandling::RequireExistsError: ]]>
     </description>
     <priority>MAJOR</priority>
   </rule>
@@ -395,7 +395,7 @@
     <name>Require Compileability></name>
     <configKey>DE_EPAGES::Execution::RequireCompileability</configKey>
     <description>
-      <![CDATA[]]>
+      <![CDATA[DE_EPAGES::Execution::RequireCompileability: ]]>
     </description>
     <priority>BLOCKER</priority>
   </rule>
@@ -405,7 +405,7 @@
     <name>Prohibit Automatic Exportation Non DAL></name>
     <configKey>DE_EPAGES::Modules::ProhibitAutomaticExportationNonDAL</configKey>
     <description>
-      <![CDATA[]]>
+      <![CDATA[DE_EPAGES::Modules::ProhibitAutomaticExportationNonDAL: ]]>
     </description>
     <priority>CRITICAL</priority>
   </rule>
@@ -415,7 +415,7 @@
     <name>Require Filename Matches Package Hacked></name>
     <configKey>DE_EPAGES::Modules::RequireFilenameMatchesPackageHacked</configKey>
     <description>
-      <![CDATA[]]>
+      <![CDATA[DE_EPAGES::Modules::RequireFilenameMatchesPackageHacked: ]]>
     </description>
     <priority>BLOCKER</priority>
   </rule>
@@ -425,7 +425,7 @@
     <name>Require Utf8BOM></name>
     <configKey>DE_EPAGES::Modules::RequireUtf8BOM</configKey>
     <description>
-      <![CDATA[]]>
+      <![CDATA[DE_EPAGES::Modules::RequireUtf8BOM: ]]>
     </description>
     <priority>BLOCKER</priority>
   </rule>
@@ -435,7 +435,7 @@
     <name>Prohibit Variables In SQLStatements></name>
     <configKey>DE_EPAGES::Security::ProhibitVariablesInSQLStatements</configKey>
     <description>
-      <![CDATA[]]>
+      <![CDATA[DE_EPAGES::Security::ProhibitVariablesInSQLStatements: ]]>
     </description>
     <priority>CRITICAL</priority>
   </rule>
@@ -445,7 +445,7 @@
     <name>Prohibit Function Size></name>
     <configKey>DE_EPAGES::Style::ProhibitFunctionSize</configKey>
     <description>
-      <![CDATA[]]>
+      <![CDATA[DE_EPAGES::Style::ProhibitFunctionSize: ]]>
     </description>
     <priority>MINOR</priority>
   </rule>
@@ -455,7 +455,7 @@
     <name>Require Arg Unpacking></name>
     <configKey>DE_EPAGES::Style::RequireArgUnpacking</configKey>
     <description>
-      <![CDATA[]]>
+      <![CDATA[DE_EPAGES::Style::RequireArgUnpacking: ]]>
     </description>
     <priority>CRITICAL</priority>
   </rule>
@@ -465,7 +465,7 @@
     <name>Require Comment For Exported Functions></name>
     <configKey>DE_EPAGES::Style::RequireCommentForExportedFunctions</configKey>
     <description>
-      <![CDATA[]]>
+      <![CDATA[DE_EPAGES::Style::RequireCommentForExportedFunctions: ]]>
     </description>
     <priority>MAJOR</priority>
   </rule>
@@ -475,7 +475,7 @@
     <name>Require Correct Imports></name>
     <configKey>DE_EPAGES::Style::RequireCorrectImports</configKey>
     <description>
-      <![CDATA[]]>
+      <![CDATA[DE_EPAGES::Style::RequireCorrectImports: ]]>
     </description>
     <priority>CRITICAL</priority>
   </rule>
@@ -485,7 +485,7 @@
     <name>Require Extended Formatting></name>
     <configKey>DE_EPAGES::Style::RequireExtendedFormatting</configKey>
     <description>
-      <![CDATA[]]>
+      <![CDATA[DE_EPAGES::Style::RequireExtendedFormatting: ]]>
     </description>
     <priority>MAJOR</priority>
   </rule>
@@ -495,7 +495,7 @@
     <name>Require Full Sentence Comment></name>
     <configKey>DE_EPAGES::Style::RequireFullSentenceComment</configKey>
     <description>
-      <![CDATA[]]>
+      <![CDATA[DE_EPAGES::Style::RequireFullSentenceComment: ]]>
     </description>
     <priority>INFO</priority>
   </rule>
@@ -505,7 +505,7 @@
     <name>Require Lexical Loop Iterators For Long Blocks></name>
     <configKey>DE_EPAGES::Style::RequireLexicalLoopIteratorsForLongBlocks</configKey>
     <description>
-      <![CDATA[]]>
+      <![CDATA[DE_EPAGES::Style::RequireLexicalLoopIteratorsForLongBlocks: ]]>
     </description>
     <priority>BLOCKER</priority>
   </rule>
@@ -515,7 +515,7 @@
     <name>Require Parentheses Last Char></name>
     <configKey>DE_EPAGES::Style::RequireParenthesesLastChar</configKey>
     <description>
-      <![CDATA[]]>
+      <![CDATA[DE_EPAGES::Style::RequireParenthesesLastChar: ]]>
     </description>
     <priority>MINOR</priority>
   </rule>
@@ -525,7 +525,7 @@
     <name>Require Spaces Not Tabs></name>
     <configKey>DE_EPAGES::Style::RequireSpacesNotTabs</configKey>
     <description>
-      <![CDATA[]]>
+      <![CDATA[DE_EPAGES::Style::RequireSpacesNotTabs: ]]>
     </description>
     <priority>MINOR</priority>
   </rule>
@@ -535,7 +535,7 @@
     <name>Prohibit Private Subroutine Use></name>
     <configKey>DE_EPAGES::Subroutines::ProhibitPrivateSubroutineUse</configKey>
     <description>
-      <![CDATA[]]>
+      <![CDATA[DE_EPAGES::Subroutines::ProhibitPrivateSubroutineUse: ]]>
     </description>
     <priority>CRITICAL</priority>
   </rule>
@@ -545,7 +545,7 @@
     <name>Prohibit Path Concatenation></name>
     <configKey>DE_EPAGES::Variables::ProhibitPathConcatenation</configKey>
     <description>
-      <![CDATA[]]>
+      <![CDATA[DE_EPAGES::Variables::ProhibitPathConcatenation: ]]>
     </description>
     <priority>MAJOR</priority>
   </rule>
@@ -555,7 +555,7 @@
     <name>Prohibit Unused Variables Enhanced></name>
     <configKey>DE_EPAGES::Variables::ProhibitUnusedVariablesEnhanced</configKey>
     <description>
-      <![CDATA[]]>
+      <![CDATA[DE_EPAGES::Variables::ProhibitUnusedVariablesEnhanced: ]]>
     </description>
     <priority>MAJOR</priority>
   </rule>
@@ -565,7 +565,7 @@
     <name>Require Package Matches Pod Name></name>
     <configKey>Documentation::RequirePackageMatchesPodName</configKey>
     <description>
-      <![CDATA[The `=head1 NAME' section should match the package.]]>
+      <![CDATA[Documentation::RequirePackageMatchesPodName: The `=head1 NAME' section should match the package.]]>
     </description>
     <priority>INFO</priority>
   </rule>
@@ -575,7 +575,7 @@
     <name>Require Pod At End></name>
     <configKey>Documentation::RequirePodAtEnd</configKey>
     <description>
-      <![CDATA[All POD should be after `__END__'.]]>
+      <![CDATA[Documentation::RequirePodAtEnd: All POD should be after `__END__'.]]>
     </description>
     <priority>INFO</priority>
   </rule>
@@ -585,7 +585,7 @@
     <name>Require Pod Links Include Text></name>
     <configKey>Documentation::RequirePodLinksIncludeText</configKey>
     <description>
-      <![CDATA[Provide text to display with your pod links.]]>
+      <![CDATA[Documentation::RequirePodLinksIncludeText: Provide text to display with your pod links.]]>
     </description>
     <priority>MINOR</priority>
   </rule>
@@ -595,7 +595,7 @@
     <name>Require Pod Sections></name>
     <configKey>Documentation::RequirePodSections</configKey>
     <description>
-      <![CDATA[Organize your POD into the customary sections.]]>
+      <![CDATA[Documentation::RequirePodSections: Organize your POD into the customary sections.]]>
     </description>
     <priority>MINOR</priority>
   </rule>
@@ -605,7 +605,7 @@
     <name>Require Carping></name>
     <configKey>ErrorHandling::RequireCarping</configKey>
     <description>
-      <![CDATA[Use functions from Carp instead of `warn' or `die'.]]>
+      <![CDATA[ErrorHandling::RequireCarping: Use functions from Carp instead of `warn' or `die'.]]>
     </description>
     <priority>MAJOR</priority>
   </rule>
@@ -615,7 +615,7 @@
     <name>Require Checking Return Value Of Eval></name>
     <configKey>ErrorHandling::RequireCheckingReturnValueOfEval</configKey>
     <description>
-      <![CDATA[You can't depend upon the value of `$@'/`$EVAL_ERROR' to tell whether an `eval' failed.]]>
+      <![CDATA[ErrorHandling::RequireCheckingReturnValueOfEval: You can't depend upon the value of `$@'/`$EVAL_ERROR' to tell whether an `eval' failed.]]>
     </description>
     <priority>MAJOR</priority>
   </rule>
@@ -625,7 +625,7 @@
     <name>Prohibit Backtick Operators></name>
     <configKey>InputOutput::ProhibitBacktickOperators</configKey>
     <description>
-      <![CDATA[Discourage stuff like `@files = `ls $directory`'.]]>
+      <![CDATA[InputOutput::ProhibitBacktickOperators: Discourage stuff like `@files = `ls $directory`'.]]>
     </description>
     <priority>MAJOR</priority>
   </rule>
@@ -635,7 +635,7 @@
     <name>Prohibit Bareword File Handles></name>
     <configKey>InputOutput::ProhibitBarewordFileHandles</configKey>
     <description>
-      <![CDATA[Write `open my $fh, q{<}, $filename;' instead of `open FH, q{<}, $filename;'.]]>
+      <![CDATA[InputOutput::ProhibitBarewordFileHandles: Write `open my $fh, q{<}, $filename;' instead of `open FH, q{<}, $filename;'.]]>
     </description>
     <priority>BLOCKER</priority>
   </rule>
@@ -645,7 +645,7 @@
     <name>Prohibit Explicit Stdin></name>
     <configKey>InputOutput::ProhibitExplicitStdin</configKey>
     <description>
-      <![CDATA[Use "<>" or "<ARGV>" or a prompting module instead of "<STDIN>".]]>
+      <![CDATA[InputOutput::ProhibitExplicitStdin: Use "<>" or "<ARGV>" or a prompting module instead of "<STDIN>".]]>
     </description>
     <priority>CRITICAL</priority>
   </rule>
@@ -655,7 +655,7 @@
     <name>Prohibit Interactive Test></name>
     <configKey>InputOutput::ProhibitInteractiveTest</configKey>
     <description>
-      <![CDATA[Use prompt() instead of -t.]]>
+      <![CDATA[InputOutput::ProhibitInteractiveTest: Use prompt() instead of -t.]]>
     </description>
     <priority>BLOCKER</priority>
   </rule>
@@ -665,7 +665,7 @@
     <name>Prohibit Joined Readline></name>
     <configKey>InputOutput::ProhibitJoinedReadline</configKey>
     <description>
-      <![CDATA[Use `local $/ = undef' or File::Slurp instead of joined readline.]]>
+      <![CDATA[InputOutput::ProhibitJoinedReadline: Use `local $/ = undef' or File::Slurp instead of joined readline.]]>
     </description>
     <priority>MAJOR</priority>
   </rule>
@@ -675,7 +675,7 @@
     <name>Prohibit One Arg Select></name>
     <configKey>InputOutput::ProhibitOneArgSelect</configKey>
     <description>
-      <![CDATA[Never write `select($fh)'.]]>
+      <![CDATA[InputOutput::ProhibitOneArgSelect: Never write `select($fh)'.]]>
     </description>
     <priority>CRITICAL</priority>
   </rule>
@@ -685,7 +685,7 @@
     <name>Prohibit Readline In For Loop></name>
     <configKey>InputOutput::ProhibitReadlineInForLoop</configKey>
     <description>
-      <![CDATA[Write `while( $line = <> ){...}' instead of `for(<>){...}'.]]>
+      <![CDATA[InputOutput::ProhibitReadlineInForLoop: Write `while( $line = <> ){...}' instead of `for(<>){...}'.]]>
     </description>
     <priority>CRITICAL</priority>
   </rule>
@@ -695,7 +695,7 @@
     <name>Prohibit Two Arg Open></name>
     <configKey>InputOutput::ProhibitTwoArgOpen</configKey>
     <description>
-      <![CDATA[Write `open $fh, q{<}, $filename;' instead of `open $fh, "<$filename";'.]]>
+      <![CDATA[InputOutput::ProhibitTwoArgOpen: Write `open $fh, q{<}, $filename;' instead of `open $fh, "<$filename";'.]]>
     </description>
     <priority>BLOCKER</priority>
   </rule>
@@ -705,7 +705,7 @@
     <name>Require Braced File Handle With Print></name>
     <configKey>InputOutput::RequireBracedFileHandleWithPrint</configKey>
     <description>
-      <![CDATA[Write `print {$FH} $foo, $bar;' instead of `print $FH $foo, $bar;'.]]>
+      <![CDATA[InputOutput::RequireBracedFileHandleWithPrint: Write `print {$FH} $foo, $bar;' instead of `print $FH $foo, $bar;'.]]>
     </description>
     <priority>INFO</priority>
   </rule>
@@ -715,7 +715,7 @@
     <name>Require Brief Open></name>
     <configKey>InputOutput::RequireBriefOpen</configKey>
     <description>
-      <![CDATA[Close filehandles as soon as possible after opening them.]]>
+      <![CDATA[InputOutput::RequireBriefOpen: Close filehandles as soon as possible after opening them.]]>
     </description>
     <priority>CRITICAL</priority>
   </rule>
@@ -725,7 +725,7 @@
     <name>Require Checked Close></name>
     <configKey>InputOutput::RequireCheckedClose</configKey>
     <description>
-      <![CDATA[Write `my $error = close $fh;' instead of `close $fh;'.]]>
+      <![CDATA[InputOutput::RequireCheckedClose: Write `my $error = close $fh;' instead of `close $fh;'.]]>
     </description>
     <priority>MINOR</priority>
   </rule>
@@ -735,7 +735,7 @@
     <name>Require Checked Open></name>
     <configKey>InputOutput::RequireCheckedOpen</configKey>
     <description>
-      <![CDATA[Write `my $error = open $fh, $mode, $filename;' instead of `open $fh, $mode, $filename;'.]]>
+      <![CDATA[InputOutput::RequireCheckedOpen: Write `my $error = open $fh, $mode, $filename;' instead of `open $fh, $mode, $filename;'.]]>
     </description>
     <priority>MAJOR</priority>
   </rule>
@@ -745,7 +745,7 @@
     <name>Require Checked Syscalls></name>
     <configKey>InputOutput::RequireCheckedSyscalls</configKey>
     <description>
-      <![CDATA[Return value of flagged function ignored.]]>
+      <![CDATA[InputOutput::RequireCheckedSyscalls: Return value of flagged function ignored.]]>
     </description>
     <priority>INFO</priority>
   </rule>
@@ -755,7 +755,7 @@
     <name>Require Encoding With UTF8Layer></name>
     <configKey>InputOutput::RequireEncodingWithUTF8Layer</configKey>
     <description>
-      <![CDATA[Write `open $fh, q{<:encoding(UTF-8)}, $filename;' instead of `open $fh, q{{<:utf8}, $filename;'.]]>
+      <![CDATA[InputOutput::RequireEncodingWithUTF8Layer: Write `open $fh, q{<:encoding(UTF-8)}, $filename;' instead of `open $fh, q{{<:utf8}, $filename;'.]]>
     </description>
     <priority>BLOCKER</priority>
   </rule>
@@ -765,7 +765,7 @@
     <name>Prohibit Formats></name>
     <configKey>Miscellanea::ProhibitFormats</configKey>
     <description>
-      <![CDATA[Do not use `format'.]]>
+      <![CDATA[Miscellanea::ProhibitFormats: Do not use `format'.]]>
     </description>
     <priority>MAJOR</priority>
   </rule>
@@ -775,7 +775,7 @@
     <name>Prohibit Ties></name>
     <configKey>Miscellanea::ProhibitTies</configKey>
     <description>
-      <![CDATA[Do not use `tie'.]]>
+      <![CDATA[Miscellanea::ProhibitTies: Do not use `tie'.]]>
     </description>
     <priority>MINOR</priority>
   </rule>
@@ -785,7 +785,7 @@
     <name>Prohibit Unrestricted No Critic></name>
     <configKey>Miscellanea::ProhibitUnrestrictedNoCritic</configKey>
     <description>
-      <![CDATA[Forbid a bare `## no critic']]>
+      <![CDATA[Miscellanea::ProhibitUnrestrictedNoCritic: Forbid a bare `## no critic']]>
     </description>
     <priority>MAJOR</priority>
   </rule>
@@ -795,7 +795,7 @@
     <name>Prohibit Useless No Critic></name>
     <configKey>Miscellanea::ProhibitUselessNoCritic</configKey>
     <description>
-      <![CDATA[Remove ineffective "## no critic" annotations.]]>
+      <![CDATA[Miscellanea::ProhibitUselessNoCritic: Remove ineffective "## no critic" annotations.]]>
     </description>
     <priority>MINOR</priority>
   </rule>
@@ -805,7 +805,7 @@
     <name>Require Rcs Keywords></name>
     <configKey>Miscellanea::RequireRcsKeywords</configKey>
     <description>
-      <![CDATA[Put source-control keywords in every file.]]>
+      <![CDATA[Miscellanea::RequireRcsKeywords: Put source-control keywords in every file.]]>
     </description>
     <priority>MINOR</priority>
   </rule>
@@ -815,7 +815,7 @@
     <name>Prohibit Automatic Exportation></name>
     <configKey>Modules::ProhibitAutomaticExportation</configKey>
     <description>
-      <![CDATA[Export symbols via `@EXPORT_OK' or `%EXPORT_TAGS' instead of `@EXPORT'.]]>
+      <![CDATA[Modules::ProhibitAutomaticExportation: Export symbols via `@EXPORT_OK' or `%EXPORT_TAGS' instead of `@EXPORT'.]]>
     </description>
     <priority>CRITICAL</priority>
   </rule>
@@ -825,7 +825,7 @@
     <name>Prohibit Conditional Use Statements></name>
     <configKey>Modules::ProhibitConditionalUseStatements</configKey>
     <description>
-      <![CDATA[Avoid putting conditional logic around compile-time includes.]]>
+      <![CDATA[Modules::ProhibitConditionalUseStatements: Avoid putting conditional logic around compile-time includes.]]>
     </description>
     <priority>MAJOR</priority>
   </rule>
@@ -835,7 +835,7 @@
     <name>Prohibit Evil Modules></name>
     <configKey>Modules::ProhibitEvilModules</configKey>
     <description>
-      <![CDATA[Ban modules that aren't blessed by your shop.]]>
+      <![CDATA[Modules::ProhibitEvilModules: Ban modules that aren't blessed by your shop.]]>
     </description>
     <priority>BLOCKER</priority>
   </rule>
@@ -845,7 +845,7 @@
     <name>Prohibit Excess Main Complexity></name>
     <configKey>Modules::ProhibitExcessMainComplexity</configKey>
     <description>
-      <![CDATA[Minimize complexity in code that is outside of subroutines.]]>
+      <![CDATA[Modules::ProhibitExcessMainComplexity: Minimize complexity in code that is outside of subroutines.]]>
     </description>
     <priority>MAJOR</priority>
   </rule>
@@ -855,7 +855,7 @@
     <name>Prohibit Multiple Packages></name>
     <configKey>Modules::ProhibitMultiplePackages</configKey>
     <description>
-      <![CDATA[Put packages (especially subclasses) in separate files.]]>
+      <![CDATA[Modules::ProhibitMultiplePackages: Put packages (especially subclasses) in separate files.]]>
     </description>
     <priority>CRITICAL</priority>
   </rule>
@@ -865,7 +865,7 @@
     <name>Require Bareword Includes></name>
     <configKey>Modules::RequireBarewordIncludes</configKey>
     <description>
-      <![CDATA[Write `require Module' instead of `require 'Module.pm''.]]>
+      <![CDATA[Modules::RequireBarewordIncludes: Write `require Module' instead of `require 'Module.pm''.]]>
     </description>
     <priority>BLOCKER</priority>
   </rule>
@@ -875,7 +875,7 @@
     <name>Require End With One></name>
     <configKey>Modules::RequireEndWithOne</configKey>
     <description>
-      <![CDATA[End each module with an explicitly `1;' instead of some funky expression.]]>
+      <![CDATA[Modules::RequireEndWithOne: End each module with an explicitly `1;' instead of some funky expression.]]>
     </description>
     <priority>CRITICAL</priority>
   </rule>
@@ -885,7 +885,7 @@
     <name>Require Explicit Package></name>
     <configKey>Modules::RequireExplicitPackage</configKey>
     <description>
-      <![CDATA[Always make the `package' explicit.]]>
+      <![CDATA[Modules::RequireExplicitPackage: Always make the `package' explicit.]]>
     </description>
     <priority>CRITICAL</priority>
   </rule>
@@ -895,7 +895,7 @@
     <name>Require Filename Matches Package></name>
     <configKey>Modules::RequireFilenameMatchesPackage</configKey>
     <description>
-      <![CDATA[Package declaration must match filename.]]>
+      <![CDATA[Modules::RequireFilenameMatchesPackage: Package declaration must match filename.]]>
     </description>
     <priority>BLOCKER</priority>
   </rule>
@@ -905,7 +905,7 @@
     <name>Require No Match Vars With Use English></name>
     <configKey>Modules::RequireNoMatchVarsWithUseEnglish</configKey>
     <description>
-      <![CDATA[`use English' must be passed a `-no_match_vars' argument.]]>
+      <![CDATA[Modules::RequireNoMatchVarsWithUseEnglish: `use English' must be passed a `-no_match_vars' argument.]]>
     </description>
     <priority>MINOR</priority>
   </rule>
@@ -915,7 +915,7 @@
     <name>Require Version Var></name>
     <configKey>Modules::RequireVersionVar</configKey>
     <description>
-      <![CDATA[Give every module a `$VERSION' number.]]>
+      <![CDATA[Modules::RequireVersionVar: Give every module a `$VERSION' number.]]>
     </description>
     <priority>MINOR</priority>
   </rule>
@@ -925,7 +925,7 @@
     <name>Capitalization></name>
     <configKey>NamingConventions::Capitalization</configKey>
     <description>
-      <![CDATA[Distinguish different program components by case.]]>
+      <![CDATA[NamingConventions::Capitalization: Distinguish different program components by case.]]>
     </description>
     <priority>INFO</priority>
   </rule>
@@ -935,7 +935,7 @@
     <name>Prohibit Ambiguous Names></name>
     <configKey>NamingConventions::ProhibitAmbiguousNames</configKey>
     <description>
-      <![CDATA[Don't use vague variable or subroutine names like 'last' or 'record'.]]>
+      <![CDATA[NamingConventions::ProhibitAmbiguousNames: Don't use vague variable or subroutine names like 'last' or 'record'.]]>
     </description>
     <priority>MAJOR</priority>
   </rule>
@@ -945,7 +945,7 @@
     <name>Prohibit Mixed Case Subs></name>
     <configKey>NamingConventions::ProhibitMixedCaseSubs</configKey>
     <description>
-      <![CDATA[Write `sub my_function{}' instead of `sub MyFunction{}'.]]>
+      <![CDATA[NamingConventions::ProhibitMixedCaseSubs: Write `sub my_function{}' instead of `sub MyFunction{}'.]]>
     </description>
     <priority>INFO</priority>
   </rule>
@@ -955,7 +955,7 @@
     <name>Prohibit Mixed Case Vars></name>
     <configKey>NamingConventions::ProhibitMixedCaseVars</configKey>
     <description>
-      <![CDATA[Write `$my_variable = 42' instead of `$MyVariable = 42'.]]>
+      <![CDATA[NamingConventions::ProhibitMixedCaseVars: Write `$my_variable = 42' instead of `$MyVariable = 42'.]]>
     </description>
     <priority>INFO</priority>
   </rule>
@@ -965,7 +965,7 @@
     <name>Prohibit Indirect Syntax></name>
     <configKey>Objects::ProhibitIndirectSyntax</configKey>
     <description>
-      <![CDATA[Prohibit indirect object call syntax.]]>
+      <![CDATA[Objects::ProhibitIndirectSyntax: Prohibit indirect object call syntax.]]>
     </description>
     <priority>CRITICAL</priority>
   </rule>
@@ -975,7 +975,7 @@
     <name>Prohibit Double Sigils></name>
     <configKey>References::ProhibitDoubleSigils</configKey>
     <description>
-      <![CDATA[Write `@{ $array_ref }' instead of `@$array_ref'.]]>
+      <![CDATA[References::ProhibitDoubleSigils: Write `@{ $array_ref }' instead of `@$array_ref'.]]>
     </description>
     <priority>MINOR</priority>
   </rule>
@@ -985,7 +985,7 @@
     <name>Prohibit Capture Without Test></name>
     <configKey>RegularExpressions::ProhibitCaptureWithoutTest</configKey>
     <description>
-      <![CDATA[Capture variable used outside conditional.]]>
+      <![CDATA[RegularExpressions::ProhibitCaptureWithoutTest: Capture variable used outside conditional.]]>
     </description>
     <priority>MAJOR</priority>
   </rule>
@@ -995,7 +995,7 @@
     <name>Prohibit Complex Regexes></name>
     <configKey>RegularExpressions::ProhibitComplexRegexes</configKey>
     <description>
-      <![CDATA[Split long regexps into smaller `qr//' chunks.]]>
+      <![CDATA[RegularExpressions::ProhibitComplexRegexes: Split long regexps into smaller `qr//' chunks.]]>
     </description>
     <priority>MAJOR</priority>
   </rule>
@@ -1005,7 +1005,7 @@
     <name>Prohibit Enumerated Classes></name>
     <configKey>RegularExpressions::ProhibitEnumeratedClasses</configKey>
     <description>
-      <![CDATA[Use named character classes instead of explicit character lists.]]>
+      <![CDATA[RegularExpressions::ProhibitEnumeratedClasses: Use named character classes instead of explicit character lists.]]>
     </description>
     <priority>INFO</priority>
   </rule>
@@ -1015,7 +1015,7 @@
     <name>Prohibit Escaped Metacharacters></name>
     <configKey>RegularExpressions::ProhibitEscapedMetacharacters</configKey>
     <description>
-      <![CDATA[Use character classes for literal meta-characters instead of escapes.]]>
+      <![CDATA[RegularExpressions::ProhibitEscapedMetacharacters: Use character classes for literal meta-characters instead of escapes.]]>
     </description>
     <priority>INFO</priority>
   </rule>
@@ -1025,7 +1025,7 @@
     <name>Prohibit Fixed String Matches></name>
     <configKey>RegularExpressions::ProhibitFixedStringMatches</configKey>
     <description>
-      <![CDATA[Use `eq' or hash instead of fixed-pattern regexps.]]>
+      <![CDATA[RegularExpressions::ProhibitFixedStringMatches: Use `eq' or hash instead of fixed-pattern regexps.]]>
     </description>
     <priority>MINOR</priority>
   </rule>
@@ -1035,7 +1035,7 @@
     <name>Prohibit Single Char Alternation></name>
     <configKey>RegularExpressions::ProhibitSingleCharAlternation</configKey>
     <description>
-      <![CDATA[Use `[abc]' instead of `a|b|c'.]]>
+      <![CDATA[RegularExpressions::ProhibitSingleCharAlternation: Use `[abc]' instead of `a|b|c'.]]>
     </description>
     <priority>INFO</priority>
   </rule>
@@ -1045,7 +1045,7 @@
     <name>Prohibit Unused Capture></name>
     <configKey>RegularExpressions::ProhibitUnusedCapture</configKey>
     <description>
-      <![CDATA[Only use a capturing group if you plan to use the captured value.]]>
+      <![CDATA[RegularExpressions::ProhibitUnusedCapture: Only use a capturing group if you plan to use the captured value.]]>
     </description>
     <priority>MAJOR</priority>
   </rule>
@@ -1055,7 +1055,7 @@
     <name>Prohibit Unusual Delimiters></name>
     <configKey>RegularExpressions::ProhibitUnusualDelimiters</configKey>
     <description>
-      <![CDATA[Use only `//' or `{}' to delimit regexps.]]>
+      <![CDATA[RegularExpressions::ProhibitUnusualDelimiters: Use only `//' or `{}' to delimit regexps.]]>
     </description>
     <priority>INFO</priority>
   </rule>
@@ -1065,7 +1065,7 @@
     <name>Require Braces For Multiline></name>
     <configKey>RegularExpressions::RequireBracesForMultiline</configKey>
     <description>
-      <![CDATA[Use `{' and `}' to delimit multi-line regexps.]]>
+      <![CDATA[RegularExpressions::RequireBracesForMultiline: Use `{' and `}' to delimit multi-line regexps.]]>
     </description>
     <priority>INFO</priority>
   </rule>
@@ -1075,7 +1075,7 @@
     <name>Require Dot Match Anything></name>
     <configKey>RegularExpressions::RequireDotMatchAnything</configKey>
     <description>
-      <![CDATA[Always use the `/s' modifier with regular expressions.]]>
+      <![CDATA[RegularExpressions::RequireDotMatchAnything: Always use the `/s' modifier with regular expressions.]]>
     </description>
     <priority>MINOR</priority>
   </rule>
@@ -1085,7 +1085,7 @@
     <name>Require Extended Formatting></name>
     <configKey>RegularExpressions::RequireExtendedFormatting</configKey>
     <description>
-      <![CDATA[Always use the `/x' modifier with regular expressions.]]>
+      <![CDATA[RegularExpressions::RequireExtendedFormatting: Always use the `/x' modifier with regular expressions.]]>
     </description>
     <priority>MAJOR</priority>
   </rule>
@@ -1095,7 +1095,7 @@
     <name>Require Line Boundary Matching></name>
     <configKey>RegularExpressions::RequireLineBoundaryMatching</configKey>
     <description>
-      <![CDATA[Always use the `/m' modifier with regular expressions.]]>
+      <![CDATA[RegularExpressions::RequireLineBoundaryMatching: Always use the `/m' modifier with regular expressions.]]>
     </description>
     <priority>MINOR</priority>
   </rule>
@@ -1105,7 +1105,7 @@
     <name>Prohibit Ampersand Sigils></name>
     <configKey>Subroutines::ProhibitAmpersandSigils</configKey>
     <description>
-      <![CDATA[Don't call functions with a leading ampersand sigil.]]>
+      <![CDATA[Subroutines::ProhibitAmpersandSigils: Don't call functions with a leading ampersand sigil.]]>
     </description>
     <priority>MINOR</priority>
   </rule>
@@ -1115,7 +1115,7 @@
     <name>Prohibit Builtin Homonyms></name>
     <configKey>Subroutines::ProhibitBuiltinHomonyms</configKey>
     <description>
-      <![CDATA[Don't declare your own `open' function.]]>
+      <![CDATA[Subroutines::ProhibitBuiltinHomonyms: Don't declare your own `open' function.]]>
     </description>
     <priority>CRITICAL</priority>
   </rule>
@@ -1125,7 +1125,7 @@
     <name>Prohibit Excess Complexity></name>
     <configKey>Subroutines::ProhibitExcessComplexity</configKey>
     <description>
-      <![CDATA[Minimize complexity by factoring code into smaller subroutines.]]>
+      <![CDATA[Subroutines::ProhibitExcessComplexity: Minimize complexity by factoring code into smaller subroutines.]]>
     </description>
     <priority>MAJOR</priority>
   </rule>
@@ -1135,7 +1135,7 @@
     <name>Prohibit Explicit Return Undef></name>
     <configKey>Subroutines::ProhibitExplicitReturnUndef</configKey>
     <description>
-      <![CDATA[Return failure with bare `return' instead of `return undef'.]]>
+      <![CDATA[Subroutines::ProhibitExplicitReturnUndef: Return failure with bare `return' instead of `return undef'.]]>
     </description>
     <priority>BLOCKER</priority>
   </rule>
@@ -1145,7 +1145,7 @@
     <name>Prohibit Many Args></name>
     <configKey>Subroutines::ProhibitManyArgs</configKey>
     <description>
-      <![CDATA[Too many arguments.]]>
+      <![CDATA[Subroutines::ProhibitManyArgs: Too many arguments.]]>
     </description>
     <priority>MAJOR</priority>
   </rule>
@@ -1155,7 +1155,7 @@
     <name>Prohibit Nested Subs></name>
     <configKey>Subroutines::ProhibitNestedSubs</configKey>
     <description>
-      <![CDATA[`sub never { sub correct {} }'.]]>
+      <![CDATA[Subroutines::ProhibitNestedSubs: `sub never { sub correct {} }'.]]>
     </description>
     <priority>BLOCKER</priority>
   </rule>
@@ -1165,7 +1165,7 @@
     <name>Prohibit Return Sort></name>
     <configKey>Subroutines::ProhibitReturnSort</configKey>
     <description>
-      <![CDATA[Behavior of `sort' is not defined if called in scalar context.]]>
+      <![CDATA[Subroutines::ProhibitReturnSort: Behavior of `sort' is not defined if called in scalar context.]]>
     </description>
     <priority>BLOCKER</priority>
   </rule>
@@ -1175,7 +1175,7 @@
     <name>Prohibit Subroutine Prototypes></name>
     <configKey>Subroutines::ProhibitSubroutinePrototypes</configKey>
     <description>
-      <![CDATA[Don't write `sub my_function (@@) {}'.]]>
+      <![CDATA[Subroutines::ProhibitSubroutinePrototypes: Don't write `sub my_function (@@) {}'.]]>
     </description>
     <priority>BLOCKER</priority>
   </rule>
@@ -1185,7 +1185,7 @@
     <name>Prohibit Unused Private Subroutines></name>
     <configKey>Subroutines::ProhibitUnusedPrivateSubroutines</configKey>
     <description>
-      <![CDATA[Prevent unused private subroutines.]]>
+      <![CDATA[Subroutines::ProhibitUnusedPrivateSubroutines: Prevent unused private subroutines.]]>
     </description>
     <priority>MAJOR</priority>
   </rule>
@@ -1195,7 +1195,7 @@
     <name>Protect Private Subs></name>
     <configKey>Subroutines::ProtectPrivateSubs</configKey>
     <description>
-      <![CDATA[Prevent access to private subs in other packages.]]>
+      <![CDATA[Subroutines::ProtectPrivateSubs: Prevent access to private subs in other packages.]]>
     </description>
     <priority>MAJOR</priority>
   </rule>
@@ -1205,7 +1205,7 @@
     <name>Require Arg Unpacking></name>
     <configKey>Subroutines::RequireArgUnpacking</configKey>
     <description>
-      <![CDATA[Always unpack `@_' first.]]>
+      <![CDATA[Subroutines::RequireArgUnpacking: Always unpack `@_' first.]]>
     </description>
     <priority>CRITICAL</priority>
   </rule>
@@ -1215,7 +1215,7 @@
     <name>Require Final Return></name>
     <configKey>Subroutines::RequireFinalReturn</configKey>
     <description>
-      <![CDATA[End every path through a subroutine with an explicit `return' statement.]]>
+      <![CDATA[Subroutines::RequireFinalReturn: End every path through a subroutine with an explicit `return' statement.]]>
     </description>
     <priority>CRITICAL</priority>
   </rule>
@@ -1225,7 +1225,7 @@
     <name>Prohibit No Strict></name>
     <configKey>TestingAndDebugging::ProhibitNoStrict</configKey>
     <description>
-      <![CDATA[Prohibit various flavors of `no strict'.]]>
+      <![CDATA[TestingAndDebugging::ProhibitNoStrict: Prohibit various flavors of `no strict'.]]>
     </description>
     <priority>BLOCKER</priority>
   </rule>
@@ -1235,7 +1235,7 @@
     <name>Prohibit No Warnings></name>
     <configKey>TestingAndDebugging::ProhibitNoWarnings</configKey>
     <description>
-      <![CDATA[Prohibit various flavors of `no warnings'.]]>
+      <![CDATA[TestingAndDebugging::ProhibitNoWarnings: Prohibit various flavors of `no warnings'.]]>
     </description>
     <priority>CRITICAL</priority>
   </rule>
@@ -1245,7 +1245,7 @@
     <name>Prohibit Prolonged Stricture Override></name>
     <configKey>TestingAndDebugging::ProhibitProlongedStrictureOverride</configKey>
     <description>
-      <![CDATA[Don't turn off strict for large blocks of code.]]>
+      <![CDATA[TestingAndDebugging::ProhibitProlongedStrictureOverride: Don't turn off strict for large blocks of code.]]>
     </description>
     <priority>CRITICAL</priority>
   </rule>
@@ -1255,7 +1255,7 @@
     <name>Require Test Labels></name>
     <configKey>TestingAndDebugging::RequireTestLabels</configKey>
     <description>
-      <![CDATA[Tests should all have labels.]]>
+      <![CDATA[TestingAndDebugging::RequireTestLabels: Tests should all have labels.]]>
     </description>
     <priority>MAJOR</priority>
   </rule>
@@ -1265,7 +1265,7 @@
     <name>Require Use Strict></name>
     <configKey>TestingAndDebugging::RequireUseStrict</configKey>
     <description>
-      <![CDATA[Always `use strict'.]]>
+      <![CDATA[TestingAndDebugging::RequireUseStrict: Always `use strict'.]]>
     </description>
     <priority>BLOCKER</priority>
   </rule>
@@ -1275,7 +1275,7 @@
     <name>Require Use Warnings></name>
     <configKey>TestingAndDebugging::RequireUseWarnings</configKey>
     <description>
-      <![CDATA[Always `use warnings'.]]>
+      <![CDATA[TestingAndDebugging::RequireUseWarnings: Always `use warnings'.]]>
     </description>
     <priority>CRITICAL</priority>
   </rule>
@@ -1285,7 +1285,7 @@
     <name>Prohibit Long Lines></name>
     <configKey>Tics::ProhibitLongLines</configKey>
     <description>
-      <![CDATA[80 x 40 for life!]]>
+      <![CDATA[Tics::ProhibitLongLines: 80 x 40 for life!]]>
     </description>
     <priority>MINOR</priority>
   </rule>
@@ -1295,7 +1295,7 @@
     <name>Prohibit Many Arrows></name>
     <configKey>Tics::ProhibitManyArrows</configKey>
     <description>
-      <![CDATA[(this => is => not => good)]]>
+      <![CDATA[Tics::ProhibitManyArrows: (this => is => not => good)]]>
     </description>
     <priority>MAJOR</priority>
   </rule>
@@ -1305,7 +1305,7 @@
     <name>Prohibit Use Base></name>
     <configKey>Tics::ProhibitUseBase</configKey>
     <description>
-      <![CDATA[do not use base.pm]]>
+      <![CDATA[Tics::ProhibitUseBase: do not use base.pm]]>
     </description>
     <priority>MINOR</priority>
   </rule>
@@ -1315,7 +1315,7 @@
     <name>Prohibit Comma Separated Statements></name>
     <configKey>ValuesAndExpressions::ProhibitCommaSeparatedStatements</configKey>
     <description>
-      <![CDATA[Don't use the comma operator as a statement separator.]]>
+      <![CDATA[ValuesAndExpressions::ProhibitCommaSeparatedStatements: Don't use the comma operator as a statement separator.]]>
     </description>
     <priority>CRITICAL</priority>
   </rule>
@@ -1325,7 +1325,7 @@
     <name>Prohibit Complex Version></name>
     <configKey>ValuesAndExpressions::ProhibitComplexVersion</configKey>
     <description>
-      <![CDATA[Prohibit version values from outside the module.]]>
+      <![CDATA[ValuesAndExpressions::ProhibitComplexVersion: Prohibit version values from outside the module.]]>
     </description>
     <priority>MAJOR</priority>
   </rule>
@@ -1335,7 +1335,7 @@
     <name>Prohibit Constant Pragma></name>
     <configKey>ValuesAndExpressions::ProhibitConstantPragma</configKey>
     <description>
-      <![CDATA[Don't `use constant FOO => 15'.]]>
+      <![CDATA[ValuesAndExpressions::ProhibitConstantPragma: Don't `use constant FOO => 15'.]]>
     </description>
     <priority>CRITICAL</priority>
   </rule>
@@ -1345,7 +1345,7 @@
     <name>Prohibit Empty Quotes></name>
     <configKey>ValuesAndExpressions::ProhibitEmptyQuotes</configKey>
     <description>
-      <![CDATA[Write `q{}' instead of `'''.]]>
+      <![CDATA[ValuesAndExpressions::ProhibitEmptyQuotes: Write `q{}' instead of `'''.]]>
     </description>
     <priority>MINOR</priority>
   </rule>
@@ -1355,7 +1355,7 @@
     <name>Prohibit Escaped Characters></name>
     <configKey>ValuesAndExpressions::ProhibitEscapedCharacters</configKey>
     <description>
-      <![CDATA[Write `"\N{DELETE}"' instead of `"\x7F"', etc.]]>
+      <![CDATA[ValuesAndExpressions::ProhibitEscapedCharacters: Write `"\N{DELETE}"' instead of `"\x7F"', etc.]]>
     </description>
     <priority>MINOR</priority>
   </rule>
@@ -1365,7 +1365,7 @@
     <name>Prohibit Implicit Newlines></name>
     <configKey>ValuesAndExpressions::ProhibitImplicitNewlines</configKey>
     <description>
-      <![CDATA[Use concatenation or HEREDOCs instead of literal line breaks in strings.]]>
+      <![CDATA[ValuesAndExpressions::ProhibitImplicitNewlines: Use concatenation or HEREDOCs instead of literal line breaks in strings.]]>
     </description>
     <priority>MAJOR</priority>
   </rule>
@@ -1375,7 +1375,7 @@
     <name>Prohibit Interpolation Of Literals></name>
     <configKey>ValuesAndExpressions::ProhibitInterpolationOfLiterals</configKey>
     <description>
-      <![CDATA[Always use single quotes for literal strings.]]>
+      <![CDATA[ValuesAndExpressions::ProhibitInterpolationOfLiterals: Always use single quotes for literal strings.]]>
     </description>
     <priority>INFO</priority>
   </rule>
@@ -1385,7 +1385,7 @@
     <name>Prohibit Leading Zeros></name>
     <configKey>ValuesAndExpressions::ProhibitLeadingZeros</configKey>
     <description>
-      <![CDATA[Write `oct(755)' instead of `0755'.]]>
+      <![CDATA[ValuesAndExpressions::ProhibitLeadingZeros: Write `oct(755)' instead of `0755'.]]>
     </description>
     <priority>BLOCKER</priority>
   </rule>
@@ -1395,7 +1395,7 @@
     <name>Prohibit Long Chains Of Method Calls></name>
     <configKey>ValuesAndExpressions::ProhibitLongChainsOfMethodCalls</configKey>
     <description>
-      <![CDATA[Long chains of method calls indicate tightly coupled code.]]>
+      <![CDATA[ValuesAndExpressions::ProhibitLongChainsOfMethodCalls: Long chains of method calls indicate tightly coupled code.]]>
     </description>
     <priority>MINOR</priority>
   </rule>
@@ -1405,7 +1405,7 @@
     <name>Prohibit Magic Numbers></name>
     <configKey>ValuesAndExpressions::ProhibitMagicNumbers</configKey>
     <description>
-      <![CDATA[Don't use values that don't explain themselves.]]>
+      <![CDATA[ValuesAndExpressions::ProhibitMagicNumbers: Don't use values that don't explain themselves.]]>
     </description>
     <priority>MINOR</priority>
   </rule>
@@ -1415,7 +1415,7 @@
     <name>Prohibit Mismatched Operators></name>
     <configKey>ValuesAndExpressions::ProhibitMismatchedOperators</configKey>
     <description>
-      <![CDATA[Don't mix numeric operators with string operands, or vice-versa.]]>
+      <![CDATA[ValuesAndExpressions::ProhibitMismatchedOperators: Don't mix numeric operators with string operands, or vice-versa.]]>
     </description>
     <priority>MAJOR</priority>
   </rule>
@@ -1425,7 +1425,7 @@
     <name>Prohibit Mixed Boolean Operators></name>
     <configKey>ValuesAndExpressions::ProhibitMixedBooleanOperators</configKey>
     <description>
-      <![CDATA[Write ` !$foo && $bar || $baz ' instead of ` not $foo && $bar or $baz'.]]>
+      <![CDATA[ValuesAndExpressions::ProhibitMixedBooleanOperators: Write ` !$foo && $bar || $baz ' instead of ` not $foo && $bar or $baz'.]]>
     </description>
     <priority>CRITICAL</priority>
   </rule>
@@ -1435,7 +1435,7 @@
     <name>Prohibit Noisy Quotes></name>
     <configKey>ValuesAndExpressions::ProhibitNoisyQuotes</configKey>
     <description>
-      <![CDATA[Use `q{}' or `qq{}' instead of quotes for awkward-looking strings.]]>
+      <![CDATA[ValuesAndExpressions::ProhibitNoisyQuotes: Use `q{}' or `qq{}' instead of quotes for awkward-looking strings.]]>
     </description>
     <priority>MINOR</priority>
   </rule>
@@ -1445,7 +1445,7 @@
     <name>Prohibit Quotes As Quotelike Operator Delimiters></name>
     <configKey>ValuesAndExpressions::ProhibitQuotesAsQuotelikeOperatorDelimiters</configKey>
     <description>
-      <![CDATA[Don't use quotes (`'', `"', ``') as delimiters for the quote-like operators.]]>
+      <![CDATA[ValuesAndExpressions::ProhibitQuotesAsQuotelikeOperatorDelimiters: Don't use quotes (`'', `"', ``') as delimiters for the quote-like operators.]]>
     </description>
     <priority>MAJOR</priority>
   </rule>
@@ -1455,7 +1455,7 @@
     <name>Prohibit Special Literal Heredoc Terminator></name>
     <configKey>ValuesAndExpressions::ProhibitSpecialLiteralHeredocTerminator</configKey>
     <description>
-      <![CDATA[Don't write ` print <<'__END__' '.]]>
+      <![CDATA[ValuesAndExpressions::ProhibitSpecialLiteralHeredocTerminator: Don't write ` print <<'__END__' '.]]>
     </description>
     <priority>MAJOR</priority>
   </rule>
@@ -1465,7 +1465,7 @@
     <name>Prohibit Version Strings></name>
     <configKey>ValuesAndExpressions::ProhibitVersionStrings</configKey>
     <description>
-      <![CDATA[Don't use strings like `v1.4' or `1.4.5' when including other modules.]]>
+      <![CDATA[ValuesAndExpressions::ProhibitVersionStrings: Don't use strings like `v1.4' or `1.4.5' when including other modules.]]>
     </description>
     <priority>MAJOR</priority>
   </rule>
@@ -1475,7 +1475,7 @@
     <name>Require Constant Version></name>
     <configKey>ValuesAndExpressions::RequireConstantVersion</configKey>
     <description>
-      <![CDATA[Require $VERSION to be a constant rather than a computed value.]]>
+      <![CDATA[ValuesAndExpressions::RequireConstantVersion: Require $VERSION to be a constant rather than a computed value.]]>
     </description>
     <priority>MINOR</priority>
   </rule>
@@ -1485,7 +1485,7 @@
     <name>Require Interpolation Of Metachars></name>
     <configKey>ValuesAndExpressions::RequireInterpolationOfMetachars</configKey>
     <description>
-      <![CDATA[Warns that you might have used single quotes when you really wanted double-quotes.]]>
+      <![CDATA[ValuesAndExpressions::RequireInterpolationOfMetachars: Warns that you might have used single quotes when you really wanted double-quotes.]]>
     </description>
     <priority>INFO</priority>
   </rule>
@@ -1495,7 +1495,7 @@
     <name>Require Number Separators></name>
     <configKey>ValuesAndExpressions::RequireNumberSeparators</configKey>
     <description>
-      <![CDATA[Write ` 141_234_397.0145 ' instead of ` 141234397.0145 '.]]>
+      <![CDATA[ValuesAndExpressions::RequireNumberSeparators: Write ` 141_234_397.0145 ' instead of ` 141234397.0145 '.]]>
     </description>
     <priority>MINOR</priority>
   </rule>
@@ -1505,7 +1505,7 @@
     <name>Require Quoted Heredoc Terminator></name>
     <configKey>ValuesAndExpressions::RequireQuotedHeredocTerminator</configKey>
     <description>
-      <![CDATA[Write ` print <<'THE_END' ' or ` print <<"THE_END" '.]]>
+      <![CDATA[ValuesAndExpressions::RequireQuotedHeredocTerminator: Write ` print <<'THE_END' ' or ` print <<"THE_END" '.]]>
     </description>
     <priority>MAJOR</priority>
   </rule>
@@ -1515,7 +1515,7 @@
     <name>Require Upper Case Heredoc Terminator></name>
     <configKey>ValuesAndExpressions::RequireUpperCaseHeredocTerminator</configKey>
     <description>
-      <![CDATA[Write ` <<'THE_END'; ' instead of ` <<'theEnd'; '.]]>
+      <![CDATA[ValuesAndExpressions::RequireUpperCaseHeredocTerminator: Write ` <<'THE_END'; ' instead of ` <<'theEnd'; '.]]>
     </description>
     <priority>MINOR</priority>
   </rule>
@@ -1525,7 +1525,7 @@
     <name>Prohibit Conditional Declarations></name>
     <configKey>Variables::ProhibitConditionalDeclarations</configKey>
     <description>
-      <![CDATA[Do not write ` my $foo = $bar if $baz; '.]]>
+      <![CDATA[Variables::ProhibitConditionalDeclarations: Do not write ` my $foo = $bar if $baz; '.]]>
     </description>
     <priority>BLOCKER</priority>
   </rule>
@@ -1535,7 +1535,7 @@
     <name>Prohibit Local Vars></name>
     <configKey>Variables::ProhibitLocalVars</configKey>
     <description>
-      <![CDATA[Use `my' instead of `local', except when you have to.]]>
+      <![CDATA[Variables::ProhibitLocalVars: Use `my' instead of `local', except when you have to.]]>
     </description>
     <priority>MINOR</priority>
   </rule>
@@ -1545,7 +1545,7 @@
     <name>Prohibit Match Vars></name>
     <configKey>Variables::ProhibitMatchVars</configKey>
     <description>
-      <![CDATA[Avoid `$`', `$&', `$'' and their English equivalents.]]>
+      <![CDATA[Variables::ProhibitMatchVars: Avoid `$`', `$&', `$'' and their English equivalents.]]>
     </description>
     <priority>CRITICAL</priority>
   </rule>
@@ -1555,7 +1555,7 @@
     <name>Prohibit Package Vars></name>
     <configKey>Variables::ProhibitPackageVars</configKey>
     <description>
-      <![CDATA[Eliminate globals declared with `our' or `use vars'.]]>
+      <![CDATA[Variables::ProhibitPackageVars: Eliminate globals declared with `our' or `use vars'.]]>
     </description>
     <priority>MAJOR</priority>
   </rule>
@@ -1565,7 +1565,7 @@
     <name>Prohibit Perl4Package Names></name>
     <configKey>Variables::ProhibitPerl4PackageNames</configKey>
     <description>
-      <![CDATA[Use double colon (::) to separate package name components instead of single quotes (').]]>
+      <![CDATA[Variables::ProhibitPerl4PackageNames: Use double colon (::) to separate package name components instead of single quotes (').]]>
     </description>
     <priority>MINOR</priority>
   </rule>
@@ -1575,7 +1575,7 @@
     <name>Prohibit Punctuation Vars></name>
     <configKey>Variables::ProhibitPunctuationVars</configKey>
     <description>
-      <![CDATA[Write `$EVAL_ERROR' instead of `$@'.]]>
+      <![CDATA[Variables::ProhibitPunctuationVars: Write `$EVAL_ERROR' instead of `$@'.]]>
     </description>
     <priority>MINOR</priority>
   </rule>
@@ -1585,7 +1585,7 @@
     <name>Prohibit Reused Names></name>
     <configKey>Variables::ProhibitReusedNames</configKey>
     <description>
-      <![CDATA[Do not reuse a variable name in a lexical scope]]>
+      <![CDATA[Variables::ProhibitReusedNames: Do not reuse a variable name in a lexical scope]]>
     </description>
     <priority>MAJOR</priority>
   </rule>
@@ -1595,7 +1595,7 @@
     <name>Prohibit Unused Variables></name>
     <configKey>Variables::ProhibitUnusedVariables</configKey>
     <description>
-      <![CDATA[Don't ask for storage you don't need.]]>
+      <![CDATA[Variables::ProhibitUnusedVariables: Don't ask for storage you don't need.]]>
     </description>
     <priority>MAJOR</priority>
   </rule>
@@ -1605,7 +1605,7 @@
     <name>Protect Private Vars></name>
     <configKey>Variables::ProtectPrivateVars</configKey>
     <description>
-      <![CDATA[Prevent access to private vars in other packages.]]>
+      <![CDATA[Variables::ProtectPrivateVars: Prevent access to private vars in other packages.]]>
     </description>
     <priority>MAJOR</priority>
   </rule>
@@ -1615,7 +1615,7 @@
     <name>Require Initialization For Local Vars></name>
     <configKey>Variables::RequireInitializationForLocalVars</configKey>
     <description>
-      <![CDATA[Write `local $foo = $bar;' instead of just `local $foo;'.]]>
+      <![CDATA[Variables::RequireInitializationForLocalVars: Write `local $foo = $bar;' instead of just `local $foo;'.]]>
     </description>
     <priority>MAJOR</priority>
   </rule>
@@ -1625,7 +1625,7 @@
     <name>Require Lexical Loop Iterators></name>
     <configKey>Variables::RequireLexicalLoopIterators</configKey>
     <description>
-      <![CDATA[Write `for my $element (@list) {...}' instead of `for $element (@list) {...}'.]]>
+      <![CDATA[Variables::RequireLexicalLoopIterators: Write `for my $element (@list) {...}' instead of `for $element (@list) {...}'.]]>
     </description>
     <priority>BLOCKER</priority>
   </rule>
@@ -1635,7 +1635,7 @@
     <name>Require Localized Punctuation Vars></name>
     <configKey>Variables::RequireLocalizedPunctuationVars</configKey>
     <description>
-      <![CDATA[Magic variables should be assigned as "local".]]>
+      <![CDATA[Variables::RequireLocalizedPunctuationVars: Magic variables should be assigned as "local".]]>
     </description>
     <priority>CRITICAL</priority>
   </rule>
@@ -1645,7 +1645,7 @@
     <name>Require Negative Indices></name>
     <configKey>Variables::RequireNegativeIndices</configKey>
     <description>
-      <![CDATA[Negative array index should be used.]]>
+      <![CDATA[Variables::RequireNegativeIndices: Negative array index should be used.]]>
     </description>
     <priority>CRITICAL</priority>
   </rule>
