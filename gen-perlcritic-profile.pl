@@ -28,14 +28,18 @@ sub _out {
     my $tmp = "";
     $tmp .= <<EOL;
 <?xml version="1.0" encoding="UTF-8"?>
-<rules>
+<profile>
+    <name>Sonar way</name>
+    <language>perl</language>
+    <rules>
 EOL
     Perl::Critic::Policy::set_format( _proto_format() );
     foreach my $item (q{$prototype->_get_policies()}) {
         $tmp .= join qq{\n}, map { "$_" } @{ $prototype->_get_policies() };
     }
     $tmp .=  <<EOL;
-</rules>
+    </rules>
+</profile>
 EOL
 
 #    $SEVERITY_HIGHEST = 5
@@ -47,7 +51,6 @@ EOL
     my @severities = qw( undef INFO MINOR MAJOR CRITICAL BLOCKER );
 
     $tmp =~ s|<priority>(\d)</priority>|"<priority>" . $severities[$1] . "</priority>"|eg;
-    $tmp =~ s|<name>(.*?)</name>|"<name>" . _makeReadable($1) . "</name>"|eg;
 
     print {$output} $tmp;
 }
@@ -64,13 +67,9 @@ sub _proto_format {
 
 return << "EOL";
   <rule>
-    <key>%p</key>
-    <name>%p</name>
-    <configKey>%p</configKey>
-    <description>
-      <![CDATA[%p: %a]]>
-    </description>
-    <priority>%s</priority>
+      <repositoryKey>PerlCritic</repositoryKey>
+      <key>%p</key>
+      <priority>%s</priority>
   </rule>
 EOL
 

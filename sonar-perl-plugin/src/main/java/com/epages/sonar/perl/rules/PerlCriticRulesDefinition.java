@@ -10,7 +10,7 @@ import com.epages.sonar.perl.PerlLanguage;
 
 public final class PerlCriticRulesDefinition implements RulesDefinition {
 
-  protected static final String KEY = "perlcritic";
+  protected static final String KEY = "PerlCritic";
   protected static final String NAME = "PerlCritic";
 
   protected String rulesDefinitionFilePath() {
@@ -37,11 +37,11 @@ public final class PerlCriticRulesDefinition implements RulesDefinition {
   }
 
   public static String getRepositoryKeyForLanguage(String languageKey) {
-    return languageKey.toLowerCase() + "-" + KEY;
+    return KEY;
   }
 
   public static String getRepositoryNameForLanguage(String languageKey) {
-    return languageKey.toUpperCase() + " " + NAME;
+    return NAME;
   }
 
 }

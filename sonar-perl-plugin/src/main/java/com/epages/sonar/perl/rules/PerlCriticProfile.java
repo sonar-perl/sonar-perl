@@ -10,6 +10,6 @@ public final class PerlCriticProfile extends ProfileDefinition {
 
   @Override
   public RulesProfile createProfile(ValidationMessages validation) {
-    return RulesProfile.create("PerlLint Rules", PerlLanguage.KEY);
+    return RulesProfile.create("PerlCritic Rules", PerlLanguage.KEY);
   }
 }
