@@ -112,5 +112,3 @@ task removeDockerImage (type:DockerRemoveImage) {
     description = 'Removes the docker image from the local filesystem.'
     imageId 'epages/sonar-perl:latest'
 }
-
-clean.dependsOn removeDockerImage
