@@ -8,15 +8,21 @@ import org.sonar.api.Property;
 import org.sonar.api.SonarPlugin;
 
 import com.epages.sonar.perl.colorizer.PerlCodeColorizer;
-import com.epages.sonar.perl.rules.PerlLintProfile;
-import com.epages.sonar.perl.rules.PerlLintRulesDefinition;
+import com.epages.sonar.perl.rules.PerlCritic;
+import com.epages.sonar.perl.rules.PerlCriticProfile;
+import com.epages.sonar.perl.rules.PerlCriticRulesDefinition;
 
 @Properties({ //
-        @Property( //
-        key = PerlPlugin.FILE_SUFFIXES_KEY, //
-        name = "File Suffixes", //
-        description = "Comma-separated list of suffixes for files to analyze.", //
-        defaultValue = PerlPlugin.DEFAULT_FILE_SUFFIXES) //
+    @Property( //
+    key = PerlPlugin.FILE_SUFFIXES_KEY, //
+    name = "File Suffixes", //
+    description = "Comma-separated list of suffixes for files to analyze.", //
+    defaultValue = PerlPlugin.DEFAULT_FILE_SUFFIXES), //
+    @Property( //
+    key = PerlCritic.PERLCRITIC_REPORT_FILE, //
+    name = "Perlcritic Report Location", //
+    description = "Location of perlcritic report file. Needs to be generated using these command-line flags: --quiet --verbose \"%f~|~%s~|~%l~|~%c~|~%m~|~%e~|~%p~||~%n\"", //
+    defaultValue = PerlCritic.PERLCRITIC_REPORT_FILE_DEFAULT ) //
 })
 public class PerlPlugin extends SonarPlugin {
 
@@ -29,8 +35,8 @@ public class PerlPlugin extends SonarPlugin {
     public List getExtensions() {
         return Arrays.asList(
                 PerlLanguage.class,
-                PerlLintRulesDefinition.class, 
-                PerlLintProfile.class,
+                PerlCriticRulesDefinition.class, 
+                PerlCriticProfile.class,
                 PerlCodeColorizer.class,
                 GlobalSensor.class
         );

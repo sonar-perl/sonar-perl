@@ -8,13 +8,13 @@ import org.sonar.api.server.rule.RulesDefinitionXmlLoader;
 
 import com.epages.sonar.perl.PerlLanguage;
 
-public final class PerlLintRulesDefinition implements RulesDefinition {
+public final class PerlCriticRulesDefinition implements RulesDefinition {
 
-  protected static final String KEY = "perllint";
-  protected static final String NAME = "PerlLint";
+  protected static final String KEY = "perlcritic";
+  protected static final String NAME = "PerlCritic";
 
   protected String rulesDefinitionFilePath() {
-    return "/rules.xml";
+    return "/perlcritic-rules.xml";
   }
 
   private void defineRulesForLanguage(Context context, String repositoryKey, String repositoryName, String languageKey) {
@@ -31,8 +31,8 @@ public final class PerlLintRulesDefinition implements RulesDefinition {
 
   @Override
   public void define(Context context) {
-    String repositoryKey = PerlLintRulesDefinition.getRepositoryKeyForLanguage(PerlLanguage.KEY);
-    String repositoryName = PerlLintRulesDefinition.getRepositoryNameForLanguage(PerlLanguage.KEY);
+    String repositoryKey = PerlCriticRulesDefinition.getRepositoryKeyForLanguage(PerlLanguage.KEY);
+    String repositoryName = PerlCriticRulesDefinition.getRepositoryNameForLanguage(PerlLanguage.KEY);
     defineRulesForLanguage(context, repositoryKey, repositoryName, PerlLanguage.KEY);
   }
 

@@ -6,7 +6,7 @@ import org.sonar.api.utils.ValidationMessages;
 
 import com.epages.sonar.perl.PerlLanguage;
 
-public final class PerlLintProfile extends ProfileDefinition {
+public final class PerlCriticProfile extends ProfileDefinition {
 
   @Override
   public RulesProfile createProfile(ValidationMessages validation) {
