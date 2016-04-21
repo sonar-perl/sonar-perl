@@ -1,4 +1,4 @@
-# SonarQube Perl Plugin
+# SonarQube Perl Plugin (0.0.0.1.pre-alpha :)
 
 This is a spike to figure out how easy features like code coverage
 and Perl::Critic and test reporting can be integrated into sonarqube.
