@@ -6,8 +6,6 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.util.stream.Stream;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.sonar.api.batch.Sensor;
 import org.sonar.api.batch.SensorContext;
 import org.sonar.api.batch.fs.FileSystem;
@@ -15,10 +13,12 @@ import org.sonar.api.batch.fs.InputFile;
 import org.sonar.api.measures.CoreMetrics;
 import org.sonar.api.measures.Measure;
 import org.sonar.api.resources.Project;
+import org.sonar.api.utils.log.Logger;
+import org.sonar.api.utils.log.Loggers;
 
 public class GlobalSensor implements Sensor {
 
-    private static final Logger log = LoggerFactory.getLogger(GlobalSensor.class);
+    private static final Logger log = Loggers.get(GlobalSensor.class);
 
     private final FileSystem fs;
 

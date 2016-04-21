@@ -12,7 +12,7 @@ repositories {
 dependencies { 
     provided 'org.sonarsource.sonarqube:sonar-plugin-api:5.4'
     compile 'com.google.guava:guava:18.0'
-    compile 'org.slf4j:slf4j-api:1.7.21'
+    testCompile 'junit:junit:4.12'
 }
 
 sourceCompatibility = 1.8
