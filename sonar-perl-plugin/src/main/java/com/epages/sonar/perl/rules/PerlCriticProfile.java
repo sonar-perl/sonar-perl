@@ -7,7 +7,6 @@ import org.sonar.api.utils.ValidationMessages;
 
 public final class PerlCriticProfile extends ProfileDefinition {
 
-
     private final XMLProfileParser xmlProfileParser;
 
     public PerlCriticProfile(XMLProfileParser xmlProfileParser) {

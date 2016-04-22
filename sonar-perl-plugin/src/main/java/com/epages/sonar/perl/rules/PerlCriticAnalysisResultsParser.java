@@ -25,6 +25,7 @@ class PerlCriticAnalysisResultsParser {
         }
     }
 
+    // see https://github.com/jploski/epic-ide/blob/b70f1c5ccb3e528f3a8c727b04dc633439f1d35a/org.epic.perleditor/src/org/epic/perleditor/editors/util/SourceCritic.java
     private PerlCriticViolation parseLine(String line) {
         String[] tmp = line.split("~\\|~");
 
