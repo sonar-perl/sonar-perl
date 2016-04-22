@@ -87,7 +87,8 @@ public class PerlCriticIssuesLoaderSensor implements Sensor {
         log.debug(violation.toString());
 
         InputFile inputFile = fileSystem
-                .inputFile(fileSystem.predicates().hasRelativePath(violation.getFilePath()));
+                .inputFile(fileSystem.predicates().and(fileSystem.predicates().hasRelativePath(violation.getFilePath()),
+                        fileSystem.predicates().hasType(InputFile.Type.MAIN)));
 
         if (inputFile != null) {
             saveIssue(inputFile, violation.getLine(), violation.getType(), violation.getDescription());
