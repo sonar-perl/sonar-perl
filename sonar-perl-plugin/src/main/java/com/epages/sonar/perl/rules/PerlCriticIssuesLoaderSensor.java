@@ -5,9 +5,6 @@ import static java.lang.String.format;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
-import java.util.stream.StreamSupport;
-
-import javax.xml.stream.XMLStreamException;
 
 import org.sonar.api.batch.Sensor;
 import org.sonar.api.batch.SensorContext;
