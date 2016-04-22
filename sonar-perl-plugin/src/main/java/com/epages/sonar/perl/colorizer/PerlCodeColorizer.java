@@ -15,6 +15,8 @@ import org.sonar.colorizer.Tokenizer;
 import com.epages.sonar.perl.PerlLanguage;
 import com.google.common.collect.ImmutableSet;
 
+
+@SuppressWarnings("deprecation")
 public class PerlCodeColorizer extends CodeColorizerFormat {
 
     // from https://github.com/jploski/epic-ide/blob/b70f1c5ccb3e528f3a8c727b04dc633439f1d35a/org.epic.perleditor/src/org/epic/core/parser/PerlLexerBase.java

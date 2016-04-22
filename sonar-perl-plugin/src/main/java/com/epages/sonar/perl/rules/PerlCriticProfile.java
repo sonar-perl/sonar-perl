@@ -5,8 +5,6 @@ import org.sonar.api.profiles.RulesProfile;
 import org.sonar.api.profiles.XMLProfileParser;
 import org.sonar.api.utils.ValidationMessages;
 
-import com.epages.sonar.perl.PerlLanguage;
-
 public final class PerlCriticProfile extends ProfileDefinition {
 
 
