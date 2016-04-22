@@ -46,7 +46,7 @@ public class GlobalSensor implements Sensor {
 
     private long countLinesOfCode(File file) {
         try (Stream<String> lines = Files.lines(file.toPath(), StandardCharsets.ISO_8859_1)) {
-            return lines.filter(line -> !line.matches("^\\s*#")).count();
+            return lines.filter(line -> !line.matches("^\\s*#") && !line.matches("^\\s*$")).count();
         } catch (IOException e) {
             log.error(String.format("Error during analysis of file '%s': '%s'", file.getAbsoluteFile(),
                     e.getMessage()), e);
