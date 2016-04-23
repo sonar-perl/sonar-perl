@@ -16,6 +16,10 @@ from the Perl Eclipse integration (EPIC)
 * Syntax highlighting of imported code
 * Perl::Critic issues can be attached
 
+## Teaser Image
+
+![PerlCritic violation in SonarQube](img/sonar_perlcritic.png)
+
 ## Next steps
 
 * The clover report does not contain line-based coverage information. This is crucial for sonarqube to calculate coverage details. Thus, either the clover report needs to be enhanced or we need to find a different solution altogether.
