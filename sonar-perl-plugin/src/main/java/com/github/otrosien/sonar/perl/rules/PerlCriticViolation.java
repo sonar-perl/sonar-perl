@@ -1,4 +1,4 @@
-package com.epages.sonar.perl.rules;
+package com.github.otrosien.sonar.perl.rules;
 
 class PerlCriticViolation {
 

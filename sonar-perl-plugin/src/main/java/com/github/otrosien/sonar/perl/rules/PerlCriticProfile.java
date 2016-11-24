@@ -1,4 +1,4 @@
-package com.epages.sonar.perl.rules;
+package com.github.otrosien.sonar.perl.rules;
 
 import org.sonar.api.profiles.ProfileDefinition;
 import org.sonar.api.profiles.RulesProfile;

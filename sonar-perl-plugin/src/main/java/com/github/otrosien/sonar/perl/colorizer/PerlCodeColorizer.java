@@ -1,4 +1,4 @@
-package com.epages.sonar.perl.colorizer;
+package com.github.otrosien.sonar.perl.colorizer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +12,7 @@ import org.sonar.colorizer.RegexpTokenizer;
 import org.sonar.colorizer.StringTokenizer;
 import org.sonar.colorizer.Tokenizer;
 
-import com.epages.sonar.perl.PerlLanguage;
+import com.github.otrosien.sonar.perl.PerlLanguage;
 import com.google.common.collect.ImmutableSet;
 
 

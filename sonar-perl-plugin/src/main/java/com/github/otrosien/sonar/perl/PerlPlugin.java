@@ -1,4 +1,4 @@
-package com.epages.sonar.perl;
+package com.github.otrosien.sonar.perl;
 
 import java.util.Arrays;
 import java.util.List;
@@ -7,11 +7,11 @@ import org.sonar.api.Properties;
 import org.sonar.api.Property;
 import org.sonar.api.SonarPlugin;
 
-import com.epages.sonar.perl.colorizer.PerlCodeColorizer;
-import com.epages.sonar.perl.rules.PerlCritic;
-import com.epages.sonar.perl.rules.PerlCriticIssuesLoaderSensor;
-import com.epages.sonar.perl.rules.PerlCriticProfile;
-import com.epages.sonar.perl.rules.PerlCriticRulesDefinition;
+import com.github.otrosien.sonar.perl.colorizer.PerlCodeColorizer;
+import com.github.otrosien.sonar.perl.rules.PerlCritic;
+import com.github.otrosien.sonar.perl.rules.PerlCriticIssuesLoaderSensor;
+import com.github.otrosien.sonar.perl.rules.PerlCriticProfile;
+import com.github.otrosien.sonar.perl.rules.PerlCriticRulesDefinition;
 
 @Properties({ //
     @Property( //
@@ -27,7 +27,7 @@ import com.epages.sonar.perl.rules.PerlCriticRulesDefinition;
 })
 public class PerlPlugin extends SonarPlugin {
 
-    public static final String FILE_SUFFIXES_KEY = "com.epages.sonar.perl.suffixes";
+    public static final String FILE_SUFFIXES_KEY = "com.github.otrosien.sonar.perl.suffixes";
 
     public static final String DEFAULT_FILE_SUFFIXES = "pm,pl,t";
 

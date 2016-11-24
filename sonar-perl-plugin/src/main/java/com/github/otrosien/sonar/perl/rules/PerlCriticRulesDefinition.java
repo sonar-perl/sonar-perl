@@ -1,4 +1,4 @@
-package com.epages.sonar.perl.rules;
+package com.github.otrosien.sonar.perl.rules;
 
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
@@ -6,7 +6,7 @@ import java.nio.charset.StandardCharsets;
 import org.sonar.api.server.rule.RulesDefinition;
 import org.sonar.api.server.rule.RulesDefinitionXmlLoader;
 
-import com.epages.sonar.perl.PerlLanguage;
+import com.github.otrosien.sonar.perl.PerlLanguage;
 
 public final class PerlCriticRulesDefinition implements RulesDefinition {
 

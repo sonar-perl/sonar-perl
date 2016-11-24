@@ -24,23 +24,23 @@ group = 'com.github.otrosien'
 sonarPackaging {
     serverUrl = 'http://localhost:9000'
     pluginKey = 'perl'
-    pluginClass = 'com.epages.sonar.perl.PerlPlugin'
+    pluginClass = 'com.github.otrosien.sonar.perl.PerlPlugin'
     pluginName = 'Perl'
     pluginDescription = 'There is more than one camel to do it.'
     pluginParent = null
     pluginLicense = 'Apache'
     requirePlugins = null
     pluginUrl = 'http://github.com/otrosien/sonar-perl'
-    pluginIssueTrackerUrl = 'http://mypluginwebsite.com/issues'
-    pluginTermsConditionsUrl = 'http://mypluginwebsite.com/terms'
-    pluginSourceUrl = 'http://github.com'
+    pluginIssueTrackerUrl = 'http://github.com/otrosien/sonar-perl/issues'
+    pluginTermsConditionsUrl = 'http://github.com/otrosien/sonar-perl'
+    pluginSourceUrl = 'http://github.com/otrosien/sonar-perl'
     pluginDevelopers = 'Oliver Trosien'
     skipDependenciesPackaging = false
     useChildFirstClassLoader = false
     basePlugin = ''
     organization{
         name = 'otrosien'
-        url = 'http://www.github.com/otrosien'
+        url = 'http://github.com/otrosien'
     }
 }
 
@@ -110,5 +110,5 @@ stop.dependsOn stopDockerContainer
 
 task removeDockerImage (type:DockerRemoveImage) {
     description = 'Removes the docker image from the local filesystem.'
-    imageId 'epages/sonar-perl:latest'
+    imageId 'otrosien/sonar-perl:latest'
 }

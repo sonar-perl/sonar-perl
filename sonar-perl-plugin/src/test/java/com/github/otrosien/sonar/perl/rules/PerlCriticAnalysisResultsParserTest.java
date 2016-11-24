@@ -1,4 +1,4 @@
-package com.epages.sonar.perl.rules;
+package com.github.otrosien.sonar.perl.rules;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
@@ -11,6 +11,9 @@ import java.nio.file.Paths;
 import java.util.List;
 
 import org.junit.Test;
+
+import com.github.otrosien.sonar.perl.rules.PerlCriticAnalysisResultsParser;
+import com.github.otrosien.sonar.perl.rules.PerlCriticViolation;
 
 public class PerlCriticAnalysisResultsParserTest {
 

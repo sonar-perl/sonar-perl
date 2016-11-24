@@ -1,4 +1,4 @@
-package com.epages.sonar.perl;
+package com.github.otrosien.sonar.perl;
 
 import java.util.ArrayList;
 import java.util.List;
