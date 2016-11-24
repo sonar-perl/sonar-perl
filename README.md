@@ -41,6 +41,13 @@ docker-compose up sampleproject
 You should see the perl-sample-project on your SonarQube dashboard.
 
 
+## Install into your SonarQube
+
+At the moment the plugin has not been published yet. In order to test it
+in your SoarQube installation, you need to build the project with a `./gradlew sonar-perl-plugin:build` and
+copy the resulting jar file `sonar-perl-plugin/build/sonar-perl-plugin-0.1.jar` into the plugins
+dir of your sonar installation (should be sth. like `/opt/sonarqube/extensions/plugins/`)
+
 ## Next steps
 
 * The clover report does not contain line-based coverage information. This is crucial for sonarqube to calculate coverage details. Thus, either the clover report needs to be enhanced or we need to find a different solution altogether.
