@@ -8,20 +8,4 @@ scmVersion {
     }
 }
 
-bintray {
-    user = project.findProperty('bintrayUser')   ?: System.getenv('BINTRAY_USER')
-    key  = project.findProperty('bintrayApiKey') ?: System.getenv('BINTRAY_API_KEY')
-    publications = ['mavenJava','sourceJar']
-    publish = true
-    pkg {
-        repo = "maven"
-        name = 'sonar-perl'
-        userOrg = 'otrosien'
-        websiteUrl = 'https://github.com/otrosien/sonar-perl'
-        issueTrackerUrl = 'https://github.com/otrosien/sonar-perl/issues'
-        vcsUrl = 'https://github.com/otrosien/sonar-perl.git'
-        githubRepo = 'otrosien/sonar-perl'
-        githubReleaseNotesFile = 'README.md'
-        licenses = ['Apache-2.0']
-    }
-}
+
