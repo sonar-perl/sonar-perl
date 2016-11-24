@@ -5,6 +5,7 @@ sudo: false
 cache:
   directories:
   - "$HOME/.gradle"
+install: true
 script: "./gradlew build"
 env:
   global:
