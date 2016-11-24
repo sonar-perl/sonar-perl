@@ -17,4 +17,4 @@ ENV PATH $PATH:/root/sonar-scanner-2.8/bin
 COPY . /project
 WORKDIR /project
 
-ENTRYPOINT ['sonar-scanner','-Dsonar.host.url=http://sonarperl:9000']
+ENTRYPOINT ['/root/sonar-scanner-2.8/bin/sonar-scanner','-Dsonar.host.url=http://sonarperl:9000']

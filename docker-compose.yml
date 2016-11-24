@@ -6,5 +6,6 @@ services:
     - "9000:9000"
   sampleproject:
     image: otrosien/sonar-perl-sample-project
+    entrypoint: /root/sonar-scanner-2.8/bin/sonar-scanner -Dsonar.host.url=http://sonarperl:9000
     links:
     - sonarperl
