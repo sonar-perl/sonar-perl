@@ -6,12 +6,15 @@ This is a spike to figure out how easy features like code coverage
 and Perl::Critic and test reporting can be integrated into sonarqube. 
 Given enough interest this could be upgraded into a proper open source project.
 
-First of all without having to parse the perl code itself, and just
-attaching the raw source as line-based text. In a later step there
-could be some parsing and analyzing e.g. based on the ANTLR grammar
-from the Perl Eclipse integration (EPIC)
-
 ## Current State
+
+Current plugin analyzes perl projects without having to parse the perl 
+code itself, attaching the raw source as line-based text. In a 
+later step there could be some proper parsing and analyzing, e.g. based 
+on the ANTLR grammar from the Perl Eclipse integration (EPIC) or
+the IntelliJ-Perl grammar.
+
+What we have so far...
 
 * LOC reporting
 * Syntax highlighting of imported code
