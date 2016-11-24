@@ -1,0 +1,10 @@
+version: '2'
+services:
+  sonarperl:
+    image: otrosien/sonar-perl
+    ports:
+    - "9000:9000"
+  sampleproject:
+    image: otrosien/sonar-perl-sample-project
+    links:
+    - sonarperl

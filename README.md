@@ -20,6 +20,27 @@ from the Perl Eclipse integration (EPIC)
 
 ![PerlCritic violation in SonarQube](img/sonar_perlcritic.png)
 
+## Running it
+
+The easiest way to see SonarQube with the Perl Plugin in action is to 
+execute the sample perl project with sonar-scanner in docker-compose.
+
+First, start up the latest sonar-perl
+
+```sh
+docker-compose up -d sonarperl
+```
+
+Wait for SonarQube to start-up and then open the web interface in your browser (http://localhost:9000/ - or the IP you bound your docker to).
+Then, run the sonar-scanner on the sample project.
+
+```sh
+docker-compose up sampleproject
+```
+
+You should see the perl-sample-project on your SonarQube dashboard.
+
+
 ## Next steps
 
 * The clover report does not contain line-based coverage information. This is crucial for sonarqube to calculate coverage details. Thus, either the clover report needs to be enhanced or we need to find a different solution altogether.

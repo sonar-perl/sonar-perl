@@ -19,7 +19,7 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 version = '0.1'
-group = 'com.epages'
+group = 'com.github.otrosien'
 
 sonarPackaging {
     serverUrl = 'http://localhost:9000'
@@ -39,8 +39,8 @@ sonarPackaging {
     useChildFirstClassLoader = false
     basePlugin = ''
     organization{
-        name = 'epages'
-        url = 'http://www.epages.com'
+        name = 'otrosien'
+        url = 'http://www.github.com/otrosien'
     }
 }
 
@@ -78,7 +78,7 @@ task buildDockerImage(type: DockerBuildImage) {
     description = 'Builds a new docker image.'
     dependsOn copyDockerTargetArtifacts
     inputDir = file('build/docker')
-    tag = "epages/sonar-perl:latest"
+    tag = "otrosien/sonar-perl:latest"
     noCache = true
 }
 

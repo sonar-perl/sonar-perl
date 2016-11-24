@@ -19,7 +19,7 @@ class PerlCriticAnalysisResultsParser {
 
         try (Stream<String> lines = Files.lines(file.toPath())) {
             return lines //
-                    .map(line -> parseLine(line)) //
+                    .map(this::parseLine) //
                     .filter(line -> line != null) //
                     .collect(Collectors.toList());
         }

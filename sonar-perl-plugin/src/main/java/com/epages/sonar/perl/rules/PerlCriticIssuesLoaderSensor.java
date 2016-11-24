@@ -66,6 +66,9 @@ public class PerlCriticIssuesLoaderSensor implements Sensor {
     public void analyse(final Project project, final SensorContext context) {
         String reportPath = getReportPath();
         File analysisResultsFile = new File(reportPath);
+        if(! analysisResultsFile.exists()) {
+            log.info("PerlCritic Analysis Results '{}' does not exist. Skipping...", analysisResultsFile.getPath());
+        }
         try {
             parseAndSaveResults(analysisResultsFile);
         } catch (IOException e) {
@@ -74,7 +77,7 @@ public class PerlCriticIssuesLoaderSensor implements Sensor {
     }
 
     protected void parseAndSaveResults(final File file) throws IOException {
-        log.info("Parsing 'PerlCritic' Analysis Results");
+        log.info("Parsing PerlCritic Analysis Results");
         PerlCriticAnalysisResultsParser parser = new PerlCriticAnalysisResultsParser();
         List<PerlCriticViolation> parseResult = parser.parse(file);
         log.info("Found {} PerlCritic violations.", parseResult.size());
