@@ -12,4 +12,9 @@ scmVersion {
     }
 }
 
+allprojects {
+    project.version = scmVersion.version
+}
+
+publish.dependsOn(':sonar-perl-plugin:bintrayUpload')
 
