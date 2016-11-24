@@ -3,7 +3,8 @@
 # SonarQube Perl Plugin (alpha)
 
 This is a spike to figure out how easy features like code coverage
-and Perl::Critic and test reporting can be integrated into sonarqube.
+and Perl::Critic and test reporting can be integrated into sonarqube. 
+Given enough interest this could be upgraded into a proper open source project.
 
 First of all without having to parse the perl code itself, and just
 attaching the raw source as line-based text. In a later step there
