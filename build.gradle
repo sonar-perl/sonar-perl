@@ -1,4 +1,5 @@
 plugins {
+    id 'publishing'
     id 'pl.allegro.tech.build.axion-release' version '1.4.1'
 }
 
