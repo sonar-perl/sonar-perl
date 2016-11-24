@@ -10,7 +10,7 @@ repositories {
 }
 
 dependencies { 
-    provided 'org.sonarsource.sonarqube:sonar-plugin-api:5.4'
+    provided 'org.sonarsource.sonarqube:sonar-plugin-api:5.6.3'
     compile 'com.google.guava:guava:18.0'
     testCompile 'junit:junit:4.12'
 }
