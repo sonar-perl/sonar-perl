@@ -2,7 +2,7 @@ plugins {
     id "java"
     id "eclipse"
     id "com.iadams.sonar-packaging" version "0.1.4"
-    id 'com.bmuschko.docker-remote-api' version '2.6.8'
+    id 'com.bmuschko.docker-remote-api' version '3.0.3'
     id 'maven'
     id 'maven-publish'
 }

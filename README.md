@@ -41,7 +41,7 @@ Wait for SonarQube to start-up and then open the web interface in your browser (
 Then, run the sonar-scanner on the sample project.
 
 ```sh
-docker-compose up sampleproject
+docker-compose up sample
 ```
 
 You should see the perl-sample-project on your SonarQube dashboard.
