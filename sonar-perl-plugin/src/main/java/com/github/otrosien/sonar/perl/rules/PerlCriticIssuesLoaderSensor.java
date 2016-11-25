@@ -1,79 +1,80 @@
 package com.github.otrosien.sonar.perl.rules;
 
-import static java.lang.String.format;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
-import org.sonar.api.batch.Sensor;
-import org.sonar.api.batch.SensorContext;
 import org.sonar.api.batch.fs.FileSystem;
 import org.sonar.api.batch.fs.InputFile;
-import org.sonar.api.component.ResourcePerspectives;
+import org.sonar.api.batch.fs.InputFile.Type;
+import org.sonar.api.batch.sensor.SensorContext;
+import org.sonar.api.batch.sensor.SensorDescriptor;
+import org.sonar.api.batch.sensor.issue.NewIssue;
+import org.sonar.api.batch.sensor.issue.NewIssueLocation;
 import org.sonar.api.config.Settings;
-import org.sonar.api.issue.Issuable;
-import org.sonar.api.issue.Issue;
-import org.sonar.api.resources.Project;
 import org.sonar.api.rule.RuleKey;
-import org.sonar.api.rules.RuleFinder;
 import org.sonar.api.utils.log.Logger;
 import org.sonar.api.utils.log.Loggers;
 
-import com.google.common.base.Strings;
+import com.github.otrosien.sonar.perl.PerlLanguage;
 
-public class PerlCriticIssuesLoaderSensor implements Sensor {
+public class PerlCriticIssuesLoaderSensor implements org.sonar.api.batch.sensor.Sensor {
 
     static final Logger log = Loggers.get(PerlCriticIssuesLoaderSensor.class);
 
+    private FileSystem fileSystem;
+    private SensorContext context;
+
     protected final Settings settings;
-    protected final FileSystem fileSystem;
-    protected final RuleFinder ruleFinder;
-    protected final ResourcePerspectives perspectives;
 
     /**
      * Use of IoC to get Settings, FileSystem, RuleFinder and
      * ResourcePerspectives
      */
-    public PerlCriticIssuesLoaderSensor(final Settings settings, final FileSystem fileSystem,
-            final RuleFinder ruleFinder, final ResourcePerspectives perspectives) {
+    public PerlCriticIssuesLoaderSensor(final Settings settings) {
         this.settings = settings;
-        this.fileSystem = fileSystem;
-        this.ruleFinder = ruleFinder;
-        this.perspectives = perspectives;
     }
 
     @Override
-    public boolean shouldExecuteOnProject(final Project project) {
-        return !Strings.isNullOrEmpty(getReportPath());
+    public void describe(SensorDescriptor descriptor) {
+      descriptor
+        .onlyOnLanguage(PerlLanguage.KEY)
+        .name("PerlCritic sensor")
+        .onlyOnFileType(Type.MAIN);
     }
 
     protected String reportPathKey() {
         return PerlCritic.PERLCRITIC_REPORT_PATH_KEY;
     }
 
-    protected String getReportPath() {
+    protected Optional<String> getReportPath() {
         String reportPath = settings.getString(reportPathKey());
         log.info("Configured report path: {}", reportPath);
-        if (!Strings.isNullOrEmpty(reportPath)) {
-            return reportPath;
-        } else {
-            return null;
-        }
+        return Optional.ofNullable(reportPath);
     }
 
     @Override
-    public void analyse(final Project project, final SensorContext context) {
-        String reportPath = getReportPath();
-        File analysisResultsFile = new File(reportPath);
-        if(! analysisResultsFile.exists()) {
-            log.info("PerlCritic Analysis Results '{}' does not exist. Skipping...", analysisResultsFile.getPath());
-            return;
-        }
+    public void execute(SensorContext context) {
+
+        Optional<String> reportPath = getReportPath();
+        Optional<File> reportFile = reportPath
+            .map(File::new)
+            .filter(File::exists);
+
         try {
-            parseAndSaveResults(analysisResultsFile);
+            if(reportFile.isPresent()) {
+                this.context = context;
+                this.fileSystem = context.fileSystem();
+                parseAndSaveResults(reportFile.get());
+            } else {
+                log.info("PerlCritic report file '{}' does not exist. Skipping...", reportPath.orElse(""));
+            }
         } catch (IOException e) {
             throw new IllegalStateException("Unable to parse the provided PerlCritic report file", e);
+        } finally {
+            this.context = null;
+            this.fileSystem = null;
         }
     }
 
@@ -96,37 +97,27 @@ public class PerlCriticIssuesLoaderSensor implements Sensor {
         if (inputFile != null) {
             saveIssue(inputFile, violation.getLine(), violation.getType(), violation.getDescription());
         } else {
-            log.error("Not able to find an InputFile with path '{}'", violation.getFilePath());
+            log.warn("Not able to find an InputFile with path '{}'", violation.getFilePath());
         }
     }
 
-    private boolean saveIssue(InputFile inputFile, int line, String externalRuleKey, String message) {
+    private void saveIssue(InputFile inputFile, int line, String externalRuleKey, String message) {
         RuleKey rule = RuleKey.of(PerlCriticRulesDefinition.getRepositoryKeyForLanguage(inputFile.language()),
                 externalRuleKey);
 
-        log.debug("Now saving an issue of type {}", rule);
-        Issuable issuable = perspectives.as(Issuable.class, inputFile);
-        boolean result = false;
-        if (issuable != null) {
-            log.debug("Issuable is not null: {}", issuable.toString());
-            Issuable.IssueBuilder issueBuilder = issuable.newIssueBuilder().ruleKey(rule).message(message);
-            if (line > 0) {
-                log.debug("Line is > 0");
-                issueBuilder = issueBuilder.line(line);
-            }
-            Issue issue = issueBuilder.build();
-            log.debug("Issue == null? " + (issue == null));
-            try {
-                result = issuable.addIssue(issue);
-                log.debug("after addIssue: result={}", result);
-            } catch (org.sonar.api.utils.MessageException me) {
-                log.error(format("Can't add issue on file %s at line %d.", inputFile.absolutePath(), line), me);
-            }
+        log.debug("Now saving an issue of type {} on file {}", rule, inputFile);
 
-        } else {
-            log.debug("Can't find an Issuable corresponding to InputFile:" + inputFile.absolutePath());
+        NewIssue issue = this.context.newIssue().forRule(rule);
+        NewIssueLocation location = issue.newLocation()
+                .message(message)
+                .on(inputFile);
+
+        if(line > 0) {
+            location.at(inputFile.selectLine(line));
         }
-        return result;
+    
+        issue.at(location);
+        issue.save();
     }
 
     @Override

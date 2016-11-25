@@ -1,11 +1,10 @@
 package com.github.otrosien.sonar.perl;
 
 import java.util.Arrays;
-import java.util.List;
 
+import org.sonar.api.Plugin;
 import org.sonar.api.Properties;
 import org.sonar.api.Property;
-import org.sonar.api.SonarPlugin;
 
 import com.github.otrosien.sonar.perl.colorizer.PerlCodeColorizer;
 import com.github.otrosien.sonar.perl.rules.PerlCritic;
@@ -25,23 +24,22 @@ import com.github.otrosien.sonar.perl.rules.PerlCriticRulesDefinition;
     description = "Location of perlcritic report file. Needs to be generated using these command-line flags: --quiet --verbose \"%f~|~%s~|~%l~|~%c~|~%m~|~%e~|~%p~||~%n\"", //
     defaultValue = PerlCritic.PERLCRITIC_REPORT_PATH_DEFAULT ) //
 })
-public class PerlPlugin extends SonarPlugin {
+public class PerlPlugin implements Plugin {
 
     public static final String FILE_SUFFIXES_KEY = "com.github.otrosien.sonar.perl.suffixes";
 
     public static final String DEFAULT_FILE_SUFFIXES = "pm,pl,t";
 
-    @SuppressWarnings("rawtypes")
     @Override
-    public List getExtensions() {
-        return Arrays.asList(
+    public void define(Context context) {
+        context.addExtensions(Arrays.asList(
                 PerlLanguage.class,
                 PerlCriticRulesDefinition.class, 
                 PerlCriticProfile.class,
                 PerlCodeColorizer.class,
                 GlobalSensor.class,
                 PerlCriticIssuesLoaderSensor.class
-        );
+        ));
     }
 
 }
