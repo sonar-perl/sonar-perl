@@ -7,10 +7,10 @@ import org.sonar.api.Properties;
 import org.sonar.api.Property;
 
 import com.github.otrosien.sonar.perl.colorizer.PerlCodeColorizer;
-import com.github.otrosien.sonar.perl.rules.PerlCritic;
-import com.github.otrosien.sonar.perl.rules.PerlCriticIssuesLoaderSensor;
-import com.github.otrosien.sonar.perl.rules.PerlCriticProfile;
-import com.github.otrosien.sonar.perl.rules.PerlCriticRulesDefinition;
+import com.github.otrosien.sonar.perl.critic.PerlCritic;
+import com.github.otrosien.sonar.perl.critic.PerlCriticIssuesLoaderSensor;
+import com.github.otrosien.sonar.perl.critic.PerlCriticProfile;
+import com.github.otrosien.sonar.perl.critic.PerlCriticRulesDefinition;
 
 @Properties({ //
     @Property( //

@@ -1,4 +1,4 @@
-package com.github.otrosien.sonar.perl.rules;
+package com.github.otrosien.sonar.perl.critic;
 
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
