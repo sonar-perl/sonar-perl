@@ -51,7 +51,7 @@ You should see the perl-sample-project on your SonarQube dashboard.
 
 At the moment the plugin has not been published yet. In order to test it
 in your SoarQube installation, you can create the plugin jar with a `./gradlew sonar-perl-plugin:jar` and
-copy the resulting file `sonar-perl-plugin/build/sonar-perl-plugin-0.1.4.jar` into the plugins
+copy the resulting file `sonar-perl-plugin/build/sonar-perl-plugin-0.1.5.jar` into the plugins
 directory of your sonar installation (should be something like `/opt/sonarqube/extensions/plugins/`)
 
 
