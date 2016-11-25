@@ -5,6 +5,9 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.util.ArrayList;
+import java.util.EnumMap;
+import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Stream;
 
 import org.sonar.api.batch.fs.FilePredicate;
@@ -23,6 +26,11 @@ import com.google.common.collect.Lists;
 public class GlobalSensor implements Sensor {
 
     private static final Logger log = Loggers.get(GlobalSensor.class);
+
+    enum LineType {
+        COMMENT,
+        CODE;
+    };
 
     @Override
     public void describe(SensorDescriptor descriptor) {
@@ -50,17 +58,47 @@ public class GlobalSensor implements Sensor {
     private void analyseFile(InputFile inputFile, SensorContext context) {
         log.debug("Analysing file {}", inputFile);
         File file = inputFile.file();
-        context.<Integer>newMeasure().on(inputFile).withValue(countLinesOfCode(file)).forMetric(CoreMetrics.NCLOC);
+        Map<LineType, AtomicInteger> lines = countLines(file);
+        context.<Integer>newMeasure().on(inputFile)
+            .withValue(lines.get(LineType.CODE).get())
+            .forMetric(CoreMetrics.NCLOC).save();
+        context.<Integer>newMeasure().on(inputFile)
+            .withValue(lines.get(LineType.COMMENT).get())
+            .forMetric(CoreMetrics.COMMENT_LINES).save();
     }
 
-    private Integer countLinesOfCode(File file) {
+    private Map<LineType,AtomicInteger> countLines(File file) {
+
+        final AtomicInteger currentIsComment = new AtomicInteger();
+        Map<LineType, AtomicInteger> counters = new EnumMap<>(LineType.class);
+        counters.put(LineType.CODE, new AtomicInteger());
+        counters.put(LineType.COMMENT, new AtomicInteger());
+
         try (Stream<String> lines = Files.lines(file.toPath(), StandardCharsets.ISO_8859_1)) {
-            return Math.toIntExact(lines.filter(line -> !line.matches("^\\s*#") && !line.matches("^\\s*$")).count());
+            lines
+            .filter(line -> !line.matches("^\\s*$"))
+            .forEach(line -> {
+                if (line.matches("^=(pod|head1|head2|head3|head4|head|over|item|back|begin|end|for|encoding)\\b")) {
+                    currentIsComment.getAndSet(1);
+                    counters.get(LineType.COMMENT).getAndIncrement();
+                } else if (line.matches("^=cut")) {
+                    currentIsComment.getAndSet(0);
+                    counters.get(LineType.COMMENT).getAndIncrement();
+                } else if (line.matches("^\\s*#")) {
+                    counters.get(LineType.COMMENT).getAndIncrement();
+                } else {
+                    if(currentIsComment.get() == 1) {
+                        counters.get(LineType.COMMENT).getAndIncrement();
+                    } else {
+                        counters.get(LineType.CODE).getAndIncrement();
+                    }
+                }
+            });
         } catch (IOException e) {
             log.error(String.format("Error during analysis of file '%s': '%s'", file.getAbsoluteFile(),
                     e.getMessage()), e);
         }
-        return 0;
+        return counters;
     }
 
     @Override
