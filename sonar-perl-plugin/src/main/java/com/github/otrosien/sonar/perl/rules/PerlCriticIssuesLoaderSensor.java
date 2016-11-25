@@ -68,6 +68,7 @@ public class PerlCriticIssuesLoaderSensor implements Sensor {
         File analysisResultsFile = new File(reportPath);
         if(! analysisResultsFile.exists()) {
             log.info("PerlCritic Analysis Results '{}' does not exist. Skipping...", analysisResultsFile.getPath());
+            return;
         }
         try {
             parseAndSaveResults(analysisResultsFile);
