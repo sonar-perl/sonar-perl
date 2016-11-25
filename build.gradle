@@ -1,6 +1,8 @@
 plugins {
     id 'publishing'
+    id 'com.jfrog.bintray' version '1.6'
     id 'pl.allegro.tech.build.axion-release' version '1.4.1'
+    id "org.sonarqube" version "2.2"
 }
 
 scmVersion {
@@ -15,7 +17,25 @@ scmVersion {
 
 allprojects {
     project.version = scmVersion.version
+    project.group = 'com.github.otrosien'
 }
 
-publish.dependsOn(':sonar-perl-plugin:bintrayUpload')
+publish.dependsOn('bintrayUpload')
 
+bintray {
+    user = project.findProperty('bintrayUser')   ?: System.getenv('BINTRAY_USER')
+    key  = project.findProperty('bintrayApiKey') ?: System.getenv('BINTRAY_API_KEY')
+    publications = ['mavenJava','sourceJar']
+    publish = true
+    pkg {
+        repo = "maven"
+        name = 'sonar-perl'
+        userOrg = 'otrosien'
+        websiteUrl = 'https://github.com/otrosien/sonar-perl'
+        issueTrackerUrl = 'https://github.com/otrosien/sonar-perl/issues'
+        vcsUrl = 'https://github.com/otrosien/sonar-perl.git'
+        githubRepo = 'otrosien/sonar-perl'
+        githubReleaseNotesFile = 'README.md'
+        licenses = ['Apache-2.0']
+    }
+}

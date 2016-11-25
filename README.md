@@ -1,5 +1,8 @@
 [![Build Status](https://travis-ci.org/otrosien/sonar-perl.svg)](https://travis-ci.org/otrosien/sonar-perl)
 
+[![Quality Gate](https://sonarqube.com/api/badges/gate?key=com.github.otrosien:sonar-perl)](https://sonarqube.com/dashboard/index/com.github.otrosien:sonar-perl)
+
+
 # SonarQube Perl Plugin (alpha)
 
 This is a spike to figure out how easy features like code coverage

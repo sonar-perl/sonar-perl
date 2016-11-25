@@ -3,16 +3,15 @@ plugins {
     id "eclipse"
     id "com.iadams.sonar-packaging" version "0.1.4"
     id 'com.bmuschko.docker-remote-api' version '2.6.8'
-    id 'com.jfrog.bintray' version '1.6'
     id 'maven'
     id 'maven-publish'
 }
 
-repositories { 
+repositories {
     jcenter()
 }
 
-dependencies { 
+dependencies {
     provided 'org.sonarsource.sonarqube:sonar-plugin-api:5.6.3'
     compile 'com.google.guava:guava:18.0'
     testCompile 'junit:junit:4.12'
@@ -20,8 +19,6 @@ dependencies {
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
-
-group = 'com.github.otrosien'
 
 sonarPackaging {
     serverUrl = 'http://localhost:9000'
@@ -124,31 +121,10 @@ model {
         publications {
             mavenJava(MavenPublication) {
                 from components.java
-                artifactId 'sonar-perl-plugin'
-                groupId = project.group
-    
                 artifact sourceJar {
                     classifier 'sources'
                 }
             }
         }
-    }
-}
-
-bintray {
-    user = project.findProperty('bintrayUser')   ?: System.getenv('BINTRAY_USER')
-    key  = project.findProperty('bintrayApiKey') ?: System.getenv('BINTRAY_API_KEY')
-    publications = ['mavenJava','sourceJar']
-    publish = true
-    pkg {
-        repo = "maven"
-        name = 'sonar-perl'
-        userOrg = 'otrosien'
-        websiteUrl = 'https://github.com/otrosien/sonar-perl'
-        issueTrackerUrl = 'https://github.com/otrosien/sonar-perl/issues'
-        vcsUrl = 'https://github.com/otrosien/sonar-perl.git'
-        githubRepo = 'otrosien/sonar-perl'
-        githubReleaseNotesFile = 'README.md'
-        licenses = ['Apache-2.0']
     }
 }
