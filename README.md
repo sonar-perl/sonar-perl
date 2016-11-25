@@ -50,9 +50,11 @@ You should see the perl-sample-project on your SonarQube dashboard.
 ## Install into your SonarQube
 
 At the moment the plugin has not been published yet. In order to test it
-in your SoarQube installation, you need to build the project with a `./gradlew sonar-perl-plugin:build` and
+in your SoarQube installation, you need to build the project with a `./gradlew sonar-perl-plugin:jar` and
 copy the resulting jar file `sonar-perl-plugin/build/sonar-perl-plugin-0.1.4.jar` into the plugins
 dir of your sonar installation (should be sth. like `/opt/sonarqube/extensions/plugins/`)
+
+If you want to full build including the docker image, build the project with a `./gradlew sonar-perl-plugin:build`.
 
 ## Next steps
 
