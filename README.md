@@ -47,12 +47,20 @@ docker-compose run sample
 You should see the perl-sample-project on your SonarQube dashboard.
 
 
-## Install into your SonarQube
+## Installing into your SonarQube
 
 At the moment the plugin has not been published yet. In order to test it
-in your SoarQube installation, you need to build the project with a `./gradlew sonar-perl-plugin:build` and
-copy the resulting jar file `sonar-perl-plugin/build/sonar-perl-plugin-0.1.4.jar` into the plugins
-dir of your sonar installation (should be sth. like `/opt/sonarqube/extensions/plugins/`)
+in your SoarQube installation, you can create the plugin jar with a `./gradlew sonar-perl-plugin:jar` and
+copy the resulting file `sonar-perl-plugin/build/sonar-perl-plugin-0.1.4.jar` into the plugins
+directory of your sonar installation (should be something like `/opt/sonarqube/extensions/plugins/`)
+
+
+## Building all from source
+
+Running a full build includes creation of the plugin-jar and a docker image
+containing SonarQube and the current plugin. This is achieved by running `./gradlew build`. Note that you 
+need to have a local docker daemon running for this.
+
 
 ## Next steps
 
