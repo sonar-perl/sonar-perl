@@ -58,4 +58,9 @@ public final class PerlLanguage extends AbstractLanguage {
         return false;
     }
 
+    @Override
+    public boolean equals(Object o) { // NOSONAR - use equals from AbstractLanguage
+        return super.equals(o);
+    }
+
 }
