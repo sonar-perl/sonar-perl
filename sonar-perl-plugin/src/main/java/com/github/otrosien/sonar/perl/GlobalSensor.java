@@ -24,8 +24,6 @@ public class GlobalSensor implements Sensor {
 
     private static final Logger log = Loggers.get(GlobalSensor.class);
 
-    private FileSystem fileSystem;
-
     @Override
     public void describe(SensorDescriptor descriptor) {
       descriptor
@@ -36,11 +34,11 @@ public class GlobalSensor implements Sensor {
 
     @Override
     public void execute(SensorContext context) {
-        this.fileSystem = context.fileSystem();
+        FileSystem fileSystem = context.fileSystem();
 
-        FilePredicate mainFilePredicate = this.fileSystem.predicates().and(
-          this.fileSystem.predicates().hasType(InputFile.Type.MAIN),
-          this.fileSystem.predicates().hasLanguage(PerlLanguage.KEY));
+        FilePredicate mainFilePredicate = fileSystem.predicates().and(
+          fileSystem.predicates().hasType(InputFile.Type.MAIN),
+          fileSystem.predicates().hasLanguage(PerlLanguage.KEY));
 
         ArrayList<InputFile> inputFiles = Lists.newArrayList(fileSystem.inputFiles(mainFilePredicate));
 
