@@ -1,6 +1,6 @@
 package com.github.otrosien.sonar.perl.colorizer;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 
@@ -17,10 +17,10 @@ import com.google.common.collect.ImmutableSet;
 
 
 @SuppressWarnings("deprecation")
-public class PerlCodeColorizer extends CodeColorizerFormat {
+public class PerlCodeColorizer extends CodeColorizerFormat { // NOSONAR
 
     // from https://github.com/jploski/epic-ide/blob/b70f1c5ccb3e528f3a8c727b04dc633439f1d35a/org.epic.perleditor/src/org/epic/core/parser/PerlLexerBase.java
-    private static Set<String> KEYWORDS = ImmutableSet.of(
+    private static Set<String> keywords = ImmutableSet.of(
             "BEGIN", "CHECK", "INIT", "END", "UNITCHECK",
             "bless", "caller", "continue", "dbmclose",
             "dbmopen", "default", "die", "do", "dump",
@@ -71,14 +71,12 @@ public class PerlCodeColorizer extends CodeColorizerFormat {
 
     @Override
     public List<Tokenizer> getTokenizers() {
-        List<Tokenizer> tokenizers = new ArrayList<Tokenizer>();
-
-        tokenizers.add(new StringTokenizer("<span class=\"s\">", CLOSING_SPAN));
-        tokenizers.add(new InlineDocTokenizer("#", "<span class=\"cd\">", CLOSING_SPAN) {});
-        tokenizers.add(new KeywordsTokenizer("<span class=\"k\">", CLOSING_SPAN, KEYWORDS));
-        tokenizers.add(new LiteralTokenizer("<span class=\"s\">", CLOSING_SPAN));
-        tokenizers.add(new RegexpTokenizer("<span class=\"j\">", CLOSING_SPAN, "#[^\\n\\r]*+"));
-        tokenizers.add(new RegexpTokenizer("<span class=\"c\">", CLOSING_SPAN, "[+-]?[0-9]++(\\.[0-9]*+)?"));
-        return tokenizers;
+        return Arrays.asList(
+            new StringTokenizer("<span class=\"s\">", CLOSING_SPAN),
+            new InlineDocTokenizer("#", "<span class=\"cd\">", CLOSING_SPAN) {},
+            new KeywordsTokenizer("<span class=\"k\">", CLOSING_SPAN, keywords),
+            new LiteralTokenizer("<span class=\"s\">", CLOSING_SPAN),
+            new RegexpTokenizer("<span class=\"j\">", CLOSING_SPAN, "#[^\\n\\r]*+"),
+            new RegexpTokenizer("<span class=\"c\">", CLOSING_SPAN, "[+-]?[0-9]++(\\.[0-9]*+)?"));
     }
 }
