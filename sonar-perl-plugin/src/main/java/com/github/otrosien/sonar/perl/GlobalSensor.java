@@ -30,7 +30,7 @@ public class GlobalSensor implements Sensor {
     enum LineType {
         COMMENT,
         CODE;
-    };
+    }
 
     @Override
     public void describe(SensorDescriptor descriptor) {
