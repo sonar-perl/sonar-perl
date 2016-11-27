@@ -1,5 +1,3 @@
 FROM sonarqube:5.6.3-alpine
 
-# Enable, once we have coverage reporting.
-# ADD http://repo1.maven.org/maven2/org/sonarsource/clover/sonar-clover-plugin/3.1/sonar-clover-plugin-3.1.jar /opt/sonarqube/extensions/plugins/sonar-clover-plugin-3.1.jar
 COPY build/libs/* /opt/sonarqube/extensions/plugins/
