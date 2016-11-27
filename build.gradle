@@ -24,5 +24,8 @@ sonarqube {
         property "sonar.scm.provider", "git"
         property "sonar.sourceEncoding", "UTF-8"
         property "sonar.branch", System.env.TRAVIS_BRANCH ?: "${System.env.USER ?: 'unknown'}/local"
+        if(System.env.TRAVIS_PULL_REQUEST != null) {
+            property "sonar.analysis.mode", "preview"
+        }
     }
 }
