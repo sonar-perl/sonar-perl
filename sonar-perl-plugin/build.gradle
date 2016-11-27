@@ -3,6 +3,7 @@ plugins {
     id "eclipse"
     id "com.iadams.sonar-packaging" version "0.1.4"
     id 'com.bmuschko.docker-remote-api' version '3.0.3'
+    id "jacoco"
     id 'maven'
     id 'maven-publish'
 }
@@ -19,6 +20,10 @@ dependencies {
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
+
+jacoco {
+    toolVersion = '0.7.7.201606060606'
+}
 
 sonarPackaging {
     serverUrl = 'http://localhost:9000'
