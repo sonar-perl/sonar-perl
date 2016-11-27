@@ -8,7 +8,7 @@ cache:
   directories:
   - "$HOME/.gradle"
 install: true
-script: "./gradlew build sonarqube -Dsonar.host.url=https://sonarqube.com -Dsonar.login=$SONAR_LOGIN"
+script: "./gradlew build sonarqube -Dsonar.host.url=https://sonarqube.com -Dsonar.login=$SONAR_LOGIN --stacktrace"
 after_success:
   - ./docker-push.sh
   - ./github-publish.sh
