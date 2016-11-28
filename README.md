@@ -58,6 +58,12 @@ copy the resulting file (usually suffixed -SNAPSHOT, unless you checked out a re
 e.g. `sonar-perl-plugin/build/sonar-perl-plugin-0.2.1-SNAPSHOT.jar` into the plugins
 directory of your SonarQube installation (should be something like `/opt/sonarqube/extensions/plugins/`)
 
+
+### Compatibility
+
+We build and test against the current LTS release (5.6), SonarQube 6.x should work as well. Please report bugs
+or incompatibilities in our [bugtracker](https://github.com/otrosien/sonar-perl/issues).
+
 ## Building all from source
 
 Running a full build includes creation of the plugin-jar and a docker image.
