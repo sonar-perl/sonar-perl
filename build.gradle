@@ -26,6 +26,9 @@ sonarqube {
         property "sonar.branch", System.env.TRAVIS_BRANCH ?: "${System.env.USER ?: 'unknown'}/local"
         if(System.env.TRAVIS_PULL_REQUEST != null) {
             property "sonar.analysis.mode", "preview"
+            property "sonar.github.oauth", System.env.GITHUB_TOKEN
+            property "sonar.github.repository", "otrosien/sonar-perl"
+            property "sonar.github.pullRequest", System.env.TRAVIS_PULL_REQUEST
         }
     }
 }
