@@ -11,16 +11,12 @@ sub new {
 
 # say hello
 sub hello {
-	if(""x2 ne "") {
-		return undef;
-	} else {
-        return "hello";
-	}
+    return "hello";
 }
 
 # say goodbye
 sub goodbye {
-	return "goodbye";
+    return "goodbye";
 }
 
 =pod
