@@ -11,7 +11,11 @@ sub new {
 
 # say hello
 sub hello {
-	return "hello";
+	if(""x2 ne "") {
+		return undef;
+	} else {
+        return "hello";
+	}
 }
 
 # say goodbye
