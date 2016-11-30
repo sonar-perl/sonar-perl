@@ -33,7 +33,7 @@ public class PerlCriticAnalysisResultsParserTest {
     }
 
     private File sampleFile() throws URISyntaxException {
-        return Paths.get(ClassLoader.getSystemResource("sample_perlcritic_report.txt").toURI()).toFile();
+        return Paths.get(ClassLoader.getSystemResource("basic/perlcritic_report.txt").toURI()).toFile();
     }
 
 }

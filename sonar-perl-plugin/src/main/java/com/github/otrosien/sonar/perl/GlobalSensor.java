@@ -36,7 +36,7 @@ public class GlobalSensor implements Sensor {
     public void describe(SensorDescriptor descriptor) {
       descriptor
         .onlyOnLanguage(PerlLanguage.KEY)
-        .name("Perl sensor")
+        .name("Perl Sensor")
         .onlyOnFileType(Type.MAIN);
     }
 
@@ -78,13 +78,13 @@ public class GlobalSensor implements Sensor {
             lines
             .filter(line -> !line.matches("^\\s*$"))
             .forEach(line -> {
-                if (line.matches("^=(pod|head1|head2|head3|head4|head|over|item|back|begin|end|for|encoding)\\b")) {
+                if (line.matches("^=(pod|head1|head2|head3|head4|head|over|item|back|begin|end|for|encoding)\\b.*")) {
                     currentIsComment.getAndSet(1);
                     counters.get(LineType.COMMENT).getAndIncrement();
-                } else if (line.matches("^=cut")) {
+                } else if (line.matches("^=cut\\b.*")) {
                     currentIsComment.getAndSet(0);
                     counters.get(LineType.COMMENT).getAndIncrement();
-                } else if (line.matches("^\\s*#")) {
+                } else if (line.matches("\\s*\\#.*")) {
                     counters.get(LineType.COMMENT).getAndIncrement();
                 } else {
                     if(currentIsComment.get() == 1) {
