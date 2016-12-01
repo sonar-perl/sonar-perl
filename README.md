@@ -58,10 +58,45 @@ e.g. `sonar-perl-plugin/build/sonar-perl-plugin-0.2.3-SNAPSHOT.jar` into the plu
 directory of your SonarQube installation (should be something like `/opt/sonarqube/extensions/plugins/`)
 
 
+## Analyzing your perl project
+
+1. Make sure your SonarQube is running, and has the latest perl plugin installed
+2. [Download](http://docs.sonarqube.org/display/SCAN/Analyzing+with+SonarQube+Scanner) and extract the `sonar-scanner` command-line tool.
+3. Create a basic `sonar-project.properties` file. Here is an example:
+
+```
+# must be unique in a given SonarQube instance
+sonar.projectKey=My::Project
+# this is the name displayed in the SonarQube UI
+sonar.projectName=My Project
+sonar.projectVersion=1.0.0
+ 
+# Path is relative to the sonar-project.properties file. Replace "\" by "/" on Windows.
+# Since SonarQube 4.2, this property is optional if sonar.modules is set. 
+# If not set, SonarQube starts looking for source code from the directory containing 
+# the sonar-project.properties file.
+sonar.sources=lib
+ 
+# Encoding of the source code. Default is default system encoding
+sonar.sourceEncoding=UTF-8
+
+sonar.tests=t
+```
+
+4. Execute `Perl::Critic` and save the report as `perlcritic_report.txt` in your project.
+
+```
+perlcritic --cruel --quiet --verbose "%f~|~%s~|~%l~|~%c~|~%m~|~%e~|~%p~||~%n" lib t > perlcritic_report.txt
+```
+
+5. Run the `sonar-scanner` 
+6. Finally open your project in SonarQube Web UI
+
 ### Compatibility
 
 We build and test against the current LTS release (5.6), SonarQube 6.x should work as well. Please report bugs
 or incompatibilities in our [bugtracker](https://github.com/otrosien/sonar-perl/issues).
+
 
 ## Building all from source
 
@@ -69,9 +104,11 @@ Running a full build includes creation of the plugin-jar and a docker image.
 This is achieved by running `./gradlew build`. Note that you 
 need to have a local docker daemon running for this.
 
+
 ## Next steps
 
 Please look at the issues in our [bugtracker](https://github.com/otrosien/sonar-perl/issues) for the planning and status of the next steps.
+
 
 ## Links
 
