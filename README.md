@@ -83,14 +83,15 @@ sonar.sourceEncoding=UTF-8
 sonar.tests=t
 ```
 
-4. Execute `Perl::Critic` and save the report as `perlcritic_report.txt` in your project.
+4. Execute `Perl::Critic` and save the report as `perlcritic_report.txt` in your project. Important is the formatting
+instruction below, to make the `perlcritic_report.txt` machine-readable.
 
 ```
 perlcritic --cruel --quiet --verbose "%f~|~%s~|~%l~|~%c~|~%m~|~%e~|~%p~||~%n" lib t > perlcritic_report.txt
 ```
 
 5. Run the `sonar-scanner` 
-6. Finally open your project in SonarQube Web UI
+6. Finally open the project report in SonarQube
 
 ### Compatibility
 
