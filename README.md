@@ -14,6 +14,7 @@ Current plugin is still at a very early stage. It analyzes perl projects without
 What we have so far...
 
 * LOC reporting (incl. comment and POD lines)
+* Structural metrics (classes and functions)
 * Syntax highlighting of imported code
 * Perl::Critic issues can be attached
 
