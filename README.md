@@ -9,7 +9,10 @@ Perl::Critic and test reporting for perl projects.
 
 ## Current State
 
-Current plugin is still at a very early stage. It analyzes perl projects without having to parse the perl code itself, attaching the raw source as line-based text. In a later step there could be some proper grammar-based parsing and analyzing.
+Current plugin is still at a very early stage. It analyzes perl projects
+without having to parse the perl code itself, attaching the raw source as
+line-based text. In a later step there would be some proper grammar-based
+parsing and analyzing.
 
 What we have so far...
 
