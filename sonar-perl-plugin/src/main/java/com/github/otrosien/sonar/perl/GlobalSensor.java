@@ -27,9 +27,11 @@ public class GlobalSensor implements Sensor {
 
     private static final Logger log = Loggers.get(GlobalSensor.class);
 
-    enum LineType {
+    enum CounterType {
         COMMENT,
-        CODE;
+        CODE,
+        CLASS,
+        FUNCTION;
     }
 
     @Override
@@ -58,21 +60,33 @@ public class GlobalSensor implements Sensor {
     private void analyseFile(InputFile inputFile, SensorContext context) {
         log.debug("Analysing file {}", inputFile);
         File file = inputFile.file();
-        Map<LineType, AtomicInteger> lines = countLines(file);
+        Map<CounterType, AtomicInteger> lines = countLines(file);
+
         context.<Integer>newMeasure().on(inputFile)
-            .withValue(lines.get(LineType.CODE).get())
+            .withValue(lines.get(CounterType.CODE).get())
             .forMetric(CoreMetrics.NCLOC).save();
+
         context.<Integer>newMeasure().on(inputFile)
-            .withValue(lines.get(LineType.COMMENT).get())
-            .forMetric(CoreMetrics.COMMENT_LINES).save();
+        .withValue(lines.get(CounterType.COMMENT).get())
+        .forMetric(CoreMetrics.COMMENT_LINES).save();
+
+        context.<Integer>newMeasure().on(inputFile)
+        .withValue(lines.get(CounterType.CLASS).get())
+        .forMetric(CoreMetrics.CLASSES).save();
+
+        context.<Integer>newMeasure().on(inputFile)
+        .withValue(lines.get(CounterType.FUNCTION).get())
+        .forMetric(CoreMetrics.FUNCTIONS).save();
     }
 
-    private Map<LineType,AtomicInteger> countLines(File file) {
+    private Map<CounterType,AtomicInteger> countLines(File file) {
 
         final AtomicInteger currentIsComment = new AtomicInteger();
-        Map<LineType, AtomicInteger> counters = new EnumMap<>(LineType.class);
-        counters.put(LineType.CODE, new AtomicInteger());
-        counters.put(LineType.COMMENT, new AtomicInteger());
+        Map<CounterType, AtomicInteger> counters = new EnumMap<>(CounterType.class);
+        counters.put(CounterType.CODE, new AtomicInteger());
+        counters.put(CounterType.COMMENT, new AtomicInteger());
+        counters.put(CounterType.CLASS, new AtomicInteger());
+        counters.put(CounterType.FUNCTION, new AtomicInteger());
 
         try (Stream<String> lines = Files.lines(file.toPath(), StandardCharsets.ISO_8859_1)) {
             lines
@@ -80,17 +94,38 @@ public class GlobalSensor implements Sensor {
             .forEach(line -> {
                 if (line.matches("^=(pod|head1|head2|head3|head4|head|over|item|back|begin|end|for|encoding)\\b.*")) {
                     currentIsComment.getAndSet(1);
-                    counters.get(LineType.COMMENT).getAndIncrement();
+                    counters.get(CounterType.COMMENT).getAndIncrement();
                 } else if (line.matches("^=cut\\b.*")) {
                     currentIsComment.getAndSet(0);
-                    counters.get(LineType.COMMENT).getAndIncrement();
+                    counters.get(CounterType.COMMENT).getAndIncrement();
                 } else if (line.matches("\\s*\\#.*")) {
-                    counters.get(LineType.COMMENT).getAndIncrement();
+                    counters.get(CounterType.COMMENT).getAndIncrement();
                 } else {
                     if(currentIsComment.get() == 1) {
-                        counters.get(LineType.COMMENT).getAndIncrement();
+                        counters.get(CounterType.COMMENT).getAndIncrement();
                     } else {
-                        counters.get(LineType.CODE).getAndIncrement();
+                        counters.get(CounterType.CODE).getAndIncrement();
+                        /* matches
+                         sub xy { -- simple case
+                         sub ($a, $b) { -- sub with signature // NOSONAR
+                         sub xy  -- (limitation of eventually having opening brace on next line)
+                         ---------------
+                         does not match:
+                         sub xy; (prototype)
+
+                         requires sub to start on a new line, as this probably reduces some other false positives and
+                         can be safely assumed for > 99% of the existing perl code.
+                         */
+                        if(line.matches("^\\s*sub\\s+\\S+\\([^)]*\\)\\s*;.*")) {
+                            // prototype. skip.
+                        } else if(line.matches("^\\s*sub\\s+[^{]+.*")) {
+                            counters.get(CounterType.FUNCTION).getAndIncrement();
+                        } else if(line.matches("\\s*package\\b.*")) {
+                            // perl doesn't have any syntax for classes, only packages,
+                            // and so we assume a package declaration introduces a class
+                            // see http://perldoc.perl.org/perlmod.html#Perl-Classes
+                            counters.get(CounterType.CLASS).getAndIncrement();
+                        }
                     }
                 }
             });

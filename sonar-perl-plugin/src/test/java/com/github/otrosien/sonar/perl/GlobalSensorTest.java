@@ -29,7 +29,7 @@ public class GlobalSensorTest {
     }
 
     @Test
-    public void should_execute_sensor() {
+    public void should_execute_on_simple_project() {
         String relativePath = "basic/lib/Sample/Project.pm";
         inputFile(relativePath);
         createSensor().execute(context);
@@ -37,6 +37,30 @@ public class GlobalSensorTest {
         String key = "moduleKey:" + relativePath;
         assertThat(context.measure(key, CoreMetrics.NCLOC).value()).isEqualTo(15);
         assertThat(context.measure(key, CoreMetrics.COMMENT_LINES).value()).isEqualTo(26);
+        assertThat(context.measure(key, CoreMetrics.CLASSES).value()).isEqualTo(1);
+        assertThat(context.measure(key, CoreMetrics.FUNCTIONS).value()).isEqualTo(3);
+    }
+
+    @Test
+    public void should_execute_on_edge_cases() {
+        String relativePath = "basic/lib/Sample/EdgeCases.pm";
+        inputFile(relativePath);
+        createSensor().execute(context);
+
+        String key = "moduleKey:" + relativePath;
+        assertThat(context.measure(key, CoreMetrics.CLASSES).value()).isEqualTo(1);
+        assertThat(context.measure(key, CoreMetrics.FUNCTIONS).value()).isEqualTo(3);
+    }
+
+    @Test
+    public void should_execute_illustrating_ignored_subs_and_existing_parse_problem() {
+        String relativePath = "basic/lib/Sample/Ignored.pm";
+        inputFile(relativePath);
+        createSensor().execute(context);
+
+        String key = "moduleKey:" + relativePath;
+        assertThat(context.measure(key, CoreMetrics.CLASSES).value()).isEqualTo(0);
+        assertThat(context.measure(key, CoreMetrics.FUNCTIONS).value()).isEqualTo(0);
     }
 
     private GlobalSensor createSensor() {
