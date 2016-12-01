@@ -40,7 +40,7 @@ public class PerlCriticIssuesLoaderSensor implements org.sonar.api.batch.sensor.
     public void describe(SensorDescriptor descriptor) {
       descriptor
         .onlyOnLanguage(PerlLanguage.KEY)
-        .name("PerlCritic sensor")
+        .name("PerlCritic Sensor")
         .onlyOnFileType(Type.MAIN);
     }
 

@@ -1,3 +1,7 @@
-lib/Sample/Project.pm~|~5~|~3~|~1~|~Code before strictures are enabled~|~See page 429 of PBP~|~TestingAndDebugging::RequireUseStrict~|~
+lib/Sample/Project.pm~|~5~|~3~|~1~|~Code before strictures are enabled~|~See page 429 of PBP~|~TestingAndDebugging::RequireUseStrict~||~
 unreadable line....
-lib/Sample/Project.pm~|~5~|~3~|~1~|~Code before strictures are enabled~|~See page 429 of PBP~|~TestingAndDebugging::RequireUseStrict~|~
+lib/Sample/Project.pm~|~5~|~3~|~1~|~Code before strictures are enabled~|~See page 429 of PBP~|~TestingAndDebugging::RequireUseStrict~||~
+File.pm source OK
+lib/Sample/Project.pm~|~5~|~3~|~1~|~Code before strictures 
+are enabled~|~See page 429 of PBP~|~TestingAndDebugging::RequireUseStrict~||~
+lib/Sample/Project.pm~|~5~|~3~|~1~|~Unknown or custom violation~|~See page 429 of PBP~|~Some::Unknown~||~
