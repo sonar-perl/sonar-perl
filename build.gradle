@@ -27,7 +27,7 @@ sonarqube {
         if(System.env.TRAVIS_PULL_REQUEST_BRANCH) {
             property "sonar.analysis.mode", "preview"
         } else {
-            property "sonar.analysis.mode", "analysis"
+            property "sonar.analysis.mode", "publish"
         }
     }
 }
