@@ -4,15 +4,12 @@
 
 # SonarQube Perl Plugin (alpha)
 
-This is a spike to figure out how easy features like code coverage
-and Perl::Critic and test reporting can be integrated into SonarQube.
-Given enough interest this could be upgraded into a proper open source project.
+This is a SonarQube plugin to integrate popular features like code coverage,
+Perl::Critic and test reporting for perl projects.
 
 ## Current State
 
-Current plugin analyzes perl projects without having to parse the perl 
-code itself, attaching the raw source as line-based text. In a 
-later step there could be some proper grammar-based parsing and analyzing.
+Current plugin is still at a very early stage. It analyzes perl projects without having to parse the perl code itself, attaching the raw source as line-based text. In a later step there could be some proper grammar-based parsing and analyzing.
 
 What we have so far...
 
@@ -70,9 +67,7 @@ need to have a local docker daemon running for this.
 
 ## Next steps
 
-* The clover report does not contain line-based coverage information. This is crucial for sonarqube to calculate coverage details. Thus, either the clover report needs to be enhanced or we need to find a different solution altogether.
-
-* Test reporting
+Please look at the issues in our [bugtracker](https://github.com/otrosien/sonar-perl/issues) for the planning and status of the next steps.
 
 ## Links
 
