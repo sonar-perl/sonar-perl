@@ -4,7 +4,7 @@ set -e # Exit with nonzero exit code if anything fails
 
 
 function docker_login {
-	docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
+	docker login -u $DOCKER_USER -p $DOCKER_PASS
 }
 
 export REPO=otrosien/sonar-perl
