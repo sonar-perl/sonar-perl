@@ -10,7 +10,7 @@ cache:
   - '$HOME/.sonar/cache'
   - '$HOME/.gradle'
   - '.gradle'
-install: true
+install: jdk_switcher use openjdk8
 script: "./gradlew build sonarqube -Dsonar.host.url=https://sonarqube.com -Dsonar.login=$SONAR_LOGIN"
 after_success:
   - ./scripts/docker-push.sh
