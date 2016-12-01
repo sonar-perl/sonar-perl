@@ -21,9 +21,13 @@ What we have so far...
 * Syntax highlighting of imported code
 * Perl::Critic issues can be attached
 
-## Teaser Image
+## Teaser Images
 
-![PerlCritic violation in SonarQube](img/sonar_perlcritic.png)
+![PerlCritic violation in SonarQube](img/code_detail.png)
+
+![PerlCritic violation in SonarQube](img/code_report.png)
+
+![PerlCritic violation in SonarQube](img/issues_overview.png)
 
 ## Running it
 
