@@ -21,13 +21,8 @@ allprojects {
 
 sonarqube {
     properties {
+        property "sonar.verbose", "true"
         property "sonar.scm.provider", "git"
         property "sonar.sourceEncoding", "UTF-8"
-        property "sonar.branch", System.env.TRAVIS_BRANCH ?: "undef"
-        if(System.env.TRAVIS_PULL_REQUEST_BRANCH) {
-            property "sonar.analysis.mode", "preview"
-        } else {
-            property "sonar.analysis.mode", "publish"
-        }
     }
 }

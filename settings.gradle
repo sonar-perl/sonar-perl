@@ -1,2 +1,3 @@
+rootProject.name = 'sonar-perl'
 include ":sonar-perl-plugin"
 
