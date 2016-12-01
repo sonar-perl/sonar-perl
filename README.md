@@ -2,7 +2,7 @@
 [![Quality Gate](https://sonarqube.com/api/badges/gate?key=com.github.otrosien:sonar-perl)](https://sonarqube.com/dashboard/index/com.github.otrosien:sonar-perl)
 
 
-# SonarQube Perl Plugin (alpha)
+# SonarQube Perl Plugin (beta)
 
 This is a SonarQube plugin to integrate popular features like code coverage,
 Perl::Critic and test reporting for perl projects.
