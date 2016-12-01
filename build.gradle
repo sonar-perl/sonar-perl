@@ -1,7 +1,7 @@
 plugins {
     id 'publishing'
     id 'pl.allegro.tech.build.axion-release' version '1.4.1'
-    id "org.sonarqube" version "2.2"
+    id "org.sonarqube" version "2.2.1"
 }
 
 scmVersion {
@@ -26,6 +26,8 @@ sonarqube {
         property "sonar.branch", System.env.TRAVIS_BRANCH ?: "undef"
         if(System.env.TRAVIS_PULL_REQUEST_BRANCH) {
             property "sonar.analysis.mode", "preview"
+        } else {
+            property "sonar.analysis.mode", "analysis"
         }
     }
 }

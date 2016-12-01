@@ -7,6 +7,10 @@ services:
 cache:
   directories:
   - "$HOME/.gradle"
+  - '$HOME/.m2/repository'
+  - '$HOME/.sonar/cache'
+  - '$HOME/.gradle'
+  - '.gradle'
 install: true
 script: "./gradlew build sonarqube -Dsonar.host.url=https://sonarqube.com -Dsonar.login=$SONAR_LOGIN -Dsonar.forceAuthentication=true"
 after_success:
