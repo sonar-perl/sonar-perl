@@ -91,6 +91,16 @@
   </rule>
 
   <rule>
+    <key>BuiltinFunctions::ProhibitUselessTopic</key>
+    <name>Prohibit Useless Topic</name>
+    <configKey>BuiltinFunctions::ProhibitUselessTopic</configKey>
+    <description>
+      <![CDATA[BuiltinFunctions::ProhibitUselessTopic: Don't pass $_ to built-in functions that assume it, or to most filetest operators.]]>
+    </description>
+    <priority>MINOR</priority>
+  </rule>
+
+  <rule>
     <key>BuiltinFunctions::ProhibitVoidGrep</key>
     <name>Prohibit Void Grep</name>
     <configKey>BuiltinFunctions::ProhibitVoidGrep</configKey>
@@ -115,7 +125,7 @@
     <name>Require Block Grep</name>
     <configKey>BuiltinFunctions::RequireBlockGrep</configKey>
     <description>
-      <![CDATA[BuiltinFunctions::RequireBlockGrep: Write `grep { $_ =~ /$pattern/ } @list' instead of `grep /$pattern/, @list'.]]>
+      <![CDATA[BuiltinFunctions::RequireBlockGrep: Write `grep { /$pattern/ } @list' instead of `grep /$pattern/, @list'.]]>
     </description>
     <priority>CRITICAL</priority>
   </rule>
@@ -125,7 +135,7 @@
     <name>Require Block Map</name>
     <configKey>BuiltinFunctions::RequireBlockMap</configKey>
     <description>
-      <![CDATA[BuiltinFunctions::RequireBlockMap: Write `map { $_ =~ /$pattern/ } @list' instead of `map /$pattern/, @list'.]]>
+      <![CDATA[BuiltinFunctions::RequireBlockMap: Write `map { /$pattern/ } @list' instead of `map /$pattern/, @list'.]]>
     </description>
     <priority>CRITICAL</priority>
   </rule>
@@ -348,6 +358,16 @@
       <![CDATA[ControlStructures::ProhibitUntilBlocks: Write `while(! $condition)' instead of `until($condition)'.]]>
     </description>
     <priority>MINOR</priority>
+  </rule>
+
+  <rule>
+    <key>ControlStructures::ProhibitYadaOperator</key>
+    <name>Prohibit Yada Operator</name>
+    <configKey>ControlStructures::ProhibitYadaOperator</configKey>
+    <description>
+      <![CDATA[ControlStructures::ProhibitYadaOperator: Never use `...' in production code.]]>
+    </description>
+    <priority>CRITICAL</priority>
   </rule>
 
   <rule>
@@ -665,7 +685,7 @@
     <name>Prohibit Joined Readline</name>
     <configKey>InputOutput::ProhibitJoinedReadline</configKey>
     <description>
-      <![CDATA[InputOutput::ProhibitJoinedReadline: Use `local $/ = undef' or File::Slurp instead of joined readline.]]>
+      <![CDATA[InputOutput::ProhibitJoinedReadline: Use `local $/ = undef' or Path::Tiny instead of joined readline.]]>
     </description>
     <priority>MAJOR</priority>
   </rule>
@@ -755,7 +775,7 @@
     <name>Require Encoding With UTF8Layer</name>
     <configKey>InputOutput::RequireEncodingWithUTF8Layer</configKey>
     <description>
-      <![CDATA[InputOutput::RequireEncodingWithUTF8Layer: Write `open $fh, q{<:encoding(UTF-8)}, $filename;' instead of `open $fh, q{{<:utf8}, $filename;'.]]>
+      <![CDATA[InputOutput::RequireEncodingWithUTF8Layer: Write `open $fh, q{<:encoding(UTF-8)}, $filename;' instead of `open $fh, q{<:utf8}, $filename;'.]]>
     </description>
     <priority>BLOCKER</priority>
   </rule>
@@ -1058,6 +1078,16 @@
       <![CDATA[RegularExpressions::ProhibitUnusualDelimiters: Use only `//' or `{}' to delimit regexps.]]>
     </description>
     <priority>INFO</priority>
+  </rule>
+
+  <rule>
+    <key>RegularExpressions::ProhibitUselessTopic</key>
+    <name>Prohibit Useless Topic</name>
+    <configKey>RegularExpressions::ProhibitUselessTopic</configKey>
+    <description>
+      <![CDATA[RegularExpressions::ProhibitUselessTopic: Don't use $_ to match against regexes.]]>
+    </description>
+    <priority>MINOR</priority>
   </rule>
 
   <rule>
@@ -1518,6 +1548,16 @@
       <![CDATA[ValuesAndExpressions::RequireUpperCaseHeredocTerminator: Write ` <<'THE_END'; ' instead of ` <<'theEnd'; '.]]>
     </description>
     <priority>MINOR</priority>
+  </rule>
+
+  <rule>
+    <key>Variables::ProhibitAugmentedAssignmentInDeclaration</key>
+    <name>Prohibit Augmented Assignment In Declaration</name>
+    <configKey>Variables::ProhibitAugmentedAssignmentInDeclaration</configKey>
+    <description>
+      <![CDATA[Variables::ProhibitAugmentedAssignmentInDeclaration: Do not write ` my $foo .= 'bar'; '.]]>
+    </description>
+    <priority>CRITICAL</priority>
   </rule>
 
   <rule>

@@ -59,6 +59,12 @@
 
   <rule>
       <repositoryKey>PerlCritic</repositoryKey>
+      <key>BuiltinFunctions::ProhibitUselessTopic</key>
+      <priority>MINOR</priority>
+  </rule>
+
+  <rule>
+      <repositoryKey>PerlCritic</repositoryKey>
       <key>BuiltinFunctions::ProhibitVoidGrep</key>
       <priority>MAJOR</priority>
   </rule>
@@ -213,130 +219,137 @@
       <priority>MINOR</priority>
   </rule>
 
+
   <rule>
-      <repositoryKey>PerlCritic</repositoryKey>
+      <repositoryKey>ePages</repositoryKey>
       <key>DE_EPAGES::BuiltinFunctions::ProhibitForeachQw</key>
       <priority>MAJOR</priority>
   </rule>
 
   <rule>
-      <repositoryKey>PerlCritic</repositoryKey>
+      <repositoryKey>ePages</repositoryKey>
       <key>DE_EPAGES::BuiltinFunctions::ProhibitUniversalCanUsePerlTools</key>
       <priority>MAJOR</priority>
   </rule>
 
   <rule>
-      <repositoryKey>PerlCritic</repositoryKey>
+      <repositoryKey>ePages</repositoryKey>
       <key>DE_EPAGES::BuiltinFunctions::ProhibitUniversalIsaUsePerlTools</key>
       <priority>MAJOR</priority>
   </rule>
 
   <rule>
-      <repositoryKey>PerlCritic</repositoryKey>
+      <repositoryKey>ePages</repositoryKey>
       <key>DE_EPAGES::ErrorHandling::RequireExistsError</key>
       <priority>MAJOR</priority>
   </rule>
 
   <rule>
-      <repositoryKey>PerlCritic</repositoryKey>
+      <repositoryKey>ePages</repositoryKey>
       <key>DE_EPAGES::Execution::RequireCompileability</key>
       <priority>BLOCKER</priority>
   </rule>
 
   <rule>
-      <repositoryKey>PerlCritic</repositoryKey>
+      <repositoryKey>ePages</repositoryKey>
       <key>DE_EPAGES::Modules::ProhibitAutomaticExportationNonDAL</key>
       <priority>CRITICAL</priority>
   </rule>
 
   <rule>
-      <repositoryKey>PerlCritic</repositoryKey>
+      <repositoryKey>ePages</repositoryKey>
       <key>DE_EPAGES::Modules::RequireFilenameMatchesPackageHacked</key>
       <priority>BLOCKER</priority>
   </rule>
 
   <rule>
-      <repositoryKey>PerlCritic</repositoryKey>
+      <repositoryKey>ePages</repositoryKey>
       <key>DE_EPAGES::Modules::RequireUtf8BOM</key>
       <priority>BLOCKER</priority>
   </rule>
 
   <rule>
-      <repositoryKey>PerlCritic</repositoryKey>
+      <repositoryKey>ePages</repositoryKey>
       <key>DE_EPAGES::Security::ProhibitVariablesInSQLStatements</key>
       <priority>CRITICAL</priority>
   </rule>
 
   <rule>
-      <repositoryKey>PerlCritic</repositoryKey>
+      <repositoryKey>ePages</repositoryKey>
       <key>DE_EPAGES::Style::ProhibitFunctionSize</key>
       <priority>MINOR</priority>
   </rule>
 
   <rule>
-      <repositoryKey>PerlCritic</repositoryKey>
+      <repositoryKey>ePages</repositoryKey>
       <key>DE_EPAGES::Style::RequireArgUnpacking</key>
       <priority>CRITICAL</priority>
   </rule>
 
   <rule>
-      <repositoryKey>PerlCritic</repositoryKey>
+      <repositoryKey>ePages</repositoryKey>
       <key>DE_EPAGES::Style::RequireCommentForExportedFunctions</key>
       <priority>MAJOR</priority>
   </rule>
 
   <rule>
-      <repositoryKey>PerlCritic</repositoryKey>
+      <repositoryKey>ePages</repositoryKey>
       <key>DE_EPAGES::Style::RequireCorrectImports</key>
       <priority>CRITICAL</priority>
   </rule>
 
   <rule>
-      <repositoryKey>PerlCritic</repositoryKey>
+      <repositoryKey>ePages</repositoryKey>
       <key>DE_EPAGES::Style::RequireExtendedFormatting</key>
       <priority>MAJOR</priority>
   </rule>
 
   <rule>
-      <repositoryKey>PerlCritic</repositoryKey>
+      <repositoryKey>ePages</repositoryKey>
       <key>DE_EPAGES::Style::RequireFullSentenceComment</key>
       <priority>INFO</priority>
   </rule>
 
   <rule>
-      <repositoryKey>PerlCritic</repositoryKey>
+      <repositoryKey>ePages</repositoryKey>
       <key>DE_EPAGES::Style::RequireLexicalLoopIteratorsForLongBlocks</key>
       <priority>BLOCKER</priority>
   </rule>
 
   <rule>
-      <repositoryKey>PerlCritic</repositoryKey>
+      <repositoryKey>ePages</repositoryKey>
       <key>DE_EPAGES::Style::RequireParenthesesLastChar</key>
       <priority>MINOR</priority>
   </rule>
 
   <rule>
-      <repositoryKey>PerlCritic</repositoryKey>
+      <repositoryKey>ePages</repositoryKey>
       <key>DE_EPAGES::Style::RequireSpacesNotTabs</key>
       <priority>MINOR</priority>
   </rule>
 
   <rule>
-      <repositoryKey>PerlCritic</repositoryKey>
+      <repositoryKey>ePages</repositoryKey>
       <key>DE_EPAGES::Subroutines::ProhibitPrivateSubroutineUse</key>
       <priority>CRITICAL</priority>
   </rule>
 
   <rule>
-      <repositoryKey>PerlCritic</repositoryKey>
+      <repositoryKey>ePages</repositoryKey>
       <key>DE_EPAGES::Variables::ProhibitPathConcatenation</key>
       <priority>MAJOR</priority>
   </rule>
 
   <rule>
-      <repositoryKey>PerlCritic</repositoryKey>
+      <repositoryKey>ePages</repositoryKey>
       <key>DE_EPAGES::Variables::ProhibitUnusedVariablesEnhanced</key>
       <priority>MAJOR</priority>
+  </rule>
+
+  <rule>
+      <repositoryKey>PerlCritic</repositoryKey>
+      <key>ControlStructures::ProhibitYadaOperator</key>
+      <priority>CRITICAL</priority>
   </rule>
 
   <rule>
@@ -641,6 +654,12 @@
 
   <rule>
       <repositoryKey>PerlCritic</repositoryKey>
+      <key>RegularExpressions::ProhibitUselessTopic</key>
+      <priority>MINOR</priority>
+  </rule>
+
+  <rule>
+      <repositoryKey>PerlCritic</repositoryKey>
       <key>RegularExpressions::RequireBracesForMultiline</key>
       <priority>INFO</priority>
   </rule>
@@ -913,6 +932,12 @@
       <repositoryKey>PerlCritic</repositoryKey>
       <key>ValuesAndExpressions::RequireUpperCaseHeredocTerminator</key>
       <priority>MINOR</priority>
+  </rule>
+
+  <rule>
+      <repositoryKey>PerlCritic</repositoryKey>
+      <key>Variables::ProhibitAugmentedAssignmentInDeclaration</key>
+      <priority>CRITICAL</priority>
   </rule>
 
   <rule>
