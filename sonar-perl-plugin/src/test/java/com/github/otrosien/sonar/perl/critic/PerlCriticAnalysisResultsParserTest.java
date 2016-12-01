@@ -23,7 +23,7 @@ public class PerlCriticAnalysisResultsParserTest {
         List<PerlCriticViolation> parseResult = parser.parse(sampleFile());
 
         assertThat(parseResult, notNullValue());
-        assertThat(parseResult.size(), is(2));
+        assertThat(parseResult.size(), is(3));
 
         PerlCriticViolation v = parseResult.get(0);
         assertThat(v.getFilePath(), is("lib/Sample/Project.pm"));
