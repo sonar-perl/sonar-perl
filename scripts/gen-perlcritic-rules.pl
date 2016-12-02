@@ -48,8 +48,14 @@ EOL
 
     $tmp =~ s|<priority>(\d)</priority>|"<priority>" . $severities[$1] . "</priority>"|eg;
     $tmp =~ s|<name>(.*?)</name>|"<name>" . _makeReadable($1) . "</name>"|eg;
+    $tmp =~ s|    <theme>(.*?)</theme>| _makeRuleTags($1)|eg;
 
     print {$output} $tmp;
+}
+
+sub  _makeRuleTags {
+    my ($str) = @_;
+    return join( "\n", map { "    <tag>".$_. "</tag>"} split(/ /, $str));
 }
 
 sub _makeReadable {
@@ -67,6 +73,7 @@ return << "EOL";
     <key>%p</key>
     <name>%p</name>
     <configKey>%p</configKey>
+    <theme>%t</theme>
     <description>
       <![CDATA[%p: %a]]>
     </description>
