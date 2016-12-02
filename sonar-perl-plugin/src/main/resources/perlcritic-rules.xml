@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rules>
+
+<!--  generated rules from gen-perlcritic-rules.pl -->
+
   <rule>
     <key>BuiltinFunctions::ProhibitBooleanGrep</key>
     <name>Prohibit Boolean Grep</name>
     <configKey>BuiltinFunctions::ProhibitBooleanGrep</configKey>
+    <type>CODE_SMELL</type>
     <tag>certrec</tag>
     <tag>core</tag>
     <tag>pbp</tag>
@@ -18,6 +22,7 @@
     <key>BuiltinFunctions::ProhibitComplexMappings</key>
     <name>Prohibit Complex Mappings</name>
     <configKey>BuiltinFunctions::ProhibitComplexMappings</configKey>
+    <type>CODE_SMELL</type>
     <tag>complexity</tag>
     <tag>core</tag>
     <tag>maintenance</tag>
@@ -32,6 +37,7 @@
     <key>BuiltinFunctions::ProhibitLvalueSubstr</key>
     <name>Prohibit Lvalue Substr</name>
     <configKey>BuiltinFunctions::ProhibitLvalueSubstr</configKey>
+    <type>CODE_SMELL</type>
     <tag>core</tag>
     <tag>maintenance</tag>
     <tag>pbp</tag>
@@ -45,6 +51,7 @@
     <key>BuiltinFunctions::ProhibitReverseSortBlock</key>
     <name>Prohibit Reverse Sort Block</name>
     <configKey>BuiltinFunctions::ProhibitReverseSortBlock</configKey>
+    <type>CODE_SMELL</type>
     <tag>core</tag>
     <tag>cosmetic</tag>
     <tag>pbp</tag>
@@ -58,6 +65,7 @@
     <key>BuiltinFunctions::ProhibitSleepViaSelect</key>
     <name>Prohibit Sleep Via Select</name>
     <configKey>BuiltinFunctions::ProhibitSleepViaSelect</configKey>
+    <type>BUG</type>
     <tag>bugs</tag>
     <tag>core</tag>
     <tag>pbp</tag>
@@ -71,6 +79,7 @@
     <key>BuiltinFunctions::ProhibitStringyEval</key>
     <name>Prohibit Stringy Eval</name>
     <configKey>BuiltinFunctions::ProhibitStringyEval</configKey>
+    <type>BUG</type>
     <tag>bugs</tag>
     <tag>certrule</tag>
     <tag>core</tag>
@@ -85,6 +94,7 @@
     <key>BuiltinFunctions::ProhibitStringySplit</key>
     <name>Prohibit Stringy Split</name>
     <configKey>BuiltinFunctions::ProhibitStringySplit</configKey>
+    <type>VULNERABILITY</type>
     <tag>certrule</tag>
     <tag>core</tag>
     <tag>cosmetic</tag>
@@ -99,6 +109,7 @@
     <key>BuiltinFunctions::ProhibitUniversalCan</key>
     <name>Prohibit Universal Can</name>
     <configKey>BuiltinFunctions::ProhibitUniversalCan</configKey>
+    <type>VULNERABILITY</type>
     <tag>certrule</tag>
     <tag>core</tag>
     <tag>maintenance</tag>
@@ -112,6 +123,7 @@
     <key>BuiltinFunctions::ProhibitUniversalIsa</key>
     <name>Prohibit Universal Isa</name>
     <configKey>BuiltinFunctions::ProhibitUniversalIsa</configKey>
+    <type>VULNERABILITY</type>
     <tag>certrule</tag>
     <tag>core</tag>
     <tag>maintenance</tag>
@@ -125,6 +137,7 @@
     <key>BuiltinFunctions::ProhibitUselessTopic</key>
     <name>Prohibit Useless Topic</name>
     <configKey>BuiltinFunctions::ProhibitUselessTopic</configKey>
+    <type>CODE_SMELL</type>
     <tag>core</tag>
     <description>
       <![CDATA[BuiltinFunctions::ProhibitUselessTopic: Don't pass $_ to built-in functions that assume it, or to most filetest operators.]]>
@@ -136,6 +149,7 @@
     <key>BuiltinFunctions::ProhibitVoidGrep</key>
     <name>Prohibit Void Grep</name>
     <configKey>BuiltinFunctions::ProhibitVoidGrep</configKey>
+    <type>CODE_SMELL</type>
     <tag>core</tag>
     <tag>maintenance</tag>
     <description>
@@ -148,6 +162,7 @@
     <key>BuiltinFunctions::ProhibitVoidMap</key>
     <name>Prohibit Void Map</name>
     <configKey>BuiltinFunctions::ProhibitVoidMap</configKey>
+    <type>CODE_SMELL</type>
     <tag>core</tag>
     <tag>maintenance</tag>
     <description>
@@ -160,6 +175,7 @@
     <key>BuiltinFunctions::RequireBlockGrep</key>
     <name>Require Block Grep</name>
     <configKey>BuiltinFunctions::RequireBlockGrep</configKey>
+    <type>BUG</type>
     <tag>bugs</tag>
     <tag>core</tag>
     <tag>pbp</tag>
@@ -173,6 +189,7 @@
     <key>BuiltinFunctions::RequireBlockMap</key>
     <name>Require Block Map</name>
     <configKey>BuiltinFunctions::RequireBlockMap</configKey>
+    <type>BUG</type>
     <tag>bugs</tag>
     <tag>core</tag>
     <tag>pbp</tag>
@@ -186,6 +203,7 @@
     <key>BuiltinFunctions::RequireGlobFunction</key>
     <name>Require Glob Function</name>
     <configKey>BuiltinFunctions::RequireGlobFunction</configKey>
+    <type>BUG</type>
     <tag>bugs</tag>
     <tag>core</tag>
     <tag>pbp</tag>
@@ -199,6 +217,7 @@
     <key>BuiltinFunctions::RequireSimpleSortBlock</key>
     <name>Require Simple Sort Block</name>
     <configKey>BuiltinFunctions::RequireSimpleSortBlock</configKey>
+    <type>CODE_SMELL</type>
     <tag>complexity</tag>
     <tag>core</tag>
     <tag>maintenance</tag>
@@ -213,6 +232,7 @@
     <key>ClassHierarchies::ProhibitAutoloading</key>
     <name>Prohibit Autoloading</name>
     <configKey>ClassHierarchies::ProhibitAutoloading</configKey>
+    <type>CODE_SMELL</type>
     <tag>core</tag>
     <tag>maintenance</tag>
     <tag>pbp</tag>
@@ -226,6 +246,7 @@
     <key>ClassHierarchies::ProhibitExplicitISA</key>
     <name>Prohibit Explicit ISA</name>
     <configKey>ClassHierarchies::ProhibitExplicitISA</configKey>
+    <type>CODE_SMELL</type>
     <tag>certrec</tag>
     <tag>core</tag>
     <tag>maintenance</tag>
@@ -240,6 +261,7 @@
     <key>ClassHierarchies::ProhibitOneArgBless</key>
     <name>Prohibit One Arg Bless</name>
     <configKey>ClassHierarchies::ProhibitOneArgBless</configKey>
+    <type>BUG</type>
     <tag>bugs</tag>
     <tag>core</tag>
     <tag>pbp</tag>
@@ -253,6 +275,7 @@
     <key>CodeLayout::ProhibitHardTabs</key>
     <name>Prohibit Hard Tabs</name>
     <configKey>CodeLayout::ProhibitHardTabs</configKey>
+    <type>CODE_SMELL</type>
     <tag>core</tag>
     <tag>cosmetic</tag>
     <tag>pbp</tag>
@@ -266,6 +289,7 @@
     <key>CodeLayout::ProhibitParensWithBuiltins</key>
     <name>Prohibit Parens With Builtins</name>
     <configKey>CodeLayout::ProhibitParensWithBuiltins</configKey>
+    <type>CODE_SMELL</type>
     <tag>core</tag>
     <tag>cosmetic</tag>
     <tag>pbp</tag>
@@ -279,6 +303,7 @@
     <key>CodeLayout::ProhibitQuotedWordLists</key>
     <name>Prohibit Quoted Word Lists</name>
     <configKey>CodeLayout::ProhibitQuotedWordLists</configKey>
+    <type>CODE_SMELL</type>
     <tag>core</tag>
     <tag>cosmetic</tag>
     <description>
@@ -291,6 +316,7 @@
     <key>CodeLayout::ProhibitTrailingWhitespace</key>
     <name>Prohibit Trailing Whitespace</name>
     <configKey>CodeLayout::ProhibitTrailingWhitespace</configKey>
+    <type>CODE_SMELL</type>
     <tag>core</tag>
     <tag>maintenance</tag>
     <description>
@@ -303,6 +329,7 @@
     <key>CodeLayout::RequireConsistentNewlines</key>
     <name>Require Consistent Newlines</name>
     <configKey>CodeLayout::RequireConsistentNewlines</configKey>
+    <type>BUG</type>
     <tag>bugs</tag>
     <tag>core</tag>
     <description>
@@ -315,6 +342,7 @@
     <key>CodeLayout::RequireTidyCode</key>
     <name>Require Tidy Code</name>
     <configKey>CodeLayout::RequireTidyCode</configKey>
+    <type>CODE_SMELL</type>
     <tag>core</tag>
     <tag>cosmetic</tag>
     <tag>pbp</tag>
@@ -328,6 +356,7 @@
     <key>CodeLayout::RequireTrailingCommas</key>
     <name>Require Trailing Commas</name>
     <configKey>CodeLayout::RequireTrailingCommas</configKey>
+    <type>CODE_SMELL</type>
     <tag>core</tag>
     <tag>cosmetic</tag>
     <tag>pbp</tag>
@@ -341,6 +370,7 @@
     <key>ControlStructures::ProhibitCStyleForLoops</key>
     <name>Prohibit CStyle For Loops</name>
     <configKey>ControlStructures::ProhibitCStyleForLoops</configKey>
+    <type>CODE_SMELL</type>
     <tag>core</tag>
     <tag>maintenance</tag>
     <tag>pbp</tag>
@@ -354,6 +384,7 @@
     <key>ControlStructures::ProhibitCascadingIfElse</key>
     <name>Prohibit Cascading If Else</name>
     <configKey>ControlStructures::ProhibitCascadingIfElse</configKey>
+    <type>CODE_SMELL</type>
     <tag>complexity</tag>
     <tag>core</tag>
     <tag>maintenance</tag>
@@ -368,6 +399,7 @@
     <key>ControlStructures::ProhibitDeepNests</key>
     <name>Prohibit Deep Nests</name>
     <configKey>ControlStructures::ProhibitDeepNests</configKey>
+    <type>CODE_SMELL</type>
     <tag>complexity</tag>
     <tag>core</tag>
     <tag>maintenance</tag>
@@ -381,6 +413,7 @@
     <key>ControlStructures::ProhibitLabelsWithSpecialBlockNames</key>
     <name>Prohibit Labels With Special Block Names</name>
     <configKey>ControlStructures::ProhibitLabelsWithSpecialBlockNames</configKey>
+    <type>BUG</type>
     <tag>bugs</tag>
     <tag>core</tag>
     <description>
@@ -393,6 +426,7 @@
     <key>ControlStructures::ProhibitMutatingListFunctions</key>
     <name>Prohibit Mutating List Functions</name>
     <configKey>ControlStructures::ProhibitMutatingListFunctions</configKey>
+    <type>BUG</type>
     <tag>bugs</tag>
     <tag>certrule</tag>
     <tag>core</tag>
@@ -407,6 +441,7 @@
     <key>ControlStructures::ProhibitNegativeExpressionsInUnlessAndUntilConditions</key>
     <name>Prohibit Negative Expressions In Unless And Until Conditions</name>
     <configKey>ControlStructures::ProhibitNegativeExpressionsInUnlessAndUntilConditions</configKey>
+    <type>CODE_SMELL</type>
     <tag>core</tag>
     <tag>maintenance</tag>
     <tag>pbp</tag>
@@ -420,6 +455,7 @@
     <key>ControlStructures::ProhibitPostfixControls</key>
     <name>Prohibit Postfix Controls</name>
     <configKey>ControlStructures::ProhibitPostfixControls</configKey>
+    <type>CODE_SMELL</type>
     <tag>core</tag>
     <tag>cosmetic</tag>
     <tag>pbp</tag>
@@ -433,6 +469,7 @@
     <key>ControlStructures::ProhibitUnlessBlocks</key>
     <name>Prohibit Unless Blocks</name>
     <configKey>ControlStructures::ProhibitUnlessBlocks</configKey>
+    <type>CODE_SMELL</type>
     <tag>core</tag>
     <tag>cosmetic</tag>
     <tag>pbp</tag>
@@ -446,6 +483,7 @@
     <key>ControlStructures::ProhibitUnreachableCode</key>
     <name>Prohibit Unreachable Code</name>
     <configKey>ControlStructures::ProhibitUnreachableCode</configKey>
+    <type>BUG</type>
     <tag>bugs</tag>
     <tag>certrec</tag>
     <tag>core</tag>
@@ -459,6 +497,7 @@
     <key>ControlStructures::ProhibitUntilBlocks</key>
     <name>Prohibit Until Blocks</name>
     <configKey>ControlStructures::ProhibitUntilBlocks</configKey>
+    <type>CODE_SMELL</type>
     <tag>core</tag>
     <tag>cosmetic</tag>
     <tag>pbp</tag>
@@ -472,6 +511,7 @@
     <key>ControlStructures::ProhibitYadaOperator</key>
     <name>Prohibit Yada Operator</name>
     <configKey>ControlStructures::ProhibitYadaOperator</configKey>
+    <type>CODE_SMELL</type>
     <tag>core</tag>
     <tag>maintenance</tag>
     <tag>pbp</tag>
@@ -485,6 +525,7 @@
     <key>Documentation::RequirePackageMatchesPodName</key>
     <name>Require Package Matches Pod Name</name>
     <configKey>Documentation::RequirePackageMatchesPodName</configKey>
+    <type>CODE_SMELL</type>
     <tag>core</tag>
     <tag>cosmetic</tag>
     <description>
@@ -497,6 +538,7 @@
     <key>Documentation::RequirePodAtEnd</key>
     <name>Require Pod At End</name>
     <configKey>Documentation::RequirePodAtEnd</configKey>
+    <type>CODE_SMELL</type>
     <tag>core</tag>
     <tag>cosmetic</tag>
     <tag>pbp</tag>
@@ -510,6 +552,7 @@
     <key>Documentation::RequirePodLinksIncludeText</key>
     <name>Require Pod Links Include Text</name>
     <configKey>Documentation::RequirePodLinksIncludeText</configKey>
+    <type>CODE_SMELL</type>
     <tag>core</tag>
     <tag>maintenance</tag>
     <description>
@@ -522,6 +565,7 @@
     <key>Documentation::RequirePodSections</key>
     <name>Require Pod Sections</name>
     <configKey>Documentation::RequirePodSections</configKey>
+    <type>CODE_SMELL</type>
     <tag>core</tag>
     <tag>maintenance</tag>
     <tag>pbp</tag>
@@ -535,6 +579,7 @@
     <key>ErrorHandling::RequireCarping</key>
     <name>Require Carping</name>
     <configKey>ErrorHandling::RequireCarping</configKey>
+    <type>VULNERABILITY</type>
     <tag>certrule</tag>
     <tag>core</tag>
     <tag>maintenance</tag>
@@ -549,6 +594,7 @@
     <key>ErrorHandling::RequireCheckingReturnValueOfEval</key>
     <name>Require Checking Return Value Of Eval</name>
     <configKey>ErrorHandling::RequireCheckingReturnValueOfEval</configKey>
+    <type>BUG</type>
     <tag>bugs</tag>
     <tag>core</tag>
     <description>
@@ -561,6 +607,7 @@
     <key>InputOutput::ProhibitBacktickOperators</key>
     <name>Prohibit Backtick Operators</name>
     <configKey>InputOutput::ProhibitBacktickOperators</configKey>
+    <type>CODE_SMELL</type>
     <tag>core</tag>
     <tag>maintenance</tag>
     <description>
@@ -573,6 +620,7 @@
     <key>InputOutput::ProhibitBarewordFileHandles</key>
     <name>Prohibit Bareword File Handles</name>
     <configKey>InputOutput::ProhibitBarewordFileHandles</configKey>
+    <type>BUG</type>
     <tag>bugs</tag>
     <tag>certrec</tag>
     <tag>core</tag>
@@ -587,6 +635,7 @@
     <key>InputOutput::ProhibitExplicitStdin</key>
     <name>Prohibit Explicit Stdin</name>
     <configKey>InputOutput::ProhibitExplicitStdin</configKey>
+    <type>CODE_SMELL</type>
     <tag>core</tag>
     <tag>maintenance</tag>
     <tag>pbp</tag>
@@ -600,6 +649,7 @@
     <key>InputOutput::ProhibitInteractiveTest</key>
     <name>Prohibit Interactive Test</name>
     <configKey>InputOutput::ProhibitInteractiveTest</configKey>
+    <type>BUG</type>
     <tag>bugs</tag>
     <tag>certrule</tag>
     <tag>core</tag>
@@ -614,6 +664,7 @@
     <key>InputOutput::ProhibitJoinedReadline</key>
     <name>Prohibit Joined Readline</name>
     <configKey>InputOutput::ProhibitJoinedReadline</configKey>
+    <type>CODE_SMELL</type>
     <tag>core</tag>
     <tag>pbp</tag>
     <tag>performance</tag>
@@ -627,6 +678,7 @@
     <key>InputOutput::ProhibitOneArgSelect</key>
     <name>Prohibit One Arg Select</name>
     <configKey>InputOutput::ProhibitOneArgSelect</configKey>
+    <type>BUG</type>
     <tag>bugs</tag>
     <tag>certrule</tag>
     <tag>core</tag>
@@ -641,6 +693,7 @@
     <key>InputOutput::ProhibitReadlineInForLoop</key>
     <name>Prohibit Readline In For Loop</name>
     <configKey>InputOutput::ProhibitReadlineInForLoop</configKey>
+    <type>BUG</type>
     <tag>bugs</tag>
     <tag>core</tag>
     <tag>pbp</tag>
@@ -654,6 +707,7 @@
     <key>InputOutput::ProhibitTwoArgOpen</key>
     <name>Prohibit Two Arg Open</name>
     <configKey>InputOutput::ProhibitTwoArgOpen</configKey>
+    <type>BUG</type>
     <tag>bugs</tag>
     <tag>certrule</tag>
     <tag>core</tag>
@@ -669,6 +723,7 @@
     <key>InputOutput::RequireBracedFileHandleWithPrint</key>
     <name>Require Braced File Handle With Print</name>
     <configKey>InputOutput::RequireBracedFileHandleWithPrint</configKey>
+    <type>CODE_SMELL</type>
     <tag>core</tag>
     <tag>cosmetic</tag>
     <tag>pbp</tag>
@@ -682,6 +737,7 @@
     <key>InputOutput::RequireBriefOpen</key>
     <name>Require Brief Open</name>
     <configKey>InputOutput::RequireBriefOpen</configKey>
+    <type>CODE_SMELL</type>
     <tag>core</tag>
     <tag>maintenance</tag>
     <tag>pbp</tag>
@@ -695,6 +751,7 @@
     <key>InputOutput::RequireCheckedClose</key>
     <name>Require Checked Close</name>
     <configKey>InputOutput::RequireCheckedClose</configKey>
+    <type>VULNERABILITY</type>
     <tag>certrule</tag>
     <tag>core</tag>
     <tag>maintenance</tag>
@@ -708,6 +765,7 @@
     <key>InputOutput::RequireCheckedOpen</key>
     <name>Require Checked Open</name>
     <configKey>InputOutput::RequireCheckedOpen</configKey>
+    <type>VULNERABILITY</type>
     <tag>certrule</tag>
     <tag>core</tag>
     <tag>maintenance</tag>
@@ -721,6 +779,7 @@
     <key>InputOutput::RequireCheckedSyscalls</key>
     <name>Require Checked Syscalls</name>
     <configKey>InputOutput::RequireCheckedSyscalls</configKey>
+    <type>VULNERABILITY</type>
     <tag>certrule</tag>
     <tag>core</tag>
     <tag>maintenance</tag>
@@ -734,6 +793,7 @@
     <key>InputOutput::RequireEncodingWithUTF8Layer</key>
     <name>Require Encoding With UTF8Layer</name>
     <configKey>InputOutput::RequireEncodingWithUTF8Layer</configKey>
+    <type>BUG</type>
     <tag>bugs</tag>
     <tag>core</tag>
     <tag>security</tag>
@@ -747,6 +807,7 @@
     <key>Miscellanea::ProhibitFormats</key>
     <name>Prohibit Formats</name>
     <configKey>Miscellanea::ProhibitFormats</configKey>
+    <type>VULNERABILITY</type>
     <tag>certrule</tag>
     <tag>core</tag>
     <tag>maintenance</tag>
@@ -761,6 +822,7 @@
     <key>Miscellanea::ProhibitTies</key>
     <name>Prohibit Ties</name>
     <configKey>Miscellanea::ProhibitTies</configKey>
+    <type>CODE_SMELL</type>
     <tag>core</tag>
     <tag>maintenance</tag>
     <tag>pbp</tag>
@@ -774,6 +836,7 @@
     <key>Miscellanea::ProhibitUnrestrictedNoCritic</key>
     <name>Prohibit Unrestricted No Critic</name>
     <configKey>Miscellanea::ProhibitUnrestrictedNoCritic</configKey>
+    <type>CODE_SMELL</type>
     <tag>core</tag>
     <tag>maintenance</tag>
     <description>
@@ -786,6 +849,7 @@
     <key>Miscellanea::ProhibitUselessNoCritic</key>
     <name>Prohibit Useless No Critic</name>
     <configKey>Miscellanea::ProhibitUselessNoCritic</configKey>
+    <type>CODE_SMELL</type>
     <tag>core</tag>
     <tag>maintenance</tag>
     <description>
@@ -798,6 +862,7 @@
     <key>Modules::ProhibitAutomaticExportation</key>
     <name>Prohibit Automatic Exportation</name>
     <configKey>Modules::ProhibitAutomaticExportation</configKey>
+    <type>BUG</type>
     <tag>bugs</tag>
     <tag>core</tag>
     <description>
@@ -810,6 +875,7 @@
     <key>Modules::ProhibitConditionalUseStatements</key>
     <name>Prohibit Conditional Use Statements</name>
     <configKey>Modules::ProhibitConditionalUseStatements</configKey>
+    <type>BUG</type>
     <tag>bugs</tag>
     <tag>core</tag>
     <description>
@@ -822,6 +888,7 @@
     <key>Modules::ProhibitEvilModules</key>
     <name>Prohibit Evil Modules</name>
     <configKey>Modules::ProhibitEvilModules</configKey>
+    <type>BUG</type>
     <tag>bugs</tag>
     <tag>certrule</tag>
     <tag>core</tag>
@@ -835,6 +902,7 @@
     <key>Modules::ProhibitExcessMainComplexity</key>
     <name>Prohibit Excess Main Complexity</name>
     <configKey>Modules::ProhibitExcessMainComplexity</configKey>
+    <type>CODE_SMELL</type>
     <tag>complexity</tag>
     <tag>core</tag>
     <tag>maintenance</tag>
@@ -848,6 +916,7 @@
     <key>Modules::ProhibitMultiplePackages</key>
     <name>Prohibit Multiple Packages</name>
     <configKey>Modules::ProhibitMultiplePackages</configKey>
+    <type>BUG</type>
     <tag>bugs</tag>
     <tag>core</tag>
     <description>
@@ -860,6 +929,7 @@
     <key>Modules::RequireBarewordIncludes</key>
     <name>Require Bareword Includes</name>
     <configKey>Modules::RequireBarewordIncludes</configKey>
+    <type>CODE_SMELL</type>
     <tag>core</tag>
     <tag>portability</tag>
     <description>
@@ -872,6 +942,7 @@
     <key>Modules::RequireEndWithOne</key>
     <name>Require End With One</name>
     <configKey>Modules::RequireEndWithOne</configKey>
+    <type>BUG</type>
     <tag>bugs</tag>
     <tag>certrule</tag>
     <tag>core</tag>
@@ -886,6 +957,7 @@
     <key>Modules::RequireExplicitPackage</key>
     <name>Require Explicit Package</name>
     <configKey>Modules::RequireExplicitPackage</configKey>
+    <type>BUG</type>
     <tag>bugs</tag>
     <tag>core</tag>
     <description>
@@ -898,6 +970,7 @@
     <key>Modules::RequireFilenameMatchesPackage</key>
     <name>Require Filename Matches Package</name>
     <configKey>Modules::RequireFilenameMatchesPackage</configKey>
+    <type>BUG</type>
     <tag>bugs</tag>
     <tag>core</tag>
     <description>
@@ -910,6 +983,7 @@
     <key>Modules::RequireNoMatchVarsWithUseEnglish</key>
     <name>Require No Match Vars With Use English</name>
     <configKey>Modules::RequireNoMatchVarsWithUseEnglish</configKey>
+    <type>CODE_SMELL</type>
     <tag>core</tag>
     <tag>performance</tag>
     <description>
@@ -922,6 +996,7 @@
     <key>Modules::RequireVersionVar</key>
     <name>Require Version Var</name>
     <configKey>Modules::RequireVersionVar</configKey>
+    <type>CODE_SMELL</type>
     <tag>core</tag>
     <tag>pbp</tag>
     <tag>readability</tag>
@@ -935,6 +1010,7 @@
     <key>NamingConventions::Capitalization</key>
     <name>Capitalization</name>
     <configKey>NamingConventions::Capitalization</configKey>
+    <type>CODE_SMELL</type>
     <tag>core</tag>
     <tag>cosmetic</tag>
     <tag>pbp</tag>
@@ -948,6 +1024,7 @@
     <key>NamingConventions::ProhibitAmbiguousNames</key>
     <name>Prohibit Ambiguous Names</name>
     <configKey>NamingConventions::ProhibitAmbiguousNames</configKey>
+    <type>CODE_SMELL</type>
     <tag>core</tag>
     <tag>maintenance</tag>
     <tag>pbp</tag>
@@ -961,6 +1038,7 @@
     <key>Objects::ProhibitIndirectSyntax</key>
     <name>Prohibit Indirect Syntax</name>
     <configKey>Objects::ProhibitIndirectSyntax</configKey>
+    <type>VULNERABILITY</type>
     <tag>certrule</tag>
     <tag>core</tag>
     <tag>maintenance</tag>
@@ -975,6 +1053,7 @@
     <key>References::ProhibitDoubleSigils</key>
     <name>Prohibit Double Sigils</name>
     <configKey>References::ProhibitDoubleSigils</configKey>
+    <type>CODE_SMELL</type>
     <tag>core</tag>
     <tag>cosmetic</tag>
     <tag>pbp</tag>
@@ -988,6 +1067,7 @@
     <key>RegularExpressions::ProhibitCaptureWithoutTest</key>
     <name>Prohibit Capture Without Test</name>
     <configKey>RegularExpressions::ProhibitCaptureWithoutTest</configKey>
+    <type>VULNERABILITY</type>
     <tag>certrule</tag>
     <tag>core</tag>
     <tag>maintenance</tag>
@@ -1002,6 +1082,7 @@
     <key>RegularExpressions::ProhibitComplexRegexes</key>
     <name>Prohibit Complex Regexes</name>
     <configKey>RegularExpressions::ProhibitComplexRegexes</configKey>
+    <type>CODE_SMELL</type>
     <tag>core</tag>
     <tag>maintenance</tag>
     <tag>pbp</tag>
@@ -1015,6 +1096,7 @@
     <key>RegularExpressions::ProhibitEnumeratedClasses</key>
     <name>Prohibit Enumerated Classes</name>
     <configKey>RegularExpressions::ProhibitEnumeratedClasses</configKey>
+    <type>CODE_SMELL</type>
     <tag>core</tag>
     <tag>cosmetic</tag>
     <tag>pbp</tag>
@@ -1029,6 +1111,7 @@
     <key>RegularExpressions::ProhibitEscapedMetacharacters</key>
     <name>Prohibit Escaped Metacharacters</name>
     <configKey>RegularExpressions::ProhibitEscapedMetacharacters</configKey>
+    <type>CODE_SMELL</type>
     <tag>core</tag>
     <tag>cosmetic</tag>
     <tag>pbp</tag>
@@ -1042,6 +1125,7 @@
     <key>RegularExpressions::ProhibitFixedStringMatches</key>
     <name>Prohibit Fixed String Matches</name>
     <configKey>RegularExpressions::ProhibitFixedStringMatches</configKey>
+    <type>CODE_SMELL</type>
     <tag>core</tag>
     <tag>pbp</tag>
     <tag>performance</tag>
@@ -1055,6 +1139,7 @@
     <key>RegularExpressions::ProhibitSingleCharAlternation</key>
     <name>Prohibit Single Char Alternation</name>
     <configKey>RegularExpressions::ProhibitSingleCharAlternation</configKey>
+    <type>CODE_SMELL</type>
     <tag>core</tag>
     <tag>pbp</tag>
     <tag>performance</tag>
@@ -1068,6 +1153,7 @@
     <key>RegularExpressions::ProhibitUnusedCapture</key>
     <name>Prohibit Unused Capture</name>
     <configKey>RegularExpressions::ProhibitUnusedCapture</configKey>
+    <type>CODE_SMELL</type>
     <tag>core</tag>
     <tag>maintenance</tag>
     <tag>pbp</tag>
@@ -1081,6 +1167,7 @@
     <key>RegularExpressions::ProhibitUnusualDelimiters</key>
     <name>Prohibit Unusual Delimiters</name>
     <configKey>RegularExpressions::ProhibitUnusualDelimiters</configKey>
+    <type>CODE_SMELL</type>
     <tag>core</tag>
     <tag>cosmetic</tag>
     <tag>pbp</tag>
@@ -1094,6 +1181,7 @@
     <key>RegularExpressions::ProhibitUselessTopic</key>
     <name>Prohibit Useless Topic</name>
     <configKey>RegularExpressions::ProhibitUselessTopic</configKey>
+    <type>CODE_SMELL</type>
     <tag>core</tag>
     <description>
       <![CDATA[RegularExpressions::ProhibitUselessTopic: Don't use $_ to match against regexes.]]>
@@ -1105,6 +1193,7 @@
     <key>RegularExpressions::RequireBracesForMultiline</key>
     <name>Require Braces For Multiline</name>
     <configKey>RegularExpressions::RequireBracesForMultiline</configKey>
+    <type>CODE_SMELL</type>
     <tag>core</tag>
     <tag>cosmetic</tag>
     <tag>pbp</tag>
@@ -1118,6 +1207,7 @@
     <key>RegularExpressions::RequireDotMatchAnything</key>
     <name>Require Dot Match Anything</name>
     <configKey>RegularExpressions::RequireDotMatchAnything</configKey>
+    <type>CODE_SMELL</type>
     <tag>core</tag>
     <tag>cosmetic</tag>
     <tag>pbp</tag>
@@ -1131,6 +1221,7 @@
     <key>RegularExpressions::RequireExtendedFormatting</key>
     <name>Require Extended Formatting</name>
     <configKey>RegularExpressions::RequireExtendedFormatting</configKey>
+    <type>CODE_SMELL</type>
     <tag>core</tag>
     <tag>maintenance</tag>
     <tag>pbp</tag>
@@ -1144,6 +1235,7 @@
     <key>RegularExpressions::RequireLineBoundaryMatching</key>
     <name>Require Line Boundary Matching</name>
     <configKey>RegularExpressions::RequireLineBoundaryMatching</configKey>
+    <type>CODE_SMELL</type>
     <tag>core</tag>
     <tag>cosmetic</tag>
     <tag>pbp</tag>
@@ -1157,6 +1249,7 @@
     <key>Subroutines::ProhibitAmpersandSigils</key>
     <name>Prohibit Ampersand Sigils</name>
     <configKey>Subroutines::ProhibitAmpersandSigils</configKey>
+    <type>CODE_SMELL</type>
     <tag>core</tag>
     <tag>maintenance</tag>
     <tag>pbp</tag>
@@ -1170,6 +1263,7 @@
     <key>Subroutines::ProhibitBuiltinHomonyms</key>
     <name>Prohibit Builtin Homonyms</name>
     <configKey>Subroutines::ProhibitBuiltinHomonyms</configKey>
+    <type>BUG</type>
     <tag>bugs</tag>
     <tag>certrule</tag>
     <tag>core</tag>
@@ -1184,6 +1278,7 @@
     <key>Subroutines::ProhibitExcessComplexity</key>
     <name>Prohibit Excess Complexity</name>
     <configKey>Subroutines::ProhibitExcessComplexity</configKey>
+    <type>CODE_SMELL</type>
     <tag>complexity</tag>
     <tag>core</tag>
     <tag>maintenance</tag>
@@ -1197,6 +1292,7 @@
     <key>Subroutines::ProhibitExplicitReturnUndef</key>
     <name>Prohibit Explicit Return Undef</name>
     <configKey>Subroutines::ProhibitExplicitReturnUndef</configKey>
+    <type>BUG</type>
     <tag>bugs</tag>
     <tag>certrec</tag>
     <tag>core</tag>
@@ -1211,6 +1307,7 @@
     <key>Subroutines::ProhibitManyArgs</key>
     <name>Prohibit Many Args</name>
     <configKey>Subroutines::ProhibitManyArgs</configKey>
+    <type>CODE_SMELL</type>
     <tag>core</tag>
     <tag>maintenance</tag>
     <tag>pbp</tag>
@@ -1224,6 +1321,7 @@
     <key>Subroutines::ProhibitNestedSubs</key>
     <name>Prohibit Nested Subs</name>
     <configKey>Subroutines::ProhibitNestedSubs</configKey>
+    <type>BUG</type>
     <tag>bugs</tag>
     <tag>core</tag>
     <description>
@@ -1236,6 +1334,7 @@
     <key>Subroutines::ProhibitReturnSort</key>
     <name>Prohibit Return Sort</name>
     <configKey>Subroutines::ProhibitReturnSort</configKey>
+    <type>BUG</type>
     <tag>bugs</tag>
     <tag>certrule</tag>
     <tag>core</tag>
@@ -1249,6 +1348,7 @@
     <key>Subroutines::ProhibitSubroutinePrototypes</key>
     <name>Prohibit Subroutine Prototypes</name>
     <configKey>Subroutines::ProhibitSubroutinePrototypes</configKey>
+    <type>BUG</type>
     <tag>bugs</tag>
     <tag>certrec</tag>
     <tag>core</tag>
@@ -1263,6 +1363,7 @@
     <key>Subroutines::ProhibitUnusedPrivateSubroutines</key>
     <name>Prohibit Unused Private Subroutines</name>
     <configKey>Subroutines::ProhibitUnusedPrivateSubroutines</configKey>
+    <type>CODE_SMELL</type>
     <tag>certrec</tag>
     <tag>core</tag>
     <tag>maintenance</tag>
@@ -1276,6 +1377,7 @@
     <key>Subroutines::ProtectPrivateSubs</key>
     <name>Protect Private Subs</name>
     <configKey>Subroutines::ProtectPrivateSubs</configKey>
+    <type>VULNERABILITY</type>
     <tag>certrule</tag>
     <tag>core</tag>
     <tag>maintenance</tag>
@@ -1289,6 +1391,7 @@
     <key>Subroutines::RequireArgUnpacking</key>
     <name>Require Arg Unpacking</name>
     <configKey>Subroutines::RequireArgUnpacking</configKey>
+    <type>CODE_SMELL</type>
     <tag>core</tag>
     <tag>maintenance</tag>
     <tag>pbp</tag>
@@ -1302,6 +1405,7 @@
     <key>Subroutines::RequireFinalReturn</key>
     <name>Require Final Return</name>
     <configKey>Subroutines::RequireFinalReturn</configKey>
+    <type>BUG</type>
     <tag>bugs</tag>
     <tag>certrec</tag>
     <tag>core</tag>
@@ -1316,6 +1420,7 @@
     <key>TestingAndDebugging::ProhibitNoStrict</key>
     <name>Prohibit No Strict</name>
     <configKey>TestingAndDebugging::ProhibitNoStrict</configKey>
+    <type>BUG</type>
     <tag>bugs</tag>
     <tag>certrec</tag>
     <tag>core</tag>
@@ -1330,6 +1435,7 @@
     <key>TestingAndDebugging::ProhibitNoWarnings</key>
     <name>Prohibit No Warnings</name>
     <configKey>TestingAndDebugging::ProhibitNoWarnings</configKey>
+    <type>BUG</type>
     <tag>bugs</tag>
     <tag>certrec</tag>
     <tag>core</tag>
@@ -1344,6 +1450,7 @@
     <key>TestingAndDebugging::ProhibitProlongedStrictureOverride</key>
     <name>Prohibit Prolonged Stricture Override</name>
     <configKey>TestingAndDebugging::ProhibitProlongedStrictureOverride</configKey>
+    <type>BUG</type>
     <tag>bugs</tag>
     <tag>certrec</tag>
     <tag>core</tag>
@@ -1358,6 +1465,7 @@
     <key>TestingAndDebugging::RequireTestLabels</key>
     <name>Require Test Labels</name>
     <configKey>TestingAndDebugging::RequireTestLabels</configKey>
+    <type>CODE_SMELL</type>
     <tag>core</tag>
     <tag>maintenance</tag>
     <tag>tests</tag>
@@ -1371,6 +1479,7 @@
     <key>TestingAndDebugging::RequireUseStrict</key>
     <name>Require Use Strict</name>
     <configKey>TestingAndDebugging::RequireUseStrict</configKey>
+    <type>BUG</type>
     <tag>bugs</tag>
     <tag>certrec</tag>
     <tag>certrule</tag>
@@ -1386,6 +1495,7 @@
     <key>TestingAndDebugging::RequireUseWarnings</key>
     <name>Require Use Warnings</name>
     <configKey>TestingAndDebugging::RequireUseWarnings</configKey>
+    <type>BUG</type>
     <tag>bugs</tag>
     <tag>certrule</tag>
     <tag>core</tag>
@@ -1400,6 +1510,7 @@
     <key>Tics::ProhibitLongLines</key>
     <name>Prohibit Long Lines</name>
     <configKey>Tics::ProhibitLongLines</configKey>
+    <type>CODE_SMELL</type>
     <tag>tics</tag>
     <description>
       <![CDATA[Tics::ProhibitLongLines: 80 x 40 for life!]]>
@@ -1411,6 +1522,7 @@
     <key>Tics::ProhibitManyArrows</key>
     <name>Prohibit Many Arrows</name>
     <configKey>Tics::ProhibitManyArrows</configKey>
+    <type>CODE_SMELL</type>
     <tag>tics</tag>
     <description>
       <![CDATA[Tics::ProhibitManyArrows: (this => is => not => good)]]>
@@ -1422,6 +1534,7 @@
     <key>Tics::ProhibitUseBase</key>
     <name>Prohibit Use Base</name>
     <configKey>Tics::ProhibitUseBase</configKey>
+    <type>CODE_SMELL</type>
     <tag>tics</tag>
     <description>
       <![CDATA[Tics::ProhibitUseBase: do not use base.pm]]>
@@ -1433,6 +1546,7 @@
     <key>ValuesAndExpressions::ProhibitCommaSeparatedStatements</key>
     <name>Prohibit Comma Separated Statements</name>
     <configKey>ValuesAndExpressions::ProhibitCommaSeparatedStatements</configKey>
+    <type>BUG</type>
     <tag>bugs</tag>
     <tag>certrule</tag>
     <tag>core</tag>
@@ -1447,6 +1561,7 @@
     <key>ValuesAndExpressions::ProhibitComplexVersion</key>
     <name>Prohibit Complex Version</name>
     <configKey>ValuesAndExpressions::ProhibitComplexVersion</configKey>
+    <type>CODE_SMELL</type>
     <tag>core</tag>
     <tag>maintenance</tag>
     <description>
@@ -1459,6 +1574,7 @@
     <key>ValuesAndExpressions::ProhibitConstantPragma</key>
     <name>Prohibit Constant Pragma</name>
     <configKey>ValuesAndExpressions::ProhibitConstantPragma</configKey>
+    <type>BUG</type>
     <tag>bugs</tag>
     <tag>core</tag>
     <tag>pbp</tag>
@@ -1472,6 +1588,7 @@
     <key>ValuesAndExpressions::ProhibitEmptyQuotes</key>
     <name>Prohibit Empty Quotes</name>
     <configKey>ValuesAndExpressions::ProhibitEmptyQuotes</configKey>
+    <type>CODE_SMELL</type>
     <tag>core</tag>
     <tag>cosmetic</tag>
     <tag>pbp</tag>
@@ -1485,6 +1602,7 @@
     <key>ValuesAndExpressions::ProhibitEscapedCharacters</key>
     <name>Prohibit Escaped Characters</name>
     <configKey>ValuesAndExpressions::ProhibitEscapedCharacters</configKey>
+    <type>CODE_SMELL</type>
     <tag>core</tag>
     <tag>cosmetic</tag>
     <tag>pbp</tag>
@@ -1498,6 +1616,7 @@
     <key>ValuesAndExpressions::ProhibitImplicitNewlines</key>
     <name>Prohibit Implicit Newlines</name>
     <configKey>ValuesAndExpressions::ProhibitImplicitNewlines</configKey>
+    <type>CODE_SMELL</type>
     <tag>core</tag>
     <tag>cosmetic</tag>
     <tag>pbp</tag>
@@ -1511,6 +1630,7 @@
     <key>ValuesAndExpressions::ProhibitInterpolationOfLiterals</key>
     <name>Prohibit Interpolation Of Literals</name>
     <configKey>ValuesAndExpressions::ProhibitInterpolationOfLiterals</configKey>
+    <type>CODE_SMELL</type>
     <tag>core</tag>
     <tag>cosmetic</tag>
     <tag>pbp</tag>
@@ -1524,6 +1644,7 @@
     <key>ValuesAndExpressions::ProhibitLeadingZeros</key>
     <name>Prohibit Leading Zeros</name>
     <configKey>ValuesAndExpressions::ProhibitLeadingZeros</configKey>
+    <type>BUG</type>
     <tag>bugs</tag>
     <tag>certrec</tag>
     <tag>core</tag>
@@ -1538,6 +1659,7 @@
     <key>ValuesAndExpressions::ProhibitLongChainsOfMethodCalls</key>
     <name>Prohibit Long Chains Of Method Calls</name>
     <configKey>ValuesAndExpressions::ProhibitLongChainsOfMethodCalls</configKey>
+    <type>CODE_SMELL</type>
     <tag>core</tag>
     <tag>maintenance</tag>
     <description>
@@ -1550,6 +1672,7 @@
     <key>ValuesAndExpressions::ProhibitMagicNumbers</key>
     <name>Prohibit Magic Numbers</name>
     <configKey>ValuesAndExpressions::ProhibitMagicNumbers</configKey>
+    <type>CODE_SMELL</type>
     <tag>certrec</tag>
     <tag>core</tag>
     <tag>maintenance</tag>
@@ -1563,6 +1686,7 @@
     <key>ValuesAndExpressions::ProhibitMismatchedOperators</key>
     <name>Prohibit Mismatched Operators</name>
     <configKey>ValuesAndExpressions::ProhibitMismatchedOperators</configKey>
+    <type>BUG</type>
     <tag>bugs</tag>
     <tag>certrule</tag>
     <tag>core</tag>
@@ -1576,6 +1700,7 @@
     <key>ValuesAndExpressions::ProhibitMixedBooleanOperators</key>
     <name>Prohibit Mixed Boolean Operators</name>
     <configKey>ValuesAndExpressions::ProhibitMixedBooleanOperators</configKey>
+    <type>BUG</type>
     <tag>bugs</tag>
     <tag>certrec</tag>
     <tag>core</tag>
@@ -1590,6 +1715,7 @@
     <key>ValuesAndExpressions::ProhibitNoisyQuotes</key>
     <name>Prohibit Noisy Quotes</name>
     <configKey>ValuesAndExpressions::ProhibitNoisyQuotes</configKey>
+    <type>CODE_SMELL</type>
     <tag>core</tag>
     <tag>cosmetic</tag>
     <tag>pbp</tag>
@@ -1603,6 +1729,7 @@
     <key>ValuesAndExpressions::ProhibitQuotesAsQuotelikeOperatorDelimiters</key>
     <name>Prohibit Quotes As Quotelike Operator Delimiters</name>
     <configKey>ValuesAndExpressions::ProhibitQuotesAsQuotelikeOperatorDelimiters</configKey>
+    <type>CODE_SMELL</type>
     <tag>core</tag>
     <tag>maintenance</tag>
     <description>
@@ -1615,6 +1742,7 @@
     <key>ValuesAndExpressions::ProhibitSpecialLiteralHeredocTerminator</key>
     <name>Prohibit Special Literal Heredoc Terminator</name>
     <configKey>ValuesAndExpressions::ProhibitSpecialLiteralHeredocTerminator</configKey>
+    <type>CODE_SMELL</type>
     <tag>core</tag>
     <tag>maintenance</tag>
     <description>
@@ -1627,6 +1755,7 @@
     <key>ValuesAndExpressions::ProhibitVersionStrings</key>
     <name>Prohibit Version Strings</name>
     <configKey>ValuesAndExpressions::ProhibitVersionStrings</configKey>
+    <type>CODE_SMELL</type>
     <tag>core</tag>
     <tag>maintenance</tag>
     <tag>pbp</tag>
@@ -1640,6 +1769,7 @@
     <key>ValuesAndExpressions::RequireConstantVersion</key>
     <name>Require Constant Version</name>
     <configKey>ValuesAndExpressions::RequireConstantVersion</configKey>
+    <type>CODE_SMELL</type>
     <tag>core</tag>
     <tag>maintenance</tag>
     <description>
@@ -1652,6 +1782,7 @@
     <key>ValuesAndExpressions::RequireInterpolationOfMetachars</key>
     <name>Require Interpolation Of Metachars</name>
     <configKey>ValuesAndExpressions::RequireInterpolationOfMetachars</configKey>
+    <type>CODE_SMELL</type>
     <tag>core</tag>
     <tag>cosmetic</tag>
     <tag>pbp</tag>
@@ -1665,6 +1796,7 @@
     <key>ValuesAndExpressions::RequireNumberSeparators</key>
     <name>Require Number Separators</name>
     <configKey>ValuesAndExpressions::RequireNumberSeparators</configKey>
+    <type>CODE_SMELL</type>
     <tag>core</tag>
     <tag>cosmetic</tag>
     <tag>pbp</tag>
@@ -1678,6 +1810,7 @@
     <key>ValuesAndExpressions::RequireQuotedHeredocTerminator</key>
     <name>Require Quoted Heredoc Terminator</name>
     <configKey>ValuesAndExpressions::RequireQuotedHeredocTerminator</configKey>
+    <type>CODE_SMELL</type>
     <tag>core</tag>
     <tag>maintenance</tag>
     <tag>pbp</tag>
@@ -1691,6 +1824,7 @@
     <key>ValuesAndExpressions::RequireUpperCaseHeredocTerminator</key>
     <name>Require Upper Case Heredoc Terminator</name>
     <configKey>ValuesAndExpressions::RequireUpperCaseHeredocTerminator</configKey>
+    <type>CODE_SMELL</type>
     <tag>core</tag>
     <tag>cosmetic</tag>
     <tag>pbp</tag>
@@ -1704,6 +1838,7 @@
     <key>Variables::ProhibitAugmentedAssignmentInDeclaration</key>
     <name>Prohibit Augmented Assignment In Declaration</name>
     <configKey>Variables::ProhibitAugmentedAssignmentInDeclaration</configKey>
+    <type>BUG</type>
     <tag>bugs</tag>
     <tag>core</tag>
     <description>
@@ -1716,6 +1851,7 @@
     <key>Variables::ProhibitConditionalDeclarations</key>
     <name>Prohibit Conditional Declarations</name>
     <configKey>Variables::ProhibitConditionalDeclarations</configKey>
+    <type>BUG</type>
     <tag>bugs</tag>
     <tag>core</tag>
     <description>
@@ -1728,6 +1864,7 @@
     <key>Variables::ProhibitLocalVars</key>
     <name>Prohibit Local Vars</name>
     <configKey>Variables::ProhibitLocalVars</configKey>
+    <type>CODE_SMELL</type>
     <tag>core</tag>
     <tag>maintenance</tag>
     <tag>pbp</tag>
@@ -1741,6 +1878,7 @@
     <key>Variables::ProhibitMatchVars</key>
     <name>Prohibit Match Vars</name>
     <configKey>Variables::ProhibitMatchVars</configKey>
+    <type>CODE_SMELL</type>
     <tag>core</tag>
     <tag>pbp</tag>
     <tag>performance</tag>
@@ -1754,6 +1892,7 @@
     <key>Variables::ProhibitPackageVars</key>
     <name>Prohibit Package Vars</name>
     <configKey>Variables::ProhibitPackageVars</configKey>
+    <type>CODE_SMELL</type>
     <tag>core</tag>
     <tag>maintenance</tag>
     <tag>pbp</tag>
@@ -1767,6 +1906,7 @@
     <key>Variables::ProhibitPerl4PackageNames</key>
     <name>Prohibit Perl4Package Names</name>
     <configKey>Variables::ProhibitPerl4PackageNames</configKey>
+    <type>CODE_SMELL</type>
     <tag>certrec</tag>
     <tag>core</tag>
     <tag>maintenance</tag>
@@ -1780,6 +1920,7 @@
     <key>Variables::ProhibitPunctuationVars</key>
     <name>Prohibit Punctuation Vars</name>
     <configKey>Variables::ProhibitPunctuationVars</configKey>
+    <type>CODE_SMELL</type>
     <tag>core</tag>
     <tag>cosmetic</tag>
     <tag>pbp</tag>
@@ -1793,6 +1934,7 @@
     <key>Variables::ProhibitReusedNames</key>
     <name>Prohibit Reused Names</name>
     <configKey>Variables::ProhibitReusedNames</configKey>
+    <type>BUG</type>
     <tag>bugs</tag>
     <tag>core</tag>
     <description>
@@ -1805,6 +1947,7 @@
     <key>Variables::ProhibitUnusedVariables</key>
     <name>Prohibit Unused Variables</name>
     <configKey>Variables::ProhibitUnusedVariables</configKey>
+    <type>CODE_SMELL</type>
     <tag>certrec</tag>
     <tag>core</tag>
     <tag>maintenance</tag>
@@ -1818,6 +1961,7 @@
     <key>Variables::ProtectPrivateVars</key>
     <name>Protect Private Vars</name>
     <configKey>Variables::ProtectPrivateVars</configKey>
+    <type>VULNERABILITY</type>
     <tag>certrule</tag>
     <tag>core</tag>
     <tag>maintenance</tag>
@@ -1831,6 +1975,7 @@
     <key>Variables::RequireInitializationForLocalVars</key>
     <name>Require Initialization For Local Vars</name>
     <configKey>Variables::RequireInitializationForLocalVars</configKey>
+    <type>BUG</type>
     <tag>bugs</tag>
     <tag>certrec</tag>
     <tag>core</tag>
@@ -1845,6 +1990,7 @@
     <key>Variables::RequireLexicalLoopIterators</key>
     <name>Require Lexical Loop Iterators</name>
     <configKey>Variables::RequireLexicalLoopIterators</configKey>
+    <type>BUG</type>
     <tag>bugs</tag>
     <tag>certrec</tag>
     <tag>core</tag>
@@ -1859,6 +2005,7 @@
     <key>Variables::RequireLocalizedPunctuationVars</key>
     <name>Require Localized Punctuation Vars</name>
     <configKey>Variables::RequireLocalizedPunctuationVars</configKey>
+    <type>BUG</type>
     <tag>bugs</tag>
     <tag>certrec</tag>
     <tag>core</tag>
@@ -1873,6 +2020,7 @@
     <key>Variables::RequireNegativeIndices</key>
     <name>Require Negative Indices</name>
     <configKey>Variables::RequireNegativeIndices</configKey>
+    <type>CODE_SMELL</type>
     <tag>core</tag>
     <tag>maintenance</tag>
     <tag>pbp</tag>
@@ -1881,6 +2029,8 @@
     </description>
     <priority>CRITICAL</priority>
   </rule>
+
+<!--  manual / other rules -->
 
   <rule>
     <key>DE_EPAGES::BuiltinFunctions::ProhibitForeachQw</key>
@@ -2091,27 +2241,6 @@
     </description>
     <priority>MAJOR</priority>
   </rule>
-
-  <rule>
-    <key>NamingConventions::ProhibitMixedCaseSubs</key>
-    <name>Prohibit Mixed Case Subs</name>
-    <configKey>NamingConventions::ProhibitMixedCaseSubs</configKey>
-    <description>
-      <![CDATA[NamingConventions::ProhibitMixedCaseSubs: Write `sub my_function{}' instead of `sub MyFunction{}'.]]>
-    </description>
-    <priority>INFO</priority>
-  </rule>
-
-  <rule>
-    <key>NamingConventions::ProhibitMixedCaseVars</key>
-    <name>Prohibit Mixed Case Vars</name>
-    <configKey>NamingConventions::ProhibitMixedCaseVars</configKey>
-    <description>
-      <![CDATA[NamingConventions::ProhibitMixedCaseVars: Write `$my_variable = 42' instead of `$MyVariable = 42'.]]>
-    </description>
-    <priority>INFO</priority>
-  </rule>
-
 
   <rule>
     <key>NamingConventions::ProhibitMixedCaseSubs</key>

@@ -29,6 +29,10 @@ What we have so far...
 
 ![PerlCritic violation in SonarQube](img/issues_overview.png)
 
+![PerlCritic violation in SonarQube](img/project_overview.png)
+
+![PerlCritic violation in SonarQube](img/rules.png)
+
 ## Running it
 
 The easiest way to see SonarQube with the Perl Plugin in action is to 

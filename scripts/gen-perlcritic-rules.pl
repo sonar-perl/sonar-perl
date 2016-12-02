@@ -48,9 +48,22 @@ EOL
 
     $tmp =~ s|<priority>(\d)</priority>|"<priority>" . $severities[$1] . "</priority>"|eg;
     $tmp =~ s|<name>(.*?)</name>|"<name>" . _makeReadable($1) . "</name>"|eg;
+    $tmp =~ s|(    <theme>(.*?)</theme>)|_makeRuleType($2) . $1|eg;
     $tmp =~ s|    <theme>(.*?)</theme>| _makeRuleTags($1)|eg;
 
     print {$output} $tmp;
+}
+
+sub _makeRuleType {
+    # CODE_SMELL(1), BUG(2), VULNERABILITY(3);
+    my ($str) = @_;
+    if($str =~ /\bbugs\b/) {
+        return "    <type>BUG</type>\n";
+    }
+    if($str =~ /\bsecurity\b|\bcertrule\b/) {
+        return "    <type>VULNERABILITY</type>\n";
+    }
+    return "    <type>CODE_SMELL</type>\n";
 }
 
 sub  _makeRuleTags {
