@@ -116,7 +116,9 @@ need to have a local docker daemon running for this.
 
 ## Next steps
 
-Please look at the issues in our [bugtracker](https://github.com/otrosien/sonar-perl/issues) for the planning and status of the next steps.
+Please look at the issues in our [bugtracker](https://github.com/otrosien/sonar-perl/issues) for
+the planning and status of the next steps. We also appreciate contributions from the community.
+So, if you're interested, get in touch with us!
 
 
 ## Links
