@@ -40,17 +40,7 @@ public class SampleProjectIntegrationTest {
 
         wsClient = orchestrator.getServer().getWsClient();
     }
-    
 
-//    @Test
-//    public void test() throws Exception {
-//        assertThat(context.measure(key, CoreMetrics.NCLOC).value()).isEqualTo(15);
-//        assertThat(context.measure(key, CoreMetrics.COMMENT_LINES).value()).isEqualTo(26);
-//        assertThat(context.measure(key, CoreMetrics.CLASSES).value()).isEqualTo(1);
-//        assertThat(context.measure(key, CoreMetrics.FUNCTIONS).value()).isEqualTo(3);
-//    }
-
-    
     @Test
     public void project_level() {
       // Size
