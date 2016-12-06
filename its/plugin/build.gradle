@@ -1,0 +1,14 @@
+apply plugin: 'java'
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    testCompile 'junit:junit:4.12'
+    testCompile 'org.assertj:assertj-core:3.6.1'
+    testCompile 'org.sonarsource.orchestrator:sonar-orchestrator:3.13'
+    testCompile project(':sonar-perl-plugin')
+}
+
+tasks.test.dependsOn(tasks.findByPath(':sonar-perl-plugin:jar'))
