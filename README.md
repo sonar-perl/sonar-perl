@@ -103,7 +103,7 @@ perlcritic --cruel --quiet --verbose "%f~|~%s~|~%l~|~%c~|~%m~|~%e~|~%p~||~%n" li
 
 ### Compatibility
 
-We build and test against the current LTS release (5.6), SonarQube 6.x should work as well. Please report bugs
+We support the current LTS release (5.6) and SonarQube 6.x. Please report bugs
 or incompatibilities in our [bugtracker](https://github.com/otrosien/sonar-perl/issues).
 
 

@@ -93,7 +93,7 @@ task createDockerContainer(type: DockerCreateContainer) {
     portBindings = [ '9000:9000', '9002:9002' ]
 }
 
-build.dependsOn(createDockerContainer)
+publish.dependsOn(createDockerContainer)
 
 task startDockerContainer(type: DockerStartContainer) {
     dependsOn createDockerContainer
