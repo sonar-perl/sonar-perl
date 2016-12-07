@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/otrosien/sonar-perl.svg?branch=master)](https://travis-ci.org/otrosien/sonar-perl)
 [![Quality Gate](https://sonarqube.com/api/badges/gate?key=com.github.otrosien:sonar-perl)](https://sonarqube.com/dashboard/index/com.github.otrosien:sonar-perl)
-
+[![Coverage](https://sonarqube.com/api/badges/measure?key=com.github.otrosien:sonar-perl&metric=coverage&template=FLAT)](https://sonarqube.com/dashboard/index/com.github.otrosien:sonar-perl)
 
 # SonarQube Perl Plugin (beta)
 
