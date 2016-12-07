@@ -21,7 +21,7 @@ allprojects {
 
 sonarqube {
     properties {
-        property "sonar.projectKey", "sonar-perl"
+        property "sonar.projectKey", "com.github.otrosien:sonar-perl"
         property "sonar.verbose", "true"
         property "sonar.scm.provider", "git"
         property "sonar.sourceEncoding", "UTF-8"
