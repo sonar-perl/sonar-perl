@@ -33,6 +33,13 @@ What we have so far...
 
 ![PerlCritic violation in SonarQube](img/rules.png)
 
+## SNEAK PREVIEW
+
+This will be coming in version 0.3: Coverage Reporting! *please hold the line..*
+
+![Perl Coverage in SonarQube](img/coverage.png)
+
+
 ## Running it
 
 The easiest way to see SonarQube with the Perl Plugin in action is to 

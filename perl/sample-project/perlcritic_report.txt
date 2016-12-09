@@ -1,1 +1,18 @@
-lib/Sample/Project.pm~|~5~|~3~|~1~|~Code before strictures are enabled~|~See page 429 of PBP~|~TestingAndDebugging::RequireUseStrict~|~
+lib/Sample/Project.pm~|~2~|~1~|~1~|~No package-scoped "$VERSION" variable found~|~See page 404 of PBP~|~Modules::RequireVersionVar~||~
+lib/Sample/Project.pm~|~5~|~3~|~1~|~Code before strictures are enabled~|~See page 429 of PBP~|~TestingAndDebugging::RequireUseStrict~||~
+lib/Sample/Project.pm~|~4~|~3~|~1~|~Code before warnings are enabled~|~See page 431 of PBP~|~TestingAndDebugging::RequireUseWarnings~||~
+lib/Sample/Project.pm~|~4~|~5~|~1~|~Always unpack @_ first~|~See page 178 of PBP~|~Subroutines::RequireArgUnpacking~||~
+lib/Sample/Project.pm~|~2~|~22~|~1~|~Link L<IO::Socket::INET> on line 47 does not specify text~|~Without text, you are at the mercy of the POD translator~|~Documentation::RequirePodLinksIncludeText~||~
+lib/Sample/Project.pm~|~2~|~22~|~1~|~Missing "VERSION" section in POD~|~See pages 133,138 of PBP~|~Documentation::RequirePodSections~||~
+lib/Sample/Project.pm~|~2~|~22~|~1~|~Missing "SUBROUTINES/METHODS" section in POD~|~See pages 133,138 of PBP~|~Documentation::RequirePodSections~||~
+lib/Sample/Project.pm~|~2~|~22~|~1~|~Missing "DIAGNOSTICS" section in POD~|~See pages 133,138 of PBP~|~Documentation::RequirePodSections~||~
+lib/Sample/Project.pm~|~2~|~22~|~1~|~Missing "CONFIGURATION AND ENVIRONMENT" section in POD~|~See pages 133,138 of PBP~|~Documentation::RequirePodSections~||~
+lib/Sample/Project.pm~|~2~|~22~|~1~|~Missing "DEPENDENCIES" section in POD~|~See pages 133,138 of PBP~|~Documentation::RequirePodSections~||~
+lib/Sample/Project.pm~|~2~|~22~|~1~|~Missing "INCOMPATIBILITIES" section in POD~|~See pages 133,138 of PBP~|~Documentation::RequirePodSections~||~
+lib/Sample/Project.pm~|~2~|~22~|~1~|~Missing "BUGS AND LIMITATIONS" section in POD~|~See pages 133,138 of PBP~|~Documentation::RequirePodSections~||~
+lib/Sample/Project.pm~|~2~|~22~|~1~|~Missing "AUTHOR" section in POD~|~See pages 133,138 of PBP~|~Documentation::RequirePodSections~||~
+lib/Sample/Project.pm~|~2~|~22~|~1~|~Missing "LICENSE AND COPYRIGHT" section in POD~|~See pages 133,138 of PBP~|~Documentation::RequirePodSections~||~
+t/Project.t~|~4~|~1~|~1~|~Code not contained in explicit package~|~Violates encapsulation~|~Modules::RequireExplicitPackage~||~
+t/Project.t~|~2~|~1~|~1~|~No package-scoped "$VERSION" variable found~|~See page 404 of PBP~|~Modules::RequireVersionVar~||~
+t/Project.t~|~5~|~5~|~1~|~Code before strictures are enabled~|~See page 429 of PBP~|~TestingAndDebugging::RequireUseStrict~||~
+t/Project.t~|~4~|~5~|~1~|~Code before warnings are enabled~|~See page 431 of PBP~|~TestingAndDebugging::RequireUseWarnings~||~

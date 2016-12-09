@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<coverage generated="1481308630" clover="0.35" >
+    <project timestamp="1481308630" name="Devel::Cover::Report::Clover">
+        <metrics packages="1" elements="9" coveredelements="7" statements="6" coveredstatements="5" complexity="0" files="1" loc="43" ncloc="15" classes="1" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="2"/>
+        <package name="Sample">
+            <metrics elements="9" coveredelements="7" statements="6" coveredstatements="5" complexity="0" files="1" loc="43" ncloc="15" classes="1" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="2"/>
+            <file path="lib/Sample/Project.pm" name="lib/Sample/Project.pm">
+                <metrics elements="9" coveredelements="7" statements="6" coveredstatements="5" complexity="0" loc="43" ncloc="15" classes="1" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="2"/>
+                <class name="Project">
+                    <metrics elements="9" coveredelements="7" statements="6" coveredstatements="5" complexity="0" loc="43" ncloc="15" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="2"/>
+                </class>
+                <line num="6" count="1" type="stmt" />
+                <line num="6" count="1" type="method" />
+                <line num="7" count="1" type="stmt" />
+                <line num="8" count="1" type="stmt" />
+                <line num="9" count="1" type="stmt" />
+                <line num="14" count="1" type="stmt" />
+                <line num="14" count="1" type="method" />
+                <line num="19" count="0" type="stmt" />
+                <line num="19" count="0" type="method" />
+            </file>
+        </package>
+    </project>
+</coverage>
+
