@@ -68,7 +68,7 @@ sub _makeRuleType {
 
 sub  _makeRuleTags {
     my ($str) = @_;
-    return join( "\n", map { "    <tag>".$_. "</tag>"} split(/ /, $str));
+    return join( "\n", map { "    <tag>".lc($_). "</tag>"} split(/ /, $str));
 }
 
 sub _makeReadable {

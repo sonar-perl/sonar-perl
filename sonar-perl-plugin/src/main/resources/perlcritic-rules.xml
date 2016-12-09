@@ -1,7 +1,121 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rules>
+  <rule>
+    <key>Bangs::ProhibitBitwiseOperators</key>
+    <name>Prohibit Bitwise Operators</name>
+    <configKey>Bangs::ProhibitBitwiseOperators</configKey>
+    <type>BUG</type>
+    <tag>bugs</tag>
+    <tag>core</tag>
+    <description>
+      <![CDATA[Bangs::ProhibitBitwiseOperators: Bitwise operators are usually accidentally used instead of logical boolean operators.]]>
+    </description>
+    <priority>BLOCKER</priority>
+  </rule>
 
-<!--  generated rules from gen-perlcritic-rules.pl -->
+  <rule>
+    <key>Bangs::ProhibitCommentedOutCode</key>
+    <name>Prohibit Commented Out Code</name>
+    <configKey>Bangs::ProhibitCommentedOutCode</configKey>
+    <type>CODE_SMELL</type>
+    <tag>bangs</tag>
+    <tag>maintenance</tag>
+    <description>
+      <![CDATA[Bangs::ProhibitCommentedOutCode: Commented-out code is usually noise. It should be removed.]]>
+    </description>
+    <priority>MINOR</priority>
+  </rule>
+
+  <rule>
+    <key>Bangs::ProhibitDebuggingModules</key>
+    <name>Prohibit Debugging Modules</name>
+    <configKey>Bangs::ProhibitDebuggingModules</configKey>
+    <type>CODE_SMELL</type>
+    <tag>bangs</tag>
+    <tag>maintenance</tag>
+    <description>
+      <![CDATA[Bangs::ProhibitDebuggingModules: Prohibit loading of debugging modules like Data::Dumper]]>
+    </description>
+    <priority>CRITICAL</priority>
+  </rule>
+
+  <rule>
+    <key>Bangs::ProhibitFlagComments</key>
+    <name>Prohibit Flag Comments</name>
+    <configKey>Bangs::ProhibitFlagComments</configKey>
+    <type>CODE_SMELL</type>
+    <tag>bangs</tag>
+    <tag>maintenance</tag>
+    <description>
+      <![CDATA[Bangs::ProhibitFlagComments: Don't use XXX, TODO, or FIXME.]]>
+    </description>
+    <priority>MINOR</priority>
+  </rule>
+
+  <rule>
+    <key>Bangs::ProhibitNoPlan</key>
+    <name>Prohibit No Plan</name>
+    <configKey>Bangs::ProhibitNoPlan</configKey>
+    <type>CODE_SMELL</type>
+    <tag>bangs</tag>
+    <tag>tests</tag>
+    <description>
+      <![CDATA[Bangs::ProhibitNoPlan: Know what you're going to test.]]>
+    </description>
+    <priority>MINOR</priority>
+  </rule>
+
+  <rule>
+    <key>Bangs::ProhibitNumberedNames</key>
+    <name>Prohibit Numbered Names</name>
+    <configKey>Bangs::ProhibitNumberedNames</configKey>
+    <type>CODE_SMELL</type>
+    <tag>bangs</tag>
+    <tag>maintenance</tag>
+    <description>
+      <![CDATA[Bangs::ProhibitNumberedNames: Prohibit variables differentiated by trailing numbers.]]>
+    </description>
+    <priority>MAJOR</priority>
+  </rule>
+
+  <rule>
+    <key>Bangs::ProhibitRefProtoOrProto</key>
+    <name>Prohibit Ref Proto Or Proto</name>
+    <configKey>Bangs::ProhibitRefProtoOrProto</configKey>
+    <type>CODE_SMELL</type>
+    <tag>bangs</tag>
+    <tag>complexity</tag>
+    <description>
+      <![CDATA[Bangs::ProhibitRefProtoOrProto: Create a `clone()' method if you need copies of objects.]]>
+    </description>
+    <priority>CRITICAL</priority>
+  </rule>
+
+  <rule>
+    <key>Bangs::ProhibitUselessRegexModifiers</key>
+    <name>Prohibit Useless Regex Modifiers</name>
+    <configKey>Bangs::ProhibitUselessRegexModifiers</configKey>
+    <type>BUG</type>
+    <tag>bangs</tag>
+    <tag>bugs</tag>
+    <description>
+      <![CDATA[Bangs::ProhibitUselessRegexModifiers: Adding modifiers to a regular expression made up entirely of a variable created with qr() is usually not doing what you expect.]]>
+    </description>
+    <priority>CRITICAL</priority>
+  </rule>
+
+  <rule>
+    <key>Bangs::ProhibitVagueNames</key>
+    <name>Prohibit Vague Names</name>
+    <configKey>Bangs::ProhibitVagueNames</configKey>
+    <type>CODE_SMELL</type>
+    <tag>bangs</tag>
+    <tag>readability</tag>
+    <description>
+      <![CDATA[Bangs::ProhibitVagueNames: Don't use generic variable names.]]>
+    </description>
+    <priority>MAJOR</priority>
+  </rule>
 
   <rule>
     <key>BuiltinFunctions::ProhibitBooleanGrep</key>
@@ -272,6 +386,19 @@
   </rule>
 
   <rule>
+    <key>CodeLayout::ProhibitFatCommaNewline</key>
+    <name>Prohibit Fat Comma Newline</name>
+    <configKey>CodeLayout::ProhibitFatCommaNewline</configKey>
+    <type>BUG</type>
+    <tag>bugs</tag>
+    <tag>pulp</tag>
+    <description>
+      <![CDATA[CodeLayout::ProhibitFatCommaNewline: keep a fat comma on the same line as its quoted word]]>
+    </description>
+    <priority>MAJOR</priority>
+  </rule>
+
+  <rule>
     <key>CodeLayout::ProhibitHardTabs</key>
     <name>Prohibit Hard Tabs</name>
     <configKey>CodeLayout::ProhibitHardTabs</configKey>
@@ -281,6 +408,31 @@
     <tag>pbp</tag>
     <description>
       <![CDATA[CodeLayout::ProhibitHardTabs: Use spaces instead of tabs.]]>
+    </description>
+    <priority>MAJOR</priority>
+  </rule>
+
+  <rule>
+    <key>CodeLayout::ProhibitHashBarewords</key>
+    <name>Prohibit Hash Barewords</name>
+    <configKey>CodeLayout::ProhibitHashBarewords</configKey>
+    <type>CODE_SMELL</type>
+    <tag>itch</tag>
+    <description>
+      <![CDATA[CodeLayout::ProhibitHashBarewords: ]]>
+    </description>
+    <priority>MAJOR</priority>
+  </rule>
+
+  <rule>
+    <key>CodeLayout::ProhibitIfIfSameLine</key>
+    <name>Prohibit If If Same Line</name>
+    <configKey>CodeLayout::ProhibitIfIfSameLine</configKey>
+    <type>BUG</type>
+    <tag>bugs</tag>
+    <tag>pulp</tag>
+    <description>
+      <![CDATA[CodeLayout::ProhibitIfIfSameLine: don't put if after if on same line]]>
     </description>
     <priority>MAJOR</priority>
   </rule>
@@ -326,6 +478,19 @@
   </rule>
 
   <rule>
+    <key>CodeLayout::RequireASCII</key>
+    <name>Require ASCII</name>
+    <configKey>CodeLayout::RequireASCII</configKey>
+    <type>CODE_SMELL</type>
+    <tag>more</tag>
+    <tag>notrecommended</tag>
+    <description>
+      <![CDATA[CodeLayout::RequireASCII: Disallow high-bit characters.]]>
+    </description>
+    <priority>INFO</priority>
+  </rule>
+
+  <rule>
     <key>CodeLayout::RequireConsistentNewlines</key>
     <name>Require Consistent Newlines</name>
     <configKey>CodeLayout::RequireConsistentNewlines</configKey>
@@ -336,6 +501,19 @@
       <![CDATA[CodeLayout::RequireConsistentNewlines: Use the same newline through the source.]]>
     </description>
     <priority>CRITICAL</priority>
+  </rule>
+
+  <rule>
+    <key>CodeLayout::RequireFinalSemicolon</key>
+    <name>Require Final Semicolon</name>
+    <configKey>CodeLayout::RequireFinalSemicolon</configKey>
+    <type>CODE_SMELL</type>
+    <tag>cosmetic</tag>
+    <tag>pulp</tag>
+    <description>
+      <![CDATA[CodeLayout::RequireFinalSemicolon: require a semicolon at the end of code blocks]]>
+    </description>
+    <priority>MINOR</priority>
   </rule>
 
   <rule>
@@ -353,6 +531,19 @@
   </rule>
 
   <rule>
+    <key>CodeLayout::RequireTrailingCommaAtNewline</key>
+    <name>Require Trailing Comma At Newline</name>
+    <configKey>CodeLayout::RequireTrailingCommaAtNewline</configKey>
+    <type>CODE_SMELL</type>
+    <tag>cosmetic</tag>
+    <tag>pulp</tag>
+    <description>
+      <![CDATA[CodeLayout::RequireTrailingCommaAtNewline: comma at end of list at newline]]>
+    </description>
+    <priority>MINOR</priority>
+  </rule>
+
+  <rule>
     <key>CodeLayout::RequireTrailingCommas</key>
     <name>Require Trailing Commas</name>
     <configKey>CodeLayout::RequireTrailingCommas</configKey>
@@ -364,6 +555,121 @@
       <![CDATA[CodeLayout::RequireTrailingCommas: Put a comma at the end of every multi-line list declaration, including the last one.]]>
     </description>
     <priority>INFO</priority>
+  </rule>
+
+  <rule>
+    <key>CodeLayout::RequireUseUTF8</key>
+    <name>Require Use UTF8</name>
+    <configKey>CodeLayout::RequireUseUTF8</configKey>
+    <type>CODE_SMELL</type>
+    <tag>swift</tag>
+    <tag>unicode</tag>
+    <description>
+      <![CDATA[CodeLayout::RequireUseUTF8: Require that all modules have a `use utf8;' statement.]]>
+    </description>
+    <priority>MAJOR</priority>
+  </rule>
+
+  <rule>
+    <key>Compatibility::ConstantLeadingUnderscore</key>
+    <name>Constant Leading Underscore</name>
+    <configKey>Compatibility::ConstantLeadingUnderscore</configKey>
+    <type>CODE_SMELL</type>
+    <tag>compatibility</tag>
+    <tag>pulp</tag>
+    <description>
+      <![CDATA[Compatibility::ConstantLeadingUnderscore: new enough "constant" module for leading underscores]]>
+    </description>
+    <priority>MAJOR</priority>
+  </rule>
+
+  <rule>
+    <key>Compatibility::ConstantPragmaHash</key>
+    <name>Constant Pragma Hash</name>
+    <configKey>Compatibility::ConstantPragmaHash</configKey>
+    <type>CODE_SMELL</type>
+    <tag>compatibility</tag>
+    <tag>pulp</tag>
+    <description>
+      <![CDATA[Compatibility::ConstantPragmaHash: new enough "constant" module for multiple constants]]>
+    </description>
+    <priority>MAJOR</priority>
+  </rule>
+
+  <rule>
+    <key>Compatibility::Gtk2Constants</key>
+    <name>Gtk2Constants</name>
+    <configKey>Compatibility::Gtk2Constants</configKey>
+    <type>BUG</type>
+    <tag>bugs</tag>
+    <tag>pulp</tag>
+    <description>
+      <![CDATA[Compatibility::Gtk2Constants: new enough Gtk2 version for its constants]]>
+    </description>
+    <priority>MAJOR</priority>
+  </rule>
+
+  <rule>
+    <key>Compatibility::PerlMinimumVersionAndWhy</key>
+    <name>Perl Minimum Version And Why</name>
+    <configKey>Compatibility::PerlMinimumVersionAndWhy</configKey>
+    <type>CODE_SMELL</type>
+    <tag>compatibility</tag>
+    <tag>pulp</tag>
+    <description>
+      <![CDATA[Compatibility::PerlMinimumVersionAndWhy: explicit Perl version for features used]]>
+    </description>
+    <priority>MINOR</priority>
+  </rule>
+
+  <rule>
+    <key>Compatibility::PodMinimumVersion</key>
+    <name>Pod Minimum Version</name>
+    <configKey>Compatibility::PodMinimumVersion</configKey>
+    <type>CODE_SMELL</type>
+    <tag>compatibility</tag>
+    <tag>pulp</tag>
+    <description>
+      <![CDATA[Compatibility::PodMinimumVersion: check Perl version declared against POD features used]]>
+    </description>
+    <priority>MINOR</priority>
+  </rule>
+
+  <rule>
+    <key>Compatibility::ProhibitThreeArgumentOpen</key>
+    <name>Prohibit Three Argument Open</name>
+    <configKey>Compatibility::ProhibitThreeArgumentOpen</configKey>
+    <type>CODE_SMELL</type>
+    <tag>compatibility</tag>
+    <description>
+      <![CDATA[Compatibility::ProhibitThreeArgumentOpen: Don't allow three-argument open unless the code uses a version of perl that supports it.]]>
+    </description>
+    <priority>BLOCKER</priority>
+  </rule>
+
+  <rule>
+    <key>Compatibility::ProhibitUnixDevNull</key>
+    <name>Prohibit Unix Dev Null</name>
+    <configKey>Compatibility::ProhibitUnixDevNull</configKey>
+    <type>BUG</type>
+    <tag>bugs</tag>
+    <tag>pulp</tag>
+    <description>
+      <![CDATA[Compatibility::ProhibitUnixDevNull: don't use explicit /dev/null]]>
+    </description>
+    <priority>MINOR</priority>
+  </rule>
+
+  <rule>
+    <key>CompileTime</key>
+    <name>Compile Time</name>
+    <configKey>CompileTime</configKey>
+    <type>CODE_SMELL</type>
+    <tag>more</tag>
+    <description>
+      <![CDATA[CompileTime: Provide Perl::Critic support for hunting down compile-time side effects]]>
+    </description>
+    <priority>CRITICAL</priority>
   </rule>
 
   <rule>
@@ -522,6 +828,188 @@
   </rule>
 
   <rule>
+    <key>Documentation::ProhibitAdjacentLinks</key>
+    <name>Prohibit Adjacent Links</name>
+    <configKey>Documentation::ProhibitAdjacentLinks</configKey>
+    <type>CODE_SMELL</type>
+    <tag>cosmetic</tag>
+    <tag>pulp</tag>
+    <description>
+      <![CDATA[Documentation::ProhibitAdjacentLinks: consecutive L<> links]]>
+    </description>
+    <priority>INFO</priority>
+  </rule>
+
+  <rule>
+    <key>Documentation::ProhibitBadAproposMarkup</key>
+    <name>Prohibit Bad Apropos Markup</name>
+    <configKey>Documentation::ProhibitBadAproposMarkup</configKey>
+    <type>CODE_SMELL</type>
+    <tag>cosmetic</tag>
+    <tag>pulp</tag>
+    <description>
+      <![CDATA[Documentation::ProhibitBadAproposMarkup: don't use C<> markup in a NAME section]]>
+    </description>
+    <priority>MINOR</priority>
+  </rule>
+
+  <rule>
+    <key>Documentation::ProhibitDuplicateHeadings</key>
+    <name>Prohibit Duplicate Headings</name>
+    <configKey>Documentation::ProhibitDuplicateHeadings</configKey>
+    <type>BUG</type>
+    <tag>bugs</tag>
+    <tag>pulp</tag>
+    <description>
+      <![CDATA[Documentation::ProhibitDuplicateHeadings: don't duplicate =head names]]>
+    </description>
+    <priority>MAJOR</priority>
+  </rule>
+
+  <rule>
+    <key>Documentation::ProhibitDuplicateSeeAlso</key>
+    <name>Prohibit Duplicate See Also</name>
+    <configKey>Documentation::ProhibitDuplicateSeeAlso</configKey>
+    <type>CODE_SMELL</type>
+    <tag>cosmetic</tag>
+    <tag>pulp</tag>
+    <description>
+      <![CDATA[Documentation::ProhibitDuplicateSeeAlso: don't duplicate L<> links in SEE ALSO]]>
+    </description>
+    <priority>MINOR</priority>
+  </rule>
+
+  <rule>
+    <key>Documentation::ProhibitLinkToSelf</key>
+    <name>Prohibit Link To Self</name>
+    <configKey>Documentation::ProhibitLinkToSelf</configKey>
+    <type>CODE_SMELL</type>
+    <tag>cosmetic</tag>
+    <tag>pulp</tag>
+    <description>
+      <![CDATA[Documentation::ProhibitLinkToSelf: don't L<> link to own POD]]>
+    </description>
+    <priority>MINOR</priority>
+  </rule>
+
+  <rule>
+    <key>Documentation::ProhibitParagraphEndComma</key>
+    <name>Prohibit Paragraph End Comma</name>
+    <configKey>Documentation::ProhibitParagraphEndComma</configKey>
+    <type>CODE_SMELL</type>
+    <tag>cosmetic</tag>
+    <tag>pulp</tag>
+    <description>
+      <![CDATA[Documentation::ProhibitParagraphEndComma: avoid comma at end of section]]>
+    </description>
+    <priority>INFO</priority>
+  </rule>
+
+  <rule>
+    <key>Documentation::ProhibitParagraphTwoDots</key>
+    <name>Prohibit Paragraph Two Dots</name>
+    <configKey>Documentation::ProhibitParagraphTwoDots</configKey>
+    <type>CODE_SMELL</type>
+    <tag>cosmetic</tag>
+    <tag>pulp</tag>
+    <description>
+      <![CDATA[Documentation::ProhibitParagraphTwoDots: don't end a paragraph with two dots]]>
+    </description>
+    <priority>INFO</priority>
+  </rule>
+
+  <rule>
+    <key>Documentation::ProhibitUnbalancedParens</key>
+    <name>Prohibit Unbalanced Parens</name>
+    <configKey>Documentation::ProhibitUnbalancedParens</configKey>
+    <type>CODE_SMELL</type>
+    <tag>cosmetic</tag>
+    <tag>pulp</tag>
+    <description>
+      <![CDATA[Documentation::ProhibitUnbalancedParens: don't leave an open bracket or paren]]>
+    </description>
+    <priority>MINOR</priority>
+  </rule>
+
+  <rule>
+    <key>Documentation::ProhibitVerbatimMarkup</key>
+    <name>Prohibit Verbatim Markup</name>
+    <configKey>Documentation::ProhibitVerbatimMarkup</configKey>
+    <type>CODE_SMELL</type>
+    <tag>cosmetic</tag>
+    <tag>pulp</tag>
+    <description>
+      <![CDATA[Documentation::ProhibitVerbatimMarkup: unexpanded C<> etc markup in POD verbatim paras]]>
+    </description>
+    <priority>MINOR</priority>
+  </rule>
+
+  <rule>
+    <key>Documentation::RequireEndBeforeLastPod</key>
+    <name>Require End Before Last Pod</name>
+    <configKey>Documentation::RequireEndBeforeLastPod</configKey>
+    <type>CODE_SMELL</type>
+    <tag>cosmetic</tag>
+    <tag>pulp</tag>
+    <description>
+      <![CDATA[Documentation::RequireEndBeforeLastPod: require __END__ before POD at end of file]]>
+    </description>
+    <priority>MINOR</priority>
+  </rule>
+
+  <rule>
+    <key>Documentation::RequireFilenameMarkup</key>
+    <name>Require Filename Markup</name>
+    <configKey>Documentation::RequireFilenameMarkup</configKey>
+    <type>CODE_SMELL</type>
+    <tag>cosmetic</tag>
+    <tag>pulp</tag>
+    <description>
+      <![CDATA[Documentation::RequireFilenameMarkup: markup /foo filenames]]>
+    </description>
+    <priority>MINOR</priority>
+  </rule>
+
+  <rule>
+    <key>Documentation::RequireFinalCut</key>
+    <name>Require Final Cut</name>
+    <configKey>Documentation::RequireFinalCut</configKey>
+    <type>CODE_SMELL</type>
+    <tag>cosmetic</tag>
+    <tag>pulp</tag>
+    <description>
+      <![CDATA[Documentation::RequireFinalCut: end POD with =cut directive]]>
+    </description>
+    <priority>INFO</priority>
+  </rule>
+
+  <rule>
+    <key>Documentation::RequireLinkedURLs</key>
+    <name>Require Linked URLs</name>
+    <configKey>Documentation::RequireLinkedURLs</configKey>
+    <type>CODE_SMELL</type>
+    <tag>cosmetic</tag>
+    <tag>pulp</tag>
+    <description>
+      <![CDATA[Documentation::RequireLinkedURLs: use L<> markup on URLs in POD]]>
+    </description>
+    <priority>MINOR</priority>
+  </rule>
+
+  <rule>
+    <key>Documentation::RequirePODUseEncodingUTF8</key>
+    <name>Require PODUse Encoding UTF8</name>
+    <configKey>Documentation::RequirePODUseEncodingUTF8</configKey>
+    <type>CODE_SMELL</type>
+    <tag>swift</tag>
+    <tag>unicode</tag>
+    <description>
+      <![CDATA[Documentation::RequirePODUseEncodingUTF8: Require that all modules that contain POD have a `=encoding utf8' declaration.]]>
+    </description>
+    <priority>MAJOR</priority>
+  </rule>
+
+  <rule>
     <key>Documentation::RequirePackageMatchesPodName</key>
     <name>Require Package Matches Pod Name</name>
     <configKey>Documentation::RequirePackageMatchesPodName</configKey>
@@ -576,6 +1064,20 @@
   </rule>
 
   <rule>
+    <key>Editor::RequireEmacsFileVariables</key>
+    <name>Require Emacs File Variables</name>
+    <configKey>Editor::RequireEmacsFileVariables</configKey>
+    <type>CODE_SMELL</type>
+    <tag>editor</tag>
+    <tag>more</tag>
+    <tag>readability</tag>
+    <description>
+      <![CDATA[Editor::RequireEmacsFileVariables: Per-file editor settings.]]>
+    </description>
+    <priority>MINOR</priority>
+  </rule>
+
+  <rule>
     <key>ErrorHandling::RequireCarping</key>
     <name>Require Carping</name>
     <configKey>ErrorHandling::RequireCarping</configKey>
@@ -599,6 +1101,284 @@
     <tag>core</tag>
     <description>
       <![CDATA[ErrorHandling::RequireCheckingReturnValueOfEval: You can't depend upon the value of `$@'/`$EVAL_ERROR' to tell whether an `eval' failed.]]>
+    </description>
+    <priority>MAJOR</priority>
+  </rule>
+
+  <rule>
+    <key>ErrorHandling::RequireUseOfExceptions</key>
+    <name>Require Use Of Exceptions</name>
+    <configKey>ErrorHandling::RequireUseOfExceptions</configKey>
+    <type>CODE_SMELL</type>
+    <tag>maintenance</tag>
+    <tag>more</tag>
+    <description>
+      <![CDATA[ErrorHandling::RequireUseOfExceptions: Use exceptions instead of `die', `croak', or `confess'.]]>
+    </description>
+    <priority>CRITICAL</priority>
+  </rule>
+
+  <rule>
+    <key>Freenode::AmpersandSubCalls</key>
+    <name>Ampersand Sub Calls</name>
+    <configKey>Freenode::AmpersandSubCalls</configKey>
+    <type>CODE_SMELL</type>
+    <tag>freenode</tag>
+    <description>
+      <![CDATA[Freenode::AmpersandSubCalls: Don't use & to call subroutines]]>
+    </description>
+    <priority>CRITICAL</priority>
+  </rule>
+
+  <rule>
+    <key>Freenode::ArrayAssignAref</key>
+    <name>Array Assign Aref</name>
+    <configKey>Freenode::ArrayAssignAref</configKey>
+    <type>CODE_SMELL</type>
+    <tag>freenode</tag>
+    <description>
+      <![CDATA[Freenode::ArrayAssignAref: Don't assign an anonymous arrayref to an array]]>
+    </description>
+    <priority>MAJOR</priority>
+  </rule>
+
+  <rule>
+    <key>Freenode::BarewordFilehandles</key>
+    <name>Bareword Filehandles</name>
+    <configKey>Freenode::BarewordFilehandles</configKey>
+    <type>CODE_SMELL</type>
+    <tag>freenode</tag>
+    <description>
+      <![CDATA[Freenode::BarewordFilehandles: Don't use bareword filehandles other than built-ins]]>
+    </description>
+    <priority>CRITICAL</priority>
+  </rule>
+
+  <rule>
+    <key>Freenode::ConditionalDeclarations</key>
+    <name>Conditional Declarations</name>
+    <configKey>Freenode::ConditionalDeclarations</configKey>
+    <type>CODE_SMELL</type>
+    <tag>freenode</tag>
+    <description>
+      <![CDATA[Freenode::ConditionalDeclarations: Don't declare variables conditionally]]>
+    </description>
+    <priority>CRITICAL</priority>
+  </rule>
+
+  <rule>
+    <key>Freenode::ConditionalImplicitReturn</key>
+    <name>Conditional Implicit Return</name>
+    <configKey>Freenode::ConditionalImplicitReturn</configKey>
+    <type>CODE_SMELL</type>
+    <tag>freenode</tag>
+    <description>
+      <![CDATA[Freenode::ConditionalImplicitReturn: Don't end a subroutine with a conditional block]]>
+    </description>
+    <priority>MAJOR</priority>
+  </rule>
+
+  <rule>
+    <key>Freenode::DeprecatedFeatures</key>
+    <name>Deprecated Features</name>
+    <configKey>Freenode::DeprecatedFeatures</configKey>
+    <type>CODE_SMELL</type>
+    <tag>freenode</tag>
+    <description>
+      <![CDATA[Freenode::DeprecatedFeatures: Avoid features that have been deprecated or removed from Perl]]>
+    </description>
+    <priority>CRITICAL</priority>
+  </rule>
+
+  <rule>
+    <key>Freenode::DiscouragedModules</key>
+    <name>Discouraged Modules</name>
+    <configKey>Freenode::DiscouragedModules</configKey>
+    <type>CODE_SMELL</type>
+    <tag>freenode</tag>
+    <description>
+      <![CDATA[Freenode::DiscouragedModules: Various modules discouraged from use]]>
+    </description>
+    <priority>CRITICAL</priority>
+  </rule>
+
+  <rule>
+    <key>Freenode::DollarAB</key>
+    <name>Dollar AB</name>
+    <configKey>Freenode::DollarAB</configKey>
+    <type>CODE_SMELL</type>
+    <tag>freenode</tag>
+    <description>
+      <![CDATA[Freenode::DollarAB: Don't use $a or $b as variable names outside sort]]>
+    </description>
+    <priority>CRITICAL</priority>
+  </rule>
+
+  <rule>
+    <key>Freenode::Each</key>
+    <name>Each</name>
+    <configKey>Freenode::Each</configKey>
+    <type>CODE_SMELL</type>
+    <tag>freenode</tag>
+    <description>
+      <![CDATA[Freenode::Each: Don't use each to iterate through a hash]]>
+    </description>
+    <priority>MINOR</priority>
+  </rule>
+
+  <rule>
+    <key>Freenode::EmptyReturn</key>
+    <name>Empty Return</name>
+    <configKey>Freenode::EmptyReturn</configKey>
+    <type>CODE_SMELL</type>
+    <tag>freenode</tag>
+    <description>
+      <![CDATA[Freenode::EmptyReturn: Don't use return with no arguments]]>
+    </description>
+    <priority>INFO</priority>
+  </rule>
+
+  <rule>
+    <key>Freenode::IndirectObjectNotation</key>
+    <name>Indirect Object Notation</name>
+    <configKey>Freenode::IndirectObjectNotation</configKey>
+    <type>CODE_SMELL</type>
+    <tag>freenode</tag>
+    <description>
+      <![CDATA[Freenode::IndirectObjectNotation: Don't call methods indirectly]]>
+    </description>
+    <priority>BLOCKER</priority>
+  </rule>
+
+  <rule>
+    <key>Freenode::ModPerl</key>
+    <name>Mod Perl</name>
+    <configKey>Freenode::ModPerl</configKey>
+    <type>CODE_SMELL</type>
+    <tag>freenode</tag>
+    <description>
+      <![CDATA[Freenode::ModPerl: Don't use mod_perl to write web applications]]>
+    </description>
+    <priority>CRITICAL</priority>
+  </rule>
+
+  <rule>
+    <key>Freenode::OpenArgs</key>
+    <name>Open Args</name>
+    <configKey>Freenode::OpenArgs</configKey>
+    <type>CODE_SMELL</type>
+    <tag>freenode</tag>
+    <description>
+      <![CDATA[Freenode::OpenArgs: Always use the three-argument form of open]]>
+    </description>
+    <priority>MAJOR</priority>
+  </rule>
+
+  <rule>
+    <key>Freenode::OverloadOptions</key>
+    <name>Overload Options</name>
+    <configKey>Freenode::OverloadOptions</configKey>
+    <type>CODE_SMELL</type>
+    <tag>freenode</tag>
+    <description>
+      <![CDATA[Freenode::OverloadOptions: Don't use overload without specifying a bool overload and enabling fallback]]>
+    </description>
+    <priority>CRITICAL</priority>
+  </rule>
+
+  <rule>
+    <key>Freenode::POSIXImports</key>
+    <name>POSIXImports</name>
+    <configKey>Freenode::POSIXImports</configKey>
+    <type>CODE_SMELL</type>
+    <tag>freenode</tag>
+    <description>
+      <![CDATA[Freenode::POSIXImports: Don't use POSIX without specifying an import list]]>
+    </description>
+    <priority>MINOR</priority>
+  </rule>
+
+  <rule>
+    <key>Freenode::Prototypes</key>
+    <name>Prototypes</name>
+    <configKey>Freenode::Prototypes</configKey>
+    <type>CODE_SMELL</type>
+    <tag>freenode</tag>
+    <description>
+      <![CDATA[Freenode::Prototypes: Don't use function prototypes]]>
+    </description>
+    <priority>MAJOR</priority>
+  </rule>
+
+  <rule>
+    <key>Freenode::StrictWarnings</key>
+    <name>Strict Warnings</name>
+    <configKey>Freenode::StrictWarnings</configKey>
+    <type>CODE_SMELL</type>
+    <tag>freenode</tag>
+    <description>
+      <![CDATA[Freenode::StrictWarnings: Always use strict and warnings, or a module that imports these]]>
+    </description>
+    <priority>CRITICAL</priority>
+  </rule>
+
+  <rule>
+    <key>Freenode::Threads</key>
+    <name>Threads</name>
+    <configKey>Freenode::Threads</configKey>
+    <type>CODE_SMELL</type>
+    <tag>freenode</tag>
+    <description>
+      <![CDATA[Freenode::Threads: Interpreter-based threads are officially discouraged]]>
+    </description>
+    <priority>MAJOR</priority>
+  </rule>
+
+  <rule>
+    <key>Freenode::Wantarray</key>
+    <name>Wantarray</name>
+    <configKey>Freenode::Wantarray</configKey>
+    <type>CODE_SMELL</type>
+    <tag>freenode</tag>
+    <description>
+      <![CDATA[Freenode::Wantarray: Don't write context-sensitive functions using wantarray]]>
+    </description>
+    <priority>MINOR</priority>
+  </rule>
+
+  <rule>
+    <key>Freenode::WarningsSwitch</key>
+    <name>Warnings Switch</name>
+    <configKey>Freenode::WarningsSwitch</configKey>
+    <type>CODE_SMELL</type>
+    <tag>freenode</tag>
+    <description>
+      <![CDATA[Freenode::WarningsSwitch: Scripts should not use the -w switch on the shebang line]]>
+    </description>
+    <priority>MINOR</priority>
+  </rule>
+
+  <rule>
+    <key>Freenode::WhileDiamondDefaultAssignment</key>
+    <name>While Diamond Default Assignment</name>
+    <configKey>Freenode::WhileDiamondDefaultAssignment</configKey>
+    <type>CODE_SMELL</type>
+    <tag>freenode</tag>
+    <description>
+      <![CDATA[Freenode::WhileDiamondDefaultAssignment: Don't use while with implicit assignment to $_]]>
+    </description>
+    <priority>CRITICAL</priority>
+  </rule>
+
+  <rule>
+    <key>HTTPCookies</key>
+    <name>HTTPCookies</name>
+    <configKey>HTTPCookies</configKey>
+    <type>CODE_SMELL</type>
+    <tag>http</tag>
+    <tag>lwp</tag>
+    <description>
+      <![CDATA[HTTPCookies: Avoid using HTTP::Cookies]]>
     </description>
     <priority>MAJOR</priority>
   </rule>
@@ -804,6 +1584,94 @@
   </rule>
 
   <rule>
+    <key>Lax::ProhibitComplexMappings::LinesNotStatements</key>
+    <name>Lines Not Statements</name>
+    <configKey>Lax::ProhibitComplexMappings::LinesNotStatements</configKey>
+    <type>CODE_SMELL</type>
+    <tag>complexity</tag>
+    <tag>lax</tag>
+    <description>
+      <![CDATA[Lax::ProhibitComplexMappings::LinesNotStatements: prohibit multiline maps, not multistatement maps]]>
+    </description>
+    <priority>MAJOR</priority>
+  </rule>
+
+  <rule>
+    <key>Lax::ProhibitEmptyQuotes::ExceptAsFallback</key>
+    <name>Except As Fallback</name>
+    <configKey>Lax::ProhibitEmptyQuotes::ExceptAsFallback</configKey>
+    <type>CODE_SMELL</type>
+    <tag>lax</tag>
+    <description>
+      <![CDATA[Lax::ProhibitEmptyQuotes::ExceptAsFallback: empty quotes are okay as the fallback on the rhs of ||]]>
+    </description>
+    <priority>MINOR</priority>
+  </rule>
+
+  <rule>
+    <key>Lax::ProhibitLeadingZeros::ExceptChmod</key>
+    <name>Except Chmod</name>
+    <configKey>Lax::ProhibitLeadingZeros::ExceptChmod</configKey>
+    <type>BUG</type>
+    <tag>bugs</tag>
+    <tag>certrec</tag>
+    <tag>core</tag>
+    <tag>pbp</tag>
+    <description>
+      <![CDATA[Lax::ProhibitLeadingZeros::ExceptChmod: leading zeroes are okay as the first arg to chmod]]>
+    </description>
+    <priority>BLOCKER</priority>
+  </rule>
+
+  <rule>
+    <key>Lax::ProhibitStringyEval::ExceptForRequire</key>
+    <name>Except For Require</name>
+    <configKey>Lax::ProhibitStringyEval::ExceptForRequire</configKey>
+    <type>CODE_SMELL</type>
+    <tag>danger</tag>
+    <description>
+      <![CDATA[Lax::ProhibitStringyEval::ExceptForRequire: stringy eval is bad, but it's okay just to "require"]]>
+    </description>
+    <priority>BLOCKER</priority>
+  </rule>
+
+  <rule>
+    <key>Lax::RequireConstantOnLeftSideOfEquality::ExceptEq</key>
+    <name>Except Eq</name>
+    <configKey>Lax::RequireConstantOnLeftSideOfEquality::ExceptEq</configKey>
+    <type>CODE_SMELL</type>
+    <tag>more</tag>
+    <description>
+      <![CDATA[Lax::RequireConstantOnLeftSideOfEquality::ExceptEq: constant value on the right side is ok with 'eq' NAME Perl::Critic::Policy::Lax::RequireConstantOnLeftSideOfEquality::ExceptEq - constant value on the right side is ok with 'eq']]>
+    </description>
+    <priority>MINOR</priority>
+  </rule>
+
+  <rule>
+    <key>Lax::RequireEndWithTrueConst</key>
+    <name>Require End With True Const</name>
+    <configKey>Lax::RequireEndWithTrueConst</configKey>
+    <type>CODE_SMELL</type>
+    <tag>lax</tag>
+    <description>
+      <![CDATA[Lax::RequireEndWithTrueConst: ending your package with a simple, fun true value is okay]]>
+    </description>
+    <priority>CRITICAL</priority>
+  </rule>
+
+  <rule>
+    <key>Lax::RequireExplicitPackage::ExceptForPragmata</key>
+    <name>Except For Pragmata</name>
+    <configKey>Lax::RequireExplicitPackage::ExceptForPragmata</configKey>
+    <type>CODE_SMELL</type>
+    <tag>risky</tag>
+    <description>
+      <![CDATA[Lax::RequireExplicitPackage::ExceptForPragmata: you can put strict and warnings before "package"]]>
+    </description>
+    <priority>CRITICAL</priority>
+  </rule>
+
+  <rule>
     <key>Miscellanea::ProhibitFormats</key>
     <name>Prohibit Formats</name>
     <configKey>Miscellanea::ProhibitFormats</configKey>
@@ -856,6 +1724,59 @@
       <![CDATA[Miscellanea::ProhibitUselessNoCritic: Remove ineffective "## no critic" annotations.]]>
     </description>
     <priority>MINOR</priority>
+  </rule>
+
+  <rule>
+    <key>Miscellanea::RequireRcsKeywords</key>
+    <name>Require Rcs Keywords</name>
+    <configKey>Miscellanea::RequireRcsKeywords</configKey>
+    <type>CODE_SMELL</type>
+    <tag>cosmetic</tag>
+    <tag>deprecated</tag>
+    <tag>pbp</tag>
+    <description>
+      <![CDATA[Miscellanea::RequireRcsKeywords: Put source-control keywords in every file.]]>
+    </description>
+    <priority>MINOR</priority>
+  </rule>
+
+  <rule>
+    <key>Miscellanea::TextDomainPlaceholders</key>
+    <name>Text Domain Placeholders</name>
+    <configKey>Miscellanea::TextDomainPlaceholders</configKey>
+    <type>BUG</type>
+    <tag>bugs</tag>
+    <tag>pulp</tag>
+    <description>
+      <![CDATA[Miscellanea::TextDomainPlaceholders: check placeholder names in Locale::TextDomain calls]]>
+    </description>
+    <priority>MAJOR</priority>
+  </rule>
+
+  <rule>
+    <key>Miscellanea::TextDomainUnused</key>
+    <name>Text Domain Unused</name>
+    <configKey>Miscellanea::TextDomainUnused</configKey>
+    <type>CODE_SMELL</type>
+    <tag>cosmetic</tag>
+    <tag>pulp</tag>
+    <description>
+      <![CDATA[Miscellanea::TextDomainUnused: check for Locale::TextDomain imported but unused]]>
+    </description>
+    <priority>MINOR</priority>
+  </rule>
+
+  <rule>
+    <key>Modules::PerlMinimumVersion</key>
+    <name>Perl Minimum Version</name>
+    <configKey>Modules::PerlMinimumVersion</configKey>
+    <type>CODE_SMELL</type>
+    <tag>compatibility</tag>
+    <tag>more</tag>
+    <description>
+      <![CDATA[Modules::PerlMinimumVersion: Enforce backward compatible code.]]>
+    </description>
+    <priority>INFO</priority>
   </rule>
 
   <rule>
@@ -913,6 +1834,19 @@
   </rule>
 
   <rule>
+    <key>Modules::ProhibitModuleShebang</key>
+    <name>Prohibit Module Shebang</name>
+    <configKey>Modules::ProhibitModuleShebang</configKey>
+    <type>CODE_SMELL</type>
+    <tag>cosmetic</tag>
+    <tag>pulp</tag>
+    <description>
+      <![CDATA[Modules::ProhibitModuleShebang: don't put a #! line at the start of a module file]]>
+    </description>
+    <priority>MINOR</priority>
+  </rule>
+
+  <rule>
     <key>Modules::ProhibitMultiplePackages</key>
     <name>Prohibit Multiple Packages</name>
     <configKey>Modules::ProhibitMultiplePackages</configKey>
@@ -923,6 +1857,32 @@
       <![CDATA[Modules::ProhibitMultiplePackages: Put packages (especially subclasses) in separate files.]]>
     </description>
     <priority>CRITICAL</priority>
+  </rule>
+
+  <rule>
+    <key>Modules::ProhibitPOSIXimport</key>
+    <name>Prohibit POSIXimport</name>
+    <configKey>Modules::ProhibitPOSIXimport</configKey>
+    <type>CODE_SMELL</type>
+    <tag>efficiency</tag>
+    <tag>pulp</tag>
+    <description>
+      <![CDATA[Modules::ProhibitPOSIXimport: don't import the whole of POSIX into a module]]>
+    </description>
+    <priority>MINOR</priority>
+  </rule>
+
+  <rule>
+    <key>Modules::ProhibitUseQuotedVersion</key>
+    <name>Prohibit Use Quoted Version</name>
+    <configKey>Modules::ProhibitUseQuotedVersion</configKey>
+    <type>BUG</type>
+    <tag>bugs</tag>
+    <tag>pulp</tag>
+    <description>
+      <![CDATA[Modules::ProhibitUseQuotedVersion: avoid quoted version number string in a "use" statement]]>
+    </description>
+    <priority>MAJOR</priority>
   </rule>
 
   <rule>
@@ -949,6 +1909,19 @@
     <tag>pbp</tag>
     <description>
       <![CDATA[Modules::RequireEndWithOne: End each module with an explicitly `1;' instead of some funky expression.]]>
+    </description>
+    <priority>CRITICAL</priority>
+  </rule>
+
+  <rule>
+    <key>Modules::RequireExplicitInclusion</key>
+    <name>Require Explicit Inclusion</name>
+    <configKey>Modules::RequireExplicitInclusion</configKey>
+    <type>BUG</type>
+    <tag>bugs</tag>
+    <tag>strictersubs</tag>
+    <description>
+      <![CDATA[Modules::RequireExplicitInclusion: ]]>
     </description>
     <priority>CRITICAL</priority>
   </rule>
@@ -990,6 +1963,19 @@
       <![CDATA[Modules::RequireNoMatchVarsWithUseEnglish: `use English' must be passed a `-no_match_vars' argument.]]>
     </description>
     <priority>MINOR</priority>
+  </rule>
+
+  <rule>
+    <key>Modules::RequirePerlVersion</key>
+    <name>Require Perl Version</name>
+    <configKey>Modules::RequirePerlVersion</configKey>
+    <type>CODE_SMELL</type>
+    <tag>compatibility</tag>
+    <tag>more</tag>
+    <description>
+      <![CDATA[Modules::RequirePerlVersion: Require a `use 5.006;' or similar.]]>
+    </description>
+    <priority>INFO</priority>
   </rule>
 
   <rule>
@@ -1035,6 +2021,34 @@
   </rule>
 
   <rule>
+    <key>NamingConventions::ProhibitMixedCaseSubs</key>
+    <name>Prohibit Mixed Case Subs</name>
+    <configKey>NamingConventions::ProhibitMixedCaseSubs</configKey>
+    <type>CODE_SMELL</type>
+    <tag>cosmetic</tag>
+    <tag>deprecated</tag>
+    <tag>pbp</tag>
+    <description>
+      <![CDATA[NamingConventions::ProhibitMixedCaseSubs: Write `sub my_function{}' instead of `sub MyFunction{}'.]]>
+    </description>
+    <priority>INFO</priority>
+  </rule>
+
+  <rule>
+    <key>NamingConventions::ProhibitMixedCaseVars</key>
+    <name>Prohibit Mixed Case Vars</name>
+    <configKey>NamingConventions::ProhibitMixedCaseVars</configKey>
+    <type>CODE_SMELL</type>
+    <tag>cosmetic</tag>
+    <tag>deprecated</tag>
+    <tag>pbp</tag>
+    <description>
+      <![CDATA[NamingConventions::ProhibitMixedCaseVars: Write `$my_variable = 42' instead of `$MyVariable = 42'.]]>
+    </description>
+    <priority>INFO</priority>
+  </rule>
+
+  <rule>
     <key>Objects::ProhibitIndirectSyntax</key>
     <name>Prohibit Indirect Syntax</name>
     <configKey>Objects::ProhibitIndirectSyntax</configKey>
@@ -1047,6 +2061,18 @@
       <![CDATA[Objects::ProhibitIndirectSyntax: Prohibit indirect object call syntax.]]>
     </description>
     <priority>CRITICAL</priority>
+  </rule>
+
+  <rule>
+    <key>Perlsecret</key>
+    <name>Perlsecret</name>
+    <configKey>Perlsecret</configKey>
+    <type>CODE_SMELL</type>
+    <tag>perlsecret</tag>
+    <description>
+      <![CDATA[Perlsecret: Prevent perlsecrets entering your codebase NAME Perl::Critic::Policy::Perlsecret - Prevent perlsecrets entering your codebase]]>
+    </description>
+    <priority>BLOCKER</priority>
   </rule>
 
   <rule>
@@ -1232,6 +2258,18 @@
   </rule>
 
   <rule>
+    <key>RegularExpressions::RequireExtendedFormattingExceptForSplit</key>
+    <name>Require Extended Formatting Except For Split</name>
+    <configKey>RegularExpressions::RequireExtendedFormattingExceptForSplit</configKey>
+    <type>CODE_SMELL</type>
+    <tag>reneeb</tag>
+    <description>
+      <![CDATA[RegularExpressions::RequireExtendedFormattingExceptForSplit: Always use the `/x' modifier with regular expressions, except when the regex is used]]>
+    </description>
+    <priority>MAJOR</priority>
+  </rule>
+
+  <rule>
     <key>RegularExpressions::RequireLineBoundaryMatching</key>
     <name>Require Line Boundary Matching</name>
     <configKey>RegularExpressions::RequireLineBoundaryMatching</configKey>
@@ -1243,6 +2281,18 @@
       <![CDATA[RegularExpressions::RequireLineBoundaryMatching: Always use the `/m' modifier with regular expressions.]]>
     </description>
     <priority>MINOR</priority>
+  </rule>
+
+  <rule>
+    <key>Storable::ProhibitStoreOrFreeze</key>
+    <name>Prohibit Store Or Freeze</name>
+    <configKey>Storable::ProhibitStoreOrFreeze</configKey>
+    <type>CODE_SMELL</type>
+    <tag>storable</tag>
+    <description>
+      <![CDATA[Storable::ProhibitStoreOrFreeze: do not use store or freeze in Storable.pm]]>
+    </description>
+    <priority>MAJOR</priority>
   </rule>
 
   <rule>
@@ -1270,6 +2320,32 @@
     <tag>pbp</tag>
     <description>
       <![CDATA[Subroutines::ProhibitBuiltinHomonyms: Don't declare your own `open' function.]]>
+    </description>
+    <priority>CRITICAL</priority>
+  </rule>
+
+  <rule>
+    <key>Subroutines::ProhibitCallsToUndeclaredSubs</key>
+    <name>Prohibit Calls To Undeclared Subs</name>
+    <configKey>Subroutines::ProhibitCallsToUndeclaredSubs</configKey>
+    <type>BUG</type>
+    <tag>bugs</tag>
+    <tag>strictersubs</tag>
+    <description>
+      <![CDATA[Subroutines::ProhibitCallsToUndeclaredSubs: ]]>
+    </description>
+    <priority>CRITICAL</priority>
+  </rule>
+
+  <rule>
+    <key>Subroutines::ProhibitCallsToUnexportedSubs</key>
+    <name>Prohibit Calls To Unexported Subs</name>
+    <configKey>Subroutines::ProhibitCallsToUnexportedSubs</configKey>
+    <type>BUG</type>
+    <tag>bugs</tag>
+    <tag>strictersubs</tag>
+    <description>
+      <![CDATA[Subroutines::ProhibitCallsToUnexportedSubs: ]]>
     </description>
     <priority>CRITICAL</priority>
   </rule>
@@ -1304,6 +2380,19 @@
   </rule>
 
   <rule>
+    <key>Subroutines::ProhibitExportingUndeclaredSubs</key>
+    <name>Prohibit Exporting Undeclared Subs</name>
+    <configKey>Subroutines::ProhibitExportingUndeclaredSubs</configKey>
+    <type>BUG</type>
+    <tag>bugs</tag>
+    <tag>strictersubs</tag>
+    <description>
+      <![CDATA[Subroutines::ProhibitExportingUndeclaredSubs: ]]>
+    </description>
+    <priority>CRITICAL</priority>
+  </rule>
+
+  <rule>
     <key>Subroutines::ProhibitManyArgs</key>
     <name>Prohibit Many Args</name>
     <configKey>Subroutines::ProhibitManyArgs</configKey>
@@ -1328,6 +2417,19 @@
       <![CDATA[Subroutines::ProhibitNestedSubs: `sub never { sub correct {} }'.]]>
     </description>
     <priority>BLOCKER</priority>
+  </rule>
+
+  <rule>
+    <key>Subroutines::ProhibitQualifiedSubDeclarations</key>
+    <name>Prohibit Qualified Sub Declarations</name>
+    <configKey>Subroutines::ProhibitQualifiedSubDeclarations</configKey>
+    <type>BUG</type>
+    <tag>bugs</tag>
+    <tag>strictersubs</tag>
+    <description>
+      <![CDATA[Subroutines::ProhibitQualifiedSubDeclarations: ]]>
+    </description>
+    <priority>MAJOR</priority>
   </rule>
 
   <rule>
@@ -1543,6 +2645,107 @@
   </rule>
 
   <rule>
+    <key>TryTiny::ProhibitExitingSubroutine</key>
+    <name>Prohibit Exiting Subroutine</name>
+    <configKey>TryTiny::ProhibitExitingSubroutine</configKey>
+    <type>BUG</type>
+    <tag>bugs</tag>
+    <description>
+      <![CDATA[TryTiny::ProhibitExitingSubroutine: Ban next/last/return in Try::Tiny blocks]]>
+    </description>
+    <priority>CRITICAL</priority>
+  </rule>
+
+  <rule>
+    <key>TryTiny::RequireCatch</key>
+    <name>Require Catch</name>
+    <configKey>TryTiny::RequireCatch</configKey>
+    <type>BUG</type>
+    <tag>bugs</tag>
+    <description>
+      <![CDATA[TryTiny::RequireCatch: Always include a "catch" block when using "try"]]>
+    </description>
+    <priority>CRITICAL</priority>
+  </rule>
+
+  <rule>
+    <key>TryTiny::RequireUse</key>
+    <name>Require Use</name>
+    <configKey>TryTiny::RequireUse</configKey>
+    <type>BUG</type>
+    <tag>bugs</tag>
+    <description>
+      <![CDATA[TryTiny::RequireUse: Requires that code which utilizes Try::Tiny actually use()es it.]]>
+    </description>
+    <priority>BLOCKER</priority>
+  </rule>
+
+  <rule>
+    <key>ValuesAndExpressions::ConstantBeforeLt</key>
+    <name>Constant Before Lt</name>
+    <configKey>ValuesAndExpressions::ConstantBeforeLt</configKey>
+    <type>BUG</type>
+    <tag>bugs</tag>
+    <tag>pulp</tag>
+    <description>
+      <![CDATA[ValuesAndExpressions::ConstantBeforeLt: disallow bareword before <]]>
+    </description>
+    <priority>MAJOR</priority>
+  </rule>
+
+  <rule>
+    <key>ValuesAndExpressions::NotWithCompare</key>
+    <name>Not With Compare</name>
+    <configKey>ValuesAndExpressions::NotWithCompare</configKey>
+    <type>BUG</type>
+    <tag>bugs</tag>
+    <tag>pulp</tag>
+    <description>
+      <![CDATA[ValuesAndExpressions::NotWithCompare: logical not used with compare]]>
+    </description>
+    <priority>MAJOR</priority>
+  </rule>
+
+  <rule>
+    <key>ValuesAndExpressions::ProhibitAccessOfPrivateData</key>
+    <name>Prohibit Access Of Private Data</name>
+    <configKey>ValuesAndExpressions::ProhibitAccessOfPrivateData</configKey>
+    <type>CODE_SMELL</type>
+    <tag>maintenance</tag>
+    <tag>nits</tag>
+    <description>
+      <![CDATA[ValuesAndExpressions::ProhibitAccessOfPrivateData: ]]>
+    </description>
+    <priority>BLOCKER</priority>
+  </rule>
+
+  <rule>
+    <key>ValuesAndExpressions::ProhibitArrayAssignAref</key>
+    <name>Prohibit Array Assign Aref</name>
+    <configKey>ValuesAndExpressions::ProhibitArrayAssignAref</configKey>
+    <type>BUG</type>
+    <tag>bugs</tag>
+    <tag>pulp</tag>
+    <description>
+      <![CDATA[ValuesAndExpressions::ProhibitArrayAssignAref: don't assign an anonymous arrayref to an array]]>
+    </description>
+    <priority>MAJOR</priority>
+  </rule>
+
+  <rule>
+    <key>ValuesAndExpressions::ProhibitBarewordDoubleColon</key>
+    <name>Prohibit Bareword Double Colon</name>
+    <configKey>ValuesAndExpressions::ProhibitBarewordDoubleColon</configKey>
+    <type>CODE_SMELL</type>
+    <tag>cosmetic</tag>
+    <tag>pulp</tag>
+    <description>
+      <![CDATA[ValuesAndExpressions::ProhibitBarewordDoubleColon: don't use Foo:: style barewords]]>
+    </description>
+    <priority>INFO</priority>
+  </rule>
+
+  <rule>
     <key>ValuesAndExpressions::ProhibitCommaSeparatedStatements</key>
     <name>Prohibit Comma Separated Statements</name>
     <configKey>ValuesAndExpressions::ProhibitCommaSeparatedStatements</configKey>
@@ -1585,6 +2788,32 @@
   </rule>
 
   <rule>
+    <key>ValuesAndExpressions::ProhibitDuplicateHashKeys</key>
+    <name>Prohibit Duplicate Hash Keys</name>
+    <configKey>ValuesAndExpressions::ProhibitDuplicateHashKeys</configKey>
+    <type>BUG</type>
+    <tag>bugs</tag>
+    <tag>pulp</tag>
+    <description>
+      <![CDATA[ValuesAndExpressions::ProhibitDuplicateHashKeys: disallow duplicate literal hash keys]]>
+    </description>
+    <priority>MAJOR</priority>
+  </rule>
+
+  <rule>
+    <key>ValuesAndExpressions::ProhibitEmptyCommas</key>
+    <name>Prohibit Empty Commas</name>
+    <configKey>ValuesAndExpressions::ProhibitEmptyCommas</configKey>
+    <type>CODE_SMELL</type>
+    <tag>cosmetic</tag>
+    <tag>pulp</tag>
+    <description>
+      <![CDATA[ValuesAndExpressions::ProhibitEmptyCommas: disallow empty consecutive commas]]>
+    </description>
+    <priority>MINOR</priority>
+  </rule>
+
+  <rule>
     <key>ValuesAndExpressions::ProhibitEmptyQuotes</key>
     <name>Prohibit Empty Quotes</name>
     <configKey>ValuesAndExpressions::ProhibitEmptyQuotes</configKey>
@@ -1610,6 +2839,19 @@
       <![CDATA[ValuesAndExpressions::ProhibitEscapedCharacters: Write `"\N{DELETE}"' instead of `"\x7F"', etc.]]>
     </description>
     <priority>MINOR</priority>
+  </rule>
+
+  <rule>
+    <key>ValuesAndExpressions::ProhibitFiletest_f</key>
+    <name>Prohibit Filetest_f</name>
+    <configKey>ValuesAndExpressions::ProhibitFiletest_f</configKey>
+    <type>BUG</type>
+    <tag>bugs</tag>
+    <tag>pulp</tag>
+    <description>
+      <![CDATA[ValuesAndExpressions::ProhibitFiletest_f: don't use the -f file test]]>
+    </description>
+    <priority>MAJOR</priority>
   </rule>
 
   <rule>
@@ -1726,6 +2968,19 @@
   </rule>
 
   <rule>
+    <key>ValuesAndExpressions::ProhibitNullStatements</key>
+    <name>Prohibit Null Statements</name>
+    <configKey>ValuesAndExpressions::ProhibitNullStatements</configKey>
+    <type>CODE_SMELL</type>
+    <tag>cosmetic</tag>
+    <tag>pulp</tag>
+    <description>
+      <![CDATA[ValuesAndExpressions::ProhibitNullStatements: disallow empty statements (stray semicolons)]]>
+    </description>
+    <priority>MAJOR</priority>
+  </rule>
+
+  <rule>
     <key>ValuesAndExpressions::ProhibitQuotesAsQuotelikeOperatorDelimiters</key>
     <name>Prohibit Quotes As Quotelike Operator Delimiters</name>
     <configKey>ValuesAndExpressions::ProhibitQuotesAsQuotelikeOperatorDelimiters</configKey>
@@ -1752,6 +3007,19 @@
   </rule>
 
   <rule>
+    <key>ValuesAndExpressions::ProhibitUnknownBackslash</key>
+    <name>Prohibit Unknown Backslash</name>
+    <configKey>ValuesAndExpressions::ProhibitUnknownBackslash</configKey>
+    <type>CODE_SMELL</type>
+    <tag>cosmetic</tag>
+    <tag>pulp</tag>
+    <description>
+      <![CDATA[ValuesAndExpressions::ProhibitUnknownBackslash: don't use undefined backslash forms]]>
+    </description>
+    <priority>MAJOR</priority>
+  </rule>
+
+  <rule>
     <key>ValuesAndExpressions::ProhibitVersionStrings</key>
     <name>Prohibit Version Strings</name>
     <configKey>ValuesAndExpressions::ProhibitVersionStrings</configKey>
@@ -1763,6 +3031,18 @@
       <![CDATA[ValuesAndExpressions::ProhibitVersionStrings: Don't use strings like `v1.4' or `1.4.5' when including other modules.]]>
     </description>
     <priority>MAJOR</priority>
+  </rule>
+
+  <rule>
+    <key>ValuesAndExpressions::RequireConstantOnLeftSideOfEquality</key>
+    <name>Require Constant On Left Side Of Equality</name>
+    <configKey>ValuesAndExpressions::RequireConstantOnLeftSideOfEquality</configKey>
+    <type>CODE_SMELL</type>
+    <tag>more</tag>
+    <description>
+      <![CDATA[ValuesAndExpressions::RequireConstantOnLeftSideOfEquality: Putting the constant value on the left side of an equality exposes typos.]]>
+    </description>
+    <priority>MINOR</priority>
   </rule>
 
   <rule>
@@ -1807,6 +3087,19 @@
   </rule>
 
   <rule>
+    <key>ValuesAndExpressions::RequireNumericVersion</key>
+    <name>Require Numeric Version</name>
+    <configKey>ValuesAndExpressions::RequireNumericVersion</configKey>
+    <type>BUG</type>
+    <tag>bugs</tag>
+    <tag>pulp</tag>
+    <description>
+      <![CDATA[ValuesAndExpressions::RequireNumericVersion: $VERSION a plain number]]>
+    </description>
+    <priority>MAJOR</priority>
+  </rule>
+
+  <rule>
     <key>ValuesAndExpressions::RequireQuotedHeredocTerminator</key>
     <name>Require Quoted Heredoc Terminator</name>
     <configKey>ValuesAndExpressions::RequireQuotedHeredocTerminator</configKey>
@@ -1832,6 +3125,32 @@
       <![CDATA[ValuesAndExpressions::RequireUpperCaseHeredocTerminator: Write ` <<'THE_END'; ' instead of ` <<'theEnd'; '.]]>
     </description>
     <priority>MINOR</priority>
+  </rule>
+
+  <rule>
+    <key>ValuesAndExpressions::RestrictLongStrings</key>
+    <name>Restrict Long Strings</name>
+    <configKey>ValuesAndExpressions::RestrictLongStrings</configKey>
+    <type>CODE_SMELL</type>
+    <tag>more</tag>
+    <tag>readability</tag>
+    <description>
+      <![CDATA[ValuesAndExpressions::RestrictLongStrings: Stop mixing long strings with code.]]>
+    </description>
+    <priority>MINOR</priority>
+  </rule>
+
+  <rule>
+    <key>ValuesAndExpressions::UnexpandedSpecialLiteral</key>
+    <name>Unexpanded Special Literal</name>
+    <configKey>ValuesAndExpressions::UnexpandedSpecialLiteral</configKey>
+    <type>BUG</type>
+    <tag>bugs</tag>
+    <tag>pulp</tag>
+    <description>
+      <![CDATA[ValuesAndExpressions::UnexpandedSpecialLiteral: specials like __PACKAGE__ used literally]]>
+    </description>
+    <priority>MAJOR</priority>
   </rule>
 
   <rule>
@@ -1958,6 +3277,19 @@
   </rule>
 
   <rule>
+    <key>Variables::ProhibitUselessInitialization</key>
+    <name>Prohibit Useless Initialization</name>
+    <configKey>Variables::ProhibitUselessInitialization</configKey>
+    <type>CODE_SMELL</type>
+    <tag>jtrammell</tag>
+    <tag>petpeeves</tag>
+    <description>
+      <![CDATA[Variables::ProhibitUselessInitialization: prohibit superfluous initializations]]>
+    </description>
+    <priority>MINOR</priority>
+  </rule>
+
+  <rule>
     <key>Variables::ProtectPrivateVars</key>
     <name>Protect Private Vars</name>
     <configKey>Variables::ProtectPrivateVars</configKey>
@@ -2029,6 +3361,7 @@
     </description>
     <priority>CRITICAL</priority>
   </rule>
+
 
 <!--  manual / other rules -->
 
@@ -2240,26 +3573,6 @@
       <![CDATA[DE_EPAGES::Variables::ProhibitUnusedVariablesEnhanced: ]]>
     </description>
     <priority>MAJOR</priority>
-  </rule>
-
-  <rule>
-    <key>NamingConventions::ProhibitMixedCaseSubs</key>
-    <name>Prohibit Mixed Case Subs</name>
-    <configKey>NamingConventions::ProhibitMixedCaseSubs</configKey>
-    <description>
-      <![CDATA[NamingConventions::ProhibitMixedCaseSubs: Write `sub my_function{}' instead of `sub MyFunction{}'.]]>
-    </description>
-    <priority>INFO</priority>
-  </rule>
-
-  <rule>
-    <key>NamingConventions::ProhibitMixedCaseVars</key>
-    <name>Prohibit Mixed Case Vars</name>
-    <configKey>NamingConventions::ProhibitMixedCaseVars</configKey>
-    <description>
-      <![CDATA[NamingConventions::ProhibitMixedCaseVars: Write `$my_variable = 42' instead of `$MyVariable = 42'.]]>
-    </description>
-    <priority>INFO</priority>
   </rule>
 
 </rules>
