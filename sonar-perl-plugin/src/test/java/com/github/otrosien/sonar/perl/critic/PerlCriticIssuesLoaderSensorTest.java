@@ -1,6 +1,7 @@
 package com.github.otrosien.sonar.perl.critic;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.io.File;
 
@@ -36,7 +37,15 @@ public class PerlCriticIssuesLoaderSensorTest {
         String relativePath = "lib/Sample/Project.pm";
         inputFile(relativePath);
         createSensor().execute(context);
-        assertThat(context.allIssues()).hasSize(3);
+        assertThat(context.allIssues()).hasSize(4);
+    }
+
+    @Test
+    public void should_not_throw_on_report_file_not_found() {
+        String relativePath = "lib/Sample/Project.pm";
+        inputFile(relativePath);
+        settings.setProperty(PerlCritic.PERLCRITIC_REPORT_PATH_KEY, "src/test/resources/basic/perlcritic_nonexistant_report.txt");
+        new PerlCriticIssuesLoaderSensor(settings).execute(context);
     }
 
     private PerlCriticIssuesLoaderSensor createSensor() {
