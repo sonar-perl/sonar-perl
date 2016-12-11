@@ -1,13 +1,9 @@
 package com.github.otrosien.sonar.perl;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 import org.sonar.api.config.Settings;
 import org.sonar.api.resources.AbstractLanguage;
-
-import com.google.common.base.Strings;
 
 /**
  * This class defines the perl language.

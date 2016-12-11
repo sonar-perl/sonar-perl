@@ -24,4 +24,9 @@ public class PerlLanguageTest {
         assertThat(lang.hasValidSuffixes("my.file")).isTrue();
     }
 
+    @Test
+    public void testEquals() {
+        assertThat(new PerlLanguage(new Settings())).isEqualTo(new PerlLanguage(new Settings()));
+    }
+
 }
