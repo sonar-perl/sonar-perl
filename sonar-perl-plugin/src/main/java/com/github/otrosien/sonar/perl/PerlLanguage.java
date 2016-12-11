@@ -1,10 +1,13 @@
 package com.github.otrosien.sonar.perl;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.sonar.api.config.Settings;
 import org.sonar.api.resources.AbstractLanguage;
+
+import com.google.common.base.Strings;
 
 /**
  * This class defines the perl language.
@@ -31,13 +34,9 @@ public final class PerlLanguage extends AbstractLanguage {
     }
 
     private String[] filterEmptyStrings(String[] stringArray) {
-        List<String> nonEmptyStrings = new ArrayList<>();
-        for (String string : stringArray) {
-            if (! "".equals(string.trim())) {
-                nonEmptyStrings.add(string.trim());
-            }
-        }
-        return nonEmptyStrings.toArray(new String[nonEmptyStrings.size()]);
+        return Arrays
+                .stream(stringArray)
+                .toArray(size -> new String[size]);
     }
 
     /**
