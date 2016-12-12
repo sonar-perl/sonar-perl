@@ -101,8 +101,7 @@ public class PerlCriticIssuesLoaderSensor implements org.sonar.api.batch.sensor.
     }
 
     private void saveIssue(InputFile inputFile, int line, String externalRuleKey, String message) {
-        RuleKey rule = RuleKey.of(PerlCriticRulesDefinition.getRepositoryKeyForLanguage(inputFile.language()),
-                externalRuleKey);
+        RuleKey rule = RuleKey.of(PerlCriticRulesDefinition.getRepositoryKey(), externalRuleKey);
 
         if(this.context.activeRules().find(rule) == null) {
             log.info("Ignoring unknown or deactivated issue of type {}", rule);

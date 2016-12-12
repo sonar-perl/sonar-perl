@@ -10,38 +10,40 @@ import com.github.otrosien.sonar.perl.PerlLanguage;
 
 public final class PerlCriticRulesDefinition implements RulesDefinition {
 
-  protected static final String KEY = "PerlCritic";
-  protected static final String NAME = "PerlCritic";
+    private static final String PERLCRITIC_RULES_XML = "/perlcritic-rules.xml";
+    private static final String KEY = "PerlCritic";
+    private static final String NAME = "PerlCritic";
 
-  protected String rulesDefinitionFilePath() {
-    return "/perlcritic-rules.xml";
-  }
-
-  private void defineRulesForLanguage(Context context, String repositoryKey, String repositoryName, String languageKey) {
-    NewRepository repository = context.createRepository(repositoryKey, languageKey).setName(repositoryName);
-
-    InputStream rulesXml = this.getClass().getResourceAsStream(rulesDefinitionFilePath());
-    if (rulesXml != null) {
-      RulesDefinitionXmlLoader rulesLoader = new RulesDefinitionXmlLoader();
-      rulesLoader.load(repository, rulesXml, StandardCharsets.UTF_8.name());
+    protected String rulesDefinitionFilePath() {
+        return PERLCRITIC_RULES_XML;
     }
 
-    repository.done();
-  }
+    private void defineRulesForLanguage(Context context, String repositoryKey, String repositoryName,
+            String languageKey) {
+        NewRepository repository = context.createRepository(repositoryKey, languageKey).setName(repositoryName);
 
-  @Override
-  public void define(Context context) {
-    String repositoryKey = PerlCriticRulesDefinition.getRepositoryKeyForLanguage(PerlLanguage.KEY);
-    String repositoryName = PerlCriticRulesDefinition.getRepositoryNameForLanguage(PerlLanguage.KEY);
-    defineRulesForLanguage(context, repositoryKey, repositoryName, PerlLanguage.KEY);
-  }
+        InputStream rulesXml = this.getClass().getResourceAsStream(rulesDefinitionFilePath());
+        if (rulesXml != null) {
+            RulesDefinitionXmlLoader rulesLoader = new RulesDefinitionXmlLoader();
+            rulesLoader.load(repository, rulesXml, StandardCharsets.UTF_8.name());
+        }
 
-  public static String getRepositoryKeyForLanguage(String languageKey) {
-    return KEY;
-  }
+        repository.done();
+    }
 
-  public static String getRepositoryNameForLanguage(String languageKey) {
-    return NAME;
-  }
+    @Override
+    public void define(Context context) {
+        String repositoryKey = PerlCriticRulesDefinition.getRepositoryKey();
+        String repositoryName = PerlCriticRulesDefinition.getRepositoryName();
+        defineRulesForLanguage(context, repositoryKey, repositoryName, PerlLanguage.KEY);
+    }
+
+    public static String getRepositoryKey() {
+        return KEY;
+    }
+
+    public static String getRepositoryName() {
+        return NAME;
+    }
 
 }
