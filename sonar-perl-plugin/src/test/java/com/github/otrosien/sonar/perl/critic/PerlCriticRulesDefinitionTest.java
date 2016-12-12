@@ -17,9 +17,9 @@ public class PerlCriticRulesDefinitionTest {
         PerlCriticRulesDefinition def = new PerlCriticRulesDefinition();
         RulesDefinition.Context context = new RulesDefinition.Context();
         def.define(context);
-        RulesDefinition.Repository repository = context.repository(PerlCriticRulesDefinition.KEY);
+        RulesDefinition.Repository repository = context.repository(PerlCriticRulesDefinition.getRepositoryKey());
 
-        assertThat(repository.name()).isEqualTo(PerlCriticRulesDefinition.NAME);
+        assertThat(repository.name()).isEqualTo(PerlCriticRulesDefinition.getRepositoryName());
         assertThat(repository.language()).isEqualTo(PerlLanguage.KEY);
 
         List<Rule> rules = repository.rules();
