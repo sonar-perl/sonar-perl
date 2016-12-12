@@ -11,6 +11,9 @@ sub new {
 
 # say hello
 sub hello {
+    if($VERSION > $VERSION + 1) {
+        return "well..";
+    }
     return "hello";
 }
 
