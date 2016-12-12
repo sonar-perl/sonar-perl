@@ -2,17 +2,17 @@
 [![Quality Gate](https://sonarqube.com/api/badges/gate?key=com.github.otrosien:sonar-perl)](https://sonarqube.com/dashboard/index/com.github.otrosien:sonar-perl)
 [![Coverage](https://sonarqube.com/api/badges/measure?key=com.github.otrosien:sonar-perl&metric=coverage&template=FLAT)](https://sonarqube.com/dashboard/index/com.github.otrosien:sonar-perl)
 
-# SonarQube Perl Plugin (beta)
+# SonarQube Perl Plugin
 
 This is a SonarQube plugin to integrate popular features like code coverage,
 Perl::Critic and test reporting for perl projects.
 
 ## Current State
 
-Current plugin is still at a very early stage. It analyzes perl projects
-without having to parse the perl code itself, attaching the raw source as
+Current plugin is still at an early stage. It analyzes perl projects
+without having to parse the perl code itself, attaching the source as
 line-based text. In a later step there would be some proper grammar-based
-parsing and analyzing.
+parsing and analyzing (see bugtracker for current status).
 
 What we have so far...
 
@@ -20,6 +20,7 @@ What we have so far...
 * Structural metrics (classes and functions)
 * Syntax highlighting of imported code
 * Attaching of Perl::Critic issues
+* Default profile containing 271 Perl::Critic rules
 
 ## Teaser Images
 
@@ -130,7 +131,7 @@ So, if you're interested, get in touch with us!
 
 ## Links
 
-* [Devel::Cover::Report::Clover](http://search.cpan.org/dist/Devel-Cover-Report-Clover/lib/Devel/Cover/Report/Clover.pm) 
+* [Devel::Cover::Report::Clover](http://search.cpan.org/dist/Devel-Cover-Report-Clover/lib/Devel/Cover/Report/Clover.pm) ([source](https://github.com/captin411/devel-cover-report-clover/))
   and [Sonar Clover Plugin](http://docs.sonarqube.org/display/SONARQUBE45/Clover+Plugin) for coverage reporting
 * Perl [TAP](https://testanything.org/) and [SonarQube TAP parser](https://github.com/dbac2002/sonar-tap-parser) for test reporting
 * [Perl::Critic](http://perlcritic.org/) for issue reporting
