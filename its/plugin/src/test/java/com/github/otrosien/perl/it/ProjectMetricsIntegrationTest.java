@@ -16,7 +16,7 @@ import com.sonar.orchestrator.Orchestrator;
 import com.sonar.orchestrator.build.SonarScanner;
 import com.sonar.orchestrator.locator.FileLocation;
 
-public class SampleProjectIntegrationTest {
+public class ProjectMetricsIntegrationTest {
 
     private static final String PROJECT_KEY = "metrics";
 

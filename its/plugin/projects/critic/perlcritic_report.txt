@@ -1,0 +1,1 @@
+lib/Sample/Project.pm~|~5~|~3~|~1~|~Code before strictures are enabled~|~See page 429 of PBP~|~TestingAndDebugging::RequireUseStrict~||~
