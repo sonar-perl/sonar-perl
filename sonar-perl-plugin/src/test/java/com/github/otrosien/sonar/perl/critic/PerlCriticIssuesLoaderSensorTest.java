@@ -22,8 +22,6 @@ public class PerlCriticIssuesLoaderSensorTest {
 
     private final File baseDir = new File("src/test/resources/basic");
     private final SensorContextTester context = SensorContextTester.create(baseDir);
-    private Settings settings = new Settings();
-
     @Before
     public void setActiveRules() {
         context.setActiveRules(
@@ -55,13 +53,13 @@ public class PerlCriticIssuesLoaderSensorTest {
     public void should_not_throw_on_report_file_not_found() {
         String relativePath = "lib/Sample/Project.pm";
         inputFile(relativePath);
-        settings.setProperty(PerlCritic.PERLCRITIC_REPORT_PATH_KEY, "src/test/resources/basic/perlcritic_nonexistant_report.txt");
-        new PerlCriticIssuesLoaderSensor(settings).execute(context);
+        context.settings().setProperty(PerlCritic.PERLCRITIC_REPORT_PATH_KEY, "src/test/resources/basic/perlcritic_nonexistant_report.txt");
+        new PerlCriticIssuesLoaderSensor().execute(context);
     }
 
     private PerlCriticIssuesLoaderSensor createSensor() {
-        settings.setProperty(PerlCritic.PERLCRITIC_REPORT_PATH_KEY, "src/test/resources/basic/perlcritic_report.txt");
-        return new PerlCriticIssuesLoaderSensor(settings);
+        context.settings().setProperty(PerlCritic.PERLCRITIC_REPORT_PATH_KEY, "src/test/resources/basic/perlcritic_report.txt");
+        return new PerlCriticIssuesLoaderSensor();
     }
 
     private DefaultInputFile inputFile(String relativePath) {

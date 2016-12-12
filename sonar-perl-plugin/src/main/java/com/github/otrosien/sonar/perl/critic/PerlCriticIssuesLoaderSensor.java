@@ -25,15 +25,6 @@ public class PerlCriticIssuesLoaderSensor implements org.sonar.api.batch.sensor.
 
     private FileSystem fileSystem;
     private SensorContext context;
-    private final Settings settings;
-
-    /**
-     * Use of IoC to get Settings, FileSystem, RuleFinder and
-     * ResourcePerspectives
-     */
-    public PerlCriticIssuesLoaderSensor(final Settings settings) {
-        this.settings = settings;
-    }
 
     @Override
     public void describe(SensorDescriptor descriptor) {
@@ -43,12 +34,8 @@ public class PerlCriticIssuesLoaderSensor implements org.sonar.api.batch.sensor.
         .onlyOnFileType(Type.MAIN);
     }
 
-    protected String reportPathKey() {
-        return PerlCritic.PERLCRITIC_REPORT_PATH_KEY;
-    }
-
-    protected Optional<String> getReportPath() {
-        String reportPath = settings.getString(reportPathKey());
+    private Optional<String> getReportPath(SensorContext context) {
+        String reportPath = context.settings().getString(PerlCritic.PERLCRITIC_REPORT_PATH_KEY);
         log.info("Configured report path: {}", reportPath);
         return Optional.ofNullable(reportPath);
     }
@@ -56,7 +43,7 @@ public class PerlCriticIssuesLoaderSensor implements org.sonar.api.batch.sensor.
     @Override
     public void execute(SensorContext context) {
 
-        Optional<String> reportPath = getReportPath();
+        Optional<String> reportPath = getReportPath(context);
         Optional<File> reportFile = reportPath
             .map(File::new)
             .filter(File::exists);
