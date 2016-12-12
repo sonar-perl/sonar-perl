@@ -1,18 +1,20 @@
 package com.github.otrosien.sonar.perl.critic;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.io.File;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.sonar.api.batch.fs.InputFile.Type;
 import org.sonar.api.batch.fs.internal.DefaultInputFile;
 import org.sonar.api.batch.fs.internal.FileMetadata;
+import org.sonar.api.batch.rule.internal.ActiveRulesBuilder;
 import org.sonar.api.batch.sensor.internal.DefaultSensorDescriptor;
 import org.sonar.api.batch.sensor.internal.SensorContextTester;
 import org.sonar.api.config.Settings;
 import org.sonar.api.internal.google.common.base.Charsets;
+import org.sonar.api.rule.RuleKey;
 
 import com.github.otrosien.sonar.perl.PerlLanguage;
 
@@ -22,6 +24,15 @@ public class PerlCriticIssuesLoaderSensorTest {
     private final SensorContextTester context = SensorContextTester.create(baseDir);
     private Settings settings = new Settings();
 
+    @Before
+    public void setActiveRules() {
+        context.setActiveRules(
+                new ActiveRulesBuilder()
+                .create(RuleKey.of("PerlCritic", "TestingAndDebugging::RequireUseStrict")).activate()
+                .build()
+        );
+    }
+    
     @Test
     public void sensor_descriptor() {
       DefaultSensorDescriptor descriptor = new DefaultSensorDescriptor();
@@ -37,7 +48,7 @@ public class PerlCriticIssuesLoaderSensorTest {
         String relativePath = "lib/Sample/Project.pm";
         inputFile(relativePath);
         createSensor().execute(context);
-        assertThat(context.allIssues()).hasSize(4);
+        assertThat(context.allIssues()).hasSize(3);
     }
 
     @Test

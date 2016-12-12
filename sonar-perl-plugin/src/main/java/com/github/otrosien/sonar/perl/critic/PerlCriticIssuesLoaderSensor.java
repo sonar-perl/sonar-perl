@@ -21,12 +21,11 @@ import com.github.otrosien.sonar.perl.PerlLanguage;
 
 public class PerlCriticIssuesLoaderSensor implements org.sonar.api.batch.sensor.Sensor {
 
-    static final Logger log = Loggers.get(PerlCriticIssuesLoaderSensor.class);
+    private static final Logger log = Loggers.get(PerlCriticIssuesLoaderSensor.class);
 
     private FileSystem fileSystem;
     private SensorContext context;
-
-    protected final Settings settings;
+    private final Settings settings;
 
     /**
      * Use of IoC to get Settings, FileSystem, RuleFinder and
@@ -105,7 +104,12 @@ public class PerlCriticIssuesLoaderSensor implements org.sonar.api.batch.sensor.
         RuleKey rule = RuleKey.of(PerlCriticRulesDefinition.getRepositoryKeyForLanguage(inputFile.language()),
                 externalRuleKey);
 
-        log.debug("Now saving an issue of type {} on file {}", rule, inputFile);
+        if(this.context.activeRules().find(rule) == null) {
+            log.info("Ignoring unknown or deactivated issue of type {}", rule);
+            return;
+        }
+
+        log.debug("Saving an issue of type {} on file {}", rule, inputFile);
 
         NewIssue issue = this.context.newIssue().forRule(rule);
         NewIssueLocation location = issue.newLocation()

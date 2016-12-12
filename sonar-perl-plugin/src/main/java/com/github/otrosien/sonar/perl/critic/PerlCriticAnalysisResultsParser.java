@@ -16,7 +16,7 @@ class PerlCriticAnalysisResultsParser {
     private static final Logger log = Loggers.get(PerlCriticAnalysisResultsParser.class);
 
     public List<PerlCriticViolation> parse(final File file) throws IOException {
-        PerlCriticIssuesLoaderSensor.log.info("Parsing file {}", file.getAbsolutePath());
+        log.info("Parsing file {}", file.getAbsolutePath());
 
         try (Stream<String> lines = Files.lines(file.toPath())) {
             return lines //
