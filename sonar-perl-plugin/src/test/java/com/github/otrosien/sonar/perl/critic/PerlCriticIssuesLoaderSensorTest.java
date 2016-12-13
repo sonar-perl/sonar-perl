@@ -12,7 +12,6 @@ import org.sonar.api.batch.fs.internal.FileMetadata;
 import org.sonar.api.batch.rule.internal.ActiveRulesBuilder;
 import org.sonar.api.batch.sensor.internal.DefaultSensorDescriptor;
 import org.sonar.api.batch.sensor.internal.SensorContextTester;
-import org.sonar.api.config.Settings;
 import org.sonar.api.internal.google.common.base.Charsets;
 import org.sonar.api.rule.RuleKey;
 
