@@ -23,17 +23,29 @@ What we have so far...
 * Attaching of Perl::Critic issues
 * Default profile containing 271 Perl::Critic rules
 
-## Teaser Images
+## Screenshots
+
+### Source Code Highlighting
 
 ![PerlCritic violations in SonarQube](img/code_detail.png)
 
+### Code Metrics
+
 ![PerlCritic violations in SonarQube](img/code_report.png)
+
+### Issues Overview
 
 ![PerlCritic violations in SonarQube](img/issues_overview.png)
 
+### Project Dashboard
+
 ![PerlCritic violations in SonarQube](img/project_overview.png)
 
+### Perl::Critic Rules
+
 ![PerlCritic violations in SonarQube](img/rules.png)
+
+### Code Coverage
 
 ![Perl Code Coverage in SonarQube](img/coverage.png)
 
