@@ -85,9 +85,9 @@ directory of your SonarQube installation (should be something like `/opt/sonarqu
 
 ## Analyzing your perl project
 
-1. Make sure your SonarQube is running, and has the latest perl plugin installed
-2. [Download](http://docs.sonarqube.org/display/SCAN/Analyzing+with+SonarQube+Scanner) and extract the `sonar-scanner` command-line tool.
-3. Create a basic `sonar-project.properties` file. Here is an example:
+- Make sure your SonarQube is running, and has the latest perl plugin installed
+- [Download](http://docs.sonarqube.org/display/SCAN/Analyzing+with+SonarQube+Scanner) and extract the `sonar-scanner` command-line tool.
+- Create a basic `sonar-project.properties` file. Here is an example:
 
 ```
 # must be unique in a given SonarQube instance
@@ -110,21 +110,21 @@ sonar.tests=t
 sonar.perl.testHarness.archivePath=testReport.tgz
 ```
 
-4. Execute your tests and save the report as `testReport.tgz`. We require a format compatible with `Test::Harness::Archive`.
+- Execute your tests and save the report as `testReport.tgz`. We require a format compatible with `Test::Harness::Archive`.
 
 ```
 prove -t -a testReport.tgz
 ```
 
-5. Execute `Perl::Critic` and save the report as `perlcritic_report.txt` in your project. Important is the formatting
+- Execute `Perl::Critic` and save the report as `perlcritic_report.txt` in your project. Important is the formatting
 instruction below, to make the `perlcritic_report.txt` machine-readable.
 
 ```
 perlcritic --cruel --quiet --verbose "%f~|~%s~|~%l~|~%c~|~%m~|~%e~|~%p~||~%n" lib t > perlcritic_report.txt
 ```
 
-5. Run the `sonar-scanner` 
-6. Finally open the project report in SonarQube
+- Run the `sonar-scanner` 
+- Finally open the project report in SonarQube
 
 ### Compatibility
 
