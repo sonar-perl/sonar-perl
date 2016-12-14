@@ -8,6 +8,7 @@ import java.util.Optional;
 import org.sonar.api.batch.fs.FileSystem;
 import org.sonar.api.batch.fs.InputFile;
 import org.sonar.api.batch.fs.InputFile.Type;
+import org.sonar.api.batch.rule.ActiveRules;
 import org.sonar.api.batch.sensor.SensorContext;
 import org.sonar.api.batch.sensor.SensorDescriptor;
 import org.sonar.api.batch.sensor.issue.NewIssue;
@@ -22,15 +23,9 @@ public class PerlCriticIssuesLoaderSensor implements org.sonar.api.batch.sensor.
 
     private static final Logger log = Loggers.get(PerlCriticIssuesLoaderSensor.class);
 
-    private FileSystem fileSystem;
-    private SensorContext context;
-
     @Override
     public void describe(SensorDescriptor descriptor) {
-      descriptor
-        .onlyOnLanguage(PerlLanguage.KEY)
-        .name("PerlCritic Sensor")
-        .onlyOnFileType(Type.MAIN);
+        descriptor.onlyOnLanguage(PerlLanguage.KEY).name("PerlCritic Sensor").onlyOnFileType(Type.MAIN);
     }
 
     private Optional<String> getReportPath(SensorContext context) {
@@ -43,74 +38,78 @@ public class PerlCriticIssuesLoaderSensor implements org.sonar.api.batch.sensor.
     public void execute(SensorContext context) {
 
         Optional<String> reportPath = getReportPath(context);
-        Optional<File> reportFile = reportPath
-            .map(File::new)
-            .filter(File::exists);
+        Optional<File> reportFile = reportPath.map(File::new).filter(File::exists);
 
         try {
-            if(reportFile.isPresent()) {
-                this.context = context;
-                this.fileSystem = context.fileSystem();
-                parseAndSaveResults(reportFile.get());
+            if (reportFile.isPresent()) {
+                List<PerlCriticViolation> violations = parse(reportFile.get());
+                new PerlCriticParserExecutor(context).save(violations);
             } else {
                 log.info("PerlCritic report file '{}' does not exist. Skipping...", reportPath.orElse(""));
             }
         } catch (IOException e) {
             throw new IllegalStateException("Unable to parse the provided PerlCritic report file", e);
-        } finally {
-            this.context = null;
-            this.fileSystem = null;
         }
     }
 
-    protected void parseAndSaveResults(final File file) throws IOException {
+    protected List<PerlCriticViolation> parse(final File file) throws IOException {
         log.info("Parsing PerlCritic Analysis Results");
         PerlCriticAnalysisResultsParser parser = new PerlCriticAnalysisResultsParser();
         List<PerlCriticViolation> parseResult = parser.parse(file);
         log.info("Found {} PerlCritic violations.", parseResult.size());
-        for (PerlCriticViolation error : parseResult) {
-            getResourceAndSaveIssue(error);
-        }
+        return parseResult;
     }
 
-    private void getResourceAndSaveIssue(PerlCriticViolation violation) {
-        log.debug(violation.toString());
+    static class PerlCriticParserExecutor {
 
-        InputFile inputFile = fileSystem
-                .inputFile(fileSystem.predicates().hasRelativePath(violation.getFilePath()));
+        private final SensorContext context;
+        private final ActiveRules activeRules;
+        private final FileSystem fileSystem;
 
-        if (inputFile != null) {
-            saveIssue(inputFile, violation.getLine(), violation.getType(), violation.getDescription());
-        } else {
-            log.warn("Not able to find an InputFile with path '{}'", violation.getFilePath());
-        }
-    }
-
-    private void saveIssue(InputFile inputFile, int line, String externalRuleKey, String message) {
-        RuleKey rule = RuleKey.of(PerlCriticRulesDefinition.getRepositoryKey(), externalRuleKey);
-
-        if(this.context.activeRules().find(rule) == null) {
-            log.info("Ignoring unknown or deactivated issue of type {}", rule);
-            return;
+        public PerlCriticParserExecutor(SensorContext context) {
+            this.context = context;
+            this.activeRules = context.activeRules();
+            this.fileSystem = context.fileSystem();
         }
 
-        log.debug("Saving an issue of type {} on file {}", rule, inputFile);
-
-        NewIssue issue = this.context.newIssue().forRule(rule);
-        NewIssueLocation location = issue.newLocation()
-                .message(message)
-                .on(inputFile);
-
-        if(line > 0) {
-            location.at(inputFile.selectLine(line));
+        public void save(List<PerlCriticViolation> violations) {
+            violations.stream().forEach(this::getResourceAndSaveIssue);
         }
-    
-        issue.at(location);
-        issue.save();
+
+        void getResourceAndSaveIssue(PerlCriticViolation violation) {
+            log.debug(violation.toString());
+
+            InputFile inputFile = fileSystem
+                    .inputFile(fileSystem.predicates().hasRelativePath(violation.getFilePath()));
+
+            if (inputFile != null) {
+                saveIssue(inputFile, violation.getLine(), violation.getType(), violation.getDescription());
+            } else {
+                log.warn("Not able to find an InputFile with path '{}'", violation.getFilePath());
+            }
+        }
+
+        void saveIssue(InputFile inputFile, int line, String externalRuleKey, String message) {
+            RuleKey rule = RuleKey.of(PerlCriticRulesDefinition.getRepositoryKey(), externalRuleKey);
+
+            if (activeRules.find(rule) == null) {
+                log.info("Ignoring unknown or deactivated issue of type {}", rule);
+                return;
+            }
+
+            log.debug("Saving an issue of type {} on file {}", rule, inputFile);
+
+            NewIssue issue = this.context.newIssue().forRule(rule);
+            NewIssueLocation location = issue.newLocation().message(message).on(inputFile);
+
+            if (line > 0) {
+                location.at(inputFile.selectLine(line));
+            }
+
+            issue.at(location);
+            issue.save();
+        }
+
     }
 
-    @Override
-    public String toString() {
-        return getClass().getSimpleName();
-    }
 }

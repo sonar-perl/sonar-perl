@@ -13,7 +13,7 @@ public class PerlPluginTest {
     public void test() {
         Plugin.Context context = new Plugin.Context(Version.create(5, 6));
         new PerlPlugin().define(context);
-        assertThat(context.getExtensions()).hasSize(6);
+        assertThat(context.getExtensions()).hasSize(7);
     }
 
 }
