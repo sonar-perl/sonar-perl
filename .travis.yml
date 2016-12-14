@@ -15,8 +15,8 @@ script:
   - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then ./gradlew build; fi'
   - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then ./gradlew build publish sonarqube -Dsonar.host.url=https://sonarqube.com -Dsonar.login=$SONAR_LOGIN; fi'
 after_success:
-  - ./scripts/docker-push.sh
-  - ./scripts/github-publish.sh
+  - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then ./scripts/docker-push.sh; fi'
+  - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then ./scripts/github-publish.sh; fi'
 env:
   global:
   - secure: "J5fC36uw+PS14l/MPfB4CYQpsy8Ai4U5riBddl/nSrE3nbYGnIeZ9iEsORFMI7zepfz0A6nRgBIyolcuRmLHvegVba6cz+ZKRPdrC4gCSrZ9KOtDhr/gC9IsRVs266c8yZfA0TfYqi6jYsBbbYCv4ZeU9jccJA5NvT/ClTk5GCB2k/apzAc9kXjzCUsOpjBi1ufSjzeB/hE+crkZLCRr61dJFduPjAkJlG0IC3X1j2oiOL/o7aCdufIDJYijb206jia6SUpA833hSdBh7vfLOahbsWJa2OSFZa24j5tjYVAnKEuqfk/fwKecUM91cWIfXGSDb22bZRqITunKgzsIjKnVA4PqLioICl7I9Y7K984nxM1d2H3llIr9CDtlawLzQXOA5D0obX/lNECFlwcp6PxUjz7lsO7IhcI1/3s5L2hR9tskGG0IUgM/iPvguKEpMV8qRbI1klcOmuxwx5gQz/ePnRL+do6c29oVs8ek0pq3ArCrisJq+GupAb22h6FVbAATbQebTPiwVPKHKhyrDi0oZIsFv/UsBVgwQNSCH8tdFyjTW2JIEMTrGKN99EToKKRyYlEc1k08NmLQk9VQ86O82vtfpoCg+FcSG/J/i9YIgT7Qy2Pb6op6TSzZsTyCvf5RHlS6iB6sNqYSg9EQjJZIImPY+CMQ4bzvxu5xakk=" # DOCKER_EMAIL
