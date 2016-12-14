@@ -25,7 +25,7 @@ What we have so far...
 
 ## Screenshots
 
-### Source Code Highlighting
+### Source Code Details
 
 ![PerlCritic violations in SonarQube](img/code_detail.png)
 
@@ -37,11 +37,11 @@ What we have so far...
 
 ![PerlCritic violations in SonarQube](img/issues_overview.png)
 
-### Project Dashboard
+### Project Overview
 
 ![PerlCritic violations in SonarQube](img/project_overview.png)
 
-### Perl::Critic Rules
+### Perl::Critic Rules Catalog
 
 ![PerlCritic violations in SonarQube](img/rules.png)
 
