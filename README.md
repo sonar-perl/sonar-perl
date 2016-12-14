@@ -149,6 +149,6 @@ So, if you're interested, get in touch with us!
 ## Links
 
 * [Devel::Cover::Report::Clover](http://search.cpan.org/dist/Devel-Cover-Report-Clover/lib/Devel/Cover/Report/Clover.pm) ([source](https://github.com/captin411/devel-cover-report-clover/)) - upcoming release will have support for SonarQube!
-  and [Sonar Clover Plugin](http://docs.sonarqube.org/display/SONARQUBE45/Clover+Plugin) for coverage reporting
-* Perl [TAP](https://testanything.org/) and [TAP::Harness::Archive](http://search.cpan.org/~schwigon/TAP-Harness-Archive-0.18/lib/TAP/Harness/Archive.pm) for test reporting
-* [Perl::Critic](http://perlcritic.org/) for issue reporting
+* Please install [Sonar Clover Plugin](http://docs.sonarqube.org/display/SONARQUBE45/Clover+Plugin) for reading coverage reports.
+* Perl [TAP](https://testanything.org/) and [TAP::Harness::Archive](http://search.cpan.org/~schwigon/TAP-Harness-Archive-0.18/lib/TAP/Harness/Archive.pm) for test reporting.
+* [Perl::Critic](http://perlcritic.org/) for issue reporting.
