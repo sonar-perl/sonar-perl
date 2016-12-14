@@ -25,21 +25,17 @@ What we have so far...
 
 ## Teaser Images
 
-![PerlCritic violation in SonarQube](img/code_detail.png)
+![PerlCritic violations in SonarQube](img/code_detail.png)
 
-![PerlCritic violation in SonarQube](img/code_report.png)
+![PerlCritic violations in SonarQube](img/code_report.png)
 
-![PerlCritic violation in SonarQube](img/issues_overview.png)
+![PerlCritic violations in SonarQube](img/issues_overview.png)
 
-![PerlCritic violation in SonarQube](img/project_overview.png)
+![PerlCritic violations in SonarQube](img/project_overview.png)
 
-![PerlCritic violation in SonarQube](img/rules.png)
+![PerlCritic violations in SonarQube](img/rules.png)
 
-## SNEAK PREVIEW
-
-This will be coming in version 0.3: Coverage Reporting! *please hold the line..*
-
-![Perl Coverage in SonarQube](img/coverage.png)
+![Perl Code Coverage in SonarQube](img/coverage.png)
 
 
 ## Running it
@@ -140,7 +136,7 @@ So, if you're interested, get in touch with us!
 
 ## Links
 
-* [Devel::Cover::Report::Clover](http://search.cpan.org/dist/Devel-Cover-Report-Clover/lib/Devel/Cover/Report/Clover.pm) ([source](https://github.com/captin411/devel-cover-report-clover/))
+* [Devel::Cover::Report::Clover](http://search.cpan.org/dist/Devel-Cover-Report-Clover/lib/Devel/Cover/Report/Clover.pm) ([source](https://github.com/captin411/devel-cover-report-clover/)) - upcoming release will have support for SonarQube!
   and [Sonar Clover Plugin](http://docs.sonarqube.org/display/SONARQUBE45/Clover+Plugin) for coverage reporting
-* Perl [TAP](https://testanything.org/) and [SonarQube TAP parser](https://github.com/dbac2002/sonar-tap-parser) for test reporting
+* Perl [TAP](https://testanything.org/) and [TAP::Harness::Archive](http://search.cpan.org/~schwigon/TAP-Harness-Archive-0.18/lib/TAP/Harness/Archive.pm) for test reporting
 * [Perl::Critic](http://perlcritic.org/) for issue reporting
