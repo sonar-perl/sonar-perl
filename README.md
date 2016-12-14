@@ -18,6 +18,7 @@ What we have so far...
 
 * LOC reporting (incl. comment and POD lines)
 * Structural metrics (classes and functions)
+* Test duration metric
 * Syntax highlighting of imported code
 * Attaching of Perl::Critic issues
 * Default profile containing 271 Perl::Critic rules
@@ -97,9 +98,17 @@ sonar.sources=lib
 sonar.sourceEncoding=UTF-8
 
 sonar.tests=t
+# testReport.tgz is the default for the report archive.
+sonar.perl.testHarness.archivePath=testReport.tgz
 ```
 
-4. Execute `Perl::Critic` and save the report as `perlcritic_report.txt` in your project. Important is the formatting
+4. Execute your tests and save the report as `testReport.tgz`. We require a format compatible with `Test::Harness::Archive`.
+
+```
+prove -t -a testReport.tgz
+```
+
+5. Execute `Perl::Critic` and save the report as `perlcritic_report.txt` in your project. Important is the formatting
 instruction below, to make the `perlcritic_report.txt` machine-readable.
 
 ```
