@@ -1,6 +1,8 @@
 package com.github.otrosien.sonar.perl.tap;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.sonar.api.measures.CoreMetrics.SKIPPED_TESTS;
+import static org.sonar.api.measures.CoreMetrics.TESTS;
 import static org.sonar.api.measures.CoreMetrics.TEST_EXECUTION_TIME;
 
 import java.io.File;
@@ -36,6 +38,8 @@ public class TestHarnessLoaderSensorTest {
         inputFile(relativePath);
         createSensor().execute(context);
         assertThat(context.measure("moduleKey:t/Project.t", TEST_EXECUTION_TIME).value()).isEqualTo(34L);
+        assertThat(context.measure("moduleKey:t/Project.t", TESTS).value()).isEqualTo(1);
+        assertThat(context.measure("moduleKey:t/Project.t", SKIPPED_TESTS).value()).isEqualTo(0);
     }
 
     private TestHarnessLoaderSensor createSensor() {

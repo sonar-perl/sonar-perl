@@ -74,7 +74,7 @@ public class TestHarnessArchiveReader {
         if(detail.getNumberOfTests() > 0) {
             builder.addTestDetail(detail);
         } else {
-            log.info("Did not recognize TAP or test skipped completely: " + detail.getFilePath());
+            log.info("Did not recognize TAP or tests skipped completely: " + detail.getFilePath());
         }
     }
 
