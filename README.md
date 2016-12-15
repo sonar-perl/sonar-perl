@@ -18,7 +18,7 @@ What we have so far...
 
 * LOC reporting (incl. comment and POD lines)
 * Structural metrics (classes and functions)
-* Test duration metric
+* Test metrics (duration, successful and failed test count)
 * Syntax highlighting of imported code
 * Attaching of Perl::Critic issues
 * Default profile containing 271 Perl::Critic rules
