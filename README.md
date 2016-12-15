@@ -85,7 +85,7 @@ directory of your SonarQube installation (should be something like `/opt/sonarqu
 
 ## Analyzing your perl project
 
-- Make sure your SonarQube is running, and has the latest perl plugin installed
+- Make sure your SonarQube is running, and has the [latest perl plugin](https://github.com/otrosien/sonar-perl/releases) installed
 - [Download](http://docs.sonarqube.org/display/SCAN/Analyzing+with+SonarQube+Scanner) and extract the `sonar-scanner` command-line tool.
 - Create a basic `sonar-project.properties` file. Here is an example:
 
