@@ -43,7 +43,7 @@ public class TestHarnessLoaderSensorTest {
     }
 
     private TestHarnessLoaderSensor createSensor() {
-        context.settings().setProperty(TestHarnessArchive.HARNESS_ARCHIVE_PATH_KEY, "src/test/resources/tap/testReport.tgz");
+        context.settings().setProperty(TestHarnessArchiveProperties.HARNESS_ARCHIVE_PATH_KEY, "src/test/resources/tap/testReport.tgz");
         return new TestHarnessLoaderSensor();
     }
 

@@ -32,7 +32,7 @@ public class TestHarnessLoaderSensor implements Sensor {
     }
 
     private Optional<String> getReportPath(SensorContext context) {
-        String reportPath = context.settings().getString(TestHarnessArchive.HARNESS_ARCHIVE_PATH_KEY);
+        String reportPath = context.settings().getString(TestHarnessArchiveProperties.HARNESS_ARCHIVE_PATH_KEY);
         log.info("Configured report path: {}", reportPath);
         return Optional.ofNullable(reportPath);
     }
@@ -48,7 +48,7 @@ public class TestHarnessLoaderSensor implements Sensor {
         if(reportFile.isPresent()) {
             try {
                 Optional<TestHarnessReport> report = new TestHarnessArchiveReader().read(reportFile.get());
-                report.ifPresent(r -> new TestHarnessLoaderSensorExecutor(context).saveTestReportMeasures(r));
+                report.ifPresent(r -> new TestHarnessLoaderSensorExecutor(context).saveTestReportMeasures(r)); // NOSONAR
             } catch (IOException e) {
                 log.error("Error reading Test::Harness::Archive report.", e);
             }

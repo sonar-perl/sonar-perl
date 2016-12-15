@@ -29,7 +29,7 @@ public class PerlCriticIssuesLoaderSensor implements org.sonar.api.batch.sensor.
     }
 
     private Optional<String> getReportPath(SensorContext context) {
-        String reportPath = context.settings().getString(PerlCritic.PERLCRITIC_REPORT_PATH_KEY);
+        String reportPath = context.settings().getString(PerlCriticProperties.PERLCRITIC_REPORT_PATH_KEY);
         log.info("Configured report path: {}", reportPath);
         return Optional.ofNullable(reportPath);
     }

@@ -1,6 +1,6 @@
 package com.github.otrosien.sonar.perl.critic;
 
-public class PerlCritic { // NOSONAR - yes, this is a util class.
+public class PerlCriticProperties { // NOSONAR - yes, this is a util class.
 
     public static final String PERLCRITIC_REPORT_PATH_KEY = "sonar.perlcritic.reportPath";
 

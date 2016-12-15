@@ -118,9 +118,9 @@ public class TestHarnessReport {
         }
 
         public TestHarnessReport build() {
-            List<Test> tests = unmodifiableList(this.tests);
-            List<TestDetail> testDetails = unmodifiableList(this.testDetails);
-            return new TestHarnessReport(startTime, endTime, tests, testDetails);
+            return new TestHarnessReport(startTime, endTime,
+                    unmodifiableList(this.tests),
+                    unmodifiableList(this.testDetails));
         }
 
     }
