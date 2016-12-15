@@ -22,11 +22,6 @@ public class TestHarnessReport {
     List<Test> tests;
     List<TestDetail> testDetails;
 
-    // found neither test summary nor test details.
-    public boolean isEmpty() {
-        return tests.isEmpty() && testDetails.isEmpty();
-    }
-
     @FieldDefaults(makeFinal=true, level=AccessLevel.PRIVATE)
     @AllArgsConstructor
     @Getter
