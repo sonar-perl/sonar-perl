@@ -112,14 +112,20 @@ sonar.perl.testHarness.archivePath=testReport.tgz
 
 - Execute your tests and save the report as `testReport.tgz`. We require a format compatible with `Test::Harness::Archive`.
 
-```
+```sh
 prove -t -a testReport.tgz
+```
+
+- Generate coverage reports in Clover-format (soon available, it still requires a not-yet-released version of `Devel::Cover::Report::Clover`)
+
+```sh
+cover -test -report clover
 ```
 
 - Execute `Perl::Critic` and save the report as `perlcritic_report.txt` in your project. Important is the formatting
 instruction below, to make the `perlcritic_report.txt` machine-readable.
 
-```
+```sh
 perlcritic --cruel --quiet --verbose "%f~|~%s~|~%l~|~%c~|~%m~|~%e~|~%p~||~%n" lib t > perlcritic_report.txt
 ```
 
