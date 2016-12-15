@@ -20,6 +20,12 @@ public class TestHarnessReport {
     BigDecimal startTime;
     BigDecimal endTime;
     List<Test> tests;
+    List<TestDetail> testDetails;
+
+    // found neither test summary nor test details.
+    public boolean isEmpty() {
+        return tests.isEmpty() && testDetails.isEmpty();
+    }
 
     @FieldDefaults(makeFinal=true, level=AccessLevel.PRIVATE)
     @AllArgsConstructor
@@ -37,11 +43,56 @@ public class TestHarnessReport {
         }
     }
 
+    @FieldDefaults(makeFinal=true, level=AccessLevel.PRIVATE)
+    @AllArgsConstructor
+    @Getter
+    public static class TestDetail {
+        @NonNull
+        String filePath;
+        int numberOfTests;
+        int passed;
+        int failed;
+
+        public int getSkipped() {
+            return numberOfTests - passed - failed;
+        }
+
+        public static class TestDetailBuilder {
+            String filePath;
+            int numberOfTests;
+            int passed;
+            int failed;
+
+            public TestDetailBuilder ok() {
+                passed++;
+                return this;
+            }
+            public TestDetailBuilder failed() {
+                failed++;
+                return this;
+            }
+            public TestDetailBuilder total(int numberOfTests) {
+                this.numberOfTests = numberOfTests;
+                return this;
+            }
+            public TestDetailBuilder filePath(String filePath) {
+                this.filePath = filePath;
+                return this;
+            }
+            public TestDetail build() {
+                return new TestDetail(filePath, numberOfTests, passed, failed);
+            }
+        }
+        public static TestDetailBuilder builder() {
+            return new TestDetailBuilder();
+        }
+    }
     @FieldDefaults(level=AccessLevel.PRIVATE)
     public static class TestHarnessReportBuilder {
         BigDecimal startTime;
         BigDecimal endTime;
         List<Test> tests = new ArrayList<>();
+        List<TestDetail> testDetails = new ArrayList<>();
 
         TestHarnessReportBuilder() {
         }
@@ -61,9 +112,15 @@ public class TestHarnessReport {
             return this;
         }
 
+        public TestHarnessReportBuilder addTestDetail(final TestDetail testDetail) {
+            this.testDetails.add(testDetail);
+            return this;
+        }
+
         public TestHarnessReport build() {
-            java.util.List<Test> tests = unmodifiableList(this.tests);
-            return new TestHarnessReport(startTime, endTime, tests);
+            return new TestHarnessReport(startTime, endTime,
+                    unmodifiableList(this.tests),
+                    unmodifiableList(this.testDetails));
         }
 
     }

@@ -19,10 +19,19 @@ public class TestHarnessArchiveReaderTest {
         assertThat(report.getStartTime()).isEqualTo(new BigDecimal("1481700195"));
         assertThat(report.getEndTime()).isEqualTo(new BigDecimal("1481700195"));
         assertThat(report.getTests()).hasSize(1);
+        assertThat(report.getTestDetails()).hasSize(1);
+
         TestHarnessReport.Test test0 = report.getTests().get(0);
         assertThat(test0.getFilePath()).isEqualTo("t/Project.t");
         assertThat(test0.getStartTime()).isEqualTo(new BigDecimal("1481700195.45746"));
         assertThat(test0.getEndTime()).isEqualTo(new BigDecimal("1481700195.49219"));
+
+        TestHarnessReport.TestDetail testDetail0 = report.getTestDetails().get(0);
+        assertThat(testDetail0.getFilePath()).isEqualTo("t/Project.t");
+        assertThat(testDetail0.getPassed()).isEqualTo(1);
+        assertThat(testDetail0.getFailed()).isEqualTo(0);
+        assertThat(testDetail0.getNumberOfTests()).isEqualTo(1);
+        assertThat(testDetail0.getSkipped()).isEqualTo(0);
     }
 
     @Test

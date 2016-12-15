@@ -17,6 +17,7 @@ import org.sonar.api.utils.log.Loggers;
 
 import com.github.otrosien.sonar.perl.PerlLanguage;
 import com.github.otrosien.sonar.perl.tap.TestHarnessReport.Test;
+import com.github.otrosien.sonar.perl.tap.TestHarnessReport.TestDetail;
 
 public class TestHarnessLoaderSensor implements Sensor {
 
@@ -31,7 +32,7 @@ public class TestHarnessLoaderSensor implements Sensor {
     }
 
     private Optional<String> getReportPath(SensorContext context) {
-        String reportPath = context.settings().getString(TestHarnessArchive.HARNESS_ARCHIVE_PATH_KEY);
+        String reportPath = context.settings().getString(TestHarnessArchiveProperties.HARNESS_ARCHIVE_PATH_KEY);
         log.info("Configured report path: {}", reportPath);
         return Optional.ofNullable(reportPath);
     }
@@ -47,7 +48,7 @@ public class TestHarnessLoaderSensor implements Sensor {
         if(reportFile.isPresent()) {
             try {
                 Optional<TestHarnessReport> report = new TestHarnessArchiveReader().read(reportFile.get());
-                report.ifPresent(r -> new TestHarnessLoaderSensorExecutor(context).saveTestReportMeasures(r));
+                report.ifPresent(r -> new TestHarnessLoaderSensorExecutor(context).saveTestReportMeasures(r)); // NOSONAR
             } catch (IOException e) {
                 log.error("Error reading Test::Harness::Archive report.", e);
             }
@@ -69,8 +70,18 @@ public class TestHarnessLoaderSensor implements Sensor {
     
         void saveTestReportMeasures(TestHarnessReport fileReport) {
             for(Test t : fileReport.getTests()) {
-                InputFile testFile = getUnitTestInputFile(t);
-                context.<Long>newMeasure().on(testFile).withValue((long)t.getDuration()).forMetric(CoreMetrics.TEST_EXECUTION_TIME).save();
+                InputFile testFile = getUnitTestInputFile(t.getFilePath());
+                if(testFile != null) {
+                    context.<Long>newMeasure().on(testFile).withValue((long)t.getDuration()).forMetric(CoreMetrics.TEST_EXECUTION_TIME).save();
+                }
+            }
+            for(TestDetail d : fileReport.getTestDetails()) {
+                InputFile testFile = getUnitTestInputFile(d.getFilePath());
+                if(testFile != null) {
+                    context.<Integer>newMeasure().on(testFile).withValue(d.getNumberOfTests()).forMetric(CoreMetrics.TESTS).save();
+                    context.<Integer>newMeasure().on(testFile).withValue(d.getFailed()).forMetric(CoreMetrics.TEST_FAILURES).save();
+                    context.<Integer>newMeasure().on(testFile).withValue(d.getSkipped()).forMetric(CoreMetrics.SKIPPED_TESTS).save();
+                }
             }
         }
 
@@ -79,9 +90,9 @@ public class TestHarnessLoaderSensor implements Sensor {
          *
          * @param report the unit test report
          */
-        private InputFile getUnitTestInputFile(TestHarnessReport.Test test) {
+        private InputFile getUnitTestInputFile(String filePath) {
           return fileSystem.inputFile(fileSystem.predicates().and(
-            filePredicates.hasPath(test.getFilePath()),
+            filePredicates.hasPath(filePath),
             filePredicates.hasType(InputFile.Type.TEST),
             filePredicates.hasLanguage(PerlLanguage.KEY)));
         }

@@ -52,12 +52,12 @@ public class PerlCriticIssuesLoaderSensorTest {
     public void should_not_throw_on_report_file_not_found() {
         String relativePath = "lib/Sample/Project.pm";
         inputFile(relativePath);
-        context.settings().setProperty(PerlCritic.PERLCRITIC_REPORT_PATH_KEY, "src/test/resources/basic/perlcritic_nonexistant_report.txt");
+        context.settings().setProperty(PerlCriticProperties.PERLCRITIC_REPORT_PATH_KEY, "src/test/resources/basic/perlcritic_nonexistant_report.txt");
         new PerlCriticIssuesLoaderSensor().execute(context);
     }
 
     private PerlCriticIssuesLoaderSensor createSensor() {
-        context.settings().setProperty(PerlCritic.PERLCRITIC_REPORT_PATH_KEY, "src/test/resources/basic/perlcritic_report.txt");
+        context.settings().setProperty(PerlCriticProperties.PERLCRITIC_REPORT_PATH_KEY, "src/test/resources/basic/perlcritic_report.txt");
         return new PerlCriticIssuesLoaderSensor();
     }
 

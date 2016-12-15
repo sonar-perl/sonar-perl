@@ -7,11 +7,11 @@ import org.sonar.api.Properties;
 import org.sonar.api.Property;
 
 import com.github.otrosien.sonar.perl.colorizer.PerlCodeColorizer;
-import com.github.otrosien.sonar.perl.critic.PerlCritic;
+import com.github.otrosien.sonar.perl.critic.PerlCriticProperties;
 import com.github.otrosien.sonar.perl.critic.PerlCriticIssuesLoaderSensor;
 import com.github.otrosien.sonar.perl.critic.PerlCriticProfile;
 import com.github.otrosien.sonar.perl.critic.PerlCriticRulesDefinition;
-import com.github.otrosien.sonar.perl.tap.TestHarnessArchive;
+import com.github.otrosien.sonar.perl.tap.TestHarnessArchiveProperties;
 import com.github.otrosien.sonar.perl.tap.TestHarnessLoaderSensor;
 
 @Properties({ //
@@ -21,15 +21,15 @@ import com.github.otrosien.sonar.perl.tap.TestHarnessLoaderSensor;
     description = "Comma-separated list of suffixes for files to analyze.", //
     defaultValue = PerlPlugin.DEFAULT_FILE_SUFFIXES), //
     @Property( //
-    key = PerlCritic.PERLCRITIC_REPORT_PATH_KEY, //
+    key = PerlCriticProperties.PERLCRITIC_REPORT_PATH_KEY, //
     name = "PerlCritic Report Location", //
     description = "Location of perlcritic report file. Can be generated using this command-line: perlcritic --quiet --verbose \"%f~|~%s~|~%l~|~%c~|~%m~|~%e~|~%p~||~%n\"", //
-    defaultValue = PerlCritic.PERLCRITIC_REPORT_PATH_DEFAULT ), //
+    defaultValue = PerlCriticProperties.PERLCRITIC_REPORT_PATH_DEFAULT ), //
     @Property( //
-    key = TestHarnessArchive.HARNESS_ARCHIVE_PATH_KEY, //
+    key = TestHarnessArchiveProperties.HARNESS_ARCHIVE_PATH_KEY, //
     name = "Test::Harness Archive Location", //
     description = "Location of Test::Harness::Archive report file. Can be generated using this command-line: prove -t -a testReport.tgz", //
-    defaultValue = TestHarnessArchive.HARNESS_ARCHIVE_PATH_DEFAULT ) //
+    defaultValue = TestHarnessArchiveProperties.HARNESS_ARCHIVE_PATH_DEFAULT ) //
 })
 public class PerlPlugin implements Plugin {
 
