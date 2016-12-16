@@ -1,9 +1,12 @@
 package com.github.otrosien.sonar.perl.tap;
 
+import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.math.BigDecimal;
 import java.util.List;
@@ -13,9 +16,12 @@ import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.apache.commons.compress.archivers.tar.TarArchiveEntry;
-import org.apache.commons.compress.archivers.tar.TarArchiveInputStream;
-import org.apache.commons.compress.compressors.gzip.GzipCompressorInputStream;
+import org.apache.commons.compress.archivers.ArchiveEntry;
+import org.apache.commons.compress.archivers.ArchiveException;
+import org.apache.commons.compress.archivers.ArchiveInputStream;
+import org.apache.commons.compress.archivers.ArchiveStreamFactory;
+import org.apache.commons.compress.compressors.CompressorException;
+import org.apache.commons.compress.compressors.CompressorStreamFactory;
 import org.sonar.api.utils.log.Logger;
 import org.sonar.api.utils.log.Loggers;
 
@@ -35,29 +41,42 @@ public class TestHarnessArchiveReader {
     public Optional<TestHarnessReport> read(File file) throws IOException {
 
         TestHarnessReport.TestHarnessReportBuilder builder = TestHarnessReport.builder();
-        try (FileInputStream s = new FileInputStream(file)) {
-            TarArchiveInputStream tarInput = new TarArchiveInputStream(file.getName().endsWith("tar") ? s : new GzipCompressorInputStream(s));
-            TarArchiveEntry currentEntry = tarInput.getNextTarEntry();
+        try (InputStream in = openArchiveFile(file)) {
+            ArchiveInputStream archive = new ArchiveStreamFactory("UTF-8").createArchiveInputStream(in);
+            ArchiveEntry currentEntry = archive.getNextEntry();
             while (currentEntry != null) {
                 if ("meta.yml".equals(currentEntry.getName())) {
                     log.info("Reading file entry {} from archive.", currentEntry.getName());
-                    readMetaYaml(builder, tarInput);
+                    readMetaYaml(builder, archive, currentEntry);
                 } else {
-                    readTap(builder, tarInput);
+                    readTap(builder, archive, currentEntry);
                 }
-                currentEntry = tarInput.getNextTarEntry();
+                currentEntry = archive.getNextEntry();
             }
             return Optional.of(builder.build());
+        } catch (ArchiveException e) {
+            log.error("Unable to read archive.", e);
+        } catch (CompressorException e) {
+            log.error("Unable to decompress archive.", e);
         } catch (NumberFormatException e) {
             log.error("Unable to parse report.", e);
         }
         return Optional.empty();
     }
 
-    private void readTap(TestHarnessReportBuilder builder, TarArchiveInputStream tarInput) {
-        BufferedReader br =  new BufferedReader(new InputStreamReader(tarInput));
+    private InputStream openArchiveFile(File file) throws CompressorException, FileNotFoundException {
+        BufferedInputStream s = new BufferedInputStream(new FileInputStream(file));
+        if (file.getName().matches(".*(gz|bz2|zip|xz|lzma)$")) {
+            return new BufferedInputStream(new CompressorStreamFactory().createCompressorInputStream(s));
+        } else {
+            return s;
+        }
+    }
+
+    private void readTap(TestHarnessReportBuilder builder, ArchiveInputStream archive, ArchiveEntry entry) {
+        BufferedReader br = new BufferedReader(new InputStreamReader(archive));
         TestDetailBuilder detailBuilder = TestDetail.builder();
-        detailBuilder.filePath(tarInput.getCurrentEntry().getName());
+        detailBuilder.filePath(entry.getName());
         br.lines().forEach(line -> {
             if (line.startsWith("ok ")) {
                 detailBuilder.ok();
@@ -71,7 +90,7 @@ public class TestHarnessArchiveReader {
             }
         });
         TestDetail detail = detailBuilder.build();
-        if(detail.getNumberOfTests() > 0) {
+        if (detail.getNumberOfTests() > 0) {
             builder.addTestDetail(detail);
         } else {
             log.info("Did not recognize TAP or tests skipped completely: " + detail.getFilePath());
@@ -79,17 +98,17 @@ public class TestHarnessArchiveReader {
     }
 
     @SuppressWarnings("unchecked")
-    private void readMetaYaml(TestHarnessReport.TestHarnessReportBuilder builder, TarArchiveInputStream tarInput)
-            throws YamlException {
-        BufferedReader br =  new BufferedReader(new InputStreamReader(tarInput));
+    private void readMetaYaml(TestHarnessReport.TestHarnessReportBuilder builder, ArchiveInputStream archive,
+            ArchiveEntry entry) throws YamlException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(archive));
         YamlReader reader = new YamlReader(br);
         Map<String, Object> object = (Map<String, Object>) reader.read(Map.class);
         builder.startTime(getFromMap(object, "start_time"));
         builder.endTime(getFromMap(object, "stop_time"));
         for (Map<String, Object> fileAttr : (List<Map<String, Object>>) object.get("file_attributes")) {
-            builder.addTest(new Test((String) fileAttr.get("description"),
-                    new BigDecimal((String) fileAttr.get("start_time")),
-                    new BigDecimal((String) fileAttr.get("end_time"))));
+            builder.addTest(
+                    new Test((String) fileAttr.get("description"), new BigDecimal((String) fileAttr.get("start_time")),
+                            new BigDecimal((String) fileAttr.get("end_time"))));
         }
     }
 

@@ -12,6 +12,7 @@ dependencies {
 }
 
 tasks.test.dependsOn(tasks.findByPath(':sonar-perl-plugin:jar'))
+tasks.test.shouldRunAfter(tasks.findByPath(':sonar-perl-plugin:test'))
 
 clean.doLast {
     file('target')?.deleteDir()
