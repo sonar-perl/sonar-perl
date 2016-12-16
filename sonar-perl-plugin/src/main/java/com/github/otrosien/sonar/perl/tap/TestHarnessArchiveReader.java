@@ -36,7 +36,7 @@ public class TestHarnessArchiveReader {
 
         TestHarnessReport.TestHarnessReportBuilder builder = TestHarnessReport.builder();
         try (FileInputStream s = new FileInputStream(file)) {
-            TarArchiveInputStream tarInput = new TarArchiveInputStream(new GzipCompressorInputStream(s));
+            TarArchiveInputStream tarInput = new TarArchiveInputStream(file.getName().endsWith("tar") ? new FileInputStream(file) : new GzipCompressorInputStream(s));
             TarArchiveEntry currentEntry = tarInput.getNextTarEntry();
             while (currentEntry != null) {
                 if ("meta.yml".equals(currentEntry.getName())) {

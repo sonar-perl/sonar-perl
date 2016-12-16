@@ -41,12 +41,23 @@ public class TestHarnessArchiveReaderTest {
         assertThat(report).isEmpty();
     }
 
+    @Test
+    public void should_not_throw_on_tar_report() throws Exception {
+        TestHarnessArchiveReader reader = new TestHarnessArchiveReader();
+        Optional<TestHarnessReport> report = reader.read(tarFile());
+        assertThat(report).isNotEmpty();
+    }
+
     private File sampleFile() throws URISyntaxException {
         return Paths.get(ClassLoader.getSystemResource("tap/testReport.tgz").toURI()).toFile();
     }
 
     private File brokenFile() throws URISyntaxException {
         return Paths.get(ClassLoader.getSystemResource("tap/testReport_broken.tgz").toURI()).toFile();
+    }
+
+    private File tarFile() throws URISyntaxException {
+        return Paths.get(ClassLoader.getSystemResource("tap/testReport.tar").toURI()).toFile();
     }
 
 }
