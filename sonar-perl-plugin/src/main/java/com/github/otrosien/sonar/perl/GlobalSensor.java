@@ -2,7 +2,7 @@ package com.github.otrosien.sonar.perl;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
+import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.EnumMap;
@@ -53,14 +53,14 @@ public class GlobalSensor implements Sensor {
         ArrayList<InputFile> inputFiles = Lists.newArrayList(fileSystem.inputFiles(mainFilePredicate));
 
         for (InputFile inputFile : inputFiles) {
-            this.analyseFile(inputFile, context);
+            this.analyseFile(inputFile, fileSystem.encoding(), context);
         }
     }
 
-    private void analyseFile(InputFile inputFile, SensorContext context) {
+    private void analyseFile(InputFile inputFile, Charset charset, SensorContext context) {
         log.debug("Analysing file {}", inputFile);
         File file = inputFile.file();
-        Map<CounterType, AtomicInteger> lines = countLines(file);
+        Map<CounterType, AtomicInteger> lines = countLines(file, charset);
 
         context.<Integer>newMeasure().on(inputFile)
             .withValue(lines.get(CounterType.CODE).get())
@@ -79,7 +79,7 @@ public class GlobalSensor implements Sensor {
         .forMetric(CoreMetrics.FUNCTIONS).save();
     }
 
-    private Map<CounterType,AtomicInteger> countLines(File file) {
+    private Map<CounterType,AtomicInteger> countLines(File file, Charset charset) {
 
         final AtomicInteger currentIsComment = new AtomicInteger();
         Map<CounterType, AtomicInteger> counters = new EnumMap<>(CounterType.class);
@@ -88,7 +88,7 @@ public class GlobalSensor implements Sensor {
         counters.put(CounterType.CLASS, new AtomicInteger());
         counters.put(CounterType.FUNCTION, new AtomicInteger());
 
-        try (Stream<String> lines = Files.lines(file.toPath(), StandardCharsets.ISO_8859_1)) {
+        try (Stream<String> lines = Files.lines(file.toPath(), charset)) {
             lines
             .filter(line -> !line.matches("^\\s*$"))
             .forEach(line -> {
