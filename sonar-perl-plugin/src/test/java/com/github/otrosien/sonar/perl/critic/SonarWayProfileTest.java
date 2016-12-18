@@ -20,7 +20,7 @@ import com.github.otrosien.sonar.perl.PerlLanguage;
 
 @RunWith(MockitoJUnitRunner.class)
 @SuppressWarnings("deprecation")
-public class PerlCriticProfileTest {
+public class SonarWayProfileTest {
 
     @Mock
     RuleFinder ruleFinder;
@@ -28,12 +28,11 @@ public class PerlCriticProfileTest {
     @Test
     public void should_create_perlcritic_profile() {
       ValidationMessages validation = ValidationMessages.create();
-
-      PerlCriticProfile definition = new PerlCriticProfile(new XMLProfileParser(ruleFinder()));
+      SonarWayProfile definition = new SonarWayProfile(new XMLProfileParser(ruleFinder()));
       RulesProfile profile = definition.createProfile(validation);
       assertThat(profile.getLanguage()).isEqualTo(PerlLanguage.KEY);
       assertThat(profile.getName()).isEqualTo("Sonar way");
-      assertThat(profile.getActiveRules()).extracting("repositoryKey").containsOnly("PerlCritic", "ePages");
+      assertThat(profile.getActiveRules()).extracting("repositoryKey").containsOnly("PerlCritic", "common-perl");
       assertThat(validation.hasErrors()).isFalse();
       assertThat(profile.getActiveRules().size()).isGreaterThan(87);
 

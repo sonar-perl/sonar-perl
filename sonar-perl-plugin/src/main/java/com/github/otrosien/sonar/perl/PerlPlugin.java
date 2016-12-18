@@ -9,7 +9,7 @@ import org.sonar.api.Property;
 import com.github.otrosien.sonar.perl.colorizer.PerlCodeColorizer;
 import com.github.otrosien.sonar.perl.critic.PerlCriticProperties;
 import com.github.otrosien.sonar.perl.critic.PerlCriticIssuesLoaderSensor;
-import com.github.otrosien.sonar.perl.critic.PerlCriticProfile;
+import com.github.otrosien.sonar.perl.critic.SonarWayProfile;
 import com.github.otrosien.sonar.perl.critic.PerlCriticRulesDefinition;
 import com.github.otrosien.sonar.perl.tap.TestHarnessArchiveProperties;
 import com.github.otrosien.sonar.perl.tap.TestHarnessLoaderSensor;
@@ -42,7 +42,7 @@ public class PerlPlugin implements Plugin {
         context.addExtensions(Arrays.asList(
                 PerlLanguage.class,
                 PerlCriticRulesDefinition.class, 
-                PerlCriticProfile.class,
+                SonarWayProfile.class,
                 PerlCodeColorizer.class,
                 GlobalSensor.class,
                 PerlCriticIssuesLoaderSensor.class,

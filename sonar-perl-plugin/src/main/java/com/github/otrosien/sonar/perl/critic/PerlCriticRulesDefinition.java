@@ -10,7 +10,7 @@ import com.github.otrosien.sonar.perl.PerlLanguage;
 
 public final class PerlCriticRulesDefinition implements RulesDefinition {
 
-    private static final String PERLCRITIC_RULES_XML = "/perlcritic-rules.xml";
+    private static final String PERLCRITIC_RULES_XML = "/com/github/otrosien/sonarperl/perlcritic-rules.xml";
     private static final String KEY = "PerlCritic";
     private static final String NAME = "PerlCritic";
 
