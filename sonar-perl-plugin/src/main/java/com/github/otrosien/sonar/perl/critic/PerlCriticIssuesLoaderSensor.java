@@ -9,6 +9,7 @@ import org.sonar.api.batch.fs.FileSystem;
 import org.sonar.api.batch.fs.InputFile;
 import org.sonar.api.batch.fs.InputFile.Type;
 import org.sonar.api.batch.rule.ActiveRules;
+import org.sonar.api.batch.sensor.Sensor;
 import org.sonar.api.batch.sensor.SensorContext;
 import org.sonar.api.batch.sensor.SensorDescriptor;
 import org.sonar.api.batch.sensor.issue.NewIssue;
@@ -19,7 +20,7 @@ import org.sonar.api.utils.log.Loggers;
 
 import com.github.otrosien.sonar.perl.PerlLanguage;
 
-public class PerlCriticIssuesLoaderSensor implements org.sonar.api.batch.sensor.Sensor {
+public class PerlCriticIssuesLoaderSensor implements Sensor {
 
     private static final Logger log = Loggers.get(PerlCriticIssuesLoaderSensor.class);
 
