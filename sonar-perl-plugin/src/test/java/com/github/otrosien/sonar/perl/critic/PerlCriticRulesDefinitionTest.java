@@ -1,6 +1,7 @@
 package com.github.otrosien.sonar.perl.critic;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.sonar.api.server.debt.DebtRemediationFunction.Type.LINEAR;
 
 import java.util.List;
 
@@ -24,6 +25,11 @@ public class PerlCriticRulesDefinitionTest {
 
         List<Rule> rules = repository.rules();
         assertThat(rules).hasSize(271);
+
+        for (Rule rule : rules) {
+            assertThat(rule.debtRemediationFunction()).describedAs(rule.key()).isNotNull();
+            assertThat(rule.debtRemediationFunction().type()).describedAs(rule.key()).isEqualTo(LINEAR);
+        }
     }
 
 }
