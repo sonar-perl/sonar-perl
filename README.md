@@ -14,7 +14,8 @@ You can see it in action [here](http://sonarqube.racodond.com/dashboard/index/10
 Current plugin is still at an early stage. It analyzes perl projects
 without having to parse the perl code itself, attaching the source as
 line-based text. In a later step there would be some proper grammar-based
-parsing and analyzing (see bugtracker for current status).
+parsing and analyzing (as far as this is possible for perl, see bugtracker 
+for current status).
 
 What we have so far...
 
