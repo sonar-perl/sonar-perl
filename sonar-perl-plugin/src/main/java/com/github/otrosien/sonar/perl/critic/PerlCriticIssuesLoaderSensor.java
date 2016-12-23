@@ -86,7 +86,7 @@ public class PerlCriticIssuesLoaderSensor implements Sensor {
             if (inputFile != null) {
                 saveIssue(inputFile, violation.getLine(), violation.getType(), violation.getDescription());
             } else {
-                log.warn("Not able to find an InputFile with path '{}'", violation.getFilePath());
+                log.warn("Not able to find an input file with path '{}'", violation.getFilePath());
             }
         }
 
