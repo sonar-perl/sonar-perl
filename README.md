@@ -7,6 +7,8 @@
 This is a SonarQube plugin to integrate popular features like code coverage,
 Perl::Critic and test reporting for perl projects.
 
+You can see it in action [here](http://sonarqube.racodond.com/dashboard/index/1015)!
+
 ## Current State
 
 Current plugin is still at an early stage. It analyzes perl projects
