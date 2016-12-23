@@ -136,8 +136,4 @@ public class GlobalSensor implements Sensor {
         return counters;
     }
 
-    @Override
-    public String toString() {
-        return getClass().getSimpleName();
-    }
 }

@@ -47,7 +47,7 @@ public class TestHarnessArchiveReader {
             while (currentEntry != null) {
                 if ("meta.yml".equals(currentEntry.getName())) {
                     log.info("Reading file entry {} from archive.", currentEntry.getName());
-                    readMetaYaml(builder, archive, currentEntry);
+                    readMetaYaml(builder, archive);
                 } else {
                     readTap(builder, archive, currentEntry);
                 }
@@ -98,8 +98,7 @@ public class TestHarnessArchiveReader {
     }
 
     @SuppressWarnings("unchecked")
-    private void readMetaYaml(TestHarnessReport.TestHarnessReportBuilder builder, ArchiveInputStream archive,
-            ArchiveEntry entry) throws YamlException {
+    private void readMetaYaml(TestHarnessReport.TestHarnessReportBuilder builder, ArchiveInputStream archive) throws YamlException {
         BufferedReader br = new BufferedReader(new InputStreamReader(archive));
         YamlReader reader = new YamlReader(br);
         Map<String, Object> object = (Map<String, Object>) reader.read(Map.class);
