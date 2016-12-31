@@ -25,7 +25,7 @@ What we have so far...
 * Syntax highlighting of imported code
 * Attaching of Perl::Critic issues
 * Default profile containing 271 Perl::Critic rules
-* Test Coverage (via `Devel::Cover::Report::Clover`)
+* Test Coverage (via Devel::Cover::Report::Clover)
 
 ## Screenshots
 
