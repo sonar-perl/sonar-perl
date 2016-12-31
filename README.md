@@ -5,7 +5,7 @@
 # SonarQube Perl Plugin
 
 This is a [SonarQube](http://www.sonarqube.org/) [plugin](http://docs.sonarqube.org/display/PLUG/Plugin+Library) 
-to integrate popular features like code coverage, Perl::Critic and test reporting for perl projects.
+to integrate popular features like code coverage, Perl::Critic and test reporting for your perl projects.
 
 You can see it in action [here](http://sonarqube.racodond.com/dashboard/index/1015)!
 
@@ -25,6 +25,7 @@ What we have so far...
 * Syntax highlighting of imported code
 * Attaching of Perl::Critic issues
 * Default profile containing 271 Perl::Critic rules
+* Test Coverage (via `Devel::Cover::Report::Clover`)
 
 ## Screenshots
 
@@ -119,7 +120,7 @@ sonar.perl.testHarness.archivePath=testReport.tgz
 prove -t -a testReport.tgz
 ```
 
-- Generate coverage reports in Clover-format (soon available, it still requires a not-yet-released version of `Devel::Cover::Report::Clover`)
+- Generate coverage reports in Clover-format (requires version 1.01 or later of `Devel::Cover::Report::Clover`)
 
 ```sh
 cover -test -report clover
@@ -141,7 +142,7 @@ We support the current LTS release (5.6) and SonarQube 6.x. Please report bugs
 or incompatibilities in our [bugtracker](https://github.com/otrosien/sonar-perl/issues).
 
 
-## Building all from source
+## Building the plugin from source
 
 Running a full build includes creation of the plugin-jar and a docker image.
 This is achieved by running `./gradlew build`. Note that you 
@@ -157,6 +158,6 @@ So, if you're interested, get in touch with us!
 
 ## Links
 
-* [Devel::Cover::Report::Clover](http://search.cpan.org/dist/Devel-Cover-Report-Clover/lib/Devel/Cover/Report/Clover.pm) ([source](https://github.com/captin411/devel-cover-report-clover/)) - upcoming release will have support for statement- and branch-based coverage details. Please install [Sonar Clover Plugin](http://docs.sonarqube.org/display/SONARQUBE45/Clover+Plugin) for reading coverage reports.
+* [Devel::Cover::Report::Clover](http://search.cpan.org/dist/Devel-Cover-Report-Clover/lib/Devel/Cover/Report/Clover.pm) ([source](https://github.com/captin411/devel-cover-report-clover/)) 1.01+ for coverage details. Please install [Sonar Clover Plugin](http://docs.sonarqube.org/display/SONARQUBE45/Clover+Plugin) for reading the coverage report.
 * Perl [TAP](https://testanything.org/) and [TAP::Harness::Archive](http://search.cpan.org/~schwigon/TAP-Harness-Archive-0.18/lib/TAP/Harness/Archive.pm) for test reporting.
 * [Perl::Critic](http://perlcritic.org/) for issue reporting.
