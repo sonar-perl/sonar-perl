@@ -1629,6 +1629,12 @@
       <priority>MAJOR</priority>
     </rule>
 
+    <rule>
+      <repositoryKey>PerlCritic</repositoryKey>
+      <key>CognitiveComplexity::ProhibitExcessCognitiveComplexity</key>
+      <priority>MAJOR</priority>
+    </rule>
+
     <!-- activate common rules -->
 
     <rule>

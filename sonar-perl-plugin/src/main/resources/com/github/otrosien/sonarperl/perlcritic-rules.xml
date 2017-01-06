@@ -3362,6 +3362,18 @@
     <priority>CRITICAL</priority>
   </rule>
 
+  <rule>
+    <key>CognitiveComplexity::ProhibitExcessCognitiveComplexity</key>
+    <name>Prohibit Excess Cognitive Complexity</name>
+    <configKey>CognitiveComplexity::ProhibitExcessCognitiveComplexity</configKey>
+    <type>CODE_SMELL</type>
+    <tag>complexity</tag>
+    <tag>maintenance</tag>
+    <description>
+      <![CDATA[CognitiveComplexity::ProhibitExcessCognitiveComplexity: Avoid code that is nested, and thus difficult to grasp.]]>
+    </description>
+    <priority>MAJOR</priority>
+  </rule>
 
 <!--  manual / other rules -->
 
