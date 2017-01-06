@@ -41,6 +41,7 @@ CodeLayout::RequireTidyCode;linear;5min
 CodeLayout::RequireTrailingCommaAtNewline;linear;5min
 CodeLayout::RequireTrailingCommas;linear;5min
 CodeLayout::RequireUseUTF8;linear;5min
+CognitiveComplexity::ProhibitExcessCognitiveComplexity;linear;5min
 Compatibility::ConstantLeadingUnderscore;linear;5min
 Compatibility::ConstantPragmaHash;linear;5min
 Compatibility::Gtk2Constants;linear;5min
