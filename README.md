@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/otrosien/sonar-perl.svg?branch=master)](https://travis-ci.org/otrosien/sonar-perl)
+[![Build Status](https://travis-ci.org/sonar-perl/sonar-perl.svg?branch=master)](https://travis-ci.org/sonar-perl/sonar-perl)
 [![Quality Gate](https://sonarqube.com/api/badges/gate?key=com.github.otrosien:sonar-perl)](https://sonarqube.com/dashboard/index/com.github.otrosien:sonar-perl)
 [![Coverage](https://sonarqube.com/api/badges/measure?key=com.github.otrosien:sonar-perl&metric=coverage&template=FLAT)](https://sonarqube.com/dashboard/index/com.github.otrosien:sonar-perl)
 
@@ -80,7 +80,7 @@ You should see a "perl sample project" on your SonarQube dashboard.
 
 ## Installing into your SonarQube
 
-Plugin releases can be downloaded from our [github releases page](https://github.com/otrosien/sonar-perl/releases). 
+Plugin releases can be downloaded from our [github releases page](https://github.com/sonar-perl/sonar-perl/releases). 
 If you want to build a snapshot version from source, you can create it via `./gradlew sonar-perl-plugin:jar` and
 copy the resulting file (usually suffixed -SNAPSHOT, unless you checked out a release tag) 
 e.g. `sonar-perl-plugin/build/libs/sonar-perl-plugin-0.2.9-SNAPSHOT.jar` into the plugins
@@ -89,7 +89,7 @@ directory of your SonarQube installation (should be something like `/opt/sonarqu
 
 ## Analyzing your perl project
 
-- Make sure your SonarQube is running, and has the [latest perl plugin](https://github.com/otrosien/sonar-perl/releases) installed
+- Make sure your SonarQube is running, and has the [latest perl plugin](https://github.com/sonar-perl/sonar-perl/releases) installed
 - [Download](http://docs.sonarqube.org/display/SCAN/Analyzing+with+SonarQube+Scanner) and extract the `sonar-scanner` command-line tool.
 - Create a basic `sonar-project.properties` file. Here is an example:
 
@@ -139,7 +139,7 @@ perlcritic --cruel --quiet --verbose "%f~|~%s~|~%l~|~%c~|~%m~|~%e~|~%p~||~%n" li
 ### Compatibility
 
 We support the current LTS release (5.6) and SonarQube 6.x. Please report bugs
-or incompatibilities in our [bugtracker](https://github.com/otrosien/sonar-perl/issues).
+or incompatibilities in our [bugtracker](https://github.com/sonar-perl/sonar-perl/issues).
 
 
 ## Building the plugin from source
@@ -151,7 +151,7 @@ need to have a local docker daemon running for this.
 
 ## Next steps
 
-Please look at the issues in our [bugtracker](https://github.com/otrosien/sonar-perl/issues) for
+Please look at the issues in our [bugtracker](https://github.com/sonar-perl/sonar-perl/issues) for
 the planning and status of the next steps. We also appreciate contributions from the community.
 So, if you're interested, get in touch with us!
 
