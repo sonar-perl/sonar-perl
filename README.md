@@ -112,6 +112,11 @@ sonar.sourceEncoding=UTF-8
 sonar.tests=t
 # testReport.tgz is the default for the report archive.
 sonar.perl.testHarness.archivePath=testReport.tgz
+
+## if your project has perl files without file extension:
+# sonar.import_unknown_files=true
+## .. and then exclude all known non-perl files.
+# sonar.exclusions=READ*,Change*,COPY*,AUTH*,perlcritic_report.txt
 ```
 
 - Execute your tests and save the report as `testReport.tgz`. We require a format compatible with `Test::Harness::Archive`.
