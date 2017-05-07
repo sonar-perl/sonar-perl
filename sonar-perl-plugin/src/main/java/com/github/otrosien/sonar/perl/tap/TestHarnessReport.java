@@ -5,48 +5,94 @@ import static java.util.Collections.unmodifiableList;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NonNull;
-import lombok.experimental.FieldDefaults;
-
-@FieldDefaults(makeFinal=true, level=AccessLevel.PRIVATE)
-@AllArgsConstructor
-@Getter
 public class TestHarnessReport {
 
-    BigDecimal startTime;
-    BigDecimal endTime;
-    List<Test> tests;
-    List<TestDetail> testDetails;
+    private final BigDecimal startTime;
+    private final BigDecimal endTime;
+    private final List<Test> tests;
+    private final List<TestDetail> testDetails;
 
-    @FieldDefaults(makeFinal=true, level=AccessLevel.PRIVATE)
-    @AllArgsConstructor
-    @Getter
+    public TestHarnessReport(BigDecimal startTime, BigDecimal endTime, List<Test> tests, List<TestDetail> testDetails) {
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.tests = tests;
+        this.testDetails = testDetails;
+    }
+
+    public BigDecimal getStartTime() {
+        return startTime;
+    }
+
+    public BigDecimal getEndTime() {
+        return endTime;
+    }
+
+    public List<Test> getTests() {
+        return tests;
+    }
+
+    public List<TestDetail> getTestDetails() {
+        return testDetails;
+    }
+
     public static class Test {
-        @NonNull
-        String filePath;
-        @NonNull
-        BigDecimal startTime;
-        @NonNull
-        BigDecimal endTime;
+        private final String filePath;
+        private final BigDecimal startTime;
+        private final BigDecimal endTime;
+
+        public Test(String filePath, BigDecimal startTime, BigDecimal endTime) {
+            this.filePath = Objects.requireNonNull(filePath);
+            this.startTime = Objects.requireNonNull(startTime);
+            this.endTime = Objects.requireNonNull(endTime);
+        }
+
+        public String getFilePath() {
+            return filePath;
+        }
+
+        public BigDecimal getStartTime() {
+            return startTime;
+        }
+
+        public BigDecimal getEndTime() {
+            return endTime;
+        }
 
         public long getDuration() {
             return endTime.subtract(startTime).multiply(new BigDecimal("1000")).longValue();
         }
     }
 
-    @FieldDefaults(makeFinal=true, level=AccessLevel.PRIVATE)
-    @AllArgsConstructor
-    @Getter
     public static class TestDetail {
-        @NonNull
-        String filePath;
-        int numberOfTests;
-        int passed;
-        int failed;
+        private final String filePath;
+        private final int numberOfTests;
+        private final int passed;
+        private final int failed;
+
+        public TestDetail(String filePath, int numberOfTests, int passed, int failed) {
+            this.filePath = Objects.requireNonNull(filePath);
+            this.numberOfTests = numberOfTests;
+            this.passed = passed;
+            this.failed = failed;
+        }
+
+        public String getFilePath() {
+            return filePath;
+        }
+
+        public int getNumberOfTests() {
+            return numberOfTests;
+        }
+
+        public int getPassed() {
+            return passed;
+        }
+
+        public int getFailed() {
+            return failed;
+        }
 
         public int getSkipped() {
             return numberOfTests - passed - failed;
@@ -82,12 +128,12 @@ public class TestHarnessReport {
             return new TestDetailBuilder();
         }
     }
-    @FieldDefaults(level=AccessLevel.PRIVATE)
+
     public static class TestHarnessReportBuilder {
-        BigDecimal startTime;
-        BigDecimal endTime;
-        List<Test> tests = new ArrayList<>();
-        List<TestDetail> testDetails = new ArrayList<>();
+        private BigDecimal startTime;
+        private BigDecimal endTime;
+        private List<Test> tests = new ArrayList<>();
+        private List<TestDetail> testDetails = new ArrayList<>();
 
         TestHarnessReportBuilder() {
         }

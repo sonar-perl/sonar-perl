@@ -2,7 +2,7 @@ plugins {
     id "java"
     id "eclipse"
     id "com.iadams.sonar-packaging" version "0.1.4"
-    id 'com.bmuschko.docker-remote-api' version '3.0.3'
+    id 'com.bmuschko.docker-remote-api' version '3.0.6'
     id "jacoco"
     id 'maven'
     id 'maven-publish'
@@ -13,21 +13,20 @@ repositories {
 }
 
 dependencies {
-    provided 'org.sonarsource.sonarqube:sonar-plugin-api:5.6.4'
-    compile 'com.google.guava:guava:18.0'
-    compile 'org.apache.commons:commons-compress:1.12'
-    compile 'com.esotericsoftware.yamlbeans:yamlbeans:1.09'
-    compileOnly 'org.projectlombok:lombok:1.16.12'
+    provided 'org.sonarsource.sonarqube:sonar-plugin-api:5.6.6'
+    compile 'com.google.guava:guava:21.0'
+    compile 'org.apache.commons:commons-compress:1.13'
+    compile 'com.esotericsoftware.yamlbeans:yamlbeans:1.11'
     testCompile 'junit:junit:4.12'
-    testCompile 'org.assertj:assertj-core:3.6.1'
-    testCompile 'org.mockito:mockito-core:2.2.29'
+    testCompile 'org.assertj:assertj-core:3.6.2'
+    testCompile 'org.mockito:mockito-core:2.7.22'
 }
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 jacoco {
-    toolVersion = '0.7.7.201606060606'
+    toolVersion = '0.7.9'
 }
 
 sonarPackaging {
