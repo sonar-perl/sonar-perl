@@ -31,29 +31,48 @@ public class TestHarnessLoaderSensor implements Sensor {
         .onlyOnFileType(Type.TEST);
     }
 
-    private Optional<String> getReportPath(SensorContext context) {
+    private Optional<String> getArchiveReportPath(SensorContext context) {
         String reportPath = context.settings().getString(TestHarnessArchiveProperties.HARNESS_ARCHIVE_PATH_KEY);
-        log.info("Configured report path: {}", reportPath);
+        log.info("Configured archive report path: {}", reportPath);
+        return Optional.ofNullable(reportPath);
+    }
+    private Optional<String> getJUnitReportPath(SensorContext context) {
+        String reportPath = context.settings().getString(TestHarnessJUnitProperties.HARNESS_JUNIT_PATH_KEY);
+        log.info("Configured junit report path: {}", reportPath);
         return Optional.ofNullable(reportPath);
     }
 
     @Override
     public void execute(SensorContext context) {
 
-        Optional<String> reportPath = getReportPath(context);
-        Optional<File> reportFile = reportPath
+        Optional<String> archiveReportPath = getArchiveReportPath(context);
+        Optional<File> archiveReportFile = archiveReportPath
             .map(File::new)
             .filter(File::exists);
 
-        if(reportFile.isPresent()) {
+        Optional<String> junitReportPath = getJUnitReportPath(context);
+        Optional<File> junitReportFile = junitReportPath
+            .map(File::new)
+            .filter(File::exists);
+
+        if(archiveReportFile.isPresent()) {
             try {
-                Optional<TestHarnessReport> report = new TestHarnessArchiveReader().read(reportFile.get());
+                Optional<TestHarnessReport> report = new TestHarnessArchiveReader().read(archiveReportFile.get());
                 report.ifPresent(r -> new TestHarnessLoaderSensorExecutor(context).saveTestReportMeasures(r)); // NOSONAR
             } catch (IOException e) {
                 log.error("Error reading Test::Harness::Archive report.", e);
             }
-        } else {
-            log.info("Test::Harness::Archive report file '{}' does not exist. Skipping...", reportPath.orElse(""));
+        }
+        else if (junitReportFile.isPresent()) {
+            try {
+                Optional<TestHarnessReport> report = new TestHarnessJUnitReader().read(junitReportFile.get());
+                report.ifPresent(r -> new TestHarnessLoaderSensorExecutor(context).saveTestReportMeasures(r)); // NOSONAR
+            } catch (IOException e) {
+                log.error("Error reading Test::Harness::JUnit report.", e);
+            }
+        }
+        else {
+            log.info("None of Test::Harness::Archive ({}) or Test::Harness::JUnit ({}) report files exist. Skipping...", archiveReportPath.orElse(""), junitReportPath.orElse(""));
         }
     }
 
