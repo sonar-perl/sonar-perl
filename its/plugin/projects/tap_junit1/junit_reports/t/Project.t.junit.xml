@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<testsuites>
+  <testsuite name="Project_t"
+             errors="1"
+             time="0.0792479515075684"
+             failures="1"
+             tests="2">
+    <testcase time="0.0751368999481201" name="1 - should be hello"></testcase>
+    <testcase time="0.000566005706787109" name="2 - Have some failing test">
+      <failure message="not ok 2 - Have some failing test"
+               type="TestFailed"><![CDATA[not ok 2 - Have some failing test]]></failure>
+    </testcase>
+    <testcase name="(teardown)" time="0.00325489044189453" />
+    <system-out><![CDATA[ok 1 - should be hello
+not ok 2 - Have some failing test
+1..2
+]]></system-out>
+    <system-err><![CDATA[Dubious, test returned 1 (wstat 256, 0x100)
+]]></system-err>
+    <error message="Dubious, test returned 1 (wstat 256, 0x100)" />
+  </testsuite>
+</testsuites>
