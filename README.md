@@ -119,7 +119,7 @@ sonar.perl.testHarness.archivePath=testReport.tgz
 # sonar.exclusions=READ*,Change*,COPY*,AUTH*,perlcritic_report.txt
 ```
 
-- Execute your tests and save the report as `testReport.tgz`. We require a format compatible with `Test::Harness::Archive`.
+- Execute your tests and save the report as `testReport.tgz`. We require a format compatible with `TAP::Harness::Archive`.
 
 ```sh
 prove -t -a testReport.tgz
@@ -198,6 +198,6 @@ So, if you're interested, get in touch with us!
 
 ## Links
 
-* [Devel::Cover::Report::Clover](http://search.cpan.org/dist/Devel-Cover-Report-Clover/lib/Devel/Cover/Report/Clover.pm) ([source](https://github.com/captin411/devel-cover-report-clover/)) 1.01+ for coverage details. Please install [Sonar Clover Plugin](http://docs.sonarqube.org/display/SONARQUBE45/Clover+Plugin) for reading the coverage report.
-* Perl [TAP](https://testanything.org/), and [TAP::Harness::Archive](http://search.cpan.org/~schwigon/TAP-Harness-Archive-0.18/lib/TAP/Harness/Archive.pm), [TAP::Harness::JUnit](https://metacpan.org/pod/TAP::Harness::JUnit), [TAP::Formatter::JUnit](https://metacpan.org/pod/TAP::Formatter::JUnit), for test reporting.
+* [Devel::Cover::Report::Clover](https://metacpan.org/pod/Devel::Cover::Report::Clover) ([source](https://github.com/captin411/devel-cover-report-clover/)) 1.01+ for coverage details. Please install [Sonar Clover Plugin](http://docs.sonarqube.org/display/SONARQUBE45/Clover+Plugin) for reading the coverage report.
+* Perl [TAP](https://testanything.org/), and [TAP::Harness::Archive](https://metacpan.org/pod/TAP::Harness::Archive), [TAP::Harness::JUnit](https://metacpan.org/pod/TAP::Harness::JUnit), [TAP::Formatter::JUnit](https://metacpan.org/pod/TAP::Formatter::JUnit), for test reporting.
 * [Perl::Critic](http://perlcritic.org/) for issue reporting.
