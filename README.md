@@ -130,11 +130,14 @@ generate JUnit XML reports, `TAP::Harness::JUnit` and `TAP::Formatter::JUnit`.
 As the plugin would need to extract the test file names from the reports,
 some specific settings are required when using these JUnit modules.
 
-For `TAP::Harness::JUnit` you can generate a single report file.
+For `TAP::Harness::JUnit` you can generate a single report file. The namemangle
+mode has to be "perl" or "none" to allow test file names to be recovered
+from the JUnit report. Note that with the "perl" mode you shall not have
+multiple dots in your test file name, like `foo.bar.t`. And the "none" mode
+may not work well with some JUnit XML report consumer software.
 
 ```sh
 # below would defaultly generate a junit_output.xml
-# JUNIT_NAME_MANGLE has to be "perl" or "none"
 JUNIT_NAME_MANGLE=perl prove --harness TAP::Harness::JUnit ...
 ```
 ```            
