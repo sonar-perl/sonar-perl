@@ -119,11 +119,46 @@ sonar.perl.testHarness.archivePath=testReport.tgz
 # sonar.exclusions=READ*,Change*,COPY*,AUTH*,perlcritic_report.txt
 ```
 
-- Execute your tests and save the report as `testReport.tgz`. We require a format compatible with `Test::Harness::Archive`.
+- Execute your tests and save the report as `testReport.tgz`. We require a format compatible with `TAP::Harness::Archive`.
 
 ```sh
 prove -t -a testReport.tgz
 ```
+
+We also support JUnit reports. There are mainly two CPAN modules that can
+generate JUnit XML reports, `TAP::Harness::JUnit` and `TAP::Formatter::JUnit`.
+As the plugin would need to extract the test file names from the reports,
+some specific settings are required when using these JUnit modules.
+
+For `TAP::Harness::JUnit` you can generate a single report file. The namemangle
+mode has to be "perl" or "none" to allow test file names to be recovered
+from the JUnit report. Note that with the "perl" mode you shall not have
+multiple dots in your test file name, like `foo.bar.t`. And the "none" mode
+may not work well with some JUnit XML report consumer software.
+
+```sh
+# below would defaultly generate a junit_output.xml
+JUNIT_NAME_MANGLE=perl prove --harness TAP::Harness::JUnit ...
+```
+```            
+# in sonar-project.properties
+sonar.perl.testHarness.junitPath=junit_output.xml
+```
+
+For `TAP::Formatter::JUnit`
+```sh
+# generate individual JUnit XML files into a directory
+mkdir junit_output
+PERL_TEST_HARNESS_DUMP_TAP=junit_output prove --formatter TAP::Formatter::JUnit --timer ...
+```
+```            
+# in sonar-project.properties
+sonar.perl.testHarness.junitPath=junit_output
+```
+
+The plugin would firstly try to scan `testReport.tgz`, or whatever specified via
+`sonar.perl.testHarness.archivePath`. Only if the archive report does not exist,
+it would look at the JUnit settings.
 
 - Generate coverage reports in Clover-format (requires version 1.01 or later of `Devel::Cover::Report::Clover`)
 
@@ -163,6 +198,6 @@ So, if you're interested, get in touch with us!
 
 ## Links
 
-* [Devel::Cover::Report::Clover](http://search.cpan.org/dist/Devel-Cover-Report-Clover/lib/Devel/Cover/Report/Clover.pm) ([source](https://github.com/captin411/devel-cover-report-clover/)) 1.01+ for coverage details. Please install [Sonar Clover Plugin](http://docs.sonarqube.org/display/SONARQUBE45/Clover+Plugin) for reading the coverage report.
-* Perl [TAP](https://testanything.org/) and [TAP::Harness::Archive](http://search.cpan.org/~schwigon/TAP-Harness-Archive-0.18/lib/TAP/Harness/Archive.pm) for test reporting.
+* [Devel::Cover::Report::Clover](https://metacpan.org/pod/Devel::Cover::Report::Clover) ([source](https://github.com/captin411/devel-cover-report-clover/)) 1.01+ for coverage details. Please install [Sonar Clover Plugin](http://docs.sonarqube.org/display/SONARQUBE45/Clover+Plugin) for reading the coverage report.
+* Perl [TAP](https://testanything.org/), and [TAP::Harness::Archive](https://metacpan.org/pod/TAP::Harness::Archive), [TAP::Harness::JUnit](https://metacpan.org/pod/TAP::Harness::JUnit), [TAP::Formatter::JUnit](https://metacpan.org/pod/TAP::Formatter::JUnit), for test reporting.
 * [Perl::Critic](http://perlcritic.org/) for issue reporting.

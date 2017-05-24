@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='utf-8'?>
+<testsuites>
+  <testsuite name="t.Project_t" errors="0" failures="1" skipped="0" tests="2" time="0.0793290138244629">
+    <system-out>ok 1 - should be hello
+not ok 2 - Have some failing test
+1..2
+</system-out>
+    <testcase name="should be hello" classname="t.Project_t" time="0.0751869678497314" />
+    <testcase name="Have some failing test" classname="t.Project_t" time="0.000247955322265625">
+      <failure message="not ok 2 - Have some failing test" type="TAP::Parser::Result::Test"></failure>
+    </testcase>
+  </testsuite>
+</testsuites>
