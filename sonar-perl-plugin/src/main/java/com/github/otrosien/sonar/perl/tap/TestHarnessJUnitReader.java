@@ -2,19 +2,14 @@ package com.github.otrosien.sonar.perl.tap;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.StringReader;
-import java.io.InputStreamReader;
 import java.math.BigDecimal;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
-import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -23,20 +18,18 @@ import java.util.stream.Collectors;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+
+import org.sonar.api.utils.log.Logger;
+import org.sonar.api.utils.log.Loggers;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
-import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
-import org.sonar.api.utils.log.Logger;
-import org.sonar.api.utils.log.Loggers;
-
 import com.github.otrosien.sonar.perl.tap.TestHarnessReport.Test;
 import com.github.otrosien.sonar.perl.tap.TestHarnessReport.TestDetail;
 import com.github.otrosien.sonar.perl.tap.TestHarnessReport.TestDetail.TestDetailBuilder;
-import com.github.otrosien.sonar.perl.tap.TestHarnessReport.TestHarnessReportBuilder;
 
 /*
 A difficulty with JUnit reports is that we need to recover test file path
@@ -65,7 +58,7 @@ public class TestHarnessJUnitReader {
         Path path = Paths.get(file.getPath());
         TestHarnessReport.TestHarnessReportBuilder builder = TestHarnessReport.builder();
 
-        if (Files.isDirectory(path)) { // for TAP::Formatter::JUnit
+        if (path.toFile().isDirectory()) { // for TAP::Formatter::JUnit
             log.info("Looking for JUnit reports under path {}", path.toString());
 
             List<Path> files = Files.walk(path)
@@ -109,10 +102,9 @@ public class TestHarnessJUnitReader {
 
             for (int i = 0; i < testsuites.getLength(); i++) {
                 Element testsuite = (Element)(testsuites.item(i));
-                
                 String tsname = testsuite.getAttribute("name");
                 String filepath;
-                if (reportPath.endsWith(".t.junit.xml") && path != reportRootPath) {
+                if (reportPath.endsWith(".t.junit.xml") && !reportRootPath.equals(path)) {
                     // assume TAP::Formatter::JUnit with PERL_TEST_HARNESS_DUMP_TAP
                     filepath = reportRootPath.relativize(path)
                                     .toString()
@@ -123,12 +115,12 @@ public class TestHarnessJUnitReader {
                     if (!tsname.endsWith(".t")) {
                         // assume namemangle is "perl"
                         filepath = tsname.replace('.', '/').replaceAll("_t$", ".t");
-                    } 
+                    }
                 }
-            
+
                 builder.addTest(
-                    new Test((String) tsname,
-                             new BigDecimal(0),
+                    new Test(String.valueOf(tsname),
+                             BigDecimal.ZERO,
                              new BigDecimal((String) testsuite.getAttribute("time"))));
 
                 TestDetailBuilder detailBuilder = TestDetail.builder();
@@ -158,10 +150,10 @@ public class TestHarnessJUnitReader {
                     }
                 }
 
-                log.info("Did not recognize TAP or tests skipped completely: " + filepath);
+                log.info("Did not recognize TAP or tests skipped completely: {}", filepath);
             }
             return true;
-            
+
         } catch (IOException e) {
             log.error("IO exception: ", e);
         } catch (SAXException e) {
@@ -172,4 +164,3 @@ public class TestHarnessJUnitReader {
         return false;
     }
 }
-    
