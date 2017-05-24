@@ -201,3 +201,4 @@ So, if you're interested, get in touch with us!
 * [Devel::Cover::Report::Clover](https://metacpan.org/pod/Devel::Cover::Report::Clover) ([source](https://github.com/captin411/devel-cover-report-clover/)) 1.01+ for coverage details. Please install [Sonar Clover Plugin](http://docs.sonarqube.org/display/SONARQUBE45/Clover+Plugin) for reading the coverage report.
 * Perl [TAP](https://testanything.org/), and [TAP::Harness::Archive](https://metacpan.org/pod/TAP::Harness::Archive), [TAP::Harness::JUnit](https://metacpan.org/pod/TAP::Harness::JUnit), [TAP::Formatter::JUnit](https://metacpan.org/pod/TAP::Formatter::JUnit), for test reporting.
 * [Perl::Critic](http://perlcritic.org/) for issue reporting.
+
