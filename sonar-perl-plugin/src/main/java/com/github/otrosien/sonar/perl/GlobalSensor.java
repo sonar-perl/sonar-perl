@@ -6,6 +6,7 @@ import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.EnumMap;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Stream;
@@ -20,8 +21,6 @@ import org.sonar.api.batch.sensor.SensorDescriptor;
 import org.sonar.api.measures.CoreMetrics;
 import org.sonar.api.utils.log.Logger;
 import org.sonar.api.utils.log.Loggers;
-
-import com.google.common.collect.Lists;
 
 public class GlobalSensor implements Sensor {
 
@@ -50,7 +49,8 @@ public class GlobalSensor implements Sensor {
           fileSystem.predicates().hasType(InputFile.Type.MAIN),
           fileSystem.predicates().hasLanguage(PerlLanguage.KEY));
 
-        ArrayList<InputFile> inputFiles = Lists.newArrayList(fileSystem.inputFiles(mainFilePredicate));
+        List<InputFile> inputFiles = new ArrayList<>();
+        fileSystem.inputFiles(mainFilePredicate).forEach(inputFiles::add);
 
         for (InputFile inputFile : inputFiles) {
             this.analyseFile(inputFile, fileSystem.encoding(), context);

@@ -1,6 +1,8 @@
 package com.github.otrosien.sonar.perl.colorizer;
 
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -13,14 +15,12 @@ import org.sonar.colorizer.StringTokenizer;
 import org.sonar.colorizer.Tokenizer;
 
 import com.github.otrosien.sonar.perl.PerlLanguage;
-import com.google.common.collect.ImmutableSet;
-
 
 @SuppressWarnings("deprecation")
 public class PerlCodeColorizer extends CodeColorizerFormat { // NOSONAR
 
     // from https://github.com/jploski/epic-ide/blob/b70f1c5ccb3e528f3a8c727b04dc633439f1d35a/org.epic.perleditor/src/org/epic/core/parser/PerlLexerBase.java
-    private static Set<String> keywords = ImmutableSet.of(
+    private static Set<String> keywords = Collections.unmodifiableSet(new HashSet<>(Arrays.asList(
             "BEGIN", "CHECK", "INIT", "END", "UNITCHECK",
             "bless", "caller", "continue", "dbmclose",
             "dbmopen", "default", "die", "do", "dump",
@@ -61,7 +61,7 @@ public class PerlCodeColorizer extends CodeColorizerFormat { // NOSONAR
             "sysread", "sysseek", "system", "syswrite", "tell",
             "time", "truncate", "uc", "umask", "undef", "unlink",
             "unpack", "unshift", "utime", "values", "vec",
-            "wait", "warn", "write");
+            "wait", "warn", "write")));
 
     private static final String CLOSING_SPAN = "</span>";
 
