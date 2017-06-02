@@ -1,4 +1,4 @@
-package com.github.otrosien.perl.it;
+package com.github.sonarperl.it;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

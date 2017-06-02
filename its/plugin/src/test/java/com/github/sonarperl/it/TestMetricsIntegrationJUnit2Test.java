@@ -1,4 +1,4 @@
-package com.github.otrosien.perl.it;
+package com.github.sonarperl.it;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -16,9 +16,9 @@ import com.sonar.orchestrator.Orchestrator;
 import com.sonar.orchestrator.build.SonarScanner;
 import com.sonar.orchestrator.locator.FileLocation;
 
-public class TestMetricsIntegrationJUnit1Test {
+public class TestMetricsIntegrationJUnit2Test {
 
-    private static final String PROJECT_KEY = "tap_junit1";
+    private static final String PROJECT_KEY = "tap_junit2";
 
     @ClassRule
     public static Orchestrator orchestrator = Orchestrator.builderEnv()
@@ -31,11 +31,11 @@ public class TestMetricsIntegrationJUnit1Test {
     @BeforeClass
     public static void startServer() {
         SonarScanner build = SonarScanner.create()
-                .setProjectDir(new File("projects/tap_junit1"))
+                .setProjectDir(new File("projects/tap_junit2"))
                 .setProjectKey(PROJECT_KEY)
                 .setProjectName(PROJECT_KEY)
                 .setProjectVersion("1.0-SNAPSHOT")
-                .setProperty("sonar.perl.testHarness.junitPath", "junit_reports")
+                .setProperty("sonar.perl.testHarness.junitPath", "junit_output.xml")
                 .setSourceDirs("lib")
                 .setTestDirs("t");
         orchestrator.executeBuild(build);
