@@ -16,11 +16,12 @@ scmVersion {
 
 allprojects {
     project.version = scmVersion.version
-    project.group = 'com.github.otrosien'
+    project.group = 'com.github.sonarperl'
 }
 
 sonarqube {
     properties {
+        // TODO: Rename project key
         property "sonar.projectKey", "com.github.otrosien:sonar-perl"
         property "sonar.projectName", "sonar-perl"
         property "sonar.verbose", "true"
