@@ -31,7 +31,7 @@ jacoco {
 sonarPackaging {
     serverUrl = 'http://localhost:9000'
     pluginKey = 'perl'
-    pluginClass = 'com.github.otrosien.sonar.perl.PerlPlugin'
+    pluginClass = 'com.github.sonarperl.PerlPlugin'
     pluginName = 'Perl'
     pluginDescription = 'There is more than one camel to do it.'
     pluginParent = null
