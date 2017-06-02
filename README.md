@@ -7,8 +7,6 @@
 This is a [SonarQube](http://www.sonarqube.org/) [plugin](http://docs.sonarqube.org/display/PLUG/Plugin+Library) 
 to integrate popular features like code coverage, Perl::Critic and test reporting for your perl projects.
 
-You can see it in action [here](http://sonarqube.racodond.com/dashboard/index/1015)!
-
 ## Current State
 
 Current plugin is still at an early stage. It analyzes perl projects
