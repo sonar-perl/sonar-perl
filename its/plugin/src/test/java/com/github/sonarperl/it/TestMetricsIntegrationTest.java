@@ -22,7 +22,7 @@ public class TestMetricsIntegrationTest {
 
     @ClassRule
     public static Orchestrator orchestrator = Orchestrator.builderEnv()
-      .setSonarVersion("6.1")
+      .setSonarVersion("6.4")
       .addPlugin(FileLocation.byWildcardMavenFilename(new File("../../sonar-perl-plugin/build/libs"), "sonar-perl-plugin-*.jar"))
       .build();
 
