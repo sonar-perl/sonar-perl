@@ -22,7 +22,7 @@ public class TestMetricsIntegrationJUnit2Test {
 
     @ClassRule
     public static Orchestrator orchestrator = Orchestrator.builderEnv()
-      .setSonarVersion("6.4")
+      .setSonarVersion(SonarIntegration.SONAR_IT_VERSION)
       .addPlugin(FileLocation.byWildcardMavenFilename(new File("../../sonar-perl-plugin/build/libs"), "sonar-perl-plugin-*.jar"))
       .build();
 
