@@ -14,6 +14,11 @@ dependencies {
 tasks.test.dependsOn(tasks.findByPath(':sonar-perl-plugin:jar'))
 tasks.test.shouldRunAfter(tasks.findByPath(':sonar-perl-plugin:test'))
 
+// run test suite
+test {
+    include 'com/github/sonarperl/it/IntegrationTests.class'
+}
+
 clean.doLast {
     file('target')?.deleteDir()
 }

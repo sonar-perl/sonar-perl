@@ -8,6 +8,7 @@ import org.junit.Test;
 import org.sonar.api.batch.fs.InputFile.Type;
 import org.sonar.api.batch.fs.internal.DefaultInputFile;
 import org.sonar.api.batch.fs.internal.FileMetadata;
+import org.sonar.api.batch.fs.internal.TestInputFileBuilder;
 import org.sonar.api.batch.sensor.internal.DefaultSensorDescriptor;
 import org.sonar.api.batch.sensor.internal.SensorContextTester;
 import org.sonar.api.internal.google.common.base.Charsets;
@@ -71,14 +72,14 @@ public class GlobalSensorTest {
     }
 
     private DefaultInputFile inputFile(String relativePath) {
-      DefaultInputFile inputFile = new DefaultInputFile("moduleKey", relativePath)
+      DefaultInputFile inputFile = new TestInputFileBuilder("moduleKey", relativePath)
         .setModuleBaseDir(baseDir.toPath())
         .setType(Type.MAIN)
-        .setLanguage(PerlLanguage.KEY);
+        .setLanguage(PerlLanguage.KEY).build();
 
       context.fileSystem().add(inputFile);
 
-      return inputFile.initMetadata(new FileMetadata().readMetadata(inputFile.file(), Charsets.UTF_8));
+      return inputFile.setMetadata(new FileMetadata().readMetadata(inputFile.file(), Charsets.UTF_8));
     }
 
 }

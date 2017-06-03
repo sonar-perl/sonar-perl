@@ -3,10 +3,14 @@ package com.github.sonarperl.it;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.io.File;
+import java.util.Collection;
 
-import org.junit.BeforeClass;
 import org.junit.ClassRule;
 import org.junit.Test;
+import org.junit.rules.TestRule;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import org.junit.runners.Parameterized.Parameters;
 import org.sonar.wsclient.Sonar;
 import org.sonar.wsclient.services.Measure;
 import org.sonar.wsclient.services.Resource;
@@ -14,23 +18,24 @@ import org.sonar.wsclient.services.ResourceQuery;
 
 import com.sonar.orchestrator.Orchestrator;
 import com.sonar.orchestrator.build.SonarScanner;
-import com.sonar.orchestrator.locator.FileLocation;
 
+@RunWith(Parameterized.class)
 public class TestMetricsIntegrationJUnit2Test {
 
     private static final String PROJECT_KEY = "tap_junit2";
 
     @ClassRule
-    public static Orchestrator orchestrator = Orchestrator.builderEnv()
-      .setSonarVersion(SonarIntegration.SONAR_IT_VERSION)
-      .addPlugin(FileLocation.byWildcardMavenFilename(new File("../../sonar-perl-plugin/build/libs"), "sonar-perl-plugin-*.jar"))
-      .build();
+    public static TestRule RESOURCES = IntegrationTests.RESOURCES;
 
-    private static Sonar wsClient;
+    @Parameters
+    public static Collection<Orchestrator> orchestrators() {
+        return IntegrationTests.orchestrators();
+    }
 
-    @BeforeClass
-    public static void startServer() {
-        SonarScanner build = SonarScanner.create()
+    private static final SonarScanner build;
+
+    static {
+        build = SonarScanner.create()
                 .setProjectDir(new File("projects/tap_junit2"))
                 .setProjectKey(PROJECT_KEY)
                 .setProjectName(PROJECT_KEY)
@@ -38,8 +43,12 @@ public class TestMetricsIntegrationJUnit2Test {
                 .setProperty("sonar.perl.testHarness.junitPath", "junit_output.xml")
                 .setSourceDirs("lib")
                 .setTestDirs("t");
-        orchestrator.executeBuild(build);
+    }
 
+    private static Sonar wsClient;
+
+    public TestMetricsIntegrationJUnit2Test(Orchestrator orchestrator) {
+        orchestrator.executeBuild(build);
         wsClient = orchestrator.getServer().getWsClient();
     }
 
