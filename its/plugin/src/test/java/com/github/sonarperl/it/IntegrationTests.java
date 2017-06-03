@@ -1,12 +1,11 @@
 package com.github.sonarperl.it;
 
 import java.io.File;
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.Collection;
 
 import org.junit.ClassRule;
 import org.junit.rules.RuleChain;
-import org.junit.rules.TestRule;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized.Parameters;
 import org.junit.runners.Suite;
@@ -16,40 +15,44 @@ import com.sonar.orchestrator.OrchestratorBuilder;
 import com.sonar.orchestrator.locator.FileLocation;
 
 @RunWith(Suite.class)
-@Suite.SuiteClasses({ ProjectMetricsIntegrationTest.class, TestMetricsIntegrationJUnit1Test.class,
-        TestMetricsIntegrationJUnit2Test.class, TestMetricsIntegrationTest.class, })
+@Suite.SuiteClasses({ 
+    ProjectMetricsIntegrationTest.class,
+    TestMetricsIntegrationJUnit1Test.class,
+    TestMetricsIntegrationJUnit2Test.class,
+    TestMetricsIntegrationTest.class,
+    PerlCriticIntegrationTest.class
+})
 public class IntegrationTests {
 
-    @ClassRule
-    public static Orchestrator ORCHESTRATOR_LOW;
+    private static Collection<Orchestrator> ORCHESTRATORS = new ArrayList<>(2);
 
     @ClassRule
-    public static Orchestrator ORCHESTRATOR_HIGH;
+    public static RuleChain RESOURCES = RuleChain.emptyRuleChain();
 
     static {
-        OrchestratorBuilder orchestratorBuilder1 = Orchestrator.builderEnv()
-                .setSonarVersion("5.6")
-                .addPlugin(FileLocation.byWildcardMavenFilename(new File("../../sonar-perl-plugin/build/libs"),
-                        "sonar-perl-plugin-*.jar"));
-        ORCHESTRATOR_LOW = orchestratorBuilder1.build();
-
-        OrchestratorBuilder orchestratorBuilder2 = Orchestrator.builderEnv()
-                .setSonarVersion("6.2")
-                .addPlugin(FileLocation.byWildcardMavenFilename(new File("../../sonar-perl-plugin/build/libs"),
-                        "sonar-perl-plugin-*.jar"));
-        ORCHESTRATOR_HIGH = orchestratorBuilder2.build();
-
+        for (Orchestrator orchestrator : new Orchestrator[]{
+                orchestratorBuilderFor("5.6").build(),
+                orchestratorBuilderFor("6.2").build()}) {
+            register(orchestrator);
+        }
     }
 
-    public static TestRule RESOURCES = RuleChain.emptyRuleChain()
-            .around(ORCHESTRATOR_HIGH)
-            .around(ORCHESTRATOR_LOW);
+    private static void register(Orchestrator orchestrator) {
+        ORCHESTRATORS.add(orchestrator);
+        RESOURCES = RESOURCES.around(orchestrator);
+    }
 
     @Parameters
     public static final Collection<Orchestrator> orchestrators() {
-        return Arrays.asList(ORCHESTRATOR_LOW
-                , ORCHESTRATOR_HIGH
-                );
+        return ORCHESTRATORS;
+    }
+
+    private static OrchestratorBuilder orchestratorBuilderFor(String version) {
+        OrchestratorBuilder orchestratorBuilder = Orchestrator.builderEnv()
+                .setSonarVersion(version)
+                .addPlugin(FileLocation.byWildcardMavenFilename(new File("../../sonar-perl-plugin/build/libs"),
+                        "sonar-perl-plugin-*.jar"));
+        return orchestratorBuilder;
     }
 
 }
