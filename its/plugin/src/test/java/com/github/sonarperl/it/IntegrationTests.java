@@ -33,7 +33,8 @@ public class IntegrationTests {
                         "sonar-perl-plugin-*.jar"));
         ORCHESTRATOR_LOW = orchestratorBuilder1.build();
 
-        OrchestratorBuilder orchestratorBuilder2 = Orchestrator.builderEnv().setSonarVersion("6.2")
+        OrchestratorBuilder orchestratorBuilder2 = Orchestrator.builderEnv()
+                .setSonarVersion("6.2")
                 .addPlugin(FileLocation.byWildcardMavenFilename(new File("../../sonar-perl-plugin/build/libs"),
                         "sonar-perl-plugin-*.jar"));
         ORCHESTRATOR_HIGH = orchestratorBuilder2.build();

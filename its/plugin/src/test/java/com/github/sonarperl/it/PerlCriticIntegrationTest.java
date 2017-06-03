@@ -4,8 +4,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.io.File;
 import java.util.Collection;
+
 import org.junit.ClassRule;
 import org.junit.Test;
+import org.junit.rules.TestRule;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
@@ -21,7 +23,7 @@ public class PerlCriticIntegrationTest {
     private static final String PROJECT_KEY = "critic";
 
     @ClassRule
-    public static IntegrationTests IT = new IntegrationTests();
+    public static TestRule RESOURCES = IntegrationTests.RESOURCES;
 
     @Parameters
     public static Collection<Orchestrator> orchestrators() {
