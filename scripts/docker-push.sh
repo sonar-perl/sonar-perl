@@ -7,7 +7,7 @@ function docker_login {
 	docker login -u $DOCKER_USER -p $DOCKER_PASS
 }
 
-export REPO=otrosien/sonar-perl
+export REPO=sonarperl/sonar-perl
 
 if [[ "$TRAVIS_TAG" =~ ^[0-9.]+$ ]] ; then
 	docker_login
