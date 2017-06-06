@@ -109,7 +109,7 @@ task buildDockerImage(type: DockerBuildImage) {
     description = 'Builds a new docker image.'
     dependsOn copyDockerTargetArtifacts
     inputDir = file('build/docker')
-    tag = "otrosien/sonar-perl:latest"
+    tag = "sonarperl/sonar-perl:latest"
     noCache = true
 }
 
