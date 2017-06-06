@@ -24,15 +24,11 @@ public class TestHarnessJUnitReaderTest {
         assertThat(r.getTests()).hasSize(1);
         TestHarnessReport.Test t = r.getTests().get(0);
         assertThat(t.getFilePath()).isEqualTo("Project_t");
-        assertThat(r.getTestDetails()).hasSize(1);
-        TestDetail d = r.getTestDetails().get(0);
-        assertThat(d.getFilePath()).isEqualTo("Project.t"); // shouldn't this be t/Project.t?
-        assertThat(d.getFailed()).isEqualTo(1);
-        assertThat(d.getNumberOfTests()).isEqualTo(2);
+        assertTestDetails(r);
     }
 
     private File sampleFile1() throws URISyntaxException {
-        return Paths.get(ClassLoader.getSystemResource("tap_junit1/junit_reports/t").toURI()).toFile();
+        return Paths.get(ClassLoader.getSystemResource("tap_junit1/junit_reports").toURI()).toFile();
     }
 
     // TAP::Harness::JUnit
@@ -46,6 +42,14 @@ public class TestHarnessJUnitReaderTest {
         assertThat(r.getTests()).hasSize(1);
         TestHarnessReport.Test t = r.getTests().get(0);
         assertThat(t.getFilePath()).isEqualTo("t.Project_t");
+        assertTestDetails(r);
+    }
+
+    private File sampleFile2() throws URISyntaxException {
+        return Paths.get(ClassLoader.getSystemResource("tap_junit2/junit_output.xml").toURI()).toFile();
+    }
+
+    private void assertTestDetails(TestHarnessReport r) {
         assertThat(r.getTestDetails()).hasSize(1);
         TestDetail d = r.getTestDetails().get(0);
         assertThat(d.getFilePath()).isEqualTo("t/Project.t");
@@ -53,7 +57,4 @@ public class TestHarnessJUnitReaderTest {
         assertThat(d.getNumberOfTests()).isEqualTo(2);
     }
 
-    private File sampleFile2() throws URISyntaxException {
-        return Paths.get(ClassLoader.getSystemResource("tap_junit2/junit_output.xml").toURI()).toFile();
-    }
 }
