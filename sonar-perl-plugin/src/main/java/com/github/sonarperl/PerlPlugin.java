@@ -1,10 +1,14 @@
 package com.github.sonarperl;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import org.sonar.api.Plugin;
 import org.sonar.api.Properties;
 import org.sonar.api.Property;
+import org.sonar.api.utils.log.Logger;
+import org.sonar.api.utils.log.Loggers;
 
 import com.github.sonarperl.colorizer.PerlCodeColorizer;
 import com.github.sonarperl.critic.PerlCriticIssuesLoaderSensor;
@@ -33,21 +37,31 @@ import com.github.sonarperl.tap.TestHarnessLoaderSensor;
 })
 public class PerlPlugin implements Plugin {
 
+    private static final Logger log = Loggers.get(PerlPlugin.class);
+
     public static final String FILE_SUFFIXES_KEY = "com.github.sonarperl.suffixes";
 
     public static final String DEFAULT_FILE_SUFFIXES = "pm,pl,t";
 
     @Override
     public void define(Context context) {
-        context.addExtensions(Arrays.asList(
+        List<Object> extensions = new ArrayList<>();
+        extensions.addAll(Arrays.asList(
                 PerlLanguage.class,
                 PerlCriticRulesDefinition.class, 
                 SonarWayProfile.class,
-                PerlCodeColorizer.class,
                 GlobalSensor.class,
                 PerlCriticIssuesLoaderSensor.class,
                 TestHarnessLoaderSensor.class
         ));
+
+        try {
+            extensions.add(PerlCodeColorizer.class);
+        } catch (NoClassDefFoundError e) {
+            log.warn("Unable to load colorizer: " + e.getMessage());
+        }
+
+        context.addExtensions(extensions);
     }
 
 }
