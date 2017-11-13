@@ -1,13 +1,13 @@
 apply plugin: 'java'
 
 repositories {
-    jcenter()
+    mavenCentral()
 }
 
 dependencies {
     testCompile 'junit:junit:4.12'
     testCompile 'org.assertj:assertj-core:3.8.0'
-    testCompile 'org.sonarsource.orchestrator:sonar-orchestrator:3.13'
+    testCompile 'org.sonarsource.orchestrator:sonar-orchestrator:3.15.1.1274'
     testCompile project(':sonar-perl-plugin')
 }
 

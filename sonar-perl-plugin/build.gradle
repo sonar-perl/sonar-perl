@@ -49,7 +49,7 @@ sonarPackaging {
     skipDependenciesPackaging = false
     useChildFirstClassLoader = false
     basePlugin = ''
-    organization{
+    organization {
         name = 'sonar-perl'
         url = 'http://github.com/sonar-perl'
     }
