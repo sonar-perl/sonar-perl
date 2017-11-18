@@ -11,8 +11,8 @@ import org.junit.rules.TestRule;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
-import org.sonar.wsclient.SonarClient;
-import org.sonar.wsclient.issue.IssueQuery;
+import org.sonarqube.ws.client.HttpConnector;
+import org.sonarqube.ws.client.WsClientFactories;
 
 import com.sonar.orchestrator.Orchestrator;
 import com.sonar.orchestrator.build.SonarScanner;
@@ -42,17 +42,20 @@ public class PerlCriticIntegrationTest {
                 .setSourceDirs("lib");
     }
 
-    private final SonarClient wsClient;
+    private final TestSonarClient wsClient;
 
     public PerlCriticIntegrationTest(Orchestrator orchestrator) {
         orchestrator.executeBuild(build);
-        wsClient = orchestrator.getServer().wsClient();
+        wsClient = new TestSonarClient(
+                WsClientFactories.getDefault().newClient(HttpConnector.newBuilder()
+                .url(orchestrator.getServer().getUrl())
+                .build()), PROJECT_KEY);
     }
 
     @Test
     public void parse_report() {
-        assertThat(wsClient.issueClient().find(IssueQuery.create().severities("BLOCKER").rules("PerlCritic:TestingAndDebugging::RequireUseStrict")).list())
-        .hasSize(1);
+        assertThat(wsClient.issueCount("BLOCKER", "PerlCritic:TestingAndDebugging::RequireUseStrict"))
+        .isEqualTo(1);
     }
 
 }

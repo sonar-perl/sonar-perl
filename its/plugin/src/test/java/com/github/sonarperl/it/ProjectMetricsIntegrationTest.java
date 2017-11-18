@@ -11,10 +11,8 @@ import org.junit.rules.TestRule;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
-import org.sonar.wsclient.Sonar;
-import org.sonar.wsclient.services.Measure;
-import org.sonar.wsclient.services.Resource;
-import org.sonar.wsclient.services.ResourceQuery;
+import org.sonarqube.ws.client.HttpConnector;
+import org.sonarqube.ws.client.WsClientFactories;
 
 import com.sonar.orchestrator.Orchestrator;
 import com.sonar.orchestrator.build.SonarScanner;
@@ -36,6 +34,8 @@ public class ProjectMetricsIntegrationTest {
 
     static {
         build = SonarScanner.create()
+                .setShowErrors(true)
+                .setEnvironmentVariable("sonar.verbose", "true")
                 .setProjectDir(new File("projects/metrics"))
                 .setProjectKey(PROJECT_KEY)
                 .setProjectName(PROJECT_KEY)
@@ -43,66 +43,50 @@ public class ProjectMetricsIntegrationTest {
                 .setSourceDirs("lib");
     }
 
-    private final Sonar wsClient;
+    private final TestSonarClient wsClient;
 
     public ProjectMetricsIntegrationTest(Orchestrator orchestrator) {
         orchestrator.executeBuild(build);
-        wsClient = orchestrator.getServer().getWsClient();
+        wsClient = new TestSonarClient(
+                WsClientFactories.getDefault().newClient(HttpConnector.newBuilder()
+                .url(orchestrator.getServer().getUrl())
+                .build()), PROJECT_KEY);
     }
 
     @Test
     public void project_level() {
       // Size
-      assertThat(getProjectMeasure("ncloc").getIntValue()).isEqualTo(15);
-      assertThat(getProjectMeasure("lines").getIntValue()).isEqualTo(59);
-      assertThat(getProjectMeasure("files").getIntValue()).isEqualTo(1);
-      assertThat(getProjectMeasure("functions").getIntValue()).isEqualTo(3);
-      assertThat(getProjectMeasure("classes").getIntValue()).isEqualTo(1);
+      assertThat(wsClient.getProjectMeasure("ncloc")).isEqualTo(15);
+      assertThat(wsClient.getProjectMeasure("lines")).isEqualTo(59);
+      assertThat(wsClient.getProjectMeasure("files")).isEqualTo(1);
+      assertThat(wsClient.getProjectMeasure("functions")).isEqualTo(3);
+      assertThat(wsClient.getProjectMeasure("classes")).isEqualTo(1);
       // Documentation
-      assertThat(getProjectMeasure("comment_lines").getIntValue()).isEqualTo(26);
+      assertThat(wsClient.getProjectMeasure("comment_lines")).isEqualTo(26);
     }
 
     @Test
     public void directory_level() {
       // Size
-      assertThat(getDirectoryMeasure("ncloc").getIntValue()).isEqualTo(15);
-      assertThat(getDirectoryMeasure("lines").getIntValue()).isEqualTo(59);
-      assertThat(getDirectoryMeasure("files").getIntValue()).isEqualTo(1);
-      assertThat(getDirectoryMeasure("functions").getIntValue()).isEqualTo(3);
-      assertThat(getDirectoryMeasure("classes").getIntValue()).isEqualTo(1);
+      assertThat(wsClient.getDirectoryMeasure("lib/Sample", "ncloc")).isEqualTo(15);
+      assertThat(wsClient.getDirectoryMeasure("lib/Sample", "lines")).isEqualTo(59);
+      assertThat(wsClient.getDirectoryMeasure("lib/Sample", "files")).isEqualTo(1);
+      assertThat(wsClient.getDirectoryMeasure("lib/Sample", "functions")).isEqualTo(3);
+      assertThat(wsClient.getDirectoryMeasure("lib/Sample", "classes")).isEqualTo(1);
       // Documentation
-      assertThat(getDirectoryMeasure("comment_lines").getIntValue()).isEqualTo(26);
+      assertThat(wsClient.getDirectoryMeasure("lib/Sample", "comment_lines")).isEqualTo(26);
     }
 
     @Test
     public void file_level() {
       // Size
-      assertThat(getFileMeasure("ncloc").getIntValue()).isEqualTo(15);
-      assertThat(getFileMeasure("lines").getIntValue()).isEqualTo(59);
-      assertThat(getFileMeasure("files").getIntValue()).isEqualTo(1);
-      assertThat(getFileMeasure("functions").getIntValue()).isEqualTo(3);
-      assertThat(getFileMeasure("classes").getIntValue()).isEqualTo(1);
+      assertThat(wsClient.getFileMeasure("lib/Sample/Project.pm", "ncloc")).isEqualTo(15);
+      assertThat(wsClient.getFileMeasure("lib/Sample/Project.pm", "lines")).isEqualTo(59);
+      assertThat(wsClient.getFileMeasure("lib/Sample/Project.pm", "files")).isEqualTo(1);
+      assertThat(wsClient.getFileMeasure("lib/Sample/Project.pm", "functions")).isEqualTo(3);
+      assertThat(wsClient.getFileMeasure("lib/Sample/Project.pm", "classes")).isEqualTo(1);
       // Documentation
-      assertThat(getFileMeasure("comment_lines").getIntValue()).isEqualTo(26);
+      assertThat(wsClient.getFileMeasure("lib/Sample/Project.pm", "comment_lines")).isEqualTo(26);
     }
-
-    private Measure getProjectMeasure(String metricKey) {
-        Resource resource = wsClient.find(ResourceQuery.createForMetrics(PROJECT_KEY, metricKey));
-        return resource == null ? null : resource.getMeasure(metricKey);
-      }
-
-      private Measure getDirectoryMeasure(String metricKey) {
-        Resource resource = wsClient.find(ResourceQuery.createForMetrics(keyFor("Sample"), metricKey));
-        return resource == null ? null : resource.getMeasure(metricKey);
-      }
-
-      private Measure getFileMeasure(String metricKey) {
-        Resource resource = wsClient.find(ResourceQuery.createForMetrics(keyFor("Sample/Project.pm"), metricKey));
-        return resource == null ? null : resource.getMeasure(metricKey);
-      }
-
-      private static String keyFor(String s) {
-        return PROJECT_KEY + ":lib/" + s;
-      }
 
 }

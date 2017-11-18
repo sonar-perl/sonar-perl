@@ -1,11 +1,11 @@
 plugins {
     id "java"
     id "eclipse"
-    id "com.iadams.sonar-packaging" version "0.1.4"
     id 'com.bmuschko.docker-remote-api' version '3.0.7'
     id "jacoco"
-    id 'maven'
+//    id 'maven'
     id 'maven-publish'
+    id "com.iadams.sonar-packaging" version "1.0-RC1"
 }
 
 repositories {
@@ -37,6 +37,7 @@ sonarPackaging {
     pluginKey = 'perl'
     pluginClass = 'com.github.sonarperl.PerlPlugin'
     pluginName = 'Perl'
+    sonarQubeMinVersion = '5.6'
     pluginDescription = 'There is more than one camel to do it.'
     pluginParent = null
     pluginLicense = 'Apache'
@@ -49,32 +50,11 @@ sonarPackaging {
     skipDependenciesPackaging = false
     useChildFirstClassLoader = false
     basePlugin = ''
-    organization{
+    organization {
         name = 'sonar-perl'
         url = 'http://github.com/sonar-perl'
     }
 }
-
-// TODO: Remove when https://github.com/iwarapter/gradle-sonar-packaging-plugin/issues/17 is implemented
-task modifyManifest(type: Jar) {
-    baseName = 'enhanced'
-    from zipTree(jar.archivePath)
-    doFirst {
-        manifest.attributes.putAll(pluginPackaging.manifest.attributes)
-        manifest.attributes.put("Sonar-Version", "5.6")
-    }
-}
-
-task overwriteJar(type: Sync) {
-    from modifyManifest.archivePath
-    into jar.destinationDir
-    rename { String fileName ->
-        jar.archivePath.name
-    }
-}
-
-tasks.pluginPackaging.finalizedBy(tasks.modifyManifest)
-tasks.modifyManifest.finalizedBy(tasks.overwriteJar)
 
 import com.bmuschko.gradle.docker.tasks.image.*
 import com.bmuschko.gradle.docker.tasks.container.*

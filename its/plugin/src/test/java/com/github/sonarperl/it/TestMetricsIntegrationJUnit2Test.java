@@ -11,10 +11,8 @@ import org.junit.rules.TestRule;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
-import org.sonar.wsclient.Sonar;
-import org.sonar.wsclient.services.Measure;
-import org.sonar.wsclient.services.Resource;
-import org.sonar.wsclient.services.ResourceQuery;
+import org.sonarqube.ws.client.HttpConnector;
+import org.sonarqube.ws.client.WsClientFactories;
 
 import com.sonar.orchestrator.Orchestrator;
 import com.sonar.orchestrator.build.SonarScanner;
@@ -45,27 +43,21 @@ public class TestMetricsIntegrationJUnit2Test {
                 .setTestDirs("t");
     }
 
-    private static Sonar wsClient;
+    private static TestSonarClient wsClient;
 
     public TestMetricsIntegrationJUnit2Test(Orchestrator orchestrator) {
         orchestrator.executeBuild(build);
-        wsClient = orchestrator.getServer().getWsClient();
+        wsClient = new TestSonarClient(
+                WsClientFactories.getDefault().newClient(HttpConnector.newBuilder()
+                .url(orchestrator.getServer().getUrl())
+                .build()), PROJECT_KEY);
     }
 
     @Test
     public void file_level() {
       // test count
-        assertThat(getFileMeasure("tests").getIntValue()).isEqualTo(2);
-        assertThat(getFileMeasure("test_failures").getIntValue()).isEqualTo(1);
-    }
-
-    private Measure getFileMeasure(String metricKey) {
-      Resource resource = wsClient.find(ResourceQuery.createForMetrics(keyFor("Project.t"), metricKey));
-      return resource == null ? null : resource.getMeasure(metricKey);
-    }
-
-    private static String keyFor(String s) {
-      return PROJECT_KEY + ":t/" + s;
+        assertThat(wsClient.getFileMeasure("t/Project.t","tests")).isEqualTo(2);
+        assertThat(wsClient.getFileMeasure("t/Project.t", "test_failures")).isEqualTo(1);
     }
 
 }
