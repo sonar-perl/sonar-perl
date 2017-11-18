@@ -3,7 +3,6 @@ plugins {
     id "eclipse"
     id 'com.bmuschko.docker-remote-api' version '3.0.7'
     id "jacoco"
-//    id 'maven'
     id 'maven-publish'
     id "com.iadams.sonar-packaging" version "1.0-RC1"
 }

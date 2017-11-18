@@ -176,9 +176,10 @@ perlcritic --cruel --quiet --verbose "%f~|~%s~|~%l~|~%c~|~%m~|~%e~|~%p~||~%n" li
 
 ### Compatibility
 
-We support the current LTS release (5.6) and SonarQube 6.x. Please report bugs
+We support the all SonarQube versions from 5.6 up to 6.7. Please report bugs
 or incompatibilities in our [bugtracker](https://github.com/sonar-perl/sonar-perl/issues).
 
+Caveat: Code colorization only works with SonarQube versions below 6.4.
 
 ## Building the plugin from source
 
