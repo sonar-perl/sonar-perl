@@ -41,8 +41,8 @@ public class TestHarnessArchiveReader {
     public Optional<TestHarnessReport> read(File file) throws IOException {
 
         TestHarnessReport.TestHarnessReportBuilder builder = TestHarnessReport.builder();
-        try (InputStream in = openArchiveFile(file)) {
-            ArchiveInputStream archive = new ArchiveStreamFactory("UTF-8").createArchiveInputStream(in);
+        try (InputStream in = openArchiveFile(file);
+            ArchiveInputStream archive = new ArchiveStreamFactory("UTF-8").createArchiveInputStream(in)) {
             ArchiveEntry currentEntry = archive.getNextEntry();
             while (currentEntry != null) {
                 if ("meta.yml".equals(currentEntry.getName())) {

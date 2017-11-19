@@ -9,11 +9,10 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.List;
 import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -61,27 +60,19 @@ public class TestHarnessJUnitReader {
         if (path.toFile().isDirectory()) { // for TAP::Formatter::JUnit
             log.info("Looking for JUnit reports under path {}", path.toString());
 
-            List<Path> files = Files.walk(path)
-                .filter(Files::isRegularFile)
-                .filter(p -> p.toString().endsWith(".junit.xml"))
-                .collect(Collectors.toList());
-
-            boolean rslt = false;
-            for (Path p : files) {
-                rslt |= readReport(builder, p, path);
-            };
-            if (rslt) {
-                // got data from at least one of the junit xml files
-                return Optional.of(builder.build());
-            } 
+            try (Stream<Path> stream = Files.walk(path)) {
+                return stream
+                    .filter(Files::isRegularFile)
+                    .filter(p -> p.toString().endsWith(".junit.xml"))
+                    .map(p -> readReport(builder, p, path))
+                    .reduce(Boolean::logicalOr)
+                    .map(b -> builder.build());
+            }
+        } else {      // for TAP::Harness::JUnit
+            return Optional.of(path)
+                .filter(p -> readReport(builder, p, p))
+                .map(p -> builder.build());
         }
-        else {      // for TAP::Harness::JUnit
-            if (readReport(builder, path, path)) {
-                return Optional.of(builder.build());
-            } 
-        }
-
-        return Optional.empty();
     }
 
     private boolean readReport( TestHarnessReport.TestHarnessReportBuilder builder,
