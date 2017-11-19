@@ -7,12 +7,8 @@ repositories {
 dependencies {
     testCompile 'junit:junit:4.12'
     testCompile 'org.assertj:assertj-core:3.8.0'
-    testCompile('org.sonarsource.orchestrator:sonar-orchestrator:3.15.1.1274') {
-        exclude group: 'org.sonarsource.update-center', module: 'sonar-update-center-common'
-    }
+    testCompile 'org.sonarsource.orchestrator:sonar-orchestrator:3.14.0.887'
     testCompile 'org.sonarsource.sonarqube:sonar-ws:6.7'
-    // force-downgrade
-    testCompile('org.sonarsource.update-center:sonar-update-center-common:1.18.0.487')
     testCompile project(':sonar-perl-plugin')
 }
 
