@@ -121,20 +121,7 @@ public class TestHarnessJUnitReader {
                 if (outnodes.getLength() > 0) {
                     String systemout = ((Element)outnodes.item(0)).getTextContent();
                     BufferedReader br = new BufferedReader(new StringReader(systemout));
-                    br.lines().forEach(line -> {
-                        if (line.startsWith("ok ")) {
-                            detailBuilder.ok();
-                        } else if (line.startsWith("not ok ")) {
-                            detailBuilder.failed();
-                        } else if (line.startsWith("1..")) {
-                            Matcher m = tapNumberOfTests.matcher(line);
-                            if (m.matches()) {
-                                detailBuilder.total(Integer.valueOf(m.group(1)));
-                            }
-                        }
-                    });
-
-                    TestDetail detail = detailBuilder.build();
+                    TestDetail detail = readLines(detailBuilder, br);
                     if (detail.getNumberOfTests() > 0) {
                         builder.addTestDetail(detail);
                         continue;
@@ -153,5 +140,23 @@ public class TestHarnessJUnitReader {
             log.error("Parser configuration exception: ", e);
         }
         return false;
+    }
+
+    private TestDetail readLines(TestDetailBuilder detailBuilder, BufferedReader br) {
+        br.lines().forEach(line -> {
+            if (line.startsWith("ok ")) {
+                detailBuilder.ok();
+            } else if (line.startsWith("not ok ")) {
+                detailBuilder.failed();
+            } else if (line.startsWith("1..")) {
+                Matcher m = tapNumberOfTests.matcher(line);
+                if (m.matches()) {
+                    detailBuilder.total(Integer.valueOf(m.group(1)));
+                }
+            }
+        });
+
+        TestDetail detail = detailBuilder.build();
+        return detail;
     }
 }
