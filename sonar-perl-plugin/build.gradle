@@ -16,7 +16,8 @@ ext {
 }
 
 dependencies {
-    provided "org.sonarsource.sonarqube:sonar-plugin-api:${sonarApiVersion}"
+    compileOnly "org.sonarsource.sonarqube:sonar-plugin-api:${sonarApiVersion}"
+    testCompile "org.sonarsource.sonarqube:sonar-plugin-api:${sonarApiVersion}"
     compile 'org.apache.commons:commons-compress:1.14'
     compile 'com.esotericsoftware.yamlbeans:yamlbeans:1.12'
     testCompile 'junit:junit:4.12'
