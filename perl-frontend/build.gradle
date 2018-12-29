@@ -1,0 +1,14 @@
+plugins {
+    id 'java'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile group: 'org.codehaus.sonar.sslr', name: 'sslr-core', version: '1.20'
+    testCompile group: 'org.codehaus.sonar.sslr', name: 'sslr-testing-harness', version: '1.20'
+    testCompile group: 'org.assertj', name: 'assertj-core', version: '3.11.1'
+}
+
