@@ -3,3 +3,4 @@ bin/
 build/
 target/
 perl/sample-project/Makefile
+out/

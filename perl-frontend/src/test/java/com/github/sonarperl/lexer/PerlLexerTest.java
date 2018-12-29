@@ -1,10 +1,13 @@
 package com.github.sonarperl.lexer;
 
+import com.github.sonarperl.PerlConfiguration;
 import com.github.sonarperl.PerlPunctuator;
 import com.github.sonarperl.api.PerlTokenType;
 import com.sonar.sslr.impl.Lexer;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
+import java.nio.charset.StandardCharsets;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static com.sonar.sslr.test.lexer.LexerMatchers.hasComment;
@@ -18,9 +21,8 @@ public class PerlLexerTest {
 
     @BeforeClass
     public static void init() {
-        lexer = PerlLexer.create();
+        lexer = PerlLexer.create(new PerlConfiguration(StandardCharsets.UTF_8));
     }
-
 
     @Test
     public void comments() {

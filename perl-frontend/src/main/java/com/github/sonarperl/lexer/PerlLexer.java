@@ -1,9 +1,9 @@
 package com.github.sonarperl.lexer;
 
+import com.github.sonarperl.PerlConfiguration;
 import com.github.sonarperl.PerlPunctuator;
 import com.github.sonarperl.api.PerlKeyword;
 import com.github.sonarperl.api.PerlTokenType;
-import com.google.common.base.Charsets;
 import com.sonar.sslr.impl.Lexer;
 import com.sonar.sslr.impl.channel.BlackHoleChannel;
 import com.sonar.sslr.impl.channel.IdentifierAndKeywordChannel;
@@ -19,10 +19,10 @@ import static com.sonar.sslr.impl.channel.RegexpChannelBuilder.commentRegexp;
 public final class PerlLexer {
     private PerlLexer() {}
 
-    public static Lexer create() {
+    public static Lexer create(PerlConfiguration config) {
         LexerState lexerState = new LexerState();
         return Lexer.builder()
-                .withCharset(Charsets.UTF_8)
+                .withCharset(config.getCharset())
                 .withFailIfNoChannelToConsumeOneCharacter(true)
                 .withChannel(new NewLineChannel(lexerState))
                 .withChannel(new BlackHoleChannel("\\s"))

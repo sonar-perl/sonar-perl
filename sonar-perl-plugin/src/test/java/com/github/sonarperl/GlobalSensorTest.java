@@ -27,7 +27,7 @@ public class GlobalSensorTest {
       DefaultSensorDescriptor descriptor = new DefaultSensorDescriptor();
 
       createSensor().describe(descriptor);
-      assertThat(descriptor.name()).isEqualTo("Perl Sensor");
+      assertThat(descriptor.name()).isEqualTo("Perl 5 Sensor");
       assertThat(descriptor.languages()).containsOnly("perl");
       assertThat(descriptor.type()).isEqualTo(Type.MAIN);
     }
