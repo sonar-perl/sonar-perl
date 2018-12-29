@@ -2,17 +2,17 @@
 [![Quality Gate](https://sonarcloud.io/api/project_badges/measure?project=sonar-perl_sonar-perl&metric=alert_status)](https://sonarcloud.io/dashboard?id=sonar-perl_sonar-perl)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=sonar-perl_sonar-perl&metric=coverage&template=FLAT)](https://sonarcloud.io/dashboard?id=sonar-perl_sonar-perl)
 
-# SonarQube Perl Plugin
+# Perl Plugin for SonarQube
 
 This is a [SonarQube](http://www.sonarqube.org/) [plugin](http://docs.sonarqube.org/display/PLUG/Plugin+Library) 
-to integrate popular features like code coverage, Perl::Critic and test reporting for your perl projects.
+to integrate popular features like code coverage, Perl::Critic and test reporting for your Perl projects.
 
 ## Current State
 
-Current plugin is still at an early stage. It analyzes perl projects
-without having to parse the perl code itself, attaching the source as
+Current plugin is still at an early stage. It analyzes Perl projects
+without having to parse the Perl code itself, attaching the source as
 line-based text. In a later step there would be some proper grammar-based
-parsing and analyzing (as far as this is possible for perl, see bugtracker 
+parsing and analyzing (as far as this is possible for Perl, see bugtracker 
 for current status).
 
 What we have so far...
@@ -55,7 +55,7 @@ What we have so far...
 ## Running it
 
 The easiest way to see SonarQube with the Perl Plugin in action is to 
-execute our sample perl project with `sonar-scanner` against
+execute our sample Perl project with `sonar-scanner` against
 a local SonarQube installation using `docker-compose`.
 
 First, start up the SonarQube docker container, that has the
@@ -85,7 +85,7 @@ e.g. `sonar-perl-plugin/build/libs/sonar-perl-plugin-0.3.2-SNAPSHOT.jar` into th
 directory of your SonarQube installation (should be something like `/opt/sonarqube/extensions/plugins/`)
 
 
-## Analyzing your perl project
+## Analyzing your Perl project
 
 - Make sure your SonarQube is running, and has the [latest perl plugin](https://github.com/sonar-perl/sonar-perl/releases) installed
 - [Download](http://docs.sonarqube.org/display/SCAN/Analyzing+with+SonarQube+Scanner) and extract the `sonar-scanner` command-line tool.
@@ -174,12 +174,14 @@ perlcritic --cruel --quiet --verbose "%f~|~%s~|~%l~|~%c~|~%m~|~%e~|~%p~||~%n" li
 - Run the `sonar-scanner` 
 - Finally open the project report in SonarQube
 
-### Compatibility
+### Compatibility and known issues
 
 We support the all SonarQube versions from 5.6 up to 6.7. Please report bugs
 or incompatibilities in our [bugtracker](https://github.com/sonar-perl/sonar-perl/issues).
 
-Caveat: Code colorization only works with SonarQube versions below 6.4.
+Due to an API discontinuation the code colorization only works with SonarQube versions below 6.4.
+
+Also, projects with mixed file encodings are currently not supported.
 
 ## Building the plugin from source
 
