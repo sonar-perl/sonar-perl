@@ -17,8 +17,8 @@ ext {
 
 dependencies {
     provided "org.sonarsource.sonarqube:sonar-plugin-api:${sonarApiVersion}"
-    implementation 'org.apache.commons:commons-compress:1.14'
-    implementation 'com.esotericsoftware.yamlbeans:yamlbeans:1.12'
+    compile 'org.apache.commons:commons-compress:1.14'
+    compile 'com.esotericsoftware.yamlbeans:yamlbeans:1.12'
     testCompile 'junit:junit:4.12'
     testCompile 'org.assertj:assertj-core:3.8.0'
     testCompile 'org.mockito:mockito-core:2.8.9'

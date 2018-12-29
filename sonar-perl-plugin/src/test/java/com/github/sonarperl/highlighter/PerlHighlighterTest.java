@@ -47,7 +47,7 @@ public class PerlHighlighterTest {
     @Test
     public void stringLiteral() {
         // "some string"
-        // checkOnRange(5, 4, 13, TypeOfText.CONSTANT);
+        checkOnRange(5, 5, 13, TypeOfText.STRING);
     }
 
     @Test
