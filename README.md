@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/sonar-perl/sonar-perl.svg?branch=master)](https://travis-ci.org/sonar-perl/sonar-perl)
-[![Quality Gate](https://sonarcloud.io/api/badges/gate?key=sonar-perl_sonar-perl)](https://sonarcloud.io/dashboard/index/sonar-perl_sonar-perl)
-[![Coverage](https://sonarcloud.io/api/badges/measure?key=sonar-perl_sonar-perl&metric=coverage&template=FLAT)](https://sonarcloud.io/dashboard/index/sonar-perl_sonar-perl)
+[![Quality Gate](https://sonarcloud.io/api/project_badges/measure?project=sonar-perl_sonar-perl&metric=alert_status)](https://sonarcloud.io/dashboard?id=sonar-perl_sonar-perl)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=sonar-perl_sonar-perl&metric=coverage&template=FLAT)](https://sonarcloud.io/dashboard?id=sonar-perl_sonar-perl)
 
 # SonarQube Perl Plugin
 
