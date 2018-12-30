@@ -7,6 +7,9 @@ import static org.sonar.api.measures.CoreMetrics.TEST_EXECUTION_TIME;
 import static org.sonar.api.measures.CoreMetrics.TEST_FAILURES;
 
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 
 import org.junit.Test;
 import org.sonar.api.batch.fs.InputFile.Type;
@@ -15,7 +18,6 @@ import org.sonar.api.batch.fs.internal.FileMetadata;
 import org.sonar.api.batch.fs.internal.TestInputFileBuilder;
 import org.sonar.api.batch.sensor.internal.DefaultSensorDescriptor;
 import org.sonar.api.batch.sensor.internal.SensorContextTester;
-import org.sonar.api.internal.google.common.base.Charsets;
 
 import com.github.sonarperl.PerlLanguage;
 
@@ -58,6 +60,11 @@ public class TestHarnessLoaderSensorTest {
 
       context.fileSystem().add(inputFile);
 
-      return inputFile.setMetadata(new FileMetadata().readMetadata(inputFile.file(), Charsets.UTF_8));
+      try {
+          InputStream stream = inputFile.inputStream();
+          return inputFile.setMetadata(new FileMetadata().readMetadata(stream, StandardCharsets.UTF_8, relativePath));
+      } catch( IOException e) {
+          throw new RuntimeException(e);
+      }
     }
 }

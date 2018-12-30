@@ -10,7 +10,6 @@ import org.sonar.api.Property;
 import org.sonar.api.utils.log.Logger;
 import org.sonar.api.utils.log.Loggers;
 
-import com.github.sonarperl.colorizer.PerlCodeColorizer;
 import com.github.sonarperl.critic.PerlCriticIssuesLoaderSensor;
 import com.github.sonarperl.critic.PerlCriticProperties;
 import com.github.sonarperl.critic.PerlCriticRulesDefinition;
@@ -48,18 +47,13 @@ public class PerlPlugin implements Plugin {
         List<Object> extensions = new ArrayList<>();
         extensions.addAll(Arrays.asList(
                 PerlLanguage.class,
+                PerlSquidSensor.class,
                 PerlCriticRulesDefinition.class, 
                 SonarWayProfile.class,
                 GlobalSensor.class,
                 PerlCriticIssuesLoaderSensor.class,
                 TestHarnessLoaderSensor.class
         ));
-
-        try {
-            extensions.add(PerlCodeColorizer.class);
-        } catch (NoClassDefFoundError e) {
-            log.warn("Unable to load colorizer: " + e.getMessage());
-        }
 
         context.addExtensions(extensions);
     }

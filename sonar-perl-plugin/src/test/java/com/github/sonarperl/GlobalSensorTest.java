@@ -3,6 +3,9 @@ package com.github.sonarperl;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 
 import org.junit.Test;
 import org.sonar.api.batch.fs.InputFile.Type;
@@ -11,11 +14,7 @@ import org.sonar.api.batch.fs.internal.FileMetadata;
 import org.sonar.api.batch.fs.internal.TestInputFileBuilder;
 import org.sonar.api.batch.sensor.internal.DefaultSensorDescriptor;
 import org.sonar.api.batch.sensor.internal.SensorContextTester;
-import org.sonar.api.internal.google.common.base.Charsets;
 import org.sonar.api.measures.CoreMetrics;
-
-import com.github.sonarperl.GlobalSensor;
-import com.github.sonarperl.PerlLanguage;
 
 public class GlobalSensorTest {
 
@@ -79,7 +78,12 @@ public class GlobalSensorTest {
 
       context.fileSystem().add(inputFile);
 
-      return inputFile.setMetadata(new FileMetadata().readMetadata(inputFile.file(), Charsets.UTF_8));
+      try {
+          InputStream stream = inputFile.inputStream();
+          return inputFile.setMetadata(new FileMetadata().readMetadata(stream, StandardCharsets.UTF_8, relativePath));
+      } catch( IOException e) {
+          throw new RuntimeException(e);
+      }
     }
 
 }

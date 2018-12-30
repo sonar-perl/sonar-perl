@@ -12,7 +12,7 @@ repositories {
 }
 
 ext {
-    sonarApiVersion = '6.3.1'
+    sonarApiVersion = '6.7'
 }
 
 dependencies {
@@ -21,9 +21,9 @@ dependencies {
     compile 'org.apache.commons:commons-compress:1.14'
     compile 'com.esotericsoftware.yamlbeans:yamlbeans:1.12'
     testCompile 'junit:junit:4.12'
-    testCompile 'org.assertj:assertj-core:3.8.0'
-    testCompile 'org.mockito:mockito-core:2.8.9'
-    implementation project(':perl-frontend')
+    testCompile 'org.assertj:assertj-core:3.11.1'
+    testCompile 'org.mockito:mockito-core:2.23.4'
+    compile project(':perl-frontend')
 }
 
 sourceCompatibility = 1.8
@@ -38,7 +38,7 @@ sonarPackaging {
     pluginKey = 'perl'
     pluginClass = 'com.github.sonarperl.PerlPlugin'
     pluginName = 'Perl'
-    sonarQubeMinVersion = '5.6'
+    sonarQubeMinVersion = '6.7'
     pluginDescription = 'There is more than one camel to do it.'
     pluginParent = null
     pluginLicense = 'Apache'

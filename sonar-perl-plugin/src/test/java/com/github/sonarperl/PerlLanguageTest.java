@@ -3,10 +3,8 @@ package com.github.sonarperl;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.Test;
-import org.sonar.api.config.MapSettings;
+import org.sonar.api.config.internal.MapSettings;
 import org.sonar.api.config.Settings;
-
-import com.github.sonarperl.PerlPlugin;
 
 public class PerlLanguageTest {
 
