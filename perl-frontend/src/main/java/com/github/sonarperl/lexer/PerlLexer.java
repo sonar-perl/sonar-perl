@@ -30,7 +30,7 @@ public final class PerlLexer {
                 .withChannel(new StringLiteralsChannel())
                 .withChannel(regexp(PerlTokenType.NUMBER, "[1-9][0-9]*+"))
                 .withChannel(regexp(PerlTokenType.NUMBER, "0++"))
-                .withChannel(new IdentifierAndKeywordChannel(and("[a-zA-Z_]", o2n("\\w")), true, PerlKeyword.values()))
+                .withChannel(new IdentifierAndKeywordChannel(and("[$%&@]?[a-zA-Z_]", o2n("\\w")), true, PerlKeyword.values()))
                 .withChannel(new PunctuatorChannel(PerlPunctuator.values()))
                 .withChannel(new UnknownCharacterChannel())
                 .build();

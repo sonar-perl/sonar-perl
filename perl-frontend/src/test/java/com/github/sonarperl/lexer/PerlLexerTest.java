@@ -2,7 +2,9 @@ package com.github.sonarperl.lexer;
 
 import com.github.sonarperl.PerlConfiguration;
 import com.github.sonarperl.PerlPunctuator;
+import com.github.sonarperl.api.PerlKeyword;
 import com.github.sonarperl.api.PerlTokenType;
+import com.sonar.sslr.api.GenericTokenType;
 import com.sonar.sslr.impl.Lexer;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -40,6 +42,12 @@ public class PerlLexerTest {
     @Test
     public void integer_literals() {
         assertThat(lexer.lex("7"), hasToken("7", PerlTokenType.NUMBER));
+    }
+
+    @Test
+    public void identifiers_and_keywords() {
+        assertThat(lexer.lex("sub"), hasToken("sub", PerlKeyword.SUB));
+        assertThat(lexer.lex("$identifier"), hasToken("$identifier", GenericTokenType.IDENTIFIER));
     }
 
     @Test
