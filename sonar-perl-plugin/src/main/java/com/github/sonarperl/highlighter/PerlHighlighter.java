@@ -18,7 +18,6 @@ import org.sonar.sslr.grammar.GrammarRuleKey;
 import javax.annotation.Nullable;
 import java.util.Collections;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 public class PerlHighlighter extends PerlVisitor {
