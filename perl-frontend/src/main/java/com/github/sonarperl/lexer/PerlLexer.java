@@ -17,18 +17,24 @@ import static com.sonar.sslr.impl.channel.RegexpChannelBuilder.regexp;
 import static com.sonar.sslr.impl.channel.RegexpChannelBuilder.commentRegexp;
 
 public final class PerlLexer {
+
+    private static final String EXP = "(e[+-]?+[0-9_]++)";
+
     private PerlLexer() {}
 
     public static Lexer create(PerlConfiguration config) {
-        LexerState lexerState = new LexerState();
         return Lexer.builder()
                 .withCharset(config.getCharset())
                 .withFailIfNoChannelToConsumeOneCharacter(true)
-                .withChannel(new NewLineChannel(lexerState))
+                .withChannel(new NewLineChannel())
                 .withChannel(new BlackHoleChannel("\\s"))
                 .withChannel(commentRegexp("#[^\\n\\r]*+"))
+                .withChannel(new PODChannel())
+                .withChannel(commentRegexp("__END__[\\n\\r].*+"))
+                .withChannel(commentRegexp("__DATA__[\\n\\r].*+"))
                 .withChannel(new StringLiteralsChannel())
                 .withChannel(regexp(PerlTokenType.NUMBER, "[1-9][0-9]*+"))
+                .withChannel(regexp(PerlTokenType.NUMBER, "[1-9][0-9]*+" + EXP))
                 .withChannel(regexp(PerlTokenType.NUMBER, "0++"))
                 .withChannel(new IdentifierAndKeywordChannel(and("[$%&@]?[a-zA-Z_]", o2n("\\w")), true, PerlKeyword.values()))
                 .withChannel(new PunctuatorChannel(PerlPunctuator.values()))

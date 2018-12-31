@@ -10,16 +10,9 @@ import org.sonar.sslr.channel.CodeReader;
 
 public class NewLineChannel extends Channel<Lexer> {
 
-    private final LexerState lexerState;
-
-    public NewLineChannel(LexerState lexerState) {
-        this.lexerState = lexerState;
-    }
-
     @Override
     public boolean consume(CodeReader code, Lexer output) {
         char ch = (char) code.peek();
-        checkForBrackets(ch);
 
         if ((ch == '\\') && isNewLine(code.charAt(1))) {
             // Explicit line joining
@@ -37,11 +30,6 @@ public class NewLineChannel extends Channel<Lexer> {
     }
 
     private boolean processNewLine(CodeReader code, Lexer output) {
-        if (isImplicitLineJoining()) {
-            // Implicit line joining
-            joinLines(code);
-            return true;
-        }
 
         if (output.getTokens().isEmpty() || (output.getTokens().get(output.getTokens().size() - 1).getType().equals(PerlTokenType.NEWLINE))) {
             // Blank line
@@ -62,28 +50,10 @@ public class NewLineChannel extends Channel<Lexer> {
         return false;
     }
 
-    private void checkForBrackets(char ch) {
-        switch (ch) {
-            case '[':
-            case '(':
-            case '{':
-                lexerState.brackets++;
-                break;
-            case ']':
-            case ')':
-            case '}':
-                lexerState.brackets--;
-                break;
-            default:
-                break;
-        }
-    }
-
     private void joinLines(CodeReader code) {
         while (Character.isWhitespace(code.peek())) {
             code.pop();
         }
-        lexerState.joined = true;
     }
 
     private static void consumeEOL(CodeReader code) {
@@ -99,10 +69,6 @@ public class NewLineChannel extends Channel<Lexer> {
 
     private static boolean isNewLine(char ch) {
         return (ch == '\n') || (ch == '\r');
-    }
-
-    private boolean isImplicitLineJoining() {
-        return lexerState.brackets > 0;
     }
 
 }

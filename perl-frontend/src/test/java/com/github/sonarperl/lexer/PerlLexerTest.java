@@ -66,11 +66,6 @@ public class PerlLexerTest {
     }
 
     @Test
-    public void implicit_line_joining() {
-        assertThat(lexer.lex("['January', \n 'December']"), not(hasToken("\n", PerlTokenType.NEWLINE)));
-    }
-
-    @Test
     public void explicit_line_joining() {
         assertThat(lexer.lex("line\r\nline"), hasToken(PerlTokenType.NEWLINE));
         assertThat(lexer.lex("line\rline"), hasToken(PerlTokenType.NEWLINE));
@@ -81,6 +76,14 @@ public class PerlLexerTest {
         assertThat(lexer.lex("line\\\nline"), not(hasToken(PerlTokenType.NEWLINE)));
 
         assertThat(lexer.lex("line\\\n    line")).hasSize(3);
+    }
+
+
+    @Test
+    public void pod_lines() {
+        assertThat(lexer.lex("=pod\n=cut"), hasToken(GenericTokenType.COMMENT));
+        assertThat(lexer.lex("=pod\nbablabla"), hasToken(GenericTokenType.COMMENT));
+        assertThat(lexer.lex("=pod\ntest\n=cut\n=pod\n=cut\nblabla"), hasToken(GenericTokenType.IDENTIFIER));
     }
 
 }
