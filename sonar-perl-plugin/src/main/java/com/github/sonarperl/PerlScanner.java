@@ -42,7 +42,7 @@ public class PerlScanner {
             visitorContext = new PerlVisitorContext(parser.parse(pythonFile.content()), pythonFile);
         } catch (RecognitionException e) {
             visitorContext = new PerlVisitorContext(pythonFile, e);
-            LOG.error("Unable to parse file: " + inputFile.absolutePath());
+            LOG.error("Unable to parse file: " + inputFile.toString());
             LOG.error(e.getMessage());
             context.newAnalysisError()
                     .onFile(inputFile)
