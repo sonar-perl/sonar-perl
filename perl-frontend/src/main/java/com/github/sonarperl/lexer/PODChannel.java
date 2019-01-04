@@ -11,8 +11,6 @@ import java.util.regex.Pattern;
 
 public class PODChannel extends Channel<Lexer> {
 
-    private static final char EOF = (char) -1;
-
     private StringBuilder sb;
 
     private static final Matcher POD_START = Pattern.compile("(=pod|=head[1234]|=over|=item|=back|=begin|=end|=for|=encoding)\\b").matcher("");
@@ -24,7 +22,6 @@ public class PODChannel extends Channel<Lexer> {
         int column = code.getColumnPosition();
         sb = new StringBuilder();
         if (column == 0 && code.popTo(POD_START, sb) > 0) {
-            // TODO: should be newline + =cut
            String pod = consumePod(code);
            // POD token
            output.addToken(Token.builder()
