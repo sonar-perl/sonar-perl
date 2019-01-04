@@ -15,8 +15,8 @@ public class PODChannel extends Channel<Lexer> {
 
     private StringBuilder sb;
 
-    private static final Matcher POD_START = Pattern.compile("=pod").matcher("");
-    private static final Matcher POD_END = Pattern.compile("[\\n\\r]=cut").matcher("");
+    private static final Matcher POD_START = Pattern.compile("(=pod|=head[1234]|=over|=item|=back|=begin|=end|=for|=encoding)\\b").matcher("");
+    private static final Matcher POD_END = Pattern.compile("[\\n\\r]=cut\\b").matcher("");
 
     @Override
     public boolean consume(CodeReader code, Lexer output) {

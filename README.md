@@ -73,13 +73,15 @@ Alternatively, you can build and run sonar-perl from source:
 
 Wait for SonarQube to start-up and then open the web interface in your browser
 (http://localhost:9000/ - or the IP you bound your docker to).
-Then, run the `sonar-scanner` on the sample project.
+Then, run the `sonar-scanner` on the sample project. For a more complex project reference, run the same commands on the dancer project.
 
 ```sh
-docker-compose run sample
+docker-compose build sample dancer
+docker-compose run sample 
+docker-compose run dancer
 ```
 
-You should see a "perl sample project" on your SonarQube dashboard.
+You should see a "perl sample project" and "Dancer" on your SonarQube dashboard.
 
 
 ## Installing into your SonarQube
