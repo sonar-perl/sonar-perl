@@ -2,7 +2,7 @@ version: '2'
 
 services:
   sonarperl:
-    image: otrosien/sonar-perl
+    image: sonarperl/sonar-perl
     ports:
     - "9000:9000"
   dancer:
