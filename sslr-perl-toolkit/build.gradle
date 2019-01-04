@@ -1,11 +1,15 @@
 plugins {
     id 'java'
+    id "jacoco"
 }
 
 repositories {
     mavenCentral()
 }
 
+jacoco {
+    toolVersion = '0.7.9'
+}
 
 dependencies {
     compile group: 'org.sonarsource.sslr', name: 'sslr-toolkit', version: '1.21'
