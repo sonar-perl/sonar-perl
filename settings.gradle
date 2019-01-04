@@ -1,5 +1,7 @@
 rootProject.name = 'perl'
 include ":sonar-perl-plugin"
+include ":perl-frontend"
 include ":it-perl-plugin"
+include ":sslr-perl-toolkit"
 
 findProject(':it-perl-plugin').projectDir = new File('its','plugin')

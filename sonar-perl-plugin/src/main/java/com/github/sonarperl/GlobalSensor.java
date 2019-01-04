@@ -37,7 +37,7 @@ public class GlobalSensor implements Sensor {
     public void describe(SensorDescriptor descriptor) {
       descriptor
         .onlyOnLanguage(PerlLanguage.KEY)
-        .name("Perl Sensor")
+        .name("Perl 5 Sensor")
         .onlyOnFileType(Type.MAIN);
     }
 

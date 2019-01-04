@@ -15,7 +15,5 @@ services:
     build: ./perl/sample-project
     networks:
       - prodnetwork
-    depends_on:
-      - sonarperl
     environment:
-      - SONAR_HOST_URL=http://sonarperl:9000
+      - SONAR_HOST_URL=http://host.docker.internal:9000

@@ -12,7 +12,7 @@ cache:
   - '.gradle'
 install: true
 script:
-  - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then ./gradlew build sonarqube -Dsonar.pullrequest.branch=$TRAVIS_BRANCH -Dsonar.pullrequest.key=$TRAVIS_BUILD_NUMBER -Dsonar.pullrequest.base=master; fi'
+  - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then ./gradlew build sonarqube -Dsonar.login=$SONAR_LOGIN -Dsonar.pullrequest.branch=$TRAVIS_BRANCH -Dsonar.pullrequest.key=$TRAVIS_BUILD_NUMBER -Dsonar.pullrequest.base=master; fi'
   - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then ./gradlew build publish sonarqube -Dsonar.login=$SONAR_LOGIN; fi'
 after_success:
   - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then ./scripts/docker-push.sh; fi'
