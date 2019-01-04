@@ -1,0 +1,643 @@
+# PODNAME: Dancer::Deployment
+# ABSTRACT: common ways to put your Dancer app into use
+
+
+=head1 DESCRIPTION
+
+Dancer has been designed to be flexible, and this flexibility extends to your
+choices when deploying your Dancer app.
+
+=head2 Running as a cgi-script (or fast-cgi) under Apache
+
+In providing ultimate flexibility in terms of deployment, your Dancer app can
+be run as a simple cgi-script out-of-the-box with no additional web server
+configuration needed. Your web server should recognize .cgi files and be able
+to serve Perl scripts. The Perl module L<Plack::Runner> is required.
+
+Start by adding the following to your apache configuration (httpd.conf or
+sites-available/*site*):
+
+    <VirtualHost *:80>
+        ServerName www.example.com
+
+        # /srv/www.example.com is the root of your
+        # dancer application
+        DocumentRoot /srv/www.example.com/public
+
+        ServerAdmin you@example.com
+
+        <Directory "/srv/www.example.com/public">
+           AllowOverride None
+           Options +ExecCGI -MultiViews +SymLinksIfOwnerMatch
+           Order allow,deny
+           Allow from all
+           AddHandler cgi-script .cgi
+        </Directory>
+
+        ScriptAlias / /srv/www.example.com/public/dispatch.cgi/
+
+        ErrorLog  /var/log/apache2/www.example.com-error.log
+        CustomLog /var/log/apache2/www.example.com-access_log common
+    </VirtualHost>
+
+Now you can access your dancer application URLs as if you were using the
+embedded web server.
+
+    http://localhost/
+
+This option is a no-brainer, easy to setup, low maintenance but serves requests
+slower than all other options.
+
+You can use the same technique to deploy with FastCGI, by just changing the
+lines:
+
+    AddHandler cgi-script .cgi
+    
+    ...
+    
+    ScriptAlias / /srv/www.example.com/public/dispatch.cgi
+
+To:
+
+    AddHandler fastcgi-script .fcgi
+
+    ...
+
+    ScriptAlias / /srv/www.example.com/public/dispatch.fcgi
+
+=head2 Running stand-alone
+
+At the simplest, your Dancer app can run standalone, operating as its own
+webserver using HTTP::Server::Simple::PSGI.
+
+Simply fire up your app:
+
+    $ perl bin/app.pl
+    >> Listening on 0.0.0.0:3000
+    == Entering the dance floor ...
+
+Point your browser at it, and away you go!
+
+This option can be useful for small personal web apps or internal apps, but if
+you want to make your app available to the world, it probably won't suit you.
+
+=head3 Running on Perl webservers with plackup
+
+A number of Perl web servers supporting PSGI are available on cpan:
+
+=over 4
+
+=item Starman
+
+C<Starman> is a high performance web server, with support for preforking,
+signals and more.
+
+=item Twiggy
+
+C<Twiggy> is an C<AnyEvent> web server, it's light and fast.
+
+=item Corona
+
+C<Corona> is a C<Coro> based web server.
+
+B<WARNING>: C<Dancer>'s use of global variables and C<Coro>'s threaded behaviors
+can cause some unexpected behaviors. See L<this GitHub
+issue|https://github.com/PerlDancer/Dancer/issues/929> for more details.
+Unless you have really, really strongly compelling reasons to use Corona, 
+consider using C<Twiggy> or C<Starman> instead.
+
+=back
+
+To start your application, just run plackup (see L<Plack> and specific servers
+above for all available options):
+
+   $ plackup bin/app.pl
+   $ plackup -E deployment -s Starman --workers=10 -p 5001 -a bin/app.pl
+
+As you can see, the scaffolded Perl script for your app can be used as a PSGI
+startup file.
+
+=head4 Enabling content compression
+
+Content compression (gzip, deflate) can be easily enabled via a Plack
+middleware (see L<Plack#Plack::Middleware>): L<Plack::Middleware::Deflater>.
+It's a middleware to encode the response body in gzip or deflate, based on
+Accept-Encoding HTTP request header.
+
+Enable it as you would enable any Plack middleware. First you need to install
+L<Plack::Middleware::Deflater>, then in the configuration file (usually
+F<environments/development.yml>), add these lines:
+
+  plack_middlewares:
+    -
+      - Plack::Middleware::Deflater
+      - ...
+
+These lines tell Dancer to add L<Plack::Middleware::Deflater> to the list of
+middlewares to pass to L<Plack::Builder>, when wrapping the Dancer app. The
+syntax is :
+
+=over
+
+=item *
+
+as key: the name of the Plack middleware to use
+
+=item *
+
+as value: the options to pass it as a list. In our case, there is no option to
+specify to L<Plack::Middleware::Deflater>, so we use an empty YAML list.
+
+=back
+
+To test if content compression works, trace the HTTP request and response
+before and after enabling this middleware. Among other things, you should
+notice that the response is gzip or deflate encoded, and contains a header
+C<Content-Encoding> set to C<gzip> or C<deflate>
+
+=head3 Hosting on DotCloud
+
+The simplest way to achieve this is to push your main application directory
+to dotcloud with your C<bin/app.pl> file copied to (or symlinked from)
+C<app.psgi>.
+
+Beware that the dotcloud service enforces one environment only, named
+C<deployment>. So instead of having C<environments/development.yml> or
+C<environments/production.yml> you I<must> have a file named
+C<environments/deployment.yml>.
+
+Also make sure that your C<Makefile.PL> (or other dependency mechanism) includes
+both Dancer and L<Plack::Request>.
+
+The default in-memory session handler won't work, and instead you should switch
+to something persistent. Edit C<config.yml> to change C<session: 'Simple'> to
+(for example) C<session: 'YAML'>.
+
+=head4 In case you have issues with Template::Toolkit on Dotcloud
+
+If you use the L<Template::Toolkit> and its C<INCLUDE> or C<PROCESS> directives,
+you might need to add the search path of your view files to the config. This is
+probably going to be something like
+C<INCLUDE_PATH: '/home/dotcloud/current/views'> in C<config.yml>.
+
+An alternative implementation is to use a variation of the above Plack::Builder
+template:
+
+ use Plack::Builder;
+ use Dancer ':syntax';
+ use Dancer::Handler;
+ use lib 'lib';
+
+ my $app1 = sub {
+     setting appdir => '/home/dotcloud/current';
+     load_app "My::App";
+     Dancer::App->set_running_app("My::App");
+     my $env = shift;
+     Dancer::Handler->init_request_headers($env);
+     my $req = Dancer::Request->new(env => $env);
+     Dancer->dance($req);
+ };
+
+ builder {
+     mount "/app1" => $app1;
+ };
+
+This also supports hosting multiple apps, but you probably also need to specify
+the specific Environment configuration to use in your application.
+
+When mounting under a path on dotcloud, as in the above example, always create
+links using the C<uri_for()> method for Dancer routes, and a C<uri_base>
+variable for static content as shown in L<Dancer::Cookbook>. This means
+whatever base path your app is mounted under, links and form submissions will
+continue to work.
+
+=head3 Creating a service
+
+You can turn your app into proper service running in background using one of
+the following examples:
+
+=head4 Using Ubic
+
+L<Ubic> is a polymorphic service manager. You can use it to start and
+stop any services, automatically start them on reboots or daemon failures, and
+implement custom status checks.
+
+A basic PSGI service description (usually in /etc/ubic/service/application):
+
+    use parent qw(Ubic::Service::Plack);
+
+    __PACKAGE__->new(
+        server => 'Starman',
+        app => '/path/to/your/application/app.pl',
+        port => 5000,
+        user => 'www-data',
+    );
+
+Run C<ubic start application> to start the service.
+
+
+=head4 Using daemontools
+
+daemontools is a collection of tools for managing UNIX services. You can use it
+to easily start/restart/stop services.
+
+A basic script to start an application: (in /service/application/run)
+
+    #!/bin/sh
+
+    # if your application is not installed in @INC path:
+    export PERL5LIB='/path/to/your/application/lib'
+
+    exec 2>&1 \
+    /usr/local/bin/plackup -s Starman -a /path/to/your/application/app.pl -p 5000
+
+
+=head3 Running stand-alone behind a proxy / load balancer
+
+Another option would be to run your app stand-alone as described above, but then
+use a proxy or load balancer to accept incoming requests (on the standard port
+80, say) and feed them to your Dancer app.
+
+This could be achieved using various software; examples would include:
+
+=head4 Using Apache's mod_proxy
+
+You could set up a VirtualHost for your web app, and proxy all requests through
+to it:
+
+    <VirtualHost mywebapp.example.com:80>
+    ProxyPass / http://localhost:3000/
+    ProxyPassReverse / http://localhost:3000/
+    </VirtualHost>
+
+Or, if you want your webapp to share an existing VirtualHost, you could have it
+under a specified dir:
+
+    ProxyPass /mywebapp/ http://localhost:3000/
+    <Location /mywebapp/>
+        RequestHeader set Request-Base /mywebapp
+    </Location>
+
+HTTP header C<Request-Base> is taken into account by Dancer, only when
+C<behind_proxy> setting is set to true.
+
+It is important for you to note that the Apache2 modules mod_headers,
+mod_proxy and mod_proxy_http must be enabled.
+
+    a2enmod headers
+    a2enmod proxy
+    a2enmod proxy_http
+
+Note that Apache does not pass protocol information when proxying, so if
+needed then you will need to set it manually in your Apache config:
+
+    RequestHeader set X_FORWARDED_PROTO "https"
+
+It is also important to set permissions for proxying for security purposes,
+below is an example.
+
+    <Proxy *>
+      Order allow,deny
+      Allow from all
+    </Proxy>
+
+=head4 Using perlbal
+
+C<Perlbal> is a single-threaded event-based server written in Perl supporting
+HTTP load balancing, web serving, and a mix of the two, available from
+L<http://www.danga.com/perlbal/>
+
+It processes hundreds of millions of requests a day just for LiveJournal, Vox
+and TypePad and dozens of other "Web 2.0" applications.
+
+It can also provide a management interface to let you see various information on
+requests handled etc.
+
+It could easily be used to handle requests for your Dancer apps, too.
+
+It can be easily installed from CPAN:
+
+    perl -MCPAN -e 'install Perlbal'
+
+Once installed, you'll need to write a configuration file.  See the examples
+provided with perlbal, but you'll probably want something like:
+
+    CREATE POOL my_dancers
+    POOL my_dancers ADD 10.0.0.10:3030
+    POOL my_dancers ADD 10.0.0.11:3030
+    POOL my_dancers ADD 10.0.0.12:3030
+    POOL my_dancers ADD 10.0.0.13:3030
+
+    CREATE SERVICE my_webapp
+    SET listen          = 0.0.0.0:80
+    SET role            = reverse_proxy
+    SET pool            = my_dancers
+    SET persist_client  = on
+    SET persist_backend = on
+    SET verify_backend  = on
+    ENABLE my_webapp
+
+
+=head4 Using balance
+
+C<balance> is a simple load-balancer from Inlab Software, available from
+L<http://www.inlab.de/balance.html>.
+
+It could be used simply to hand requests to a standalone Dancer app. You could
+even run several instances of your Dancer app, on the same machine or on several
+machines, and use a machine running balance to distribute the requests between
+them, for some serious heavy traffic handling!
+
+To listen on port 80, and send requests to a Dancer app on port 3000:
+
+    balance http localhost:3000
+
+To listen on a specified IP only on port 80, and distribute requests between
+multiple Dancer apps on multiple other machines:
+
+    balance -b 10.0.0.1 80 10.0.0.2:3000 10.0.0.3:3000 10.0.0.4:3000
+
+
+=head4 Using Lighttpd
+
+You can use Lighttp's mod_proxy:
+
+    $HTTP["url"] =~ "/application" {
+        proxy.server = (
+            "/" => (
+                "application" => ( "host" => "127.0.0.1", "port" => 3000 )
+            )
+        )
+    }
+
+This configuration will proxy all request to the B</application> path to the
+path B</> on localhost:3000.
+
+=head4 Using Nginx
+
+with Nginx:
+
+    upstream backendurl {
+        server unix:THE_PATH_OF_YOUR_PLACKUP_SOCKET_HERE.sock;
+    }
+
+    server {
+      listen       80;
+      server_name YOUR_HOST_HERE;
+
+      access_log /var/log/YOUR_ACCESS_LOG_HERE.log;
+      error_log  /var/log/YOUR_ERROR_LOG_HERE.log info;
+
+      root YOUR_ROOT_PROJECT/public;
+      location / {
+        try_files $uri @proxy;
+        access_log off;
+        expires max;
+      }
+
+      location @proxy {
+            proxy_set_header Host $http_host;
+            proxy_set_header X-Forwarded-Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
+            proxy_pass       http://backendurl;
+      }
+
+    }
+
+You will need plackup to start a worker listening on a socket :
+
+    cd YOUR_PROJECT_PATH
+    sudo -u www plackup -E production -s Starman --workers=2 -l THE_PATH_OF_YOUR_PLACKUP_SOCKET_HERE.sock -a bin/app.pl
+
+A good way to start this is to use C<daemontools> and place this line with
+all environments variables in the "run" file.
+
+=head4 Using HAProxy
+
+C<HAProxy> is a reliable high-performance TCP/HTTP load balancer written in C available from
+L<http://haproxy.1wt.eu/>.
+
+Suppose we want to run an application at C<app.example.com:80> and would to use two
+backends listen on hosts C<app-be1.example.com:3000> and C<app-be2.example.com:3000>.
+
+Here is HAProxy configuration file (haproxy.conf):
+
+    global
+        nbproc  1
+        maxconn 4096
+        user    nobody
+        group   nobody
+        # haproxy logs will be collected by syslog
+        # syslog: unix socket path or tcp pair (ipaddress:port)
+        log     /var/run/log local0
+        daemon
+        # enable compression (haproxy v1.5-dev13 and above required)
+        tune.comp.maxlevel  5
+
+    defaults
+        log     global
+        option  httpclose
+        option  httplog
+        option  dontlognull
+        option  forwardfor
+        option  abortonclose
+        mode    http
+        balance roundrobin
+        retries 3
+        timeout connect         5s
+        timeout server          30s
+        timeout client          30s
+        timeout http-keep-alive 200m
+        # enable compression (haproxy v1.5-dev13 and above required)
+        compression algo gzip
+        compression type text/html application/javascript text/css application/x-javascript text/javascript
+
+    # application frontend (available at http://app.example.com)
+    frontend app.example.com
+        bind                  :80
+        # modify request headers
+        reqadd                X-Forwarded-Proto:\ http
+        reqadd                X-Forwarded-Port:\ 80
+        # modify response headers
+        rspdel                ^Server:.*
+        rspdel                ^X-Powered-By:.*
+        rspadd                Server:\ Dethklok\ (Unix/0.2.3)
+        rate-limit sessions   1024
+        acl is-haproxy-stats  path_beg /stats
+        # uncomment if you'd like to get haproxy usage statistics
+        # use_backend haproxy   if is-haproxy-stats
+        default_backend       dynamic
+
+    # haproxy statistics (available at http://app.example.com/stats)
+    backend haproxy
+        stats uri             /stats
+        stats refresh         180s
+        stats realm           app.example.com\ haproxy\ statistics
+        # change credentials
+        stats auth            admin1:password1
+        stats auth            admin2:password2
+        stats hide-version
+        stats show-legends
+
+    # application backends
+    backend dynamic
+        # change path_info to check and value of the Host header sent to application server
+        option httpchk HEAD / HTTP/1.1\r\nHost:\ app.example.com
+        server app1 app-be1.example.com:3000 check inter 30s
+        server app2 app-be2.example.com:3000 check inter 30s
+
+We will need to start the workers on each backend of our application. This can be done by starman utility:
+
+    # on app-be1.example.com
+    $ starman --workers=2 --listen :3000 /path/to/app.pl
+    # on app-be2.example.com
+    $ starman --workers=2 --listen :3000 /path/to/app.pl
+
+Then start the haproxy itself:
+
+    # check the configuration..
+    $ sudo haproxy -c -f haproxy.conf
+    # now really start it..
+    $ sudo haproxy -f haproxy.conf
+
+=head3 Plackup Chef Cookbook
+
+A psgi chef cookbook supporting Dancer (as well as I<Catalyst>)
+written by Alexey Melezhik is available
+at L<http://community.opscode.com/cookbooks/psgi>.
+
+
+=head2 Running from Apache
+
+You can run your Dancer app from Apache using the following examples:
+
+
+=head3 Running from Apache with Plack
+
+You can run your app from Apache using PSGI (Plack), with a config like the
+following:
+
+    <VirtualHost myapp.example.com>
+        ServerName www.myapp.example.com
+        ServerAlias myapp.example.com
+        DocumentRoot /websites/myapp.example.com
+
+        <Directory /websites/myapp.example.com>
+            AllowOverride None
+            Order allow,deny
+            Allow from all
+        </Directory>
+
+        <Location />
+            SetHandler perl-script
+            PerlResponseHandler Plack::Handler::Apache2
+            PerlSetVar psgi_app /websites/myapp.example.com/app.pl
+        </Location>
+
+        ErrorLog  /websites/myapp.example.com/logs/error_log
+        CustomLog /websites/myapp.example.com/logs/access_log common
+    </VirtualHost>
+
+To set the environment you want to use for your application (production or
+development), you can set it this way:
+
+    <VirtualHost>
+        ...
+        SetEnv DANCER_ENVIRONMENT "production"
+        ...
+    </VirtualHost>
+
+B<NOTE:> Only a single Dancer application can be deployed using the
+C<Plack::Handler::Apache2> method. Multiple Dancer applications
+B<will not work properly> (The routes will be mixed-up between the
+applications).
+
+It's recommended to start each app with C<plackup> using your
+favorite server (Starman, for example) and then put a web server (Apache,
+Nginx, Perlbal, etc.) as a frontend server for both apps using reverse proxy
+(HTTP based, no fastcgi).
+
+=head3 Running from Apache under appdir
+
+If you want to deploy multiple applications under the same VirtualHost, using
+one application per directory for example, you can do the following.
+
+This example uses the FastCGI dispatcher that comes with Dancer, but you should
+be able to adapt this to use any other way of deployment described in this
+guide. The only purpose of this example is to show how to deploy multiple
+applications under the same base directory/virtualhost.
+
+    <VirtualHost *:80>
+        ServerName localhost
+        DocumentRoot "/path/to/rootdir"
+        RewriteEngine On
+        RewriteCond %{REQUEST_FILENAME} !-f
+
+        <Directory "/path/to/rootdir">
+            AllowOverride None
+            Options +ExecCGI -MultiViews +SymLinksIfOwnerMatch
+            Order allow,deny
+            Allow from all
+            AddHandler fastcgi-script .fcgi
+        </Directory>
+
+        RewriteRule /App1(.*)$ /App1/public/dispatch.fcgi$1 [QSA,L]
+        RewriteRule /App2(.*)$ /App2/public/dispatch.fcgi$1 [QSA,L]
+        ...
+        RewriteRule /AppN(.*)$ /AppN/public/dispatch.fcgi$1 [QSA,L]
+    </VirtualHost>
+
+Of course, if your Apache configuration allows that, you can put the
+RewriteRules in a .htaccess file directly within the application's directory,
+which lets you add a new application without changing the Apache configuration.
+
+
+=head2 Running on lighttpd (CGI)
+
+To run as a CGI app on lighttpd, just create a soft link to the dispatch.cgi
+script (created when you run dancer -a MyApp) inside your system's cgi-bin
+folder. Make sure mod_cgi is enabled.
+
+    ln -s /path/to/MyApp/public/dispatch.cgi /usr/lib/cgi-bin/mycoolapp.cgi
+
+=head2 Running on lighttpd (FastCGI)
+
+Make sure mod_fcgi is enabled. You also must have L<FCGI> installed.
+
+This example configuration uses TCP/IP:
+
+    $HTTP["url"] == "^/app" {
+        fastcgi.server += (
+            "/app" => (
+                "" => (
+                    "host" => "127.0.0.1",
+                    "port" => "5000",
+                    "check-local" => "disable",
+                )
+            )
+        )
+    }
+
+Launch your application:
+
+    plackup -s FCGI --port 5000 bin/app.pl
+
+This example configuration uses a socket:
+
+    $HTTP["url"] =~ "^/app" {
+        fastcgi.server += (
+            "/app" => (
+                "" => (
+                    "socket" => "/tmp/fcgi.sock",
+                    "check-local" => "disable",
+                )
+            )
+        )
+    }
+
+Launch your application:
+
+    plackup -s FCGI --listen /tmp/fcgi.sock bin/app.pl
+
