@@ -1,6 +1,8 @@
+[![](https://images.microbadger.com/badges/version/sonarperl/sonar-perl.svg)](https://microbadger.com/images/sonarperl/sonar-perl "Get your own version badge on microbadger.com")
 [![Build Status](https://travis-ci.org/sonar-perl/sonar-perl.svg?branch=master)](https://travis-ci.org/sonar-perl/sonar-perl)
 [![Quality Gate](https://sonarcloud.io/api/project_badges/measure?project=sonar-perl_sonar-perl&metric=alert_status&branch=master)](https://sonarcloud.io/dashboard?id=sonar-perl_sonar-perl)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=sonar-perl_sonar-perl&metric=coverage&template=FLAT&branch=master)](https://sonarcloud.io/dashboard?id=sonar-perl_sonar-perl)
+
 
 # Perl 5 Plugin for SonarQube
 
