@@ -17,7 +17,6 @@ import org.sonar.api.rules.RuleFinder;
 import org.sonar.api.utils.ValidationMessages;
 
 import com.github.sonarperl.PerlLanguage;
-import com.github.sonarperl.critic.SonarWayProfile;
 
 @RunWith(MockitoJUnitRunner.class)
 @SuppressWarnings("deprecation")
