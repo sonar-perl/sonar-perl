@@ -16,24 +16,24 @@ public class PerlVisitor {
         return Collections.emptySet();
     }
 
-    // default implementation does nothing
     public void visitFile(AstNode node) {
+        // default implementation does nothing
     }
 
-    // default implementation does nothing
     public void leaveFile(AstNode node) {
+        // default implementation does nothing
     }
 
-    // default implementation does nothing
     public void visitNode(AstNode node) {
+        // default implementation does nothing
     }
 
-    // default implementation does nothing
     public void visitToken(Token token) {
+        // default implementation does nothing
     }
 
-    // default implementation does nothing
     public void leaveNode(AstNode node) {
+        // default implementation does nothing
     }
 
     public PerlVisitorContext getContext() {
