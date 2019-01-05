@@ -48,8 +48,6 @@ public class TestHarnessJUnitReader {
 
     private static final Logger log = Loggers.get(TestHarnessJUnitReader.class);
 
-    private Pattern tapNumberOfTests = Pattern.compile("^1\\.\\.(\\d+).*");
-
     public Optional<TestHarnessReport> read(File file) throws IOException {
         Path path = Paths.get(file.getPath());
         TestHarnessReport.TestHarnessReportBuilder builder = TestHarnessReport.builder();
@@ -59,7 +57,7 @@ public class TestHarnessJUnitReader {
 
             try (Stream<Path> stream = Files.walk(path)) {
                 return stream
-                    .filter(Files::isRegularFile)
+                    .filter(p -> p.toFile().exists())
                     .filter(p -> p.toString().endsWith(".junit.xml"))
                     .map(p -> readReport(builder, p, path))
                     .reduce(Boolean::logicalOr)

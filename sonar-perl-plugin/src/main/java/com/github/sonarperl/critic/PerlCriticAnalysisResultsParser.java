@@ -52,7 +52,6 @@ class PerlCriticAnalysisResultsParser {
         }
         String[] fields = line.replace("~||~", "").split("~\\|~");
 
-        // TODO handle cases where a line returned from critic doesn't have all 7
         // expected fields, e.g. when dealing with messages containing newlines.
         if (fields.length != 7) {
             log.warn("Invalid line. Did not find 7 fields delimited by '~|~' in '{}'", line);

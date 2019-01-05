@@ -30,9 +30,9 @@ public class PerlCriticIssuesLoaderSensor implements Sensor {
     }
 
     private Optional<String> getReportPath(SensorContext context) {
-        String reportPath = context.settings().getString(PerlCriticProperties.PERLCRITIC_REPORT_PATH_KEY);
+        Optional<String> reportPath = context.config().get(PerlCriticProperties.PERLCRITIC_REPORT_PATH_KEY);
         log.info("Configured report path: {}", reportPath);
-        return Optional.ofNullable(reportPath);
+        return reportPath;
     }
 
     @Override

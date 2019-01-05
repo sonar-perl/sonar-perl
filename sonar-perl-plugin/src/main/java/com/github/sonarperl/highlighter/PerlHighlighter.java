@@ -37,11 +37,6 @@ public class PerlHighlighter extends PerlVisitor {
     }
 
     @Override
-    public void visitNode(AstNode astNode) {
-        super.visitNode(astNode);
-    }
-
-    @Override
     public void visitToken(Token token) {
         super.visitToken(token);
         if (token.getType().equals(PerlTokenType.NUMBER)) {
