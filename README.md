@@ -29,6 +29,10 @@ What we have so far...
 
 ## Screenshots
 
+### Dashboard
+
+![Perl Projects Dashboard](img/dashboard.png)
+
 ### Source Code Details
 
 ![PerlCritic violations in SonarQube](img/code_detail.png)
