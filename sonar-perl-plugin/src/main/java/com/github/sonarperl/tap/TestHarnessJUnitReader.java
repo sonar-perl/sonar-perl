@@ -1,5 +1,19 @@
 package com.github.sonarperl.tap;
 
+import com.github.sonarperl.tap.TestHarnessReport.Test;
+import com.github.sonarperl.tap.TestHarnessReport.TestDetail;
+import com.github.sonarperl.tap.TestHarnessReport.TestDetail.TestDetailBuilder;
+import org.sonar.api.utils.log.Logger;
+import org.sonar.api.utils.log.Loggers;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
+import org.xml.sax.InputSource;
+import org.xml.sax.SAXException;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
@@ -10,25 +24,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Optional;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Stream;
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-
-import org.sonar.api.utils.log.Logger;
-import org.sonar.api.utils.log.Loggers;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.NodeList;
-import org.xml.sax.InputSource;
-import org.xml.sax.SAXException;
-
-import com.github.sonarperl.tap.TestHarnessReport.Test;
-import com.github.sonarperl.tap.TestHarnessReport.TestDetail;
-import com.github.sonarperl.tap.TestHarnessReport.TestDetail.TestDetailBuilder;
 
 /*
 A difficulty with JUnit reports is that we need to recover test file path
@@ -119,20 +116,9 @@ public class TestHarnessJUnitReader {
 
                 NodeList outnodes = testsuite.getElementsByTagName("system-out");
                 if (outnodes.getLength() > 0) {
-                    String systemout = ((Element)outnodes.item(0)).getTextContent();
+                    String systemout = outnodes.item(0).getTextContent();
                     BufferedReader br = new BufferedReader(new StringReader(systemout));
-                    br.lines().forEach(line -> {
-                        if (line.startsWith("ok ")) {
-                            detailBuilder.ok();
-                        } else if (line.startsWith("not ok ")) {
-                            detailBuilder.failed();
-                        } else if (line.startsWith("1..")) {
-                            Matcher m = tapNumberOfTests.matcher(line);
-                            if (m.matches()) {
-                                detailBuilder.total(Integer.valueOf(m.group(1)));
-                            }
-                        }
-                    });
+                    br.lines().forEach(line -> TapLineReader.invoke(detailBuilder, line));
 
                     TestDetail detail = detailBuilder.build();
                     if (detail.getNumberOfTests() > 0) {
