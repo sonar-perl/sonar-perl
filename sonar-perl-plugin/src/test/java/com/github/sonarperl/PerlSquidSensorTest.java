@@ -8,12 +8,8 @@ import org.sonar.api.batch.fs.InputFile;
 import org.sonar.api.batch.fs.InputFile.Type;
 import org.sonar.api.batch.fs.internal.DefaultInputFile;
 import org.sonar.api.batch.fs.internal.TestInputFileBuilder;
-import org.sonar.api.batch.rule.ActiveRules;
-import org.sonar.api.batch.rule.CheckFactory;
-import org.sonar.api.batch.rule.internal.ActiveRulesBuilder;
 import org.sonar.api.batch.sensor.internal.DefaultSensorDescriptor;
 import org.sonar.api.batch.sensor.internal.SensorContextTester;
-import org.sonar.api.issue.NoSonarFilter;
 import org.sonar.api.measures.FileLinesContext;
 import org.sonar.api.measures.FileLinesContextFactory;
 import org.sonar.api.utils.log.LogTester;
@@ -31,8 +27,6 @@ public class PerlSquidSensorTest {
 
     private SensorContextTester context;
 
-    private ActiveRules activeRules;
-
     @org.junit.Rule
     public LogTester logTester = new LogTester();
 
@@ -43,13 +37,11 @@ public class PerlSquidSensorTest {
 
     @Test
     public void sensor_descriptor() {
-        activeRules = (new ActiveRulesBuilder()).build();
         DefaultSensorDescriptor descriptor = new DefaultSensorDescriptor();
         sensor().describe(descriptor);
 
         assertThat(descriptor.name()).isEqualTo("Perl Squid Sensor");
         assertThat(descriptor.languages()).containsOnly("perl");
-        assertThat(descriptor.type()).isEqualTo(Type.MAIN);
     }
 
     @Test
@@ -68,8 +60,7 @@ public class PerlSquidSensorTest {
         FileLinesContextFactory fileLinesContextFactory = mock(FileLinesContextFactory.class);
         FileLinesContext fileLinesContext = mock(FileLinesContext.class);
         when(fileLinesContextFactory.createFor(Mockito.any(InputFile.class))).thenReturn(fileLinesContext);
-        CheckFactory checkFactory = new CheckFactory(activeRules);
-        return new PerlSquidSensor(fileLinesContextFactory, checkFactory, new NoSonarFilter());
+        return new PerlSquidSensor();
     }
 
     private InputFile inputFile(String name) {
