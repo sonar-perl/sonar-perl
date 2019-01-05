@@ -32,14 +32,14 @@ public class TestHarnessLoaderSensor implements Sensor {
     }
 
     private Optional<String> getArchiveReportPath(SensorContext context) {
-        String reportPath = context.settings().getString(TestHarnessArchiveProperties.HARNESS_ARCHIVE_PATH_KEY);
+        Optional<String> reportPath = context.config().get(TestHarnessArchiveProperties.HARNESS_ARCHIVE_PATH_KEY);
         log.info("Configured archive report path: {}", reportPath);
-        return Optional.ofNullable(reportPath);
+        return reportPath;
     }
     private Optional<String> getJUnitReportPath(SensorContext context) {
-        String reportPath = context.settings().getString(TestHarnessJUnitProperties.HARNESS_JUNIT_PATH_KEY);
+        Optional<String> reportPath = context.config().get(TestHarnessJUnitProperties.HARNESS_JUNIT_PATH_KEY);
         log.info("Configured junit report path: {}", reportPath);
-        return Optional.ofNullable(reportPath);
+        return reportPath;
     }
 
     @Override
