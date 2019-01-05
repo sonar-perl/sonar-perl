@@ -199,6 +199,19 @@ Running a full build includes creation of the plugin-jar and a docker image.
 This is achieved by running `./gradlew build`. Note that you 
 need to have a local docker daemon running for this.
 
+## Performing a release
+
+We're using the `axion` plugin for standardising the release process. To craft a new release, we tag the latest master, and let TravisCI push the resulting build artifacts to our Github releases page, and to docker hub.
+
+You can start this process by calling:
+
+```
+./gradlew release
+```
+
+In case the build doesn't succed, you should remove the tag from github, fix the issues in `master`, and release again. But, if unsure, increment and release a new version.
+
+Further details can be read on the [axion read-the-docs](https://axion-release-plugin.readthedocs.io/en/latest/) page.
 
 ## Next steps
 
