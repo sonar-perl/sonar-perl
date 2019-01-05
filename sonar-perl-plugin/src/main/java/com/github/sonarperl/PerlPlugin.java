@@ -36,8 +36,6 @@ import com.github.sonarperl.tap.TestHarnessLoaderSensor;
 })
 public class PerlPlugin implements Plugin {
 
-    private static final Logger log = Loggers.get(PerlPlugin.class);
-
     public static final String FILE_SUFFIXES_KEY = "com.github.sonarperl.suffixes";
 
     public static final String DEFAULT_FILE_SUFFIXES = "pm,pl,t";

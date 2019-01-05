@@ -30,7 +30,7 @@ public class GlobalSensor implements Sensor {
         COMMENT,
         CODE,
         CLASS,
-        FUNCTION;
+        FUNCTION
     }
 
     @Override

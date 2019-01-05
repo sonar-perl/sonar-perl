@@ -2,6 +2,7 @@ package com.github.sonarperl;
 
 import java.util.Arrays;
 
+import org.sonar.api.config.Configuration;
 import org.sonar.api.config.Settings;
 import org.sonar.api.resources.AbstractLanguage;
 
@@ -13,16 +14,16 @@ public final class PerlLanguage extends AbstractLanguage {
     public static final String NAME = "Perl";
     public static final String KEY = "perl";
 
-    private final Settings settings;
+    private final Configuration config;
 
-    public PerlLanguage(Settings settings) {
+    public PerlLanguage(Configuration config) {
         super(KEY, NAME);
-        this.settings = settings;
+        this.config = config;
     }
 
     @Override
     public String[] getFileSuffixes() {
-        String[] suffixes = filterEmptyStrings(settings.getStringArray(PerlPlugin.FILE_SUFFIXES_KEY));
+        String[] suffixes = filterEmptyStrings(config.getStringArray(PerlPlugin.FILE_SUFFIXES_KEY));
         if (suffixes.length == 0) {
             suffixes = PerlPlugin.DEFAULT_FILE_SUFFIXES.split(",\\s*");
         }
