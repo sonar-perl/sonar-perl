@@ -95,7 +95,7 @@ You should see a "perl sample project" and "Dancer" on your SonarQube dashboard.
 Plugin releases can be downloaded from our [github releases page](https://github.com/sonar-perl/sonar-perl/releases). 
 If you want to build a snapshot version from source, you can create it via `./gradlew sonar-perl-plugin:jar` and
 copy the resulting file (usually suffixed -SNAPSHOT, unless you checked out a release tag) 
-e.g. `sonar-perl-plugin/build/libs/sonar-perl-plugin-0.4.1-SNAPSHOT.jar` into the plugins
+e.g. `sonar-perl-plugin/build/libs/sonar-perl-plugin-0.4.2-SNAPSHOT.jar` into the plugins
 directory of your SonarQube installation (should be something like `/opt/sonarqube/extensions/plugins/`)
 
 
@@ -193,7 +193,7 @@ perlcritic --cruel --quiet --verbose "%f~|~%s~|~%l~|~%c~|~%m~|~%e~|~%p~||~%n" li
 We support the all SonarQube versions from 6.7 (LTS). Please report bugs
 or incompatibilities in our [bugtracker](https://github.com/sonar-perl/sonar-perl/issues).
 
-For older SonarQube versions (5.6+) stick with plugin version 0.4.1 or older.
+For older SonarQube versions (5.6+) stick with plugin version 0.4.2 or older.
 
 Projects with mixed file encodings are currently not supported.
 
