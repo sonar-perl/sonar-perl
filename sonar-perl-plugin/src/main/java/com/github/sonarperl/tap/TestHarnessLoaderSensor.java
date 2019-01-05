@@ -107,7 +107,7 @@ public class TestHarnessLoaderSensor implements Sensor {
         /**
          * Gets the file pointed by the report.
          *
-         * @param report the unit test report
+         * @param filePath the unit test report
          */
         private InputFile getUnitTestInputFile(String filePath) {
           return fileSystem.inputFile(fileSystem.predicates().and(
