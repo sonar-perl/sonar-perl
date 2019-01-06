@@ -32,7 +32,7 @@ public class PerlLexerTest {
     }
 
     @Test
-    public void shortstring_literals() {
+    public void string_literals() {
         assertThat("empty", lexer.lex("''"), hasToken("''", PerlTokenType.STRING));
         assertThat("empty", lexer.lex("\"\""), hasToken("\"\"", PerlTokenType.STRING));
         assertThat(lexer.lex("'hello world'"), hasToken("'hello world'", PerlTokenType.STRING));
@@ -40,8 +40,24 @@ public class PerlLexerTest {
     }
 
     @Test
-    public void integer_literals() {
+    public void quote_q() {
+        assertThat("empty", lexer.lex("q{}"), hasToken("q{}", PerlTokenType.STRING));
+        assertThat("empty", lexer.lex("q//"), hasToken("q//", PerlTokenType.STRING));
+        assertThat(lexer.lex("q['hello]"), hasToken("q['hello]", PerlTokenType.STRING));
+    }
+
+    @Test
+    public void quote_qq() {
+        assertThat("empty", lexer.lex("qq{}"), hasToken("qq{}", PerlTokenType.STRING));
+        assertThat("empty", lexer.lex("qq//"), hasToken("qq//", PerlTokenType.STRING));
+        assertThat(lexer.lex("qq['hello]"), hasToken("qq['hello]", PerlTokenType.STRING));
+        assertThat(lexer.lex("qq['hello\n]"), hasToken("qq['hello\n]", PerlTokenType.STRING));
+    }
+
+    @Test
+    public void number_literals() {
         assertThat(lexer.lex("7"), hasToken("7", PerlTokenType.NUMBER));
+        assertThat(lexer.lex("12.34e-56"), hasToken("12.34e-56", PerlTokenType.NUMBER));
     }
 
     @Test
@@ -54,7 +70,7 @@ public class PerlLexerTest {
     public void operators_and_delimiters() {
         assertThat(lexer.lex("<<"), hasToken("<<", PerlPunctuator.LEFT_OP));
         assertThat(lexer.lex("+="), hasToken("+=", PerlPunctuator.PLUS_ASSIGN));
-        assertThat(lexer.lex("@="), hasToken("@=", PerlPunctuator.MATRIX_MULT_ASSIGN));
+        assertThat(lexer.lex("&.="), hasToken("&.=", PerlPunctuator.BL_ASSIGN3));
     }
 
     @Test
@@ -78,12 +94,12 @@ public class PerlLexerTest {
         assertThat(lexer.lex("line\\\n    line")).hasSize(3);
     }
 
-
     @Test
     public void pod_lines() {
         assertThat(lexer.lex("=pod\n=cut"), hasToken(GenericTokenType.COMMENT));
         assertThat(lexer.lex("=pod\nbablabla"), hasToken(GenericTokenType.COMMENT));
         assertThat(lexer.lex("=pod\ntest\n=cut\n=pod\n=cut\nblabla"), hasToken(GenericTokenType.IDENTIFIER));
+        assertThat(lexer.lex("=head1 Test\ntest\n=cut"), hasToken(GenericTokenType.COMMENT));
     }
 
 }

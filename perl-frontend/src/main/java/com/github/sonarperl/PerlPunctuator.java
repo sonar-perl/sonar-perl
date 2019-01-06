@@ -14,6 +14,7 @@ public enum PerlPunctuator implements TokenType {
     MOD("%"),
     LEFT_OP("<<"),
     RIGHT_OP(">>"),
+    TILDE_TILDE("~~"),
 
     /**
      * Bitwise AND.
@@ -25,6 +26,7 @@ public enum PerlPunctuator implements TokenType {
      */
     OR("|"),
     XOR("^"),
+    NOT("!"),
     TILDE("~"),
     LT("<"),
     GT(">"),
@@ -32,7 +34,10 @@ public enum PerlPunctuator implements TokenType {
     GT_EQU(">="),
     EQU("=="),
     NOT_EQU("!="),
-    NOT_EQU2("<>"),
+    NULL_FH("<>"),
+    QUES_COLON("?:"),
+    EQU_GT("=>"),
+    MINUS_GT("->"),
 
     // Delimiters
 
@@ -61,8 +66,10 @@ public enum PerlPunctuator implements TokenType {
     RIGHT_ASSIGN(">>="),
     LEFT_ASSIGN("<<="),
     MUL_MUL_ASSIGN("**="),
-    MATRIX_MULT_ASSIGN("@=")
-
+    X_ASSIGN("x="),
+    BW_ASSIGN1("^.="),
+    BL_ASSIGN2("|.="),
+    BL_ASSIGN3("&.=")
     ;
 
     private final String value;

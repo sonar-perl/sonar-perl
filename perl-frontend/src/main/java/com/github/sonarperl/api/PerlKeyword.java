@@ -8,6 +8,7 @@ public enum PerlKeyword implements TokenType {
     ABS("abs"),
     ACCEPT("accept"),
     ALARM("alarm"),
+    AND("and"),
     ATAN2("atan2"),
     BEGIN("BEGIN"),
     BIND("bind"),
@@ -24,6 +25,7 @@ public enum PerlKeyword implements TokenType {
     CHROOT("chroot"),
     CLOSE("close"),
     CLOSEDIR("closedir"),
+    CMP("cmp"),
     CONNECT("connect"),
     CONTINUE("continue"),
     COS("cos"),
@@ -47,6 +49,7 @@ public enum PerlKeyword implements TokenType {
     ENDPWENT("endpwent"),
     ENDSERVENT("endservent"),
     EOF("eof"),
+    EQ("eq"),
     EVAL("eval"),
     EXEC("exec"),
     EXISTS("exists"),
@@ -90,6 +93,8 @@ public enum PerlKeyword implements TokenType {
     GMTIME("gmtime"),
     GOTO("goto"),
     GREP("grep"),
+    GE("ge"),
+    GT("gt"),
     HEX("hex"),
     IF("if"),
     IMPORT("import"),
@@ -110,6 +115,8 @@ public enum PerlKeyword implements TokenType {
     LOCALTIME("localtime"),
     LOG("log"),
     LSTAT("lstat"),
+    LE("le"),
+    LT("lt"),
     MAP("map"),
     MKDIR("mkdir"),
     MSGCTL("msgctl"),
@@ -120,9 +127,11 @@ public enum PerlKeyword implements TokenType {
     NEW("new"),
     NEXT("next"),
     NO("no"),
+    NOT("not"),
     OCT("oct"),
     OPEN("open"),
     OPENDIR("opendir"),
+    OR("or"),
     ORD("ord"),
     OUR("our"),
     PACK("pack"),
@@ -222,7 +231,8 @@ public enum PerlKeyword implements TokenType {
     WARN("warn"),
     WHEN("when"),
     WHILE("while"),
-    WRITE("write");
+    WRITE("write"),
+    XOR("xor");
 
     private final String value;
 

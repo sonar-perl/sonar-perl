@@ -45,11 +45,7 @@ public class StringLiteralsChannel extends Channel<Lexer> {
     }
 
     private boolean read(CodeReader code) {
-        if (isLookingOnLongString(code, ch, index)) {
-            return readLongString(code);
-        } else {
-            return readString(code);
-        }
+        return readString(code);
     }
 
     private boolean readString(CodeReader code) {
@@ -66,26 +62,6 @@ public class StringLiteralsChannel extends Channel<Lexer> {
         }
         index++;
         return true;
-    }
-
-    private boolean readLongString(CodeReader code) {
-        index += 3;
-        while (!isLookingOnLongString(code, ch, index)) {
-            if (code.charAt(index) == EOF) {
-                return false;
-            }
-            if (code.charAt(index) == '\\') {
-                // escape
-                index++;
-            }
-            index++;
-        }
-        index += 3;
-        return true;
-    }
-
-    private static boolean isLookingOnLongString(CodeReader code, char ch, int index) {
-        return (code.charAt(index) == ch) && (code.charAt(index + 1) == ch) && (code.charAt(index + 2) == ch);
     }
 
 }
