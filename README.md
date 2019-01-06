@@ -32,6 +32,7 @@ What we have so far...
 ### Dashboard
 
 ![Perl Projects Dashboard](img/dashboard.png)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fsonar-perl%2Fsonar-perl.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fsonar-perl%2Fsonar-perl?ref=badge_shield)
 
 ### Source Code Details
 
@@ -230,3 +231,7 @@ So, if you're interested, get in touch with us!
 * Perl [TAP](https://testanything.org/), and [TAP::Harness::Archive](https://metacpan.org/pod/TAP::Harness::Archive), [TAP::Harness::JUnit](https://metacpan.org/pod/TAP::Harness::JUnit), [TAP::Formatter::JUnit](https://metacpan.org/pod/TAP::Formatter::JUnit), for test reporting.
 * [Perl::Critic](http://perlcritic.org/) for issue reporting.
 
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fsonar-perl%2Fsonar-perl.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fsonar-perl%2Fsonar-perl?ref=badge_large)
