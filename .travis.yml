@@ -1,6 +1,9 @@
 dist: trusty
 language: java
 sudo: required
+addons:
+  sonarcloud:
+    organization: "sonar-perl"
 services:
   - docker
 cache:
