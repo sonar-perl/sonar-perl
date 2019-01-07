@@ -43,6 +43,7 @@ public class PerlLexerTest {
     public void quote_q() {
         assertThat("empty", lexer.lex("q{}"), hasToken("q{}", PerlTokenType.STRING));
         assertThat("empty", lexer.lex("q//"), hasToken("q//", PerlTokenType.STRING));
+        assertThat("simple", lexer.lex("$foo = q!I said, \"You said, 'She said it.'\"!;"), hasToken("q!I said, \"You said, 'She said it.'\"!", PerlTokenType.STRING));
         assertThat(lexer.lex("q['hello]"), hasToken("q['hello]", PerlTokenType.STRING));
     }
 
