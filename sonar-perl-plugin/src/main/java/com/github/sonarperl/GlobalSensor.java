@@ -3,6 +3,7 @@ package com.github.sonarperl;
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.EnumMap;
@@ -88,7 +89,9 @@ public class GlobalSensor implements Sensor {
         counters.put(CounterType.CLASS, new AtomicInteger());
         counters.put(CounterType.FUNCTION, new AtomicInteger());
 
-        try (Stream<String> lines = Files.lines(file.toPath(), charset)) {
+        // This is forcing ISO-8859-1 charset, because it's an all-inclusive charset guaranteed not
+        // to throw MalformedInputException
+        try (Stream<String> lines = Files.lines(file.toPath(), StandardCharsets.ISO_8859_1)) {
             lines
             .filter(line -> !line.matches("^\\s*$"))
             .forEach(line -> {
