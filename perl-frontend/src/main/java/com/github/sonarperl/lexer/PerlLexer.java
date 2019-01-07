@@ -33,7 +33,7 @@ public final class PerlLexer {
                 .withChannel(commentRegexp("__END__[\\n\\r].*+"))
                 .withChannel(commentRegexp("__DATA__[\\n\\r].*+"))
                 .withChannel(new StringLiteralsChannel())
-                .withChannel(new QuoteLiteralChannel())
+                .withChannel(new QuoteLikeChannel())
                 .withChannel(regexp(PerlTokenType.NUMBER, "[1-9][0-9]*+[.][0-9]++" + EXP))
                 .withChannel(regexp(PerlTokenType.NUMBER, "[1-9][0-9]*+[.][0-9]++"))
                 .withChannel(regexp(PerlTokenType.NUMBER, "[1-9][0-9]*+" + EXP))

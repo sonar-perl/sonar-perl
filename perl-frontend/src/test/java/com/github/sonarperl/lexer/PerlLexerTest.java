@@ -52,6 +52,37 @@ public class PerlLexerTest {
         assertThat("empty", lexer.lex("qq//"), hasToken("qq//", PerlTokenType.STRING));
         assertThat(lexer.lex("qq['hello]"), hasToken("qq['hello]", PerlTokenType.STRING));
         assertThat(lexer.lex("qq['hello\n]"), hasToken("qq['hello\n]", PerlTokenType.STRING));
+        assertThat(lexer.lex("qq[[]nested[]]"), hasToken("qq[[]nested[]]", PerlTokenType.STRING));
+        assertThat(lexer.lex("qq[[[double nested]]]"), hasToken("qq[[[double nested]]]", PerlTokenType.STRING));
+    }
+
+    @Test
+    public void quote_s() {
+        assertThat("empty", lexer.lex("s///"), hasToken("s///", PerlTokenType.STRING));
+        assertThat("simple", lexer.lex("s/a/b/"), hasToken("s/a/b/", PerlTokenType.STRING));
+        assertThat("generic", lexer.lex("s{a}{b}"), hasToken("s{a}{b}", PerlTokenType.STRING));
+        assertThat("escape", lexer.lex("s/\\/\\//|/"), hasToken("s/\\/\\//|/", PerlTokenType.STRING));
+        assertThat("suffix", lexer.lex("s/\\/\\//|/; # some bla"), hasToken("s/\\/\\//|/", PerlTokenType.STRING));
+    }
+
+    @Test
+    public void quote_y() {
+        assertThat("empty", lexer.lex("y[][]"), hasToken("y[][]", PerlTokenType.STRING));
+        assertThat("simple", lexer.lex("y#a-z#A-Z#"), hasToken("y#a-z#A-Z#", PerlTokenType.STRING));
+        assertThat("suffix", lexer.lex("y#a-z#A-Z#; $x"), hasToken("$x", GenericTokenType.IDENTIFIER));
+        assertThat("second", lexer.lex("y#a-z#A-Z#; y#m#n#;"), hasToken("y#m#n#", PerlTokenType.STRING));
+    }
+
+    @Test
+    public void quote_qx() {
+        assertThat("empty", lexer.lex("qx<>"), hasToken("qx<>", PerlTokenType.STRING));
+        assertThat("simple", lexer.lex("qx/a.*b/"), hasToken("qx/a.*b/", PerlTokenType.STRING));
+    }
+
+    @Test
+    public void quote_tr() {
+        assertThat("empty", lexer.lex("tr{}{}"), hasToken("tr{}{}", PerlTokenType.STRING));
+        assertThat("simple", lexer.lex("tr/a/b/"), hasToken("tr/a/b/", PerlTokenType.STRING));
     }
 
     @Test
