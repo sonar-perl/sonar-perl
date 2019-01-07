@@ -18,7 +18,7 @@ import static com.sonar.sslr.impl.channel.RegexpChannelBuilder.commentRegexp;
 
 public final class PerlLexer {
 
-    private static final String EXP = "(e[+-]?+[0-9_]++)";
+    private static final String EXP = "(e[+-][0-9]++)"; // 12.34e-56
 
     private PerlLexer() {}
 
@@ -33,8 +33,11 @@ public final class PerlLexer {
                 .withChannel(commentRegexp("__END__[\\n\\r].*+"))
                 .withChannel(commentRegexp("__DATA__[\\n\\r].*+"))
                 .withChannel(new StringLiteralsChannel())
-                .withChannel(regexp(PerlTokenType.NUMBER, "[1-9][0-9]*+"))
+                .withChannel(new QuoteLikeChannel())
+                .withChannel(regexp(PerlTokenType.NUMBER, "[1-9][0-9]*+[.][0-9]++" + EXP))
+                .withChannel(regexp(PerlTokenType.NUMBER, "[1-9][0-9]*+[.][0-9]++"))
                 .withChannel(regexp(PerlTokenType.NUMBER, "[1-9][0-9]*+" + EXP))
+                .withChannel(regexp(PerlTokenType.NUMBER, "[1-9][0-9]*+"))
                 .withChannel(regexp(PerlTokenType.NUMBER, "0++"))
                 .withChannel(new IdentifierAndKeywordChannel(and("[$%&@]?[a-zA-Z_]", o2n("\\w")), true, PerlKeyword.values()))
                 .withChannel(new PunctuatorChannel(PerlPunctuator.values()))

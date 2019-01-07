@@ -9,7 +9,7 @@ public class PerlKeywordTest {
 
     @Test
     public void test() {
-        assertThat(PerlKeyword.values()).hasSize(218);
+        assertThat(PerlKeyword.values()).hasSize(228);
         assertThat(PerlKeyword.keywordValues()).hasSize(PerlKeyword.values().length);
     }
 }
