@@ -4,6 +4,8 @@ plugins {
     id 'com.bmuschko.docker-remote-api' version '4.2.0'
     id "jacoco"
     id "com.github.johnrengelman.shadow" version "4.0.3"
+    // for checking dependencies:
+    // id "com.github.ben-manes.versions" version "0.20.0"
 }
 
 repositories {
@@ -17,8 +19,8 @@ ext {
 dependencies {
     compileOnly "org.sonarsource.sonarqube:sonar-plugin-api:${sonarApiVersion}"
     testImplementation "org.sonarsource.sonarqube:sonar-plugin-api:${sonarApiVersion}"
-    implementation 'org.apache.commons:commons-compress:1.14'
-    implementation 'com.esotericsoftware.yamlbeans:yamlbeans:1.12'
+    implementation 'org.apache.commons:commons-compress:1.18'
+    implementation 'com.esotericsoftware.yamlbeans:yamlbeans:1.13'
     testImplementation 'junit:junit:4.12'
     testImplementation 'org.assertj:assertj-core:3.11.1'
     testImplementation 'org.mockito:mockito-core:2.23.4'

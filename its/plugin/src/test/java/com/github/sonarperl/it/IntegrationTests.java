@@ -30,12 +30,15 @@ public class IntegrationTests {
     public static RuleChain RESOURCES = RuleChain.emptyRuleChain();
 
     static {
-        for (Orchestrator orchestrator : new Orchestrator[]{
-                orchestratorBuilderFor("6.7").build(),
-                orchestratorBuilderFor("7.0").build(),
-                orchestratorBuilderFor("7.5").build()}
-        ) {
-            register(orchestrator);
+        try {
+            for (Orchestrator orchestrator : new Orchestrator[]{
+                    orchestratorBuilderFor("6.7").build(),
+                    orchestratorBuilderFor("7.0").build()}
+            ) {
+                register(orchestrator);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
