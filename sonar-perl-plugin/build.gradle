@@ -1,14 +1,13 @@
 plugins {
     id "java-library"
     id "eclipse"
-    id 'com.bmuschko.docker-remote-api' version '3.0.7'
+    id 'com.bmuschko.docker-remote-api' version '4.2.0'
     id "jacoco"
-    id 'maven-publish'
     id "com.github.johnrengelman.shadow" version "4.0.3"
 }
 
 repositories {
-    mavenCentral()
+    jcenter()
 }
 
 ext {
@@ -17,20 +16,20 @@ ext {
 
 dependencies {
     compileOnly "org.sonarsource.sonarqube:sonar-plugin-api:${sonarApiVersion}"
-    testCompile "org.sonarsource.sonarqube:sonar-plugin-api:${sonarApiVersion}"
-    compile 'org.apache.commons:commons-compress:1.14'
-    compile 'com.esotericsoftware.yamlbeans:yamlbeans:1.12'
-    testCompile 'junit:junit:4.12'
-    testCompile 'org.assertj:assertj-core:3.11.1'
-    testCompile 'org.mockito:mockito-core:2.23.4'
-    compile project(':perl-frontend')
+    testImplementation "org.sonarsource.sonarqube:sonar-plugin-api:${sonarApiVersion}"
+    implementation 'org.apache.commons:commons-compress:1.14'
+    implementation 'com.esotericsoftware.yamlbeans:yamlbeans:1.12'
+    testImplementation 'junit:junit:4.12'
+    testImplementation 'org.assertj:assertj-core:3.11.1'
+    testImplementation 'org.mockito:mockito-core:2.23.4'
+    implementation project(':perl-frontend')
 }
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 jacoco {
-    toolVersion = '0.7.9'
+    toolVersion = '0.8.2'
 }
 
 jar {
@@ -88,21 +87,23 @@ task buildDockerImage(type: DockerBuildImage) {
     description = 'Builds a new docker image.'
     dependsOn copyDockerTargetArtifacts
     inputDir = file('build/docker')
-    tag = "sonarperl/sonar-perl:latest"
+    tags.add("sonarperl/sonar-perl:latest")
     noCache = true
 }
 
 task createDockerContainer(type: DockerCreateContainer) {
     dependsOn buildDockerImage
-    targetImageId { buildDockerImage.getImageId() }
+    targetImageId buildDockerImage.getImageId()
     portBindings = [ '9000:9000', '9002:9002' ]
+    autoRemove = true
 }
 
+task publish {}
 publish.dependsOn(createDockerContainer)
 
 task startDockerContainer(type: DockerStartContainer) {
     dependsOn createDockerContainer
-    targetContainerId { createDockerContainer.getContainerId() }
+    targetContainerId createDockerContainer.getContainerId()
     doLast {
         println createDockerContainer.getContainerId()
     }
@@ -112,14 +113,10 @@ task run {}
 run.dependsOn(startDockerContainer)
 
 task stopDockerContainer(type: DockerStopContainer) {
-    targetContainerId { createDockerContainer.getContainerId() }
+    targetContainerId createDockerContainer.getContainerId()
 }
 
 task stop {}
 stop.dependsOn stopDockerContainer
 
-task removeDockerImage (type:DockerRemoveImage) {
-    description = 'Removes the docker image from the local filesystem.'
-    imageId 'sonarperl/sonar-perl:latest'
-}
 
