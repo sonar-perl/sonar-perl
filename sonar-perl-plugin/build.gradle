@@ -1,14 +1,15 @@
 plugins {
     id "java-library"
     id "eclipse"
-    id 'com.bmuschko.docker-remote-api' version '3.0.7'
+    id 'com.bmuschko.docker-remote-api' version '4.2.0'
     id "jacoco"
     id 'maven-publish'
     id "com.github.johnrengelman.shadow" version "4.0.3"
 }
 
+
 repositories {
-    mavenCentral()
+    jcenter()
 }
 
 ext {
@@ -88,21 +89,22 @@ task buildDockerImage(type: DockerBuildImage) {
     description = 'Builds a new docker image.'
     dependsOn copyDockerTargetArtifacts
     inputDir = file('build/docker')
-    tag = "sonarperl/sonar-perl:latest"
+    tags.add("sonarperl/sonar-perl:latest")
     noCache = true
 }
 
 task createDockerContainer(type: DockerCreateContainer) {
     dependsOn buildDockerImage
-    targetImageId { buildDockerImage.getImageId() }
+    targetImageId buildDockerImage.getImageId()
     portBindings = [ '9000:9000', '9002:9002' ]
+    autoRemove = true
 }
 
 publish.dependsOn(createDockerContainer)
 
 task startDockerContainer(type: DockerStartContainer) {
     dependsOn createDockerContainer
-    targetContainerId { createDockerContainer.getContainerId() }
+    targetContainerId createDockerContainer.getContainerId()
     doLast {
         println createDockerContainer.getContainerId()
     }
@@ -112,14 +114,10 @@ task run {}
 run.dependsOn(startDockerContainer)
 
 task stopDockerContainer(type: DockerStopContainer) {
-    targetContainerId { createDockerContainer.getContainerId() }
+    targetContainerId createDockerContainer.getContainerId()
 }
 
 task stop {}
 stop.dependsOn stopDockerContainer
 
-task removeDockerImage (type:DockerRemoveImage) {
-    description = 'Removes the docker image from the local filesystem.'
-    imageId 'sonarperl/sonar-perl:latest'
-}
 
