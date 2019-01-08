@@ -32,7 +32,8 @@ public class IntegrationTests {
     static {
         for (Orchestrator orchestrator : new Orchestrator[]{
                 orchestratorBuilderFor("6.7").build(),
-                orchestratorBuilderFor("7.0").build()}
+                orchestratorBuilderFor("7.0").build(),
+                orchestratorBuilderFor("7.5").build()}
         ) {
             register(orchestrator);
         }
@@ -50,7 +51,7 @@ public class IntegrationTests {
 
     private static OrchestratorBuilder orchestratorBuilderFor(String version) {
         FileLocation sonarPluginJar = FileLocation.byWildcardMavenFilename(new File("../../sonar-perl-plugin/build/libs"),
-                "sonar-perl-plugin-*.jar");
+                "sonar-perl-plugin-*-all.jar");
         OrchestratorBuilder orchestratorBuilder = Orchestrator.builderEnv()
                 .setSonarVersion(version)
                 .addPlugin(sonarPluginJar);
