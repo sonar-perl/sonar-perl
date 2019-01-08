@@ -1,10 +1,10 @@
 plugins {
-    id "java"
+    id "java-library"
     id "eclipse"
     id 'com.bmuschko.docker-remote-api' version '3.0.7'
     id "jacoco"
     id 'maven-publish'
-    id "com.iadams.sonar-packaging" version "1.0-RC1"
+    id "com.github.johnrengelman.shadow" version "4.0.3"
 }
 
 repositories {
@@ -33,27 +33,25 @@ jacoco {
     toolVersion = '0.7.9'
 }
 
-sonarPackaging {
-    serverUrl = 'http://localhost:9000'
-    pluginKey = 'perl'
-    pluginClass = 'com.github.sonarperl.PerlPlugin'
-    pluginName = 'Perl'
-    sonarQubeMinVersion = '6.7'
-    pluginDescription = 'There is more than one camel to do it.'
-    pluginParent = null
-    pluginLicense = 'Apache'
-    requirePlugins = null
-    pluginUrl = 'http://github.com/sonar-perl/sonar-perl'
-    pluginIssueTrackerUrl = 'http://github.com/sonar-perl/sonar-perl/issues'
-    pluginTermsConditionsUrl = 'http://github.com/sonar-perl/sonar-perl'
-    pluginSourceUrl = 'http://github.com/sonar-perl/sonar-perl'
-    pluginDevelopers = 'Oliver Trosien'
-    skipDependenciesPackaging = false
-    useChildFirstClassLoader = false
-    basePlugin = ''
-    organization {
-        name = 'sonar-perl'
-        url = 'http://github.com/sonar-perl'
+jar {
+    manifest {
+        attributes "Build-Jdk": System.getProperty('java.version'),
+                   "Build-Time": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
+                   "Plugin-BuildDate": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
+                   'Plugin-Key': 'perl',
+                   'Plugin-Name': 'Perl',
+                   'Plugin-Version': project.version,
+                   'Plugin-Class': 'com.github.sonarperl.PerlPlugin',
+                   "Plugin-Description": 'There is more than one camel to do it.',
+                   "Plugin-Developers": 'Oliver Trosien',
+                   "Plugin-Homepage": 'https://github.com/sonar-perl/sonar-perl',
+                   "Plugin-IssueTrackerUrl": 'https://github.com/sonar-perl/sonar-perl/issues',
+                   "Plugin-License": 'Apache',
+                   "Plugin-Organization": 'sonar-perl',
+                   "Plugin-OrganizationUrl": 'https://github.com/sonar-perl/',
+                   "Plugin-SourcesUrl": 'https://github.com/sonar-perl/sonar-perl',
+                   "Plugin-TermsConditionsUrl": 'https://github.com/sonar-perl/sonar-perl',
+                   "Sonar-Version": project.ext.sonarApiVersion
     }
 }
 
@@ -81,7 +79,7 @@ task copyDockerfile (type: Copy) {
 task copyDockerTargetArtifacts(type: Copy) {
     group = 'Docker'
     description = 'Assembles contents for docker image.'
-    dependsOn copyDockerfile, jar
+    dependsOn copyDockerfile, shadowJar
     from "build/libs/"
     into "build/docker/build/libs/"
 }
@@ -122,22 +120,6 @@ stop.dependsOn stopDockerContainer
 
 task removeDockerImage (type:DockerRemoveImage) {
     description = 'Removes the docker image from the local filesystem.'
-    imageId 'otrosien/sonar-perl:latest'
+    imageId 'sonarperl/sonar-perl:latest'
 }
 
-task sourceJar(type: Jar) {
-    from sourceSets.main.allJava
-}
-
-model {
-    publishing {
-        publications {
-            mavenJava(MavenPublication) {
-                from components.java
-                artifact sourceJar {
-                    classifier 'sources'
-                }
-            }
-        }
-    }
-}

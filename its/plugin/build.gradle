@@ -12,7 +12,7 @@ dependencies {
     testCompile project(':sonar-perl-plugin')
 }
 
-tasks.test.dependsOn(tasks.findByPath(':sonar-perl-plugin:jar'))
+tasks.test.dependsOn(tasks.findByPath(':sonar-perl-plugin:shadowJar'))
 tasks.test.shouldRunAfter(tasks.findByPath(':sonar-perl-plugin:test'))
 
 // run test suite
