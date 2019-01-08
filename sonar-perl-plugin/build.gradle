@@ -3,10 +3,8 @@ plugins {
     id "eclipse"
     id 'com.bmuschko.docker-remote-api' version '4.2.0'
     id "jacoco"
-    id 'maven-publish'
     id "com.github.johnrengelman.shadow" version "4.0.3"
 }
-
 
 repositories {
     jcenter()
@@ -100,6 +98,7 @@ task createDockerContainer(type: DockerCreateContainer) {
     autoRemove = true
 }
 
+task publish {}
 publish.dependsOn(createDockerContainer)
 
 task startDockerContainer(type: DockerStartContainer) {
