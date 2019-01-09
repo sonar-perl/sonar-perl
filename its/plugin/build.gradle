@@ -5,11 +5,11 @@ repositories {
 }
 
 dependencies {
-    testCompile 'junit:junit:4.12'
-    testCompile 'org.assertj:assertj-core:3.8.0'
-    testCompile 'org.sonarsource.orchestrator:sonar-orchestrator:3.14.0.887'
-    testCompile 'org.sonarsource.sonarqube:sonar-ws:6.7'
-    testCompile project(':sonar-perl-plugin')
+    testImplementation 'junit:junit:4.12'
+    testImplementation 'org.assertj:assertj-core:3.11.1'
+    testImplementation 'org.sonarsource.orchestrator:sonar-orchestrator:3.14.0.887'
+    testImplementation 'org.sonarsource.sonarqube:sonar-ws:6.7'
+    testImplementation project(':sonar-perl-plugin')
 }
 
 tasks.test.dependsOn(tasks.findByPath(':sonar-perl-plugin:shadowJar'))

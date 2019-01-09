@@ -34,6 +34,7 @@ public final class PerlLexer {
                 .withChannel(commentRegexp("__DATA__[\\n\\r].*+"))
                 .withChannel(new StringLiteralsChannel())
                 .withChannel(new QuoteLikeChannel())
+                .withChannel(new HeredocChannel())
                 .withChannel(regexp(PerlTokenType.NUMBER, "[1-9][0-9]*+[.][0-9]++" + EXP))
                 .withChannel(regexp(PerlTokenType.NUMBER, "[1-9][0-9]*+[.][0-9]++"))
                 .withChannel(regexp(PerlTokenType.NUMBER, "[1-9][0-9]*+" + EXP))

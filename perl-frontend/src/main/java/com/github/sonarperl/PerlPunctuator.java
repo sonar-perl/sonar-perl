@@ -12,7 +12,7 @@ public enum PerlPunctuator implements TokenType {
     DIV("/"),
     DIV_DIV("//"),
     MOD("%"),
-    LEFT_OP("<<"),
+    LTLT("<<"),
     RIGHT_OP(">>"),
     TILDE_TILDE("~~"),
 
