@@ -50,7 +50,7 @@ public class IntegrationTests {
 
     private static OrchestratorBuilder orchestratorBuilderFor(String version) {
         FileLocation sonarPluginJar = FileLocation.byWildcardMavenFilename(new File("../../sonar-perl-plugin/build/libs"),
-                "sonar-perl-plugin-*all.jar");
+                "sonar-perl-plugin-*-all.jar");
         OrchestratorBuilder orchestratorBuilder = Orchestrator.builderEnv()
                 .setSonarVersion(version)
                 .addPlugin(sonarPluginJar);
