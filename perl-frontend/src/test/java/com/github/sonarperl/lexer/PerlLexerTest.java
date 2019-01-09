@@ -5,7 +5,10 @@ import com.github.sonarperl.PerlPunctuator;
 import com.github.sonarperl.api.PerlKeyword;
 import com.github.sonarperl.api.PerlTokenType;
 import com.sonar.sslr.api.GenericTokenType;
+import com.sonar.sslr.api.Token;
+import com.sonar.sslr.api.TokenType;
 import com.sonar.sslr.impl.Lexer;
+import org.assertj.core.api.Condition;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -15,6 +18,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static com.sonar.sslr.test.lexer.LexerMatchers.hasComment;
 import static com.sonar.sslr.test.lexer.LexerMatchers.hasToken;
 
+import static org.assertj.core.api.Assertions.atIndex;
 import static org.hamcrest.Matchers.not;
 import static org.junit.Assert.assertThat;
 
@@ -100,7 +104,7 @@ public class PerlLexerTest {
 
     @Test
     public void operators_and_delimiters() {
-        assertThat(lexer.lex("<<"), hasToken("<<", PerlPunctuator.LEFT_OP));
+        assertThat(lexer.lex("<<"), hasToken("<<", PerlPunctuator.LTLT));
         assertThat(lexer.lex("+="), hasToken("+=", PerlPunctuator.PLUS_ASSIGN));
         assertThat(lexer.lex("&.="), hasToken("&.=", PerlPunctuator.BL_ASSIGN3));
     }
@@ -132,6 +136,18 @@ public class PerlLexerTest {
         assertThat(lexer.lex("=pod\nbablabla"), hasToken(GenericTokenType.COMMENT));
         assertThat(lexer.lex("=pod\ntest\n=cut\n=pod\n=cut\nblabla"), hasToken(GenericTokenType.IDENTIFIER));
         assertThat(lexer.lex("=head1 Test\ntest\n=cut"), hasToken(GenericTokenType.COMMENT));
+    }
+
+    @Test
+    public void heredoc() {
+        assertThat(lexer.lex("print << EOL;\nbla blub\nEOL"), hasToken(PerlTokenType.STRING));
+        assertThat(lexer.lex("<<EOL;\nbla blub\nEOL\n<<EOL;\nbla blu\nEOL")).hasSize(12);
+        assertThat(lexer.lex("<<'EOL';\nbla blub\nEOL\n")).extracting(Token::getType)
+                .containsSequence(PerlPunctuator.LTLT, PerlTokenType.STRING, PerlPunctuator.SEMICOLON, PerlTokenType.NEWLINE,
+                        PerlTokenType.STRING, GenericTokenType.IDENTIFIER);
+        assertThat(lexer.lex("<<\"EOL\";\nbla blub\nEOL\n")).extracting(Token::getType)
+                .containsSequence(PerlPunctuator.LTLT, PerlTokenType.STRING, PerlPunctuator.SEMICOLON, PerlTokenType.NEWLINE,
+                        PerlTokenType.STRING, GenericTokenType.IDENTIFIER);
     }
 
 }
