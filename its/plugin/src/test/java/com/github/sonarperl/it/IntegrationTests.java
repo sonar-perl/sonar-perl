@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import org.junit.Assert;
 import org.junit.ClassRule;
 import org.junit.rules.RuleChain;
 import org.junit.runner.RunWith;
@@ -30,11 +31,16 @@ public class IntegrationTests {
     public static RuleChain RESOURCES = RuleChain.emptyRuleChain();
 
     static {
-        for (Orchestrator orchestrator : new Orchestrator[]{
-                orchestratorBuilderFor("6.7").build(),
-                orchestratorBuilderFor("7.0").build()}
-        ) {
-            register(orchestrator);
+        try {
+            for (Orchestrator orchestrator : new Orchestrator[]{
+                    orchestratorBuilderFor("6.7").build(),
+                    orchestratorBuilderFor("7.0").build()}
+            ) {
+                register(orchestrator);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            Assert.fail(e.getMessage());
         }
     }
 
