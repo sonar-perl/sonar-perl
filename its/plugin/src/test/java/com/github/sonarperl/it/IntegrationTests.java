@@ -33,7 +33,9 @@ public class IntegrationTests {
     static {
         try {
             for (Orchestrator orchestrator : new Orchestrator[]{
-                    orchestratorBuilderFor("7.1").build()}
+                orchestratorBuilderFor("6.7").build(),
+                orchestratorBuilderFor("7.0").build(),
+                orchestratorBuilderFor("7.5").build()}
             ) {
                 register(orchestrator);
             }
