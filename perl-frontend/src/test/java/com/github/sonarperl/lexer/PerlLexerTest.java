@@ -18,7 +18,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static com.sonar.sslr.test.lexer.LexerMatchers.hasComment;
 import static com.sonar.sslr.test.lexer.LexerMatchers.hasToken;
 
-import static org.assertj.core.api.Assertions.atIndex;
 import static org.hamcrest.Matchers.not;
 import static org.junit.Assert.assertThat;
 
