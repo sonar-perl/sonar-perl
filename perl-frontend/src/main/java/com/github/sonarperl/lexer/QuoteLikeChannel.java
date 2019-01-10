@@ -4,6 +4,7 @@ import com.github.sonarperl.PerlPunctuator;
 import com.github.sonarperl.api.PerlTokenType;
 import com.google.common.collect.ImmutableSet;
 import com.sonar.sslr.api.Token;
+import com.sonar.sslr.api.TokenType;
 import com.sonar.sslr.impl.Lexer;
 import org.sonar.sslr.channel.Channel;
 import org.sonar.sslr.channel.CodeReader;
@@ -47,7 +48,8 @@ public class QuoteLikeChannel extends Channel<Lexer> {
                 if (output.getTokens().size() == 0) {
                     return false;
                 }
-                if (output.getTokens().get(output.getTokens().size()-1).getType() != PerlPunctuator.EQU_TILD) {
+                TokenType previousTokenType = output.getTokens().get(output.getTokens().size()-1).getType();
+                if (previousTokenType != PerlPunctuator.EQU_TILD && previousTokenType != PerlPunctuator.NOT_TILD) {
                     return false;
                 }
                 rawRegex = true;
