@@ -40,6 +40,7 @@ public class PerlLexerTest {
         assertThat("empty", lexer.lex("\"\""), hasToken("\"\"", PerlTokenType.STRING));
         assertThat(lexer.lex("'hello world'"), hasToken("'hello world'", PerlTokenType.STRING));
         assertThat(lexer.lex("\"hello world\""), hasToken("\"hello world\"", PerlTokenType.STRING));
+        assertThat(lexer.lex("`hello world`"), hasToken("`hello world`", PerlTokenType.STRING));
     }
 
     @Test

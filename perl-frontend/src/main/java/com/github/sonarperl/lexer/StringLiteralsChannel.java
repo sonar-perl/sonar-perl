@@ -24,7 +24,7 @@ public class StringLiteralsChannel extends Channel<Lexer> {
 
         ch = code.charAt(index);
 
-        if ((ch != '\'') && (ch != '\"')) {
+        if ((ch != '\'') && (ch != '\"') && (ch != '`')) {
             return false;
         }
         if (!read(code)) {
