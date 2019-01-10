@@ -32,6 +32,7 @@ public enum PerlPunctuator implements TokenType {
     GT(">"),
     LT_EQU("<="),
     GT_EQU(">="),
+    EQU_TILD("=~"),
     EQU("=="),
     NOT_EQU("!="),
     NULL_FH("<>"),

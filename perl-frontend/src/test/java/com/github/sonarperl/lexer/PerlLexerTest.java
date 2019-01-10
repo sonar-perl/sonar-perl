@@ -52,6 +52,12 @@ public class PerlLexerTest {
     }
 
     @Test
+    public void quote_m() {
+        assertThat("empty", lexer.lex("$a =~ m//"), hasToken("m//", PerlTokenType.STRING));
+        assertThat("raw", lexer.lex("$a =~ //"), hasToken("//", PerlTokenType.STRING));
+    }
+
+    @Test
     public void quote_qq() {
         assertThat("empty", lexer.lex("qq{}"), hasToken("qq{}", PerlTokenType.STRING));
         assertThat("empty", lexer.lex("qq//"), hasToken("qq//", PerlTokenType.STRING));
