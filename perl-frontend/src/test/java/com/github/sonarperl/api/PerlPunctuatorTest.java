@@ -13,7 +13,7 @@ public class PerlPunctuatorTest {
     @Test
     public void test() {
 
-        assertThat(PerlPunctuator.values()).hasSize(54);
+        assertThat(PerlPunctuator.values()).hasSize(56);
 
         AstNode astNode = mock(AstNode.class);
         for (PerlPunctuator punctuator : PerlPunctuator.values()) {

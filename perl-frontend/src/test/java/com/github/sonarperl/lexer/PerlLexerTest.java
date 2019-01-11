@@ -9,6 +9,7 @@ import com.sonar.sslr.api.Token;
 import com.sonar.sslr.api.TokenType;
 import com.sonar.sslr.impl.Lexer;
 import org.assertj.core.api.Condition;
+import org.hamcrest.Matchers;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -49,6 +50,15 @@ public class PerlLexerTest {
         assertThat("empty", lexer.lex("q//"), hasToken("q//", PerlTokenType.STRING));
         assertThat("simple", lexer.lex("$foo = q!I said, \"You said, 'She said it.'\"!;"), hasToken("q!I said, \"You said, 'She said it.'\"!", PerlTokenType.STRING));
         assertThat(lexer.lex("q['hello]"), hasToken("q['hello]", PerlTokenType.STRING));
+    }
+
+    @Test
+    public void quote_m() {
+        assertThat("empty", lexer.lex("$a =~ m//"), hasToken("m//", PerlTokenType.STRING));
+        assertThat("raw", lexer.lex("$a =~ //"), hasToken("//", PerlTokenType.STRING));
+        assertThat("negative_match_raw", lexer.lex("$a !~ //"), hasToken("//", PerlTokenType.STRING));
+        assertThat("no_false_positive", lexer.lex("$a / $b / $c"), not(hasToken("/ $b /", PerlTokenType.STRING)));
+        assertThat("no_false_positive", lexer.lex("$a / $b / $c"), hasToken("/", PerlPunctuator.DIV));
     }
 
     @Test

@@ -1,8 +1,10 @@
 package com.github.sonarperl.lexer;
 
+import com.github.sonarperl.PerlPunctuator;
 import com.github.sonarperl.api.PerlTokenType;
 import com.google.common.collect.ImmutableSet;
 import com.sonar.sslr.api.Token;
+import com.sonar.sslr.api.TokenType;
 import com.sonar.sslr.impl.Lexer;
 import org.sonar.sslr.channel.Channel;
 import org.sonar.sslr.channel.CodeReader;
@@ -35,11 +37,23 @@ public class QuoteLikeChannel extends Channel<Lexer> {
         int column = code.getColumnPosition();
         index = 0;
         nesting = 0;
+        // used for $a =~ /test/
+        boolean rawRegex = false;
         boolean twoIterations = false;
 
         ch = code.charAt(index);
 
         switch (ch) {
+            case '/':
+                if (output.getTokens().size() == 0) {
+                    return false;
+                }
+                TokenType previousTokenType = output.getTokens().get(output.getTokens().size()-1).getType();
+                if (previousTokenType != PerlPunctuator.EQU_TILD && previousTokenType != PerlPunctuator.NOT_TILD) {
+                    return false;
+                }
+                rawRegex = true;
+                break;
             case 'q':
                 maybeNext(code, ImmutableSet.of('q', 'x', 'w', 'r'));
                 break;
@@ -61,7 +75,7 @@ public class QuoteLikeChannel extends Channel<Lexer> {
                 return false;
         }
 
-        if (!expectNext(code, delimiter)) {
+        if (!rawRegex && !expectNext(code, delimiter)) {
             return false;
         }
 
