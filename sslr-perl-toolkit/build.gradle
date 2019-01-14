@@ -7,6 +7,9 @@ repositories {
     jcenter()
 }
 
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
 jacoco {
     toolVersion = '0.8.2'
 }

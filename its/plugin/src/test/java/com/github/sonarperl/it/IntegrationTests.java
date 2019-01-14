@@ -25,7 +25,7 @@ import com.sonar.orchestrator.locator.FileLocation;
 })
 public class IntegrationTests {
 
-    private static Collection<Orchestrator> ORCHESTRATORS = new ArrayList<>(2);
+    private static Collection<Orchestrator> ORCHESTRATORS = new ArrayList<>();
 
     @ClassRule
     public static RuleChain RESOURCES = RuleChain.emptyRuleChain();
@@ -33,6 +33,7 @@ public class IntegrationTests {
     static {
         try {
             for (Orchestrator orchestrator : new Orchestrator[]{
+                orchestratorBuilderFor("5.6").build(),
                 orchestratorBuilderFor("6.7").build(),
                 orchestratorBuilderFor("7.0").build(),
                 orchestratorBuilderFor("7.5").build()}

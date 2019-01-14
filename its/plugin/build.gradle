@@ -12,6 +12,9 @@ dependencies {
     testImplementation project(':sonar-perl-plugin')
 }
 
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
 tasks.test.dependsOn(tasks.findByPath(':sonar-perl-plugin:shadowJar'))
 tasks.test.shouldRunAfter(tasks.findByPath(':sonar-perl-plugin:test'))
 
