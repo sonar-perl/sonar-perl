@@ -1,6 +1,7 @@
 package com.github.sonarperl.parser;
 
 import com.github.sonarperl.PerlConfiguration;
+import com.sonar.sslr.api.AstNode;
 import com.sonar.sslr.api.Grammar;
 import com.sonar.sslr.impl.Parser;
 import java.io.File;
@@ -17,7 +18,7 @@ public class PerlParserTest {
     public void test() {
         Collection<File> files = listFiles();
         for (File file : files) {
-            parser.parse(file);
+            AstNode root = parser.parse(file);
         }
     }
 

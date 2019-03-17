@@ -56,6 +56,7 @@ public enum PerlPunctuator implements TokenType {
     SEMICOLON(";"),
     AT("@"),
     ASSIGN("="),
+    DOT_ASSIGN(".="),
     PLUS_ASSIGN("+="),
     MINUS_ASSIGN("-="),
     MUL_ASSIGN("*="),
