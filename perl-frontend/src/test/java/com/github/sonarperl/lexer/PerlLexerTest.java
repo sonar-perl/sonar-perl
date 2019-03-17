@@ -152,6 +152,13 @@ public class PerlLexerTest {
     public void heredoc() {
         assertThat(lexer.lex("print << EOL;\nbla blub\nEOL"), hasToken(PerlTokenType.STRING));
         assertThat(lexer.lex("<<EOL;\nbla blub\nEOL\n<<EOL;\nbla blu\nEOL")).hasSize(12);
+        assertThat(lexer.lex(
+                "my $code = <<EOCODE if @_ > 5;\n" +
+                "sub { use utf8;\n" +
+                "EOCODE")).extracting(Token::getType)
+                .containsSequence(PerlPunctuator.LTLT, GenericTokenType.IDENTIFIER, PerlKeyword.IF,
+                        GenericTokenType.IDENTIFIER, PerlPunctuator.GT, PerlTokenType.NUMBER, PerlPunctuator.SEMICOLON, PerlTokenType.NEWLINE,
+                        PerlTokenType.STRING);
         assertThat(lexer.lex("<<'EOL';\nbla blub\nEOL\n")).extracting(Token::getType)
                 .containsSequence(PerlPunctuator.LTLT, PerlTokenType.STRING, PerlPunctuator.SEMICOLON, PerlTokenType.NEWLINE,
                         PerlTokenType.STRING, GenericTokenType.IDENTIFIER);

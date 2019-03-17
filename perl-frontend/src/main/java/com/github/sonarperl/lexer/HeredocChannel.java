@@ -9,44 +9,56 @@ import org.sonar.sslr.channel.Channel;
 import org.sonar.sslr.channel.CodeReader;
 
 import java.util.List;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class HeredocChannel extends Channel<Lexer> {
 
     private final Token.Builder tokenBuilder = Token.builder();
 
+    private String lookFor = null;
+
     public boolean consume(CodeReader code, Lexer output) {
 
         List<Token> tokens = output.getTokens();
-        if (tokens.size() < 4) return false;
 
-        // TODO ignore whitespace...
-        Token newline = tokens.get(tokens.size() - 1);
-        Token semi = tokens.get(tokens.size() - 2);
-        Token heredocDelimiter = tokens.get(tokens.size() - 3);
-        Token ltlt = tokens.get(tokens.size() - 4);
+        if (lookFor != null) {
+            Token newline = tokens.get(tokens.size() - 1);
+            if (newline.getType() != PerlTokenType.NEWLINE) {
+                return false;
+            }
+            return consumeUntil(code, output);
+        } else {
 
-        if (newline.getType() != PerlTokenType.NEWLINE) {
-            return false;
+            if (tokens.size() < 2) return false;
+
+            // TODO ignore whitespace...
+            Token heredocDelimiter = tokens.get(tokens.size() - 1);
+            Token ltlt = tokens.get(tokens.size() - 2);
+
+            if (ltlt.getType() != PerlPunctuator.LTLT) {
+                return false;
+            }
+
+            if (heredocDelimiter.getType() == GenericTokenType.IDENTIFIER) {
+                lookFor = heredocDelimiter.getValue();
+            }
+            if (heredocDelimiter.getType() == PerlTokenType.STRING) {
+                lookFor = heredocDelimiter.getValue().substring(1, heredocDelimiter.getValue().length() - 2);
+            }
         }
 
-        if (ltlt.getType() != PerlPunctuator.LTLT || semi.getType() != PerlPunctuator.SEMICOLON) {
-            return false;
-        }
+        return false;
 
-        String lookFor = null;
-        if (heredocDelimiter.getType() == GenericTokenType.IDENTIFIER) {
-            lookFor = heredocDelimiter.getValue();
-        }
-        if (heredocDelimiter.getType() == PerlTokenType.STRING) {
-            lookFor = heredocDelimiter.getValue().substring(1, heredocDelimiter.getValue().length() - 2);
-        }
-        if (lookFor == null) {
-            return false;
-        }
+    }
+
+    private boolean consumeUntil(CodeReader code, Lexer output) {
 
         StringBuilder sb = new StringBuilder();
-        if (code.popTo(Pattern.compile(".*?[\n\r]\\Q" + lookFor + "\\E").matcher(""), sb) == -1) {
+        Matcher matcher = Pattern.compile(".*?[\n\r]\\Q" + lookFor + "\\E").matcher("");
+        lookFor = null;
+
+        if (code.popTo(matcher, sb) == -1) {
             return false;
         }
 
