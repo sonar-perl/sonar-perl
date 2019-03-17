@@ -22,7 +22,8 @@ import com.github.sonarperl.tap.TestHarnessLoaderSensor;
     key = PerlPlugin.FILE_SUFFIXES_KEY, //
     name = "File Suffixes", //
     description = "Comma-separated list of suffixes for files to analyze.", //
-    defaultValue = PerlPlugin.DEFAULT_FILE_SUFFIXES), //
+    defaultValue = PerlPlugin.DEFAULT_FILE_SUFFIXES,
+    multiValues = true), //
     @Property( //
     key = PerlCriticProperties.PERLCRITIC_REPORT_PATH_KEY, //
     name = "PerlCritic Report Location", //
