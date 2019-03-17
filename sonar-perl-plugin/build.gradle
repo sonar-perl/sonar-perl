@@ -79,7 +79,8 @@ task copyDockerTargetArtifacts(type: Copy) {
     group = 'Docker'
     description = 'Assembles contents for docker image.'
     dependsOn copyDockerfile, shadowJar
-    from "build/libs/"
+    from "build/libs/" 
+    include "*-all.jar"
     into "build/docker/build/libs/"
 }
 
