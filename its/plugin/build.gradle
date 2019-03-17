@@ -7,8 +7,8 @@ repositories {
 dependencies {
     testImplementation 'junit:junit:4.12'
     testImplementation 'org.assertj:assertj-core:3.11.1'
-    testImplementation 'org.sonarsource.orchestrator:sonar-orchestrator:3.14.0.887'
-    testImplementation 'org.sonarsource.sonarqube:sonar-ws:6.7'
+    testImplementation 'org.sonarsource.orchestrator:sonar-orchestrator:3.22.0.1791'
+    testImplementation 'org.sonarsource.sonarqube:sonar-ws:7.6'
     testImplementation project(':sonar-perl-plugin')
 }
 
