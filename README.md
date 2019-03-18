@@ -92,7 +92,7 @@ You should see a "perl sample project" and "Dancer" on your SonarQube dashboard.
 
 ## Installing into your SonarQube
 
-Plugin releases can be downloaded from our [github releases page](https://github.com/sonar-perl/sonar-perl/releases). 
+Plugin releases can be downloaded from our [GitHub releases page](https://github.com/sonar-perl/sonar-perl/releases).
 If you want to build a snapshot version from source, you can create it via `./gradlew sonar-perl-plugin:shadowJar` and
 copy the resulting file (usually suffixed -SNAPSHOT, unless you checked out a release tag) 
 e.g. `sonar-perl-plugin/build/libs/sonar-perl-plugin-0.4.5-SNAPSHOT-all.jar` into the plugins
@@ -203,7 +203,7 @@ need to have a local docker daemon running for this.
 
 ## Performing a release
 
-We're using the `axion` plugin for standardising the release process. To craft a new release, we tag the latest master, and let TravisCI push the resulting build artifacts to our Github releases page, and to docker hub.
+We're using the `axion` plugin for standardising the release process. To craft a new release, we tag the latest master, and let TravisCI push the resulting build artifacts to our GitHub releases page, and to Docker Hub.
 
 You can start this process by calling:
 
@@ -211,9 +211,11 @@ You can start this process by calling:
 ./gradlew release
 ```
 
-In case the build doesn't succed, you should remove the tag from github, fix the issues in `master`, and release again. But, if unsure, increment and release a new version.
+In case the build doesn't succeed, you should remove the tag from GitHub, fix the issues in `master`, and release again. But, if unsure, increment and release a new version.
 
 Further details can be read on the [axion read-the-docs](https://axion-release-plugin.readthedocs.io/en/latest/) page.
+
+After TravisCI drafted the release and uploaded the artifacts, make sure to fill in the release notes on GitHub.
 
 ## Next steps
 
