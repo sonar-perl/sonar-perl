@@ -55,7 +55,7 @@ public class HeredocChannel extends Channel<Lexer> {
     private boolean consumeUntil(CodeReader code, Lexer output) {
 
         StringBuilder sb = new StringBuilder();
-        Matcher matcher = Pattern.compile(".*?[\n\r]\\Q" + lookFor + "\\E").matcher("");
+        Matcher matcher = Pattern.compile(".*?(?=\\Q" + lookFor + "\\E)", Pattern.DOTALL).matcher("");
         lookFor = null;
 
         if (code.popTo(matcher, sb) == -1) {
