@@ -1,6 +1,7 @@
 package com.github.sonarperl.critic;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatCode;
 
 import java.io.File;
 import java.io.IOException;
@@ -57,7 +58,7 @@ public class PerlCriticIssuesLoaderSensorTest {
         String relativePath = "lib/Sample/Project.pm";
         inputFile(relativePath);
         context.settings().setProperty(PerlCriticProperties.PERLCRITIC_REPORT_PATH_KEY, "src/test/resources/basic/perlcritic_nonexistant_report.txt");
-        new PerlCriticIssuesLoaderSensor().execute(context);
+        assertThatCode(() -> new PerlCriticIssuesLoaderSensor().execute(context)).doesNotThrowAnyException();
     }
 
     private PerlCriticIssuesLoaderSensor createSensor() {

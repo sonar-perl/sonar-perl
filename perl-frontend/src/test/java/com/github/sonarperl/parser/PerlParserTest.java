@@ -10,6 +10,8 @@ import java.util.Collection;
 import org.apache.commons.io.FileUtils;
 import org.junit.Test;
 
+import static org.junit.Assert.assertNotNull;
+
 public class PerlParserTest {
 
     private final Parser<Grammar> parser = PerlParser.create(new PerlConfiguration(StandardCharsets.UTF_8));
@@ -19,6 +21,7 @@ public class PerlParserTest {
         Collection<File> files = listFiles();
         for (File file : files) {
             AstNode root = parser.parse(file);
+            assertNotNull(root);
         }
     }
 
