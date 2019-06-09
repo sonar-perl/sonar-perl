@@ -25,7 +25,7 @@ What we have so far...
 * Syntax highlighting of imported code
 * Attaching of Perl::Critic issues
 * Default profile containing 271 Perl::Critic rules
-* Test Coverage (via Devel::Cover::Report::Clover)
+* Test Coverage (via Devel::Cover::Report::Clover) -- WARNING: [Current Clover plugin won't run on SonarQube 7.3+](https://github.com/sfeir-open-source/sonar-clover/pull/15)
 
 ## Screenshots
 
@@ -192,6 +192,8 @@ perlcritic --cruel --quiet --verbose "%f~|~%s~|~%l~|~%c~|~%m~|~%e~|~%p~||~%n" li
 
 We support the all SonarQube versions from 6.7 (LTS). Please report bugs
 or incompatibilities in our [bugtracker](https://github.com/sonar-perl/sonar-perl/issues).
+
+Beware that the current Clover plugin is [incompatible with newer versions of SonarQube (7.3+)](https://github.com/sfeir-open-source/sonar-clover/pull/15).
 
 For older SonarQube versions (5.6+) stick with plugin version 0.3.2 or older.
 
