@@ -7,7 +7,7 @@ import org.sonar.api.utils.ValidationMessages;
 
 public final class SonarWayProfile extends ProfileDefinition {
 
-    private static final String PERL_PROFILE_XML = "com/github/otrosien/sonarperl/sonar-way-profile.xml";
+    private static final String PERL_PROFILE_XML = "com/github/sonarperl/sonar-way-profile.xml";
     private final XMLProfileParser xmlProfileParser;
 
     public SonarWayProfile(XMLProfileParser xmlProfileParser) {

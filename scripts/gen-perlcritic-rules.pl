@@ -1,6 +1,6 @@
 #!perl
 
-use 5.006001;
+use 5.024001;
 use strict;
 use warnings;
 
@@ -68,6 +68,7 @@ sub _makeRuleType {
 
 sub  _makeRuleTags {
     my ($str) = @_;
+    $str =~ s/_//g;
     return join( "\n", map { "    <tag>".lc($_). "</tag>"} split(/ /, $str));
 }
 

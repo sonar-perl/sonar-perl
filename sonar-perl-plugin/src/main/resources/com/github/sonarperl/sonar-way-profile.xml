@@ -5,6 +5,12 @@
   <rules>
     <rule>
       <repositoryKey>PerlCritic</repositoryKey>
+      <key>BadStrings</key>
+      <priority>MAJOR</priority>
+    </rule>
+
+    <rule>
+      <repositoryKey>PerlCritic</repositoryKey>
       <key>Bangs::ProhibitBitwiseOperators</key>
       <priority>BLOCKER</priority>
     </rule>
@@ -59,6 +65,12 @@
 
     <rule>
       <repositoryKey>PerlCritic</repositoryKey>
+      <key>BuiltinFunctions::GrepWithSimpleValue</key>
+      <priority>MAJOR</priority>
+    </rule>
+
+    <rule>
+      <repositoryKey>PerlCritic</repositoryKey>
       <key>BuiltinFunctions::ProhibitBooleanGrep</key>
       <priority>MINOR</priority>
     </rule>
@@ -79,6 +91,12 @@
       <repositoryKey>PerlCritic</repositoryKey>
       <key>BuiltinFunctions::ProhibitReverseSortBlock</key>
       <priority>INFO</priority>
+    </rule>
+
+    <rule>
+      <repositoryKey>PerlCritic</repositoryKey>
+      <key>BuiltinFunctions::ProhibitShiftRef</key>
+      <priority>MAJOR</priority>
     </rule>
 
     <rule>
@@ -257,6 +275,12 @@
 
     <rule>
       <repositoryKey>PerlCritic</repositoryKey>
+      <key>CognitiveComplexity::ProhibitExcessCognitiveComplexity</key>
+      <priority>MAJOR</priority>
+    </rule>
+
+    <rule>
+      <repositoryKey>PerlCritic</repositoryKey>
       <key>Compatibility::ConstantLeadingUnderscore</key>
       <priority>MAJOR</priority>
     </rule>
@@ -271,12 +295,6 @@
       <repositoryKey>PerlCritic</repositoryKey>
       <key>Compatibility::Gtk2Constants</key>
       <priority>MAJOR</priority>
-    </rule>
-
-    <rule>
-      <repositoryKey>PerlCritic</repositoryKey>
-      <key>Compatibility::PerlMinimumVersionAndWhy</key>
-      <priority>MINOR</priority>
     </rule>
 
     <rule>
@@ -343,6 +361,12 @@
       <repositoryKey>PerlCritic</repositoryKey>
       <key>ControlStructures::ProhibitPostfixControls</key>
       <priority>MINOR</priority>
+    </rule>
+
+    <rule>
+      <repositoryKey>PerlCritic</repositoryKey>
+      <key>ControlStructures::ProhibitSwitchStatements</key>
+      <priority>MAJOR</priority>
     </rule>
 
     <rule>
@@ -569,6 +593,18 @@
 
     <rule>
       <repositoryKey>PerlCritic</repositoryKey>
+      <key>Freenode::LexicalForeachIterator</key>
+      <priority>CRITICAL</priority>
+    </rule>
+
+    <rule>
+      <repositoryKey>PerlCritic</repositoryKey>
+      <key>Freenode::LoopOnHash</key>
+      <priority>CRITICAL</priority>
+    </rule>
+
+    <rule>
+      <repositoryKey>PerlCritic</repositoryKey>
       <key>Freenode::ModPerl</key>
       <priority>CRITICAL</priority>
     </rule>
@@ -588,6 +624,18 @@
     <rule>
       <repositoryKey>PerlCritic</repositoryKey>
       <key>Freenode::POSIXImports</key>
+      <priority>MINOR</priority>
+    </rule>
+
+    <rule>
+      <repositoryKey>PerlCritic</repositoryKey>
+      <key>Freenode::PackageMatchesFilename</key>
+      <priority>CRITICAL</priority>
+    </rule>
+
+    <rule>
+      <repositoryKey>PerlCritic</repositoryKey>
+      <key>Freenode::PreferredAlternatives</key>
       <priority>MINOR</priority>
     </rule>
 
@@ -905,6 +953,48 @@
 
     <rule>
       <repositoryKey>PerlCritic</repositoryKey>
+      <key>Moo::ProhibitMakeImmutable</key>
+      <priority>MAJOR</priority>
+    </rule>
+
+    <rule>
+      <repositoryKey>PerlCritic</repositoryKey>
+      <key>Moose::ProhibitDESTROYMethod</key>
+      <priority>MAJOR</priority>
+    </rule>
+
+    <rule>
+      <repositoryKey>PerlCritic</repositoryKey>
+      <key>Moose::ProhibitLazyBuild</key>
+      <priority>MINOR</priority>
+    </rule>
+
+    <rule>
+      <repositoryKey>PerlCritic</repositoryKey>
+      <key>Moose::ProhibitMultipleWiths</key>
+      <priority>CRITICAL</priority>
+    </rule>
+
+    <rule>
+      <repositoryKey>PerlCritic</repositoryKey>
+      <key>Moose::ProhibitNewMethod</key>
+      <priority>CRITICAL</priority>
+    </rule>
+
+    <rule>
+      <repositoryKey>PerlCritic</repositoryKey>
+      <key>Moose::RequireCleanNamespace</key>
+      <priority>MAJOR</priority>
+    </rule>
+
+    <rule>
+      <repositoryKey>PerlCritic</repositoryKey>
+      <key>Moose::RequireMakeImmutable</key>
+      <priority>MAJOR</priority>
+    </rule>
+
+    <rule>
+      <repositoryKey>PerlCritic</repositoryKey>
       <key>NamingConventions::Capitalization</key>
       <priority>INFO</priority>
     </rule>
@@ -929,14 +1019,98 @@
 
     <rule>
       <repositoryKey>PerlCritic</repositoryKey>
+      <key>OTRS::ProhibitDumper</key>
+      <priority>BLOCKER</priority>
+    </rule>
+
+    <rule>
+      <repositoryKey>PerlCritic</repositoryKey>
+      <key>OTRS::ProhibitFetchrowHashref</key>
+      <priority>BLOCKER</priority>
+    </rule>
+
+    <rule>
+      <repositoryKey>PerlCritic</repositoryKey>
+      <key>OTRS::ProhibitLocaltime</key>
+      <priority>BLOCKER</priority>
+    </rule>
+
+    <rule>
+      <repositoryKey>PerlCritic</repositoryKey>
+      <key>OTRS::ProhibitLowPrecedenceOps</key>
+      <priority>BLOCKER</priority>
+    </rule>
+
+    <rule>
+      <repositoryKey>PerlCritic</repositoryKey>
+      <key>OTRS::ProhibitOpen</key>
+      <priority>BLOCKER</priority>
+    </rule>
+
+    <rule>
+      <repositoryKey>PerlCritic</repositoryKey>
+      <key>OTRS::ProhibitPushISA</key>
+      <priority>BLOCKER</priority>
+    </rule>
+
+    <rule>
+      <repositoryKey>PerlCritic</repositoryKey>
+      <key>OTRS::ProhibitRequire</key>
+      <priority>BLOCKER</priority>
+    </rule>
+
+    <rule>
+      <repositoryKey>PerlCritic</repositoryKey>
+      <key>OTRS::ProhibitRmtree</key>
+      <priority>BLOCKER</priority>
+    </rule>
+
+    <rule>
+      <repositoryKey>PerlCritic</repositoryKey>
+      <key>OTRS::ProhibitSomeCoreFunctions</key>
+      <priority>BLOCKER</priority>
+    </rule>
+
+    <rule>
+      <repositoryKey>PerlCritic</repositoryKey>
+      <key>OTRS::RequireCamelCase</key>
+      <priority>BLOCKER</priority>
+    </rule>
+
+    <rule>
+      <repositoryKey>PerlCritic</repositoryKey>
+      <key>OTRS::RequireParensWithMethods</key>
+      <priority>BLOCKER</priority>
+    </rule>
+
+    <rule>
+      <repositoryKey>PerlCritic</repositoryKey>
+      <key>OTRS::RequireTrueReturnValueForModules</key>
+      <priority>BLOCKER</priority>
+    </rule>
+
+    <rule>
+      <repositoryKey>PerlCritic</repositoryKey>
       <key>Objects::ProhibitIndirectSyntax</key>
       <priority>CRITICAL</priority>
     </rule>
 
     <rule>
       <repositoryKey>PerlCritic</repositoryKey>
+      <key>Operators::ProhibitSmartmatch</key>
+      <priority>MAJOR</priority>
+    </rule>
+
+    <rule>
+      <repositoryKey>PerlCritic</repositoryKey>
       <key>Perlsecret</key>
       <priority>BLOCKER</priority>
+    </rule>
+
+    <rule>
+      <repositoryKey>PerlCritic</repositoryKey>
+      <key>ProhibitSmartmatch</key>
+      <priority>MAJOR</priority>
     </rule>
 
     <rule>
@@ -1027,6 +1201,18 @@
       <repositoryKey>PerlCritic</repositoryKey>
       <key>RegularExpressions::RequireLineBoundaryMatching</key>
       <priority>MINOR</priority>
+    </rule>
+
+    <rule>
+      <repositoryKey>PerlCritic</repositoryKey>
+      <key>Reneeb::Capitalization</key>
+      <priority>INFO</priority>
+    </rule>
+
+    <rule>
+      <repositoryKey>PerlCritic</repositoryKey>
+      <key>Reneeb::ProhibitBlockEval</key>
+      <priority>MAJOR</priority>
     </rule>
 
     <rule>
@@ -1415,6 +1601,12 @@
 
     <rule>
       <repositoryKey>PerlCritic</repositoryKey>
+      <key>Variables::NameReuse</key>
+      <priority>MINOR</priority>
+    </rule>
+
+    <rule>
+      <repositoryKey>PerlCritic</repositoryKey>
       <key>Variables::ProhibitAugmentedAssignmentInDeclaration</key>
       <priority>CRITICAL</priority>
     </rule>
@@ -1427,8 +1619,20 @@
 
     <rule>
       <repositoryKey>PerlCritic</repositoryKey>
+      <key>Variables::ProhibitFatCommaInDeclaration</key>
+      <priority>CRITICAL</priority>
+    </rule>
+
+    <rule>
+      <repositoryKey>PerlCritic</repositoryKey>
       <key>Variables::ProhibitLocalVars</key>
       <priority>MINOR</priority>
+    </rule>
+
+    <rule>
+      <repositoryKey>PerlCritic</repositoryKey>
+      <key>Variables::ProhibitLoopOnHash</key>
+      <priority>CRITICAL</priority>
     </rule>
 
     <rule>
@@ -1501,6 +1705,48 @@
       <repositoryKey>PerlCritic</repositoryKey>
       <key>Variables::RequireNegativeIndices</key>
       <priority>CRITICAL</priority>
+    </rule>
+
+    <rule>
+      <repositoryKey>PerlCritic</repositoryKey>
+      <key>logicLAB::ModuleBlacklist</key>
+      <priority>MAJOR</priority>
+    </rule>
+
+    <rule>
+      <repositoryKey>PerlCritic</repositoryKey>
+      <key>logicLAB::ProhibitShellDispatch</key>
+      <priority>MAJOR</priority>
+    </rule>
+
+    <rule>
+      <repositoryKey>PerlCritic</repositoryKey>
+      <key>logicLAB::ProhibitUseLib</key>
+      <priority>MAJOR</priority>
+    </rule>
+
+    <rule>
+      <repositoryKey>PerlCritic</repositoryKey>
+      <key>logicLAB::RequirePackageNamePattern</key>
+      <priority>MAJOR</priority>
+    </rule>
+
+    <rule>
+      <repositoryKey>PerlCritic</repositoryKey>
+      <key>logicLAB::RequireParamsValidate</key>
+      <priority>MAJOR</priority>
+    </rule>
+
+    <rule>
+      <repositoryKey>PerlCritic</repositoryKey>
+      <key>logicLAB::RequireSheBang</key>
+      <priority>MAJOR</priority>
+    </rule>
+
+    <rule>
+      <repositoryKey>PerlCritic</repositoryKey>
+      <key>logicLAB::RequireVersionFormat</key>
+      <priority>MAJOR</priority>
     </rule>
 
     <rule>
@@ -1626,12 +1872,6 @@
     <rule>
       <repositoryKey>PerlCritic</repositoryKey>
       <key>DE_EPAGES::Variables::ProhibitUnusedVariablesEnhanced</key>
-      <priority>MAJOR</priority>
-    </rule>
-
-    <rule>
-      <repositoryKey>PerlCritic</repositoryKey>
-      <key>CognitiveComplexity::ProhibitExcessCognitiveComplexity</key>
       <priority>MAJOR</priority>
     </rule>
 

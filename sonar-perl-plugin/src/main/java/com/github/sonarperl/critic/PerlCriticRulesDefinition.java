@@ -19,8 +19,8 @@ import com.github.sonarperl.PerlLanguage;
 
 public final class PerlCriticRulesDefinition implements RulesDefinition {
 
-    private static final String PERLCRITIC_RULES_XML = "/com/github/otrosien/sonarperl/perlcritic-rules.xml";
-    private static final String COST_FILE_CSV = "/com/github/otrosien/sonarperl/cost.csv";
+    private static final String PERLCRITIC_RULES_XML = "/com/github/sonarperl/perlcritic-rules.xml";
+    private static final String COST_FILE_CSV = "/com/github/sonarperl/cost.csv";
     private static final String KEY = "PerlCritic";
     private static final String NAME = "PerlCritic";
 

@@ -1,6 +1,6 @@
 #!perl
 
-use 5.006001;
+use 5.024001;
 use strict;
 use warnings;
 
