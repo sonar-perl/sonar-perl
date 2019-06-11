@@ -25,7 +25,7 @@ public class PerlCriticRulesDefinitionTest {
         assertThat(repository.language()).isEqualTo(PerlLanguage.KEY);
 
         List<Rule> rules = repository.rules();
-        assertThat(rules).hasSize(272);
+        assertThat(rules).hasSize(291);
 
         for (Rule rule : rules) {
             assertThat(rule.debtRemediationFunction()).describedAs(rule.key()).isNotNull();

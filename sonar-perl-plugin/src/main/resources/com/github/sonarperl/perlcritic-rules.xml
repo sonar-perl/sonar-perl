@@ -1,12 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rules>
   <rule>
+    <key>BadStrings</key>
+    <name>Bad Strings</name>
+    <configKey>BadStrings</configKey>
+    <type>CODE_SMELL</type>
+    <tag>badstrings</tag>
+    <description>
+      <![CDATA[BadStrings: Search for bad strings in source files]]>
+    </description>
+    <priority>MAJOR</priority>
+  </rule>
+
+  <rule>
     <key>Bangs::ProhibitBitwiseOperators</key>
     <name>Prohibit Bitwise Operators</name>
     <configKey>Bangs::ProhibitBitwiseOperators</configKey>
     <type>BUG</type>
+    <tag>bangs</tag>
     <tag>bugs</tag>
-    <tag>core</tag>
     <description>
       <![CDATA[Bangs::ProhibitBitwiseOperators: Bitwise operators are usually accidentally used instead of logical boolean operators.]]>
     </description>
@@ -60,7 +72,7 @@
     <tag>bangs</tag>
     <tag>tests</tag>
     <description>
-      <![CDATA[Bangs::ProhibitNoPlan: Know what you're going to test.]]>
+      <![CDATA[Bangs::ProhibitNoPlan: ]]>
     </description>
     <priority>MINOR</priority>
   </rule>
@@ -73,7 +85,7 @@
     <tag>bangs</tag>
     <tag>maintenance</tag>
     <description>
-      <![CDATA[Bangs::ProhibitNumberedNames: Prohibit variables differentiated by trailing numbers.]]>
+      <![CDATA[Bangs::ProhibitNumberedNames: Prohibit variables and subroutines with names that end in digits.]]>
     </description>
     <priority>MAJOR</priority>
   </rule>
@@ -86,7 +98,7 @@
     <tag>bangs</tag>
     <tag>complexity</tag>
     <description>
-      <![CDATA[Bangs::ProhibitRefProtoOrProto: Create a `clone()' method if you need copies of objects.]]>
+      <![CDATA[Bangs::ProhibitRefProtoOrProto: ]]>
     </description>
     <priority>CRITICAL</priority>
   </rule>
@@ -99,7 +111,7 @@
     <tag>bangs</tag>
     <tag>bugs</tag>
     <description>
-      <![CDATA[Bangs::ProhibitUselessRegexModifiers: Adding modifiers to a regular expression made up entirely of a variable created with qr() is usually not doing what you expect.]]>
+      <![CDATA[Bangs::ProhibitUselessRegexModifiers: ]]>
     </description>
     <priority>CRITICAL</priority>
   </rule>
@@ -112,7 +124,20 @@
     <tag>bangs</tag>
     <tag>readability</tag>
     <description>
-      <![CDATA[Bangs::ProhibitVagueNames: Don't use generic variable names.]]>
+      <![CDATA[Bangs::ProhibitVagueNames: Don't use generic variable and subroutine names.]]>
+    </description>
+    <priority>MAJOR</priority>
+  </rule>
+
+  <rule>
+    <key>BuiltinFunctions::GrepWithSimpleValue</key>
+    <name>Grep With Simple Value</name>
+    <configKey>BuiltinFunctions::GrepWithSimpleValue</configKey>
+    <type>BUG</type>
+    <tag>bugs</tag>
+    <tag>core</tag>
+    <description>
+      <![CDATA[BuiltinFunctions::GrepWithSimpleValue: Warn grep with simple value]]>
     </description>
     <priority>MAJOR</priority>
   </rule>
@@ -173,6 +198,20 @@
       <![CDATA[BuiltinFunctions::ProhibitReverseSortBlock: Forbid $b before $a in sort blocks.]]>
     </description>
     <priority>INFO</priority>
+  </rule>
+
+  <rule>
+    <key>BuiltinFunctions::ProhibitShiftRef</key>
+    <name>Prohibit Shift Ref</name>
+    <configKey>BuiltinFunctions::ProhibitShiftRef</configKey>
+    <type>BUG</type>
+    <tag>bugs</tag>
+    <tag>core</tag>
+    <tag>tests</tag>
+    <description>
+      <![CDATA[BuiltinFunctions::ProhibitShiftRef: Prohibit `\shift' in code]]>
+    </description>
+    <priority>MAJOR</priority>
   </rule>
 
   <rule>
@@ -571,6 +610,19 @@
   </rule>
 
   <rule>
+    <key>CognitiveComplexity::ProhibitExcessCognitiveComplexity</key>
+    <name>Prohibit Excess Cognitive Complexity</name>
+    <configKey>CognitiveComplexity::ProhibitExcessCognitiveComplexity</configKey>
+    <type>CODE_SMELL</type>
+    <tag>complexity</tag>
+    <tag>maintenance</tag>
+    <description>
+      <![CDATA[CognitiveComplexity::ProhibitExcessCognitiveComplexity: Avoid code that is nested, and thus difficult to grasp.]]>
+    </description>
+    <priority>MAJOR</priority>
+  </rule>
+
+  <rule>
     <key>Compatibility::ConstantLeadingUnderscore</key>
     <name>Constant Leading Underscore</name>
     <configKey>Compatibility::ConstantLeadingUnderscore</configKey>
@@ -607,19 +659,6 @@
       <![CDATA[Compatibility::Gtk2Constants: new enough Gtk2 version for its constants]]>
     </description>
     <priority>MAJOR</priority>
-  </rule>
-
-  <rule>
-    <key>Compatibility::PerlMinimumVersionAndWhy</key>
-    <name>Perl Minimum Version And Why</name>
-    <configKey>Compatibility::PerlMinimumVersionAndWhy</configKey>
-    <type>CODE_SMELL</type>
-    <tag>compatibility</tag>
-    <tag>pulp</tag>
-    <description>
-      <![CDATA[Compatibility::PerlMinimumVersionAndWhy: explicit Perl version for features used]]>
-    </description>
-    <priority>MINOR</priority>
   </rule>
 
   <rule>
@@ -769,6 +808,18 @@
       <![CDATA[ControlStructures::ProhibitPostfixControls: Write `if($condition){ do_something() }' instead of `do_something() if $condition'.]]>
     </description>
     <priority>MINOR</priority>
+  </rule>
+
+  <rule>
+    <key>ControlStructures::ProhibitSwitchStatements</key>
+    <name>Prohibit Switch Statements</name>
+    <configKey>ControlStructures::ProhibitSwitchStatements</configKey>
+    <type>CODE_SMELL</type>
+    <tag>core</tag>
+    <description>
+      <![CDATA[ControlStructures::ProhibitSwitchStatements: avoid using switch statement keywords which might imply implicit smartmatching]]>
+    </description>
+    <priority>MAJOR</priority>
   </rule>
 
   <rule>
@@ -1251,6 +1302,30 @@
   </rule>
 
   <rule>
+    <key>Freenode::LexicalForeachIterator</key>
+    <name>Lexical Foreach Iterator</name>
+    <configKey>Freenode::LexicalForeachIterator</configKey>
+    <type>CODE_SMELL</type>
+    <tag>freenode</tag>
+    <description>
+      <![CDATA[Freenode::LexicalForeachIterator: Don't use undeclared foreach loop iterators]]>
+    </description>
+    <priority>CRITICAL</priority>
+  </rule>
+
+  <rule>
+    <key>Freenode::LoopOnHash</key>
+    <name>Loop On Hash</name>
+    <configKey>Freenode::LoopOnHash</configKey>
+    <type>CODE_SMELL</type>
+    <tag>freenode</tag>
+    <description>
+      <![CDATA[Freenode::LoopOnHash: Don't loop over hashes]]>
+    </description>
+    <priority>CRITICAL</priority>
+  </rule>
+
+  <rule>
     <key>Freenode::ModPerl</key>
     <name>Mod Perl</name>
     <configKey>Freenode::ModPerl</configKey>
@@ -1294,6 +1369,30 @@
     <tag>freenode</tag>
     <description>
       <![CDATA[Freenode::POSIXImports: Don't use POSIX without specifying an import list]]>
+    </description>
+    <priority>MINOR</priority>
+  </rule>
+
+  <rule>
+    <key>Freenode::PackageMatchesFilename</key>
+    <name>Package Matches Filename</name>
+    <configKey>Freenode::PackageMatchesFilename</configKey>
+    <type>CODE_SMELL</type>
+    <tag>freenode</tag>
+    <description>
+      <![CDATA[Freenode::PackageMatchesFilename: Module files should declare a package matching the filename]]>
+    </description>
+    <priority>CRITICAL</priority>
+  </rule>
+
+  <rule>
+    <key>Freenode::PreferredAlternatives</key>
+    <name>Preferred Alternatives</name>
+    <configKey>Freenode::PreferredAlternatives</configKey>
+    <type>CODE_SMELL</type>
+    <tag>freenode</tag>
+    <description>
+      <![CDATA[Freenode::PreferredAlternatives: Various modules with preferred alternatives]]>
     </description>
     <priority>MINOR</priority>
   </rule>
@@ -1993,6 +2092,97 @@
   </rule>
 
   <rule>
+    <key>Moo::ProhibitMakeImmutable</key>
+    <name>Prohibit Make Immutable</name>
+    <configKey>Moo::ProhibitMakeImmutable</configKey>
+    <type>CODE_SMELL</type>
+    <tag>performance</tag>
+    <description>
+      <![CDATA[Moo::ProhibitMakeImmutable: Makes sure that Moo classes do not contain calls to make_immutable. (DEPRECATED)]]>
+    </description>
+    <priority>MAJOR</priority>
+  </rule>
+
+  <rule>
+    <key>Moose::ProhibitDESTROYMethod</key>
+    <name>Prohibit DESTROYMethod</name>
+    <configKey>Moose::ProhibitDESTROYMethod</configKey>
+    <type>BUG</type>
+    <tag>bugs</tag>
+    <tag>moose</tag>
+    <description>
+      <![CDATA[Moose::ProhibitDESTROYMethod: Use DEMOLISH instead of DESTROY]]>
+    </description>
+    <priority>MAJOR</priority>
+  </rule>
+
+  <rule>
+    <key>Moose::ProhibitLazyBuild</key>
+    <name>Prohibit Lazy Build</name>
+    <configKey>Moose::ProhibitLazyBuild</configKey>
+    <type>BUG</type>
+    <tag>bugs</tag>
+    <tag>moose</tag>
+    <description>
+      <![CDATA[Moose::ProhibitLazyBuild: Avoid lazy_build]]>
+    </description>
+    <priority>MINOR</priority>
+  </rule>
+
+  <rule>
+    <key>Moose::ProhibitMultipleWiths</key>
+    <name>Prohibit Multiple Withs</name>
+    <configKey>Moose::ProhibitMultipleWiths</configKey>
+    <type>BUG</type>
+    <tag>bugs</tag>
+    <tag>moose</tag>
+    <tag>roles</tag>
+    <description>
+      <![CDATA[Moose::ProhibitMultipleWiths: Require role composition]]>
+    </description>
+    <priority>CRITICAL</priority>
+  </rule>
+
+  <rule>
+    <key>Moose::ProhibitNewMethod</key>
+    <name>Prohibit New Method</name>
+    <configKey>Moose::ProhibitNewMethod</configKey>
+    <type>BUG</type>
+    <tag>bugs</tag>
+    <tag>moose</tag>
+    <description>
+      <![CDATA[Moose::ProhibitNewMethod: Don't override Moose's standard constructors.]]>
+    </description>
+    <priority>CRITICAL</priority>
+  </rule>
+
+  <rule>
+    <key>Moose::RequireCleanNamespace</key>
+    <name>Require Clean Namespace</name>
+    <configKey>Moose::RequireCleanNamespace</configKey>
+    <type>CODE_SMELL</type>
+    <tag>maintenance</tag>
+    <tag>moose</tag>
+    <description>
+      <![CDATA[Moose::RequireCleanNamespace: Require removing implementation details from you packages.]]>
+    </description>
+    <priority>MAJOR</priority>
+  </rule>
+
+  <rule>
+    <key>Moose::RequireMakeImmutable</key>
+    <name>Require Make Immutable</name>
+    <configKey>Moose::RequireMakeImmutable</configKey>
+    <type>CODE_SMELL</type>
+    <tag>moose</tag>
+    <tag>performance</tag>
+    <description>
+      <![CDATA[Moose::RequireMakeImmutable: Ensure that you've made your Moose code fast]]>
+    </description>
+    <priority>MAJOR</priority>
+  </rule>
+
+  <rule>
     <key>NamingConventions::Capitalization</key>
     <name>Capitalization</name>
     <configKey>NamingConventions::Capitalization</configKey>
@@ -2049,6 +2239,161 @@
   </rule>
 
   <rule>
+    <key>OTRS::ProhibitDumper</key>
+    <name>Prohibit Dumper</name>
+    <configKey>OTRS::ProhibitDumper</configKey>
+    <type>CODE_SMELL</type>
+    <tag>otrs</tag>
+    <tag>otrslt33</tag>
+    <description>
+      <![CDATA[OTRS::ProhibitDumper: Check module for use of "Dumper"]]>
+    </description>
+    <priority>BLOCKER</priority>
+  </rule>
+
+  <rule>
+    <key>OTRS::ProhibitFetchrowHashref</key>
+    <name>Prohibit Fetchrow Hashref</name>
+    <configKey>OTRS::ProhibitFetchrowHashref</configKey>
+    <type>CODE_SMELL</type>
+    <tag>otrs</tag>
+    <tag>otrslt33</tag>
+    <description>
+      <![CDATA[OTRS::ProhibitFetchrowHashref: Do no use FetchrowHashref]]>
+    </description>
+    <priority>BLOCKER</priority>
+  </rule>
+
+  <rule>
+    <key>OTRS::ProhibitLocaltime</key>
+    <name>Prohibit Localtime</name>
+    <configKey>OTRS::ProhibitLocaltime</configKey>
+    <type>CODE_SMELL</type>
+    <tag>otrs</tag>
+    <tag>otrslt33</tag>
+    <description>
+      <![CDATA[OTRS::ProhibitLocaltime: do not use "localtime"]]>
+    </description>
+    <priority>BLOCKER</priority>
+  </rule>
+
+  <rule>
+    <key>OTRS::ProhibitLowPrecedenceOps</key>
+    <name>Prohibit Low Precedence Ops</name>
+    <configKey>OTRS::ProhibitLowPrecedenceOps</configKey>
+    <type>CODE_SMELL</type>
+    <tag>otrs</tag>
+    <tag>otrslt33</tag>
+    <description>
+      <![CDATA[OTRS::ProhibitLowPrecedenceOps: Do not use "not", "and" and other low precedence operators]]>
+    </description>
+    <priority>BLOCKER</priority>
+  </rule>
+
+  <rule>
+    <key>OTRS::ProhibitOpen</key>
+    <name>Prohibit Open</name>
+    <configKey>OTRS::ProhibitOpen</configKey>
+    <type>CODE_SMELL</type>
+    <tag>otrs</tag>
+    <tag>otrslt33</tag>
+    <description>
+      <![CDATA[OTRS::ProhibitOpen: Do not use "open"]]>
+    </description>
+    <priority>BLOCKER</priority>
+  </rule>
+
+  <rule>
+    <key>OTRS::ProhibitPushISA</key>
+    <name>Prohibit Push ISA</name>
+    <configKey>OTRS::ProhibitPushISA</configKey>
+    <type>CODE_SMELL</type>
+    <tag>otrs</tag>
+    <description>
+      <![CDATA[OTRS::ProhibitPushISA: Do not use "push @ISA, ..."]]>
+    </description>
+    <priority>BLOCKER</priority>
+  </rule>
+
+  <rule>
+    <key>OTRS::ProhibitRequire</key>
+    <name>Prohibit Require</name>
+    <configKey>OTRS::ProhibitRequire</configKey>
+    <type>CODE_SMELL</type>
+    <tag>otrs</tag>
+    <tag>otrslt33</tag>
+    <description>
+      <![CDATA[OTRS::ProhibitRequire: Do not use "require"]]>
+    </description>
+    <priority>BLOCKER</priority>
+  </rule>
+
+  <rule>
+    <key>OTRS::ProhibitRmtree</key>
+    <name>Prohibit Rmtree</name>
+    <configKey>OTRS::ProhibitRmtree</configKey>
+    <type>CODE_SMELL</type>
+    <tag>otrs</tag>
+    <tag>otrslt33</tag>
+    <description>
+      <![CDATA[OTRS::ProhibitRmtree: Do not use File::Path's rmtree]]>
+    </description>
+    <priority>BLOCKER</priority>
+  </rule>
+
+  <rule>
+    <key>OTRS::ProhibitSomeCoreFunctions</key>
+    <name>Prohibit Some Core Functions</name>
+    <configKey>OTRS::ProhibitSomeCoreFunctions</configKey>
+    <type>CODE_SMELL</type>
+    <tag>otrs</tag>
+    <tag>otrslt33</tag>
+    <description>
+      <![CDATA[OTRS::ProhibitSomeCoreFunctions: Some core functions should not be used]]>
+    </description>
+    <priority>BLOCKER</priority>
+  </rule>
+
+  <rule>
+    <key>OTRS::RequireCamelCase</key>
+    <name>Require Camel Case</name>
+    <configKey>OTRS::RequireCamelCase</configKey>
+    <type>CODE_SMELL</type>
+    <tag>otrs</tag>
+    <tag>otrslt33</tag>
+    <description>
+      <![CDATA[OTRS::RequireCamelCase: Variable, subroutine, and package names have to be in CamelCase]]>
+    </description>
+    <priority>BLOCKER</priority>
+  </rule>
+
+  <rule>
+    <key>OTRS::RequireParensWithMethods</key>
+    <name>Require Parens With Methods</name>
+    <configKey>OTRS::RequireParensWithMethods</configKey>
+    <type>CODE_SMELL</type>
+    <tag>otrs</tag>
+    <tag>otrslt33</tag>
+    <description>
+      <![CDATA[OTRS::RequireParensWithMethods: Use parens when a method is called]]>
+    </description>
+    <priority>BLOCKER</priority>
+  </rule>
+
+  <rule>
+    <key>OTRS::RequireTrueReturnValueForModules</key>
+    <name>Require True Return Value For Modules</name>
+    <configKey>OTRS::RequireTrueReturnValueForModules</configKey>
+    <type>CODE_SMELL</type>
+    <tag>otrs</tag>
+    <tag>otrslt33</tag>
+    <description>
+      <![CDATA[OTRS::RequireTrueReturnValueForModules: Check if modules have a "true" return value]]>
+    </description>
+    <priority>BLOCKER</priority>
+  </rule>
+
+  <rule>
     <key>Objects::ProhibitIndirectSyntax</key>
     <name>Prohibit Indirect Syntax</name>
     <configKey>Objects::ProhibitIndirectSyntax</configKey>
@@ -2064,6 +2409,18 @@
   </rule>
 
   <rule>
+    <key>Operators::ProhibitSmartmatch</key>
+    <name>Prohibit Smartmatch</name>
+    <configKey>Operators::ProhibitSmartmatch</configKey>
+    <type>CODE_SMELL</type>
+    <tag>core</tag>
+    <description>
+      <![CDATA[Operators::ProhibitSmartmatch: avoid using explicit smartmatching via `~~' operator]]>
+    </description>
+    <priority>MAJOR</priority>
+  </rule>
+
+  <rule>
     <key>Perlsecret</key>
     <name>Perlsecret</name>
     <configKey>Perlsecret</configKey>
@@ -2073,6 +2430,18 @@
       <![CDATA[Perlsecret: Prevent perlsecrets entering your codebase NAME Perl::Critic::Policy::Perlsecret - Prevent perlsecrets entering your codebase]]>
     </description>
     <priority>BLOCKER</priority>
+  </rule>
+
+  <rule>
+    <key>ProhibitSmartmatch</key>
+    <name>Prohibit Smartmatch</name>
+    <configKey>ProhibitSmartmatch</configKey>
+    <type>CODE_SMELL</type>
+    <tag>core</tag>
+    <description>
+      <![CDATA[ProhibitSmartmatch: avoid using both explicit and implicit smartmatching]]>
+    </description>
+    <priority>MAJOR</priority>
   </rule>
 
   <rule>
@@ -2281,6 +2650,32 @@
       <![CDATA[RegularExpressions::RequireLineBoundaryMatching: Always use the `/m' modifier with regular expressions.]]>
     </description>
     <priority>MINOR</priority>
+  </rule>
+
+  <rule>
+    <key>Reneeb::Capitalization</key>
+    <name>Capitalization</name>
+    <configKey>Reneeb::Capitalization</configKey>
+    <type>CODE_SMELL</type>
+    <tag>core</tag>
+    <tag>cosmetic</tag>
+    <tag>pbp</tag>
+    <description>
+      <![CDATA[Reneeb::Capitalization: NamingConventions::Capitalization plus the ability to exempt "Full qualified package names"]]>
+    </description>
+    <priority>INFO</priority>
+  </rule>
+
+  <rule>
+    <key>Reneeb::ProhibitBlockEval</key>
+    <name>Prohibit Block Eval</name>
+    <configKey>Reneeb::ProhibitBlockEval</configKey>
+    <type>CODE_SMELL</type>
+    <tag>reneeb</tag>
+    <description>
+      <![CDATA[Reneeb::ProhibitBlockEval: Do not use the Block-eval. Use Try::Tiny instead]]>
+    </description>
+    <priority>MAJOR</priority>
   </rule>
 
   <rule>
@@ -3154,6 +3549,18 @@
   </rule>
 
   <rule>
+    <key>Variables::NameReuse</key>
+    <name>Name Reuse</name>
+    <configKey>Variables::NameReuse</configKey>
+    <type>CODE_SMELL</type>
+
+    <description>
+      <![CDATA[Variables::NameReuse: Don't reuse names for different types of variables]]>
+    </description>
+    <priority>MINOR</priority>
+  </rule>
+
+  <rule>
     <key>Variables::ProhibitAugmentedAssignmentInDeclaration</key>
     <name>Prohibit Augmented Assignment In Declaration</name>
     <configKey>Variables::ProhibitAugmentedAssignmentInDeclaration</configKey>
@@ -3180,6 +3587,19 @@
   </rule>
 
   <rule>
+    <key>Variables::ProhibitFatCommaInDeclaration</key>
+    <name>Prohibit Fat Comma In Declaration</name>
+    <configKey>Variables::ProhibitFatCommaInDeclaration</configKey>
+    <type>BUG</type>
+    <tag>bugs</tag>
+    <tag>core</tag>
+    <description>
+      <![CDATA[Variables::ProhibitFatCommaInDeclaration: Prohibit fat comma in declaration]]>
+    </description>
+    <priority>CRITICAL</priority>
+  </rule>
+
+  <rule>
     <key>Variables::ProhibitLocalVars</key>
     <name>Prohibit Local Vars</name>
     <configKey>Variables::ProhibitLocalVars</configKey>
@@ -3191,6 +3611,18 @@
       <![CDATA[Variables::ProhibitLocalVars: Use `my' instead of `local', except when you have to.]]>
     </description>
     <priority>MINOR</priority>
+  </rule>
+
+  <rule>
+    <key>Variables::ProhibitLoopOnHash</key>
+    <name>Prohibit Loop On Hash</name>
+    <configKey>Variables::ProhibitLoopOnHash</configKey>
+    <type>BUG</type>
+    <tag>bugs</tag>
+    <description>
+      <![CDATA[Variables::ProhibitLoopOnHash: Don't write loops on hashes, only on keys and values of hashes]]>
+    </description>
+    <priority>CRITICAL</priority>
   </rule>
 
   <rule>
@@ -3363,228 +3795,86 @@
   </rule>
 
   <rule>
-    <key>CognitiveComplexity::ProhibitExcessCognitiveComplexity</key>
-    <name>Prohibit Excess Cognitive Complexity</name>
-    <configKey>CognitiveComplexity::ProhibitExcessCognitiveComplexity</configKey>
+    <key>logicLAB::ModuleBlacklist</key>
+    <name>Module Blacklist</name>
+    <configKey>logicLAB::ModuleBlacklist</configKey>
     <type>CODE_SMELL</type>
-    <tag>complexity</tag>
-    <tag>maintenance</tag>
+    <tag>logiclab</tag>
     <description>
-      <![CDATA[CognitiveComplexity::ProhibitExcessCognitiveComplexity: Avoid code that is nested, and thus difficult to grasp.]]>
-    </description>
-    <priority>MAJOR</priority>
-  </rule>
-
-<!--  manual / other rules -->
-
-  <rule>
-    <key>DE_EPAGES::BuiltinFunctions::ProhibitForeachQw</key>
-    <name>Prohibit Foreach Qw</name>
-    <configKey>DE_EPAGES::BuiltinFunctions::ProhibitForeachQw</configKey>
-    <description>
-      <![CDATA[DE_EPAGES::BuiltinFunctions::ProhibitForeachQw: ]]>
+      <![CDATA[logicLAB::ModuleBlacklist: blacklist modules you want to prohibit use of]]>
     </description>
     <priority>MAJOR</priority>
   </rule>
 
   <rule>
-    <key>DE_EPAGES::BuiltinFunctions::ProhibitUniversalCanUsePerlTools</key>
-    <name>Prohibit Universal Can Use Perl Tools</name>
-    <configKey>DE_EPAGES::BuiltinFunctions::ProhibitUniversalCanUsePerlTools</configKey>
+    <key>logicLAB::ProhibitShellDispatch</key>
+    <name>Prohibit Shell Dispatch</name>
+    <configKey>logicLAB::ProhibitShellDispatch</configKey>
+    <type>CODE_SMELL</type>
+    <tag>logiclab</tag>
     <description>
-      <![CDATA[DE_EPAGES::BuiltinFunctions::ProhibitUniversalCanUsePerlTools: ]]>
+      <![CDATA[logicLAB::ProhibitShellDispatch: simple policy prohibiting shell dispatching]]>
     </description>
     <priority>MAJOR</priority>
   </rule>
 
   <rule>
-    <key>DE_EPAGES::BuiltinFunctions::ProhibitUniversalIsaUsePerlTools</key>
-    <name>Prohibit Universal Isa Use Perl Tools</name>
-    <configKey>DE_EPAGES::BuiltinFunctions::ProhibitUniversalIsaUsePerlTools</configKey>
+    <key>logicLAB::ProhibitUseLib</key>
+    <name>Prohibit Use Lib</name>
+    <configKey>logicLAB::ProhibitUseLib</configKey>
+    <type>CODE_SMELL</type>
+    <tag>logiclab</tag>
     <description>
-      <![CDATA[DE_EPAGES::BuiltinFunctions::ProhibitUniversalIsaUsePerlTools: ]]>
+      <![CDATA[logicLAB::ProhibitUseLib: simple policy prohibiting the use of 'use lib']]>
     </description>
     <priority>MAJOR</priority>
   </rule>
 
   <rule>
-    <key>DE_EPAGES::ErrorHandling::RequireExistsError</key>
-    <name>Require Exists Error</name>
-    <configKey>DE_EPAGES::ErrorHandling::RequireExistsError</configKey>
+    <key>logicLAB::RequirePackageNamePattern</key>
+    <name>Require Package Name Pattern</name>
+    <configKey>logicLAB::RequirePackageNamePattern</configKey>
+    <type>CODE_SMELL</type>
+    <tag>logiclab</tag>
     <description>
-      <![CDATA[DE_EPAGES::ErrorHandling::RequireExistsError: ]]>
+      <![CDATA[logicLAB::RequirePackageNamePattern: simple policy for enforcing a package naming policy]]>
     </description>
     <priority>MAJOR</priority>
   </rule>
 
   <rule>
-    <key>DE_EPAGES::Execution::RequireCompileability</key>
-    <name>Require Compileability</name>
-    <configKey>DE_EPAGES::Execution::RequireCompileability</configKey>
+    <key>logicLAB::RequireParamsValidate</key>
+    <name>Require Params Validate</name>
+    <configKey>logicLAB::RequireParamsValidate</configKey>
+    <type>CODE_SMELL</type>
+    <tag>logiclab</tag>
     <description>
-      <![CDATA[DE_EPAGES::Execution::RequireCompileability: ]]>
-    </description>
-    <priority>BLOCKER</priority>
-  </rule>
-
-  <rule>
-    <key>DE_EPAGES::Modules::ProhibitAutomaticExportationNonDAL</key>
-    <name>Prohibit Automatic Exportation Non DAL</name>
-    <configKey>DE_EPAGES::Modules::ProhibitAutomaticExportationNonDAL</configKey>
-    <description>
-      <![CDATA[DE_EPAGES::Modules::ProhibitAutomaticExportationNonDAL: ]]>
-    </description>
-    <priority>CRITICAL</priority>
-  </rule>
-
-  <rule>
-    <key>DE_EPAGES::Modules::RequireFilenameMatchesPackageHacked</key>
-    <name>Require Filename Matches Package Hacked</name>
-    <configKey>DE_EPAGES::Modules::RequireFilenameMatchesPackageHacked</configKey>
-    <description>
-      <![CDATA[DE_EPAGES::Modules::RequireFilenameMatchesPackageHacked: ]]>
-    </description>
-    <priority>BLOCKER</priority>
-  </rule>
-
-  <rule>
-    <key>DE_EPAGES::Modules::RequireUtf8BOM</key>
-    <name>Require Utf8BOM</name>
-    <configKey>DE_EPAGES::Modules::RequireUtf8BOM</configKey>
-    <description>
-      <![CDATA[DE_EPAGES::Modules::RequireUtf8BOM: ]]>
-    </description>
-    <priority>BLOCKER</priority>
-  </rule>
-
-  <rule>
-    <key>DE_EPAGES::Security::ProhibitVariablesInSQLStatements</key>
-    <name>Prohibit Variables In SQLStatements</name>
-    <configKey>DE_EPAGES::Security::ProhibitVariablesInSQLStatements</configKey>
-    <description>
-      <![CDATA[DE_EPAGES::Security::ProhibitVariablesInSQLStatements: ]]>
-    </description>
-    <priority>CRITICAL</priority>
-  </rule>
-
-  <rule>
-    <key>DE_EPAGES::Style::ProhibitFunctionSize</key>
-    <name>Prohibit Function Size</name>
-    <configKey>DE_EPAGES::Style::ProhibitFunctionSize</configKey>
-    <description>
-      <![CDATA[DE_EPAGES::Style::ProhibitFunctionSize: ]]>
-    </description>
-    <priority>MINOR</priority>
-  </rule>
-
-  <rule>
-    <key>DE_EPAGES::Style::RequireArgUnpacking</key>
-    <name>Require Arg Unpacking</name>
-    <configKey>DE_EPAGES::Style::RequireArgUnpacking</configKey>
-    <description>
-      <![CDATA[DE_EPAGES::Style::RequireArgUnpacking: ]]>
-    </description>
-    <priority>CRITICAL</priority>
-  </rule>
-
-  <rule>
-    <key>DE_EPAGES::Style::RequireCommentForExportedFunctions</key>
-    <name>Require Comment For Exported Functions</name>
-    <configKey>DE_EPAGES::Style::RequireCommentForExportedFunctions</configKey>
-    <description>
-      <![CDATA[DE_EPAGES::Style::RequireCommentForExportedFunctions: ]]>
+      <![CDATA[logicLAB::RequireParamsValidate: simple policy for enforcing use of Params::Validate]]>
     </description>
     <priority>MAJOR</priority>
   </rule>
 
   <rule>
-    <key>DE_EPAGES::Style::RequireCorrectImports</key>
-    <name>Require Correct Imports</name>
-    <configKey>DE_EPAGES::Style::RequireCorrectImports</configKey>
+    <key>logicLAB::RequireSheBang</key>
+    <name>Require She Bang</name>
+    <configKey>logicLAB::RequireSheBang</configKey>
+    <type>CODE_SMELL</type>
+    <tag>logiclab</tag>
     <description>
-      <![CDATA[DE_EPAGES::Style::RequireCorrectImports: ]]>
-    </description>
-    <priority>CRITICAL</priority>
-  </rule>
-
-  <rule>
-    <key>DE_EPAGES::Style::RequireExtendedFormatting</key>
-    <name>Require Extended Formatting</name>
-    <configKey>DE_EPAGES::Style::RequireExtendedFormatting</configKey>
-    <description>
-      <![CDATA[DE_EPAGES::Style::RequireExtendedFormatting: ]]>
+      <![CDATA[logicLAB::RequireSheBang: simple policy for keeping your shebang line uniform]]>
     </description>
     <priority>MAJOR</priority>
   </rule>
 
   <rule>
-    <key>DE_EPAGES::Style::RequireFullSentenceComment</key>
-    <name>Require Full Sentence Comment</name>
-    <configKey>DE_EPAGES::Style::RequireFullSentenceComment</configKey>
+    <key>logicLAB::RequireVersionFormat</key>
+    <name>Require Version Format</name>
+    <configKey>logicLAB::RequireVersionFormat</configKey>
+    <type>CODE_SMELL</type>
+    <tag>logiclab</tag>
     <description>
-      <![CDATA[DE_EPAGES::Style::RequireFullSentenceComment: ]]>
-    </description>
-    <priority>INFO</priority>
-  </rule>
-
-  <rule>
-    <key>DE_EPAGES::Style::RequireLexicalLoopIteratorsForLongBlocks</key>
-    <name>Require Lexical Loop Iterators For Long Blocks</name>
-    <configKey>DE_EPAGES::Style::RequireLexicalLoopIteratorsForLongBlocks</configKey>
-    <description>
-      <![CDATA[DE_EPAGES::Style::RequireLexicalLoopIteratorsForLongBlocks: ]]>
-    </description>
-    <priority>BLOCKER</priority>
-  </rule>
-
-  <rule>
-    <key>DE_EPAGES::Style::RequireParenthesesLastChar</key>
-    <name>Require Parentheses Last Char</name>
-    <configKey>DE_EPAGES::Style::RequireParenthesesLastChar</configKey>
-    <description>
-      <![CDATA[DE_EPAGES::Style::RequireParenthesesLastChar: ]]>
-    </description>
-    <priority>MINOR</priority>
-  </rule>
-
-  <rule>
-    <key>DE_EPAGES::Style::RequireSpacesNotTabs</key>
-    <name>Require Spaces Not Tabs</name>
-    <configKey>DE_EPAGES::Style::RequireSpacesNotTabs</configKey>
-    <description>
-      <![CDATA[DE_EPAGES::Style::RequireSpacesNotTabs: ]]>
-    </description>
-    <priority>MINOR</priority>
-  </rule>
-
-  <rule>
-    <key>DE_EPAGES::Subroutines::ProhibitPrivateSubroutineUse</key>
-    <name>Prohibit Private Subroutine Use</name>
-    <configKey>DE_EPAGES::Subroutines::ProhibitPrivateSubroutineUse</configKey>
-    <description>
-      <![CDATA[DE_EPAGES::Subroutines::ProhibitPrivateSubroutineUse: ]]>
-    </description>
-    <priority>CRITICAL</priority>
-  </rule>
-
-  <rule>
-    <key>DE_EPAGES::Variables::ProhibitPathConcatenation</key>
-    <name>Prohibit Path Concatenation</name>
-    <configKey>DE_EPAGES::Variables::ProhibitPathConcatenation</configKey>
-    <description>
-      <![CDATA[DE_EPAGES::Variables::ProhibitPathConcatenation: ]]>
+      <![CDATA[logicLAB::RequireVersionFormat: assert version number formats]]>
     </description>
     <priority>MAJOR</priority>
   </rule>
-
-  <rule>
-    <key>DE_EPAGES::Variables::ProhibitUnusedVariablesEnhanced</key>
-    <name>Prohibit Unused Variables Enhanced</name>
-    <configKey>DE_EPAGES::Variables::ProhibitUnusedVariablesEnhanced</configKey>
-    <description>
-      <![CDATA[DE_EPAGES::Variables::ProhibitUnusedVariablesEnhanced: ]]>
-    </description>
-    <priority>MAJOR</priority>
-  </rule>
-
 </rules>
