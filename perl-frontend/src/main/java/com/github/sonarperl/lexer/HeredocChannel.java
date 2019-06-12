@@ -53,6 +53,8 @@ public class HeredocChannel extends Channel<Lexer> {
     }
 
     private boolean consumeUntil(CodeReader code, Lexer output) {
+        int line = code.getLinePosition();
+        int column = code.getColumnPosition();
 
         StringBuilder sb = new StringBuilder();
         Matcher matcher = Pattern.compile(".*?(?=\\Q" + lookFor + "\\E)", Pattern.DOTALL).matcher("");
@@ -66,8 +68,8 @@ public class HeredocChannel extends Channel<Lexer> {
           .setType(PerlTokenType.STRING)
           .setValueAndOriginalValue(sb.toString())
           .setURI(output.getURI())
-          .setLine(code.getLinePosition())
-          .setColumn(code.getColumnPosition())
+          .setLine(line)
+          .setColumn(column)
           .build();
 
         output.addToken(token);
