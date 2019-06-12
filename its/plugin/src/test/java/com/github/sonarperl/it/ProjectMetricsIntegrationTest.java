@@ -56,13 +56,13 @@ public class ProjectMetricsIntegrationTest {
     @Test
     public void project_level() {
       // Size
-      assertThat(wsClient.getProjectMeasure("ncloc")).isEqualTo(15);
-      assertThat(wsClient.getProjectMeasure("lines")).isEqualTo(59);
-      assertThat(wsClient.getProjectMeasure("files")).isEqualTo(1);
-      assertThat(wsClient.getProjectMeasure("functions")).isEqualTo(3);
+      assertThat(wsClient.getProjectMeasure("ncloc")).isEqualTo(29);
+      assertThat(wsClient.getProjectMeasure("lines")).isEqualTo(79);
+      assertThat(wsClient.getProjectMeasure("files")).isEqualTo(2);
+      assertThat(wsClient.getProjectMeasure("functions")).isEqualTo(4);
       assertThat(wsClient.getProjectMeasure("classes")).isEqualTo(1);
       // Documentation
-      assertThat(wsClient.getProjectMeasure("comment_lines")).isEqualTo(26);
+      assertThat(wsClient.getProjectMeasure("comment_lines")).isEqualTo(27);
     }
 
     @Test
@@ -87,6 +87,8 @@ public class ProjectMetricsIntegrationTest {
       assertThat(wsClient.getFileMeasure("lib/Sample/Project.pm", "classes")).isEqualTo(1);
       // Documentation
       assertThat(wsClient.getFileMeasure("lib/Sample/Project.pm", "comment_lines")).isEqualTo(26);
+      // heredoc
+      assertThat(wsClient.getFileMeasure("lib/heredoc.pl", "lines")).isEqualTo(20);
     }
 
 }
