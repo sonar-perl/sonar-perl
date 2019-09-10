@@ -16,6 +16,7 @@ ext {
 
 dependencies {
     compileOnly "org.sonarsource.sonarqube:sonar-plugin-api:${sonarApiVersion}"
+	compile group: 'org.slf4j', name: 'slf4j-api', version: '1.6.2'
     testImplementation "org.sonarsource.sonarqube:sonar-plugin-api:${sonarApiVersion}"
     implementation 'org.apache.commons:commons-compress:1.18'
     implementation 'com.esotericsoftware.yamlbeans:yamlbeans:1.13'
