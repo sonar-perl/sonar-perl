@@ -1,6 +1,7 @@
 package com.github.sonarperl;
 
 
+import com.github.sonarperl.cpd.PerlCpdAnalyzer;
 import com.github.sonarperl.highlighter.PerlHighlighter;
 import com.github.sonarperl.parser.PerlParser;
 import com.sonar.sslr.api.Grammar;
@@ -19,11 +20,13 @@ public class PerlScanner {
     private final SensorContext context;
     private final Parser<Grammar> parser;
     private final List<InputFile> inputFiles;
+    private final PerlCpdAnalyzer perlCpdAnalyzer;
 
     public PerlScanner(SensorContext context, List<InputFile> inputFiles) {
         this.context = context;
         this.inputFiles = inputFiles;
         this.parser = PerlParser.create(new PerlConfiguration(context.fileSystem().encoding()));
+        this.perlCpdAnalyzer = new PerlCpdAnalyzer(context);
     }
 
     public void scanFiles() {
@@ -56,8 +59,7 @@ public class PerlScanner {
                     .message(e.getMessage())
                     .save();
         }
-
         new PerlHighlighter(context, inputFile).scanFile(visitorContext);
+        perlCpdAnalyzer.pushCpdTokens(inputFile, visitorContext);
     }
-
 }
