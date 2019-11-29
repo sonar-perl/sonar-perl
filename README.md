@@ -25,7 +25,7 @@ What we have so far...
 * Syntax highlighting of imported code
 * Attaching of Perl::Critic issues
 * Default profile containing 271 Perl::Critic rules
-* Test Coverage (via Devel::Cover::Report::Clover) -- WARNING: [Current Clover plugin won't run on SonarQube 7.3+](https://github.com/sfeir-open-source/sonar-clover/pull/15)
+* Test Coverage (via [Devel::Cover::Report::SonarGeneric](https://metacpan.org/pod/Devel::Cover::Report::SonarGeneric))
 
 ## Screenshots
 
@@ -125,6 +125,8 @@ sonar.tests=t
 # testReport.tgz is the default for the report archive.
 sonar.perl.testHarness.archivePath=testReport.tgz
 
+sonar.coverageReportPaths=cover_db/sonar_generic.xml
+
 ## if your project has perl files without file extension:
 # sonar.import_unknown_files=true
 ## .. and then exclude all known non-perl files.
@@ -172,7 +174,7 @@ The plugin would firstly try to scan `testReport.tgz`, or whatever specified via
 `sonar.perl.testHarness.archivePath`. Only if the archive report does not exist,
 it would look at the JUnit settings.
 
-- Generate coverage reports in Clover-format (requires version 1.01 or later of `Devel::Cover::Report::Clover`)
+- Generate coverage reports in Generic Coverage format (requires version 0.3 or later of `Devel::Cover::Report::SonarGeneric`)
 
 ```sh
 cover -test -report clover
@@ -193,9 +195,7 @@ perlcritic --cruel --quiet --verbose "%f~|~%s~|~%l~|~%c~|~%m~|~%e~|~%p~||~%n" li
 We support the all SonarQube versions from 6.7 (LTS). Please report bugs
 or incompatibilities in our [bugtracker](https://github.com/sonar-perl/sonar-perl/issues).
 
-Beware that the current Clover plugin is [incompatible with newer versions of SonarQube (7.3+)](https://github.com/sfeir-open-source/sonar-clover/pull/15).
-
-For older SonarQube versions (5.6+) stick with plugin version 0.3.2 or older.
+For coverage support in older SonarQube versions (5.6 - 7.3) use `Devel::Cover::Report::Clover` version 0.3.2 or older.
 
 ## Building the plugin from source
 
@@ -228,7 +228,8 @@ So, if you're interested, get in touch with us!
 
 ## Links
 
-* [Devel::Cover::Report::Clover](https://metacpan.org/pod/Devel::Cover::Report::Clover) ([source](https://github.com/captin411/devel-cover-report-clover/)) 1.01+ for coverage details. Please install [Sonar Clover Plugin](http://docs.sonarqube.org/display/SONARQUBE45/Clover+Plugin) for reading the coverage report.
+* [Devel::Cover::Report::SonarGeneric](https://metacpan.org/pod/Devel::Cover::Report::SonarGeneric) for coverage details on SonarQube versions 7.3+.
 * Perl [TAP](https://testanything.org/), and [TAP::Harness::Archive](https://metacpan.org/pod/TAP::Harness::Archive), [TAP::Harness::JUnit](https://metacpan.org/pod/TAP::Harness::JUnit), [TAP::Formatter::JUnit](https://metacpan.org/pod/TAP::Formatter::JUnit), for test reporting.
 * [Perl::Critic](http://perlcritic.org/) for issue reporting.
+* [Devel::Cover::Report::Clover](https://metacpan.org/pod/Devel::Cover::Report::Clover) ([source](https://github.com/captin411/devel-cover-report-clover/)) 1.01+ for coverage details for SonarQube versions 7.3 or older. Please install [Sonar Clover Plugin](http://docs.sonarqube.org/display/SONARQUBE45/Clover+Plugin) for reading the coverage report.
 
