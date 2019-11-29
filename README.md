@@ -177,7 +177,7 @@ it would look at the JUnit settings.
 - Generate coverage reports in Generic Coverage format (requires version 0.3 or later of `Devel::Cover::Report::SonarGeneric`)
 
 ```sh
-cover -test -report clover
+cover -test -report SonarGeneric
 ```
 
 - Execute `Perl::Critic` and save the report as `perlcritic_report.txt` in your project. Important is the formatting
