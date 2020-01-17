@@ -13,6 +13,8 @@ import org.sonar.api.batch.fs.InputFile;
 import org.sonar.api.batch.sensor.SensorContext;
 import org.sonar.api.batch.sensor.highlighting.NewHighlighting;
 import org.sonar.api.batch.sensor.highlighting.TypeOfText;
+import org.sonar.api.utils.log.Logger;
+import org.sonar.api.utils.log.Loggers;
 import org.sonar.sslr.grammar.GrammarRuleKey;
 
 import javax.annotation.Nullable;
@@ -21,6 +23,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class PerlHighlighter extends PerlVisitor {
+
+    private static final Logger log = Loggers.get(PerlHighlighter.class);
 
     private NewHighlighting newHighlighting;
 
@@ -61,8 +65,12 @@ public class PerlHighlighter extends PerlVisitor {
     }
 
     private void highlight(Token token, TypeOfText typeOfText) {
-        TokenLocation tokenLocation = new TokenLocation(token);
-        newHighlighting.highlight(tokenLocation.startLine(), tokenLocation.startLineOffset(), tokenLocation.endLine(), tokenLocation.endLineOffset(), typeOfText);
+        try {
+            TokenLocation tokenLocation = new TokenLocation(token);
+            newHighlighting.highlight(tokenLocation.startLine(), tokenLocation.startLineOffset(), tokenLocation.endLine(), tokenLocation.endLineOffset(), typeOfText);
+        } catch (IllegalArgumentException e) {
+            log.warn("Error highlighting token in file: " + token.getURI().toString(), e);
+        }
     }
 
 

@@ -27,26 +27,32 @@ public class PerlScanner {
     }
 
     public void scanFiles() {
-        for (InputFile pythonFile : inputFiles) {
+        for (InputFile perlFile : inputFiles) {
             if (context.isCancelled()) {
                 return;
             }
-            scanFile(pythonFile);
+            scanFile(perlFile);
         }
     }
 
     private void scanFile(InputFile inputFile) {
-        PerlFile pythonFile = SonarQubePerlFile.create(inputFile);
+        PerlFile perlFile = SonarQubePerlFile.create(inputFile);
         PerlVisitorContext visitorContext;
         try {
-            visitorContext = new PerlVisitorContext(parser.parse(pythonFile.content()), pythonFile);
+            visitorContext = new PerlVisitorContext(parser.parse(perlFile.content()), perlFile);
+
+        } catch (IllegalStateException e) {
+            LOG.error("Unable to read file: " + perlFile.fileName(), e);
+            return;
+
         } catch (RecognitionException e) {
-            visitorContext = new PerlVisitorContext(pythonFile, e);
+            visitorContext = new PerlVisitorContext(perlFile, e);
             LOG.error("Unable to parse file: " + inputFile.toString());
             LOG.error(e.getMessage());
+            int line = e.getLine() > 0 ? e.getLine() : 1;
             context.newAnalysisError()
                     .onFile(inputFile)
-                    .at(inputFile.newPointer(e.getLine(), 0))
+                    .at(inputFile.newPointer(line, 0))
                     .message(e.getMessage())
                     .save();
         }
