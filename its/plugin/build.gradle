@@ -24,6 +24,10 @@ tasks.test.shouldRunAfter(tasks.findByPath(':sonar-perl-plugin:test'))
 // run test suite
 test {
     include 'com/github/sonarperl/it/IntegrationTests.class'
+    testLogging {
+        outputs.upToDateWhen {false}
+        showStandardStreams = true
+    }
 }
 
 clean.doLast {
