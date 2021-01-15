@@ -14,6 +14,7 @@ This is a [SonarQube](http://www.sonarqube.org/) [plugin](http://docs.sonarqube.
 We support the all SonarQube versions from 7.9 (LTS). Please report bugs
 or incompatibilities in our [bugtracker](https://github.com/sonar-perl/sonar-perl/issues).
 
+
 ## Current State
 
 Current plugin is still at an early stage. It analyzes Perl projects
