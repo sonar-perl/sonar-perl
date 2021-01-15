@@ -1,4 +1,4 @@
-FROM sonarqube:7.1-alpine
+FROM sonarqube:7.9-community
 
-ADD https://repo1.maven.org/maven2/org/sonarsource/clover/sonar-clover-plugin/3.1/sonar-clover-plugin-3.1.jar /opt/sonarqube/extensions/plugins/sonar-clover-plugin-3.1.jar
-COPY build/libs/* /opt/sonarqube/extensions/plugins/
+ADD --chown=sonarqube:sonarqube https://repo1.maven.org/maven2/org/sonarsource/clover/sonar-clover-plugin/3.1/sonar-clover-plugin-3.1.jar /opt/sonarqube/extensions/plugins/sonar-clover-plugin-3.1.jar
+COPY --chown=sonarqube:sonarqube build/libs/*all.jar /opt/sonarqube/extensions/plugins/
