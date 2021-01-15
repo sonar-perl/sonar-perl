@@ -11,9 +11,15 @@ jacoco {
     toolVersion = '0.8.2'
 }
 
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(11)
+    }
+}
+
 dependencies {
-    api group: 'org.sonarsource.sslr', name: 'sslr-core', version: '1.21'
-    testImplementation group: 'org.sonarsource.sslr', name: 'sslr-testing-harness', version: '1.21'
+    api group: 'org.sonarsource.sslr', name: 'sslr-core', version: '1.23'
+    testImplementation group: 'org.sonarsource.sslr', name: 'sslr-testing-harness', version: '1.23'
     testImplementation group: 'org.assertj', name: 'assertj-core', version: '3.11.1'
     testImplementation group: 'org.mockito', name: 'mockito-core', version: '2.23.4'
 }

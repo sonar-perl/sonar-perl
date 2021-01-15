@@ -1,9 +1,9 @@
 plugins {
     id "java-library"
     id "eclipse"
-    id 'com.bmuschko.docker-remote-api' version '4.2.0'
+    id 'com.bmuschko.docker-remote-api' version '6.7.0'
     id "jacoco"
-    id "com.github.johnrengelman.shadow" version "4.0.3"
+    id "com.github.johnrengelman.shadow" version '6.1.0'
 }
 
 repositories {
@@ -11,7 +11,7 @@ repositories {
 }
 
 ext {
-    sonarApiVersion = '6.7'
+    sonarApiVersion = '7.9'
 }
 
 dependencies {
@@ -19,14 +19,20 @@ dependencies {
     testImplementation "org.sonarsource.sonarqube:sonar-plugin-api:${sonarApiVersion}"
     implementation 'org.apache.commons:commons-compress:1.18'
     implementation 'com.esotericsoftware.yamlbeans:yamlbeans:1.13'
+    implementation 'com.fasterxml.staxmate:staxmate:2.4.0'
+    implementation 'commons-io:commons-io:2.7'
+    implementation 'commons-lang:commons-lang:2.6'
     testImplementation 'junit:junit:4.12'
     testImplementation 'org.assertj:assertj-core:3.11.1'
     testImplementation 'org.mockito:mockito-core:2.23.4'
     implementation project(':perl-frontend')
 }
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(11)
+    }
+}
 
 jacoco {
     toolVersion = '0.8.2'
@@ -88,15 +94,15 @@ task buildDockerImage(type: DockerBuildImage) {
     description = 'Builds a new docker image.'
     dependsOn copyDockerTargetArtifacts
     inputDir = file('build/docker')
-    tags.add("sonarperl/sonar-perl:latest")
+    images.add("sonarperl/sonar-perl:latest")
     noCache = true
 }
 
 task createDockerContainer(type: DockerCreateContainer) {
     dependsOn buildDockerImage
     targetImageId buildDockerImage.getImageId()
-    portBindings = [ '9000:9000', '9002:9002' ]
-    autoRemove = true
+    hostConfig.portBindings = [ '9000:9000', '9002:9002' ]
+    hostConfig.autoRemove = true
 }
 
 task publish {}

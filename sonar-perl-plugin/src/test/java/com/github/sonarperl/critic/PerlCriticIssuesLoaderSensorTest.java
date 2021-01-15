@@ -14,6 +14,7 @@ import org.sonar.api.batch.fs.internal.DefaultInputFile;
 import org.sonar.api.batch.fs.internal.FileMetadata;
 import org.sonar.api.batch.fs.internal.TestInputFileBuilder;
 import org.sonar.api.batch.rule.internal.ActiveRulesBuilder;
+import org.sonar.api.batch.rule.internal.NewActiveRule;
 import org.sonar.api.batch.sensor.internal.DefaultSensorDescriptor;
 import org.sonar.api.batch.sensor.internal.SensorContextTester;
 import org.sonar.api.rule.RuleKey;
@@ -28,7 +29,7 @@ public class PerlCriticIssuesLoaderSensorTest {
     public void setActiveRules() {
         context.setActiveRules(
                 new ActiveRulesBuilder()
-                .create(RuleKey.of("PerlCritic", "TestingAndDebugging::RequireUseStrict")).activate()
+                .addRule(new NewActiveRule.Builder().setRuleKey(RuleKey.of("PerlCritic", "TestingAndDebugging::RequireUseStrict")).build())
                 .build()
         );
     }
