@@ -13,6 +13,7 @@ import org.junit.runners.Suite;
 
 import com.sonar.orchestrator.Orchestrator;
 import com.sonar.orchestrator.OrchestratorBuilder;
+import com.sonar.orchestrator.container.Edition;
 import com.sonar.orchestrator.locator.FileLocation;
 
 @RunWith(Suite.class)
@@ -59,6 +60,7 @@ public class IntegrationTests {
                 "sonar-perl-plugin-*-all.jar");
         OrchestratorBuilder orchestratorBuilder = Orchestrator.builderEnv()
                 .setSonarVersion(version)
+                .setEdition(Edition.COMMUNITY)
                 .defaultForceAuthentication()
                 .addPlugin(sonarPluginJar);
         return orchestratorBuilder;
