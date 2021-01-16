@@ -18,6 +18,7 @@ cache:
   - '.gradle'
 install: true
 script:
+  - 'set'
   - './gradlew build'
   - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then ./gradlew sonarqube -Dsonar.login=$SONAR_LOGIN -Dsonar.pullrequest.branch=$TRAVIS_BRANCH -Dsonar.pullrequest.key=$TRAVIS_BUILD_NUMBER -Dsonar.pullrequest.base=master -Dsonar.pullrequest.provider=github -Dsonar.pullrequest.github.repository=sonar-perl/sonar-perl; fi'
   - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then ./gradlew build publish sonarqube -Dsonar.login=$SONAR_LOGIN; fi'
