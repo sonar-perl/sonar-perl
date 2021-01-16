@@ -31,15 +31,7 @@ public class ProjectMetricsIntegrationTest {
     private static final SonarScanner build;
 
     static {
-        build = SonarScanner.create()
-                .setProperty("sonar.login", "admin")
-                .setProperty("sonar.password", "admin")
-                .setProperty("sonar.pullrequest.branch","")
-                .setProperty("sonar.pullrequest.key","")
-                .setProperty("sonar.pullrequest.base","")
-                .setProperty("sonar.scm.provider", "none")
-                .setDebugLogs(true)
-                .setEnvironmentVariable("sonar.verbose", "true")
+        build = TestSonarScanner.create()
                 .setProjectDir(new File("projects/metrics"))
                 .setProjectKey(PROJECT_KEY)
                 .setProjectName(PROJECT_KEY)
