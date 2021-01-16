@@ -59,6 +59,7 @@ public class IntegrationTests {
                 "sonar-perl-plugin-*-all.jar");
         OrchestratorBuilder orchestratorBuilder = Orchestrator.builderEnv()
                 .setSonarVersion(version)
+                .defaultForceAuthentication()
                 .addPlugin(sonarPluginJar);
         return orchestratorBuilder;
     }
