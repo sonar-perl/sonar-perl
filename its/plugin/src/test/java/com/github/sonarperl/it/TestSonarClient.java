@@ -3,24 +3,31 @@ package com.github.sonarperl.it;
 import java.util.Arrays;
 import java.util.List;
 
-import org.sonarqube.ws.WsMeasures;
-import org.sonarqube.ws.WsMeasures.Measure;
+import org.sonarqube.ws.Measures;
+import org.sonarqube.ws.Measures.Measure;
+import org.sonarqube.ws.client.HttpConnector;
 import org.sonarqube.ws.client.WsClient;
-import org.sonarqube.ws.client.issue.SearchWsRequest;
-import org.sonarqube.ws.client.measure.ComponentWsRequest;
+import org.sonarqube.ws.client.WsClientFactories;
+import org.sonarqube.ws.client.issues.SearchRequest;
+import org.sonarqube.ws.client.measures.ComponentRequest;
+
+import com.sonar.orchestrator.Orchestrator;
 
 public class TestSonarClient {
 
     private final WsClient wsClient;
     private final String project;
 
-    public TestSonarClient(WsClient wsClient, String project) {
-        this.wsClient = wsClient;
+    public TestSonarClient(Orchestrator orchestrator, String project) {
+        this.wsClient = WsClientFactories.getDefault().newClient(HttpConnector.newBuilder()
+                .url(orchestrator.getServer().getUrl())
+                .credentials("admin", "admin")
+                .build());
         this.project = project;
     }
 
     private Measure getMeasure(String componentKey, String metricKey) {
-      WsMeasures.ComponentWsResponse response = wsClient.measures().component(new ComponentWsRequest()
+      Measures.ComponentWsResponse response = wsClient.measures().component(new ComponentRequest()
         .setComponent(componentKey)
         .setMetricKeys(Arrays.asList(metricKey)));
       List<Measure> measures = response.getComponent().getMeasuresList();
@@ -49,7 +56,7 @@ public class TestSonarClient {
     }
 
     public Integer issueCount(String severity, String rule) {
-        return wsClient.issues().search(new SearchWsRequest()
+        return wsClient.issues().search(new SearchRequest()
                 .setSeverities(Arrays.asList(severity))
                 .setRules(Arrays.asList(rule)))
                 .getIssuesCount();

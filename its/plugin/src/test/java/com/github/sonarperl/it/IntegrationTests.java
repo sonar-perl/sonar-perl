@@ -13,6 +13,7 @@ import org.junit.runners.Suite;
 
 import com.sonar.orchestrator.Orchestrator;
 import com.sonar.orchestrator.OrchestratorBuilder;
+import com.sonar.orchestrator.container.Edition;
 import com.sonar.orchestrator.locator.FileLocation;
 
 @RunWith(Suite.class)
@@ -33,9 +34,8 @@ public class IntegrationTests {
     static {
         try {
             for (Orchestrator orchestrator : new Orchestrator[]{
-                orchestratorBuilderFor("6.7").build(),
-                orchestratorBuilderFor("7.0").build(),
-                orchestratorBuilderFor("7.5").build()}
+                orchestratorBuilderFor("7.9").build(),
+                orchestratorBuilderFor("8.6.0.39681").build()}
             ) {
                 register(orchestrator);
             }
@@ -60,6 +60,8 @@ public class IntegrationTests {
                 "sonar-perl-plugin-*-all.jar");
         OrchestratorBuilder orchestratorBuilder = Orchestrator.builderEnv()
                 .setSonarVersion(version)
+                .setEdition(Edition.COMMUNITY)
+                .defaultForceAuthentication()
                 .addPlugin(sonarPluginJar);
         return orchestratorBuilder;
     }

@@ -6,8 +6,14 @@
 
 # Perl 5 Plugin for SonarQube
 
-This is a [SonarQube](http://www.sonarqube.org/) [plugin](http://docs.sonarqube.org/display/PLUG/Plugin+Library) 
-to integrate popular features like code coverage, Perl::Critic and test reporting for your Perl 5 projects.
+This is a [SonarQube](http://www.sonarqube.org/) [plugin](http://docs.sonarqube.org/display/PLUG/Plugin+Library) to integrate popular features like code coverage, Perl::Critic and test reporting for your Perl 5 projects.
+
+
+## Version Compatibility
+
+We support the all SonarQube versions from 7.9 (LTS). Please report bugs
+or incompatibilities in our [bugtracker](https://github.com/sonar-perl/sonar-perl/issues).
+
 
 ## Current State
 
@@ -190,12 +196,6 @@ perlcritic --cruel --quiet --verbose "%f~|~%s~|~%l~|~%c~|~%m~|~%e~|~%p~||~%n" li
 - Run the `sonar-scanner` 
 - Finally open the project report in SonarQube
 
-### Compatibility and known issues
-
-We support the all SonarQube versions from 6.7 (LTS). Please report bugs
-or incompatibilities in our [bugtracker](https://github.com/sonar-perl/sonar-perl/issues).
-
-For coverage support in older SonarQube versions (5.6 - 7.3) use `Devel::Cover::Report::Clover` version 0.3.2 or older.
 
 ## Building the plugin from source
 

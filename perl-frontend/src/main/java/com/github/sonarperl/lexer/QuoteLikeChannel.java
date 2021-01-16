@@ -2,13 +2,14 @@ package com.github.sonarperl.lexer;
 
 import com.github.sonarperl.PerlPunctuator;
 import com.github.sonarperl.api.PerlTokenType;
-import com.google.common.collect.ImmutableSet;
 import com.sonar.sslr.api.Token;
 import com.sonar.sslr.api.TokenType;
 import com.sonar.sslr.impl.Lexer;
 import org.sonar.sslr.channel.Channel;
 import org.sonar.sslr.channel.CodeReader;
 
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -18,6 +19,7 @@ import java.util.regex.Pattern;
 public class QuoteLikeChannel extends Channel<Lexer> {
 
     private static final char EOF = (char) -1;
+    private static final Set<Character> QUOTELIKE_CHARS = new HashSet<>(Arrays.asList('q', 'x', 'w', 'r'));
 
     private final StringBuilder sb = new StringBuilder();
 
@@ -55,7 +57,7 @@ public class QuoteLikeChannel extends Channel<Lexer> {
                 rawRegex = true;
                 break;
             case 'q':
-                maybeNext(code, ImmutableSet.of('q', 'x', 'w', 'r'));
+                maybeNext(code, QUOTELIKE_CHARS);
                 break;
             case 'm':
                 break;
@@ -66,7 +68,7 @@ public class QuoteLikeChannel extends Channel<Lexer> {
                 twoIterations = true;
                 break;
             case 't':
-                if (! expectNext(code, ImmutableSet.of('r'))) {
+                if (! expectNext(code, new HashSet<>(Arrays.asList('r')))) {
                     return false;
                 }
                 twoIterations = true;
@@ -88,7 +90,7 @@ public class QuoteLikeChannel extends Channel<Lexer> {
         }
         if (twoIterations) {
             if (quoteStart != quoteEnd) {
-                if (! expectNext(code, ImmutableSet.of(quoteStart))) {
+                if (! expectNext(code, new HashSet<>(Arrays.asList(quoteStart)))) {
                     return false;
                 }
             }

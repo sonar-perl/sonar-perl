@@ -11,8 +11,6 @@ import org.junit.rules.TestRule;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
-import org.sonarqube.ws.client.HttpConnector;
-import org.sonarqube.ws.client.WsClientFactories;
 
 import com.sonar.orchestrator.Orchestrator;
 import com.sonar.orchestrator.build.SonarScanner;
@@ -33,7 +31,7 @@ public class TestMetricsIntegrationTest {
     private static final SonarScanner build;
 
     static {
-        build = SonarScanner.create()
+        build = TestSonarScanner.create()
                 .setProjectDir(new File("projects/tap"))
                 .setProjectKey(PROJECT_KEY)
                 .setProjectName(PROJECT_KEY)
@@ -47,10 +45,7 @@ public class TestMetricsIntegrationTest {
 
     public TestMetricsIntegrationTest(Orchestrator orchestrator) {
         orchestrator.executeBuild(build);
-        wsClient = new TestSonarClient(
-                WsClientFactories.getDefault().newClient(HttpConnector.newBuilder()
-                .url(orchestrator.getServer().getUrl())
-                .build()), PROJECT_KEY);
+		wsClient = new TestSonarClient(orchestrator, PROJECT_KEY);
     }
 
     @Test

@@ -2,7 +2,6 @@ package com.github.sonarperl.highlighter;
 
 import com.github.sonarperl.TestPerlVisitorRunner;
 import com.github.sonarperl.TestUtils;
-import com.google.common.base.Charsets;
 import org.junit.Before;
 import org.junit.Test;
 import org.sonar.api.batch.fs.internal.DefaultInputFile;
@@ -11,6 +10,7 @@ import org.sonar.api.batch.sensor.highlighting.TypeOfText;
 import org.sonar.api.batch.sensor.internal.SensorContextTester;
 
 import java.io.File;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -27,7 +27,7 @@ public class PerlHighlighterTest {
 
         file = new File(dir, "/perlHighlighter.pl");
         DefaultInputFile inputFile = new TestInputFileBuilder("moduleKey", file.getName())
-                .initMetadata(TestUtils.fileContent(file, Charsets.UTF_8))
+                .initMetadata(TestUtils.fileContent(file, StandardCharsets.UTF_8))
                 .build();
 
         context = SensorContextTester.create(new File(dir));
