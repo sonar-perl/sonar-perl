@@ -1,4 +1,7 @@
 version: ~> 1.0
+branches:
+  only:
+  - master
 language: java
 jdk:
 - openjdk11
