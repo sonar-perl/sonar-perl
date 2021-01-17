@@ -101,7 +101,7 @@ You should see a "perl sample project" and "Dancer" on your SonarQube dashboard.
 Plugin releases can be downloaded from our [GitHub releases page](https://github.com/sonar-perl/sonar-perl/releases).
 If you want to build a snapshot version from source, you can create it via `./gradlew sonar-perl-plugin:shadowJar` and
 copy the resulting file (usually suffixed -SNAPSHOT, unless you checked out a release tag) 
-e.g. `sonar-perl-plugin/build/libs/sonar-perl-plugin-0.4.7-SNAPSHOT-all.jar` into the plugins
+e.g. `sonar-perl-plugin/build/libs/sonar-perl-plugin-0.5.0-SNAPSHOT-all.jar` into the plugins
 directory of your SonarQube installation (should be something like `/opt/sonarqube/extensions/plugins/`)
 
 
