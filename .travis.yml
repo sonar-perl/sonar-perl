@@ -30,6 +30,7 @@ deploy:
   token:
     secure: "mfh2PVcAvkNfwtNNHmodrxMhKjUrp1j1kDKqdVHXN4Yuyu4buuPGqCNwb7swg9RzHhN5AD7r74MHEX1529eOLrirMHiECd55qxymqvpqO3uw0Zi05qOFxeSGWgaC2AzaRIFwTGUCkeBxfCuVJqURUGVLi9qQ+AL3iC9yrGZBRYetJKsIO0TfzzGd4cvNNyT7Mvi1pQgJH8Z4o7PMdGxtzTEDjpyWATecSdjB1JF+4dbgNmOiOMbSyq0ImRrQtYzgTQAMqAfNz0kkeicJgoF637erQefd5ivBTxk9/r8IzHnU/KmN8msUkzty/R/JW4ycN+jXXNltDZxy2CupLrLWCqpNyIb4gfeo4yAN37+xBUNRNX0vnHGbDalv7zeiyCPIpOsGCfK9hPsh/pJfKjYOwx/LYMj6iybNkWAp61hMJlLSGSA9DAtt/mBXbdbgwmmroXrK8vA2TmCS5dUjTW1Dp4D3pDtOFRyaJzNm76PG26wFlYT22lj2IA/PZ8J9PwEVOKnTpw00WXgj9qwfnsdaa0n1E0gd+PfrhIrbU7XwkTTEU+jT9eG8q3EaFChzWLdVIlW/0z17Gs+aBjotMp1CVqSxe+IP0odm3ax+FMdhWDpF53n45Ljy/qWvKNt4fH8vjCsCkIvVNVeYgbmXH0kvUv+AAYjBzCt0dUgSyRNotNo="
   edge: true
+  cleanup: false
   file: sonar-perl-plugin/build/libs/sonar-perl-plugin-*-all.jar
   on:
     tags: true
