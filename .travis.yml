@@ -21,7 +21,6 @@ cache:
   - '.gradle'
 install: true
 script:
-  - 'echo $SONARQUBE_SCANNER_PARAMS'
   - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then ./gradlew --stacktrace build sonarqube ; fi'
   - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then ./gradlew --stacktrace build publish sonarqube ; fi'
 after_success:
