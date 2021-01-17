@@ -1,4 +1,7 @@
 version: ~> 1.0
+branches:
+  only:
+  - master
 language: java
 jdk:
 - openjdk11
@@ -6,7 +9,7 @@ addons:
   sonarcloud:
     organization: "sonar-perl"
     token:
-      secure: U/4vM3VRpxealxZOyYIRwhEqwpYIwGUwivXaxLJ2PPG9pxVG7B/3KXeugBEqVSiyasnXNgrvGHoaDVJxr7oFXUVmKOu5zIxLnnwPymYzLTZYbhE9antK/GiiTJQKYNkt6jspY7ztJ0ZysBeTsL3RC9HaVu1du48vIZQ5xoUnMEka9MgBR2sqUwEx46LnKNUi1CJFbT1bV8n8rAAacjxg2tAGNWp3U27cI3IXOPSZg8yX1ZHKwOefPBWupWSx2fartQXt4oTyK/vqyCXwha0BN9B44W5C0N2hp4PSuBMEv5rpqWHuuA0xMq5oL+O7n5vNF0rgBMeIIAuSOngiidavbZ0ITvYWEXUUSP6EucMLzC5wcnLxjGEtYsOXwxxUb36ewZT3HTeJdn+cPHhv3pRxiiYoaIC5JsUNsRpxW6PYNrBv8VFVLXR3XEVI6pwo+NfmJvt/yWGJXnt7IQmBlcuaimVMC5J8h9k9BUwl+dzTnMcnikLQv/KAuUqKfTjdnG74EVRrDW64yRwv/j9eEF54MZPpo1UV2a1jBz2GP7qJ4XnQ1gFeQDRCvodbgiJklAgz9asDjcw2npcyFWXrTvFfoOgX5HaF2M8oUP/eBEUrtopdWNYrC8rjeheXdy5DMbnSBtOlBRCeuOo5lVTBdb3l7OB5ZSRr2dgL+i5iy4YbC0w=
+      secure: "cM7krDgJLqjJhiiK0q2dt/A7ZOA4Xfa/e8On9wLsMbzKcVHNk7ktcf9zE1Loh1/6f/P5mvNfZHf1XXavFYQOTctnzF6GqdKNsg2elw42y1VTARsxkI8mF4HNKJPbmOn41zgjAyEnLObSjq54jhdjzGXa+MLMSTDcnwYaM9uilWbEMNrASsd5jHhDcnYWjW7qOfzHEhA56kbaMIpOUwwqzKDCwBppoivgPkshx7ww4xkIoVixESydVSNBQUqDH4KlzX6l4Pg+oZD1DepeB79O0k6DJOPaxpLUBysyyK4wzberPHMU0I3R4i1RWEwlQUIfhW4CSMJhblqgMaE6fs402UJudNjuZbsvOREb616M+OMKTqnG+dxhlRe9lFAveB+ow84MpDHJFi/v2TH9DqkkaMFmMOXi8wxjK8NMfji6RUnZk4A2zDWq2iWCipQbGnvGHrfbRc+J/NHsS8QPWFlI4Ak2DNz24u2VzIgeYsmTApNLu64AzrasCLGs01RECFWo3YajfLdnJJvjZgSYz5OkOWeZvJFvTL9ln8lQVtIciX85iQ6t4b6p+ktPi7Jix4nSrb12gF1Kb3ONlGtD0wK6m1rA+tgelk/bnkPvWumCFrxqjJVuEoIYcTDB1CIv4C7rU+Fzt/DWh2vOR9v4lTTykn77fItQCkRF2hJr5Tjdhmo="
 services:
   - docker
 cache:
@@ -18,8 +21,9 @@ cache:
   - '.gradle'
 install: true
 script:
-  - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then ./gradlew build sonarqube -Dsonar.login=$SONAR_LOGIN -Dsonar.pullrequest.branch=$TRAVIS_BRANCH -Dsonar.pullrequest.key=$TRAVIS_BUILD_NUMBER -Dsonar.pullrequest.base=master -Dsonar.pullrequest.provider=github -Dsonar.pullrequest.github.repository=sonar-perl/sonar-perl; fi'
-  - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then ./gradlew build publish sonarqube -Dsonar.login=$SONAR_LOGIN; fi'
+  - 'echo $SONARQUBE_SCANNER_PARAMS'
+  - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then ./gradlew --stacktrace build sonarqube ; fi'
+  - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then ./gradlew --stacktrace build publish sonarqube ; fi'
 after_success:
   - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then ./scripts/docker-push.sh; fi'
   - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then ./scripts/github-publish.sh; fi'

@@ -7,14 +7,18 @@ repositories {
     jcenter()
 }
 
-jacoco {
-    toolVersion = '0.8.2'
-}
-
 java {
     toolchain {
         languageVersion = JavaLanguageVersion.of(11)
     }
+}
+
+jacoco {
+    toolVersion = '0.8.6'
+}
+
+test {
+    finalizedBy jacocoTestReport 
 }
 
 dependencies {
