@@ -22,7 +22,7 @@ public class HeredocChannel extends Channel<Lexer> {
 
         List<Token> tokens = output.getTokens();
 
-        if (lookFor != null) {
+        if (lookFor != null && tokens.size() > 0) {
             Token newline = tokens.get(tokens.size() - 1);
             if (newline.getType() != PerlTokenType.NEWLINE) {
                 return false;
