@@ -181,4 +181,28 @@ public class PerlLexerTest {
                 .containsSequence(LTLT, IDENTIFIER, SEMICOLON,
                         NEWLINE, STRING, IDENTIFIER, NEWLINE, EXIT, NUMBER, SEMICOLON, NEWLINE, RCURLYBRACE);
     }
+
+    @Test
+    public void heredocWithPodNested() {
+        assertThat(lexer.lex(
+                        "print <<EOTEXT;\n" +
+                        "=head1 Test \n" +
+                        "=cut\n" +
+                        "EOTEXT\n" +
+                        "1;\n")).extracting(Token::getType)
+                .containsSequence(LTLT, IDENTIFIER, SEMICOLON,
+                        NEWLINE, STRING, IDENTIFIER, NEWLINE, NUMBER, SEMICOLON);
+    }
+
+    @Test
+    public void podWithHeredocNested() {
+        assertThat(lexer.lex(
+                "=head1 Some Test\n" +
+                "print <<EOL;\n" +
+                "bla \n" +
+                "EOL\n" +
+                "=cut\n" +
+                "1;\n")).extracting(Token::getType)
+                .containsSequence(COMMENT, NEWLINE, NUMBER, SEMICOLON);
+    }
 }

@@ -1,4 +1,4 @@
-FROM mercuriete/sonar-scanner:latest
+FROM sonarsource/sonar-scanner-cli:latest
 
 ADD . /project
 WORKDIR /project
