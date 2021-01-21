@@ -1,0 +1,99 @@
+lib/file_processor.pm~|~2~|~1~|~1~|~Missing "VERSION" section in POD~|~See pages 133,138 of PBP~|~Documentation::RequirePodSections~||~
+lib/file_processor.pm~|~2~|~1~|~1~|~Missing "SUBROUTINES/METHODS" section in POD~|~See pages 133,138 of PBP~|~Documentation::RequirePodSections~||~
+lib/file_processor.pm~|~2~|~1~|~1~|~Missing "DIAGNOSTICS" section in POD~|~See pages 133,138 of PBP~|~Documentation::RequirePodSections~||~
+lib/file_processor.pm~|~2~|~1~|~1~|~Missing "CONFIGURATION AND ENVIRONMENT" section in POD~|~See pages 133,138 of PBP~|~Documentation::RequirePodSections~||~
+lib/file_processor.pm~|~2~|~1~|~1~|~Missing "DEPENDENCIES" section in POD~|~See pages 133,138 of PBP~|~Documentation::RequirePodSections~||~
+lib/file_processor.pm~|~2~|~1~|~1~|~Missing "INCOMPATIBILITIES" section in POD~|~See pages 133,138 of PBP~|~Documentation::RequirePodSections~||~
+lib/file_processor.pm~|~2~|~1~|~1~|~Missing "BUGS AND LIMITATIONS" section in POD~|~See pages 133,138 of PBP~|~Documentation::RequirePodSections~||~
+lib/file_processor.pm~|~2~|~1~|~1~|~Missing "LICENSE AND COPYRIGHT" section in POD~|~See pages 133,138 of PBP~|~Documentation::RequirePodSections~||~
+lib/file_processor.pm~|~2~|~1~|~1~|~No package-scoped "$VERSION" variable found~|~See page 404 of PBP~|~Modules::RequireVersionVar~||~
+lib/file_processor.pm~|~3~|~27~|~13~|~Hard tabs used~|~See page 20 of PBP~|~CodeLayout::ProhibitHardTabs~||~
+lib/file_processor.pm~|~3~|~28~|~13~|~Hard tabs used~|~See page 20 of PBP~|~CodeLayout::ProhibitHardTabs~||~
+lib/file_processor.pm~|~3~|~29~|~15~|~Hard tabs used~|~See page 20 of PBP~|~CodeLayout::ProhibitHardTabs~||~
+lib/file_processor.pm~|~3~|~30~|~16~|~Hard tabs used~|~See page 20 of PBP~|~CodeLayout::ProhibitHardTabs~||~
+lib/file_processor.pm~|~3~|~31~|~19~|~Hard tabs used~|~See page 20 of PBP~|~CodeLayout::ProhibitHardTabs~||~
+lib/file_processor.pm~|~3~|~32~|~21~|~Hard tabs used~|~See page 20 of PBP~|~CodeLayout::ProhibitHardTabs~||~
+lib/file_processor.pm~|~3~|~33~|~20~|~Hard tabs used~|~See page 20 of PBP~|~CodeLayout::ProhibitHardTabs~||~
+lib/file_processor.pm~|~3~|~34~|~15~|~Hard tabs used~|~See page 20 of PBP~|~CodeLayout::ProhibitHardTabs~||~
+lib/file_processor.pm~|~3~|~35~|~8~|~Hard tabs used~|~See page 20 of PBP~|~CodeLayout::ProhibitHardTabs~||~
+lib/file_processor.pm~|~3~|~36~|~17~|~Hard tabs used~|~See page 20 of PBP~|~CodeLayout::ProhibitHardTabs~||~
+lib/file_processor.pm~|~3~|~37~|~15~|~Hard tabs used~|~See page 20 of PBP~|~CodeLayout::ProhibitHardTabs~||~
+lib/file_processor.pm~|~3~|~38~|~15~|~Hard tabs used~|~See page 20 of PBP~|~CodeLayout::ProhibitHardTabs~||~
+lib/file_processor.pm~|~3~|~39~|~15~|~Hard tabs used~|~See page 20 of PBP~|~CodeLayout::ProhibitHardTabs~||~
+lib/file_processor.pm~|~3~|~40~|~20~|~Hard tabs used~|~See page 20 of PBP~|~CodeLayout::ProhibitHardTabs~||~
+lib/file_processor.pm~|~3~|~41~|~15~|~Hard tabs used~|~See page 20 of PBP~|~CodeLayout::ProhibitHardTabs~||~
+lib/file_processor.pm~|~3~|~42~|~21~|~Hard tabs used~|~See page 20 of PBP~|~CodeLayout::ProhibitHardTabs~||~
+lib/file_processor.pm~|~3~|~43~|~16~|~Hard tabs used~|~See page 20 of PBP~|~CodeLayout::ProhibitHardTabs~||~
+lib/file_processor.pm~|~3~|~44~|~21~|~Hard tabs used~|~See page 20 of PBP~|~CodeLayout::ProhibitHardTabs~||~
+lib/file_processor.pm~|~3~|~45~|~21~|~Hard tabs used~|~See page 20 of PBP~|~CodeLayout::ProhibitHardTabs~||~
+lib/file_processor.pm~|~3~|~46~|~26~|~Hard tabs used~|~See page 20 of PBP~|~CodeLayout::ProhibitHardTabs~||~
+lib/file_processor.pm~|~3~|~47~|~18~|~Hard tabs used~|~See page 20 of PBP~|~CodeLayout::ProhibitHardTabs~||~
+lib/file_processor.pm~|~3~|~48~|~18~|~Hard tabs used~|~See page 20 of PBP~|~CodeLayout::ProhibitHardTabs~||~
+lib/file_processor.pm~|~3~|~49~|~23~|~Hard tabs used~|~See page 20 of PBP~|~CodeLayout::ProhibitHardTabs~||~
+lib/file_processor.pm~|~3~|~50~|~12~|~Hard tabs used~|~See page 20 of PBP~|~CodeLayout::ProhibitHardTabs~||~
+lib/file_processor.pm~|~3~|~51~|~16~|~Hard tabs used~|~See page 20 of PBP~|~CodeLayout::ProhibitHardTabs~||~
+lib/file_processor.pm~|~3~|~52~|~21~|~Hard tabs used~|~See page 20 of PBP~|~CodeLayout::ProhibitHardTabs~||~
+lib/file_processor.pm~|~3~|~53~|~18~|~Hard tabs used~|~See page 20 of PBP~|~CodeLayout::ProhibitHardTabs~||~
+lib/file_processor.pm~|~3~|~54~|~18~|~Hard tabs used~|~See page 20 of PBP~|~CodeLayout::ProhibitHardTabs~||~
+lib/file_processor.pm~|~3~|~55~|~15~|~Hard tabs used~|~See page 20 of PBP~|~CodeLayout::ProhibitHardTabs~||~
+lib/file_processor.pm~|~3~|~56~|~17~|~Hard tabs used~|~See page 20 of PBP~|~CodeLayout::ProhibitHardTabs~||~
+lib/file_processor.pm~|~3~|~57~|~23~|~Hard tabs used~|~See page 20 of PBP~|~CodeLayout::ProhibitHardTabs~||~
+lib/file_processor.pm~|~3~|~58~|~17~|~Hard tabs used~|~See page 20 of PBP~|~CodeLayout::ProhibitHardTabs~||~
+lib/file_processor.pm~|~3~|~59~|~20~|~Hard tabs used~|~See page 20 of PBP~|~CodeLayout::ProhibitHardTabs~||~
+lib/file_processor.pm~|~3~|~60~|~17~|~Hard tabs used~|~See page 20 of PBP~|~CodeLayout::ProhibitHardTabs~||~
+lib/file_processor.pm~|~2~|~89~|~40~|~Quotes used with a noisy string~|~See page 53 of PBP~|~ValuesAndExpressions::ProhibitNoisyQuotes~||~
+lib/file_processor.pm~|~2~|~90~|~44~|~Quotes used with a noisy string~|~See page 53 of PBP~|~ValuesAndExpressions::ProhibitNoisyQuotes~||~
+lib/file_processor.pm~|~2~|~91~|~50~|~Quotes used with a noisy string~|~See page 53 of PBP~|~ValuesAndExpressions::ProhibitNoisyQuotes~||~
+lib/file_processor.pm~|~2~|~96~|~16~|~1900 is not one of the allowed literal values (0, 1, 2). Use the Readonly or Const::Fast module or the "constant" pragma instead~|~Unnamed numeric literals make code less maintainable~|~ValuesAndExpressions::ProhibitMagicNumbers~||~
+lib/file_processor.pm~|~4~|~109~|~1~|~Subroutine "process_files" does not end with "return"~|~See page 197 of PBP~|~Subroutines::RequireFinalReturn~||~
+lib/file_processor.pm~|~2~|~112~|~44~|~Quotes used with a noisy string~|~See page 53 of PBP~|~ValuesAndExpressions::ProhibitNoisyQuotes~||~
+lib/file_processor.pm~|~4~|~127~|~1~|~Subroutine "output_report" does not end with "return"~|~See page 197 of PBP~|~Subroutines::RequireFinalReturn~||~
+lib/file_processor.pm~|~2~|~131~|~37~|~Quotes used with a noisy string~|~See page 53 of PBP~|~ValuesAndExpressions::ProhibitNoisyQuotes~||~
+lib/file_processor.pm~|~5~|~140~|~3~|~Two-argument "open" used~|~See page 207 of PBP~|~InputOutput::ProhibitTwoArgOpen~||~
+lib/file_processor.pm~|~3~|~140~|~33~|~"die" used instead of "croak"~|~See page 283 of PBP~|~ErrorHandling::RequireCarping~||~
+lib/file_processor.pm~|~2~|~140~|~37~|~Magic punctuation variable $! used in interpolated string~|~See page 79 of PBP~|~Variables::ProhibitPunctuationVars~||~
+lib/file_processor.pm~|~2~|~148~|~3~|~Return value of "close" ignored~|~Check the return value of "close" for success~|~InputOutput::RequireCheckedClose~||~
+lib/file_processor.pm~|~4~|~163~|~1~|~Subroutine "process_record" does not end with "return"~|~See page 197 of PBP~|~Subroutines::RequireFinalReturn~||~
+lib/file_processor.pm~|~2~|~190~|~37~|~Quotes used with a noisy string~|~See page 53 of PBP~|~ValuesAndExpressions::ProhibitNoisyQuotes~||~
+lib/file_processor.pm~|~5~|~197~|~3~|~Two-argument "open" used~|~See page 207 of PBP~|~InputOutput::ProhibitTwoArgOpen~||~
+lib/file_processor.pm~|~3~|~197~|~32~|~"die" used instead of "croak"~|~See page 283 of PBP~|~ErrorHandling::RequireCarping~||~
+lib/file_processor.pm~|~2~|~197~|~36~|~Magic punctuation variable $! used in interpolated string~|~See page 79 of PBP~|~Variables::ProhibitPunctuationVars~||~
+lib/file_processor.pm~|~2~|~206~|~3~|~Return value of "close" ignored~|~Check the return value of "close" for success~|~InputOutput::RequireCheckedClose~||~
+lib/file_processor.pm~|~4~|~217~|~1~|~Subroutine "parse_record" does not end with "return"~|~See page 197 of PBP~|~Subroutines::RequireFinalReturn~||~
+lib/file_processor.pm~|~3~|~240~|~5~|~Ambiguously named variable "record"~|~See page 48 of PBP~|~NamingConventions::ProhibitAmbiguousNames~||~
+lib/file_processor.pm~|~2~|~248~|~42~|~Postfix control "if" used~|~See pages 93,94 of PBP~|~ControlStructures::ProhibitPostfixControls~||~
+lib/file_processor.pm~|~2~|~249~|~47~|~Postfix control "if" used~|~See pages 93,94 of PBP~|~ControlStructures::ProhibitPostfixControls~||~
+lib/file_processor.pm~|~3~|~252~|~2~|~Ambiguously named variable "record"~|~See page 48 of PBP~|~NamingConventions::ProhibitAmbiguousNames~||~
+lib/file_processor.pm~|~2~|~252~|~27~|~Quotes used with a string containing no non-whitespace characters~|~See page 53 of PBP~|~ValuesAndExpressions::ProhibitEmptyQuotes~||~
+lib/file_processor.pm~|~3~|~254~|~2~|~Ambiguously named variable "set"~|~See page 48 of PBP~|~NamingConventions::ProhibitAmbiguousNames~||~
+lib/file_processor.pm~|~2~|~259~|~15~|~200 is not one of the allowed literal values (0, 1, 2). Use the Readonly or Const::Fast module or the "constant" pragma instead~|~Unnamed numeric literals make code less maintainable~|~ValuesAndExpressions::ProhibitMagicNumbers~||~
+lib/file_processor.pm~|~2~|~259~|~60~|~Postfix control "unless" used~|~See pages 96,97 of PBP~|~ControlStructures::ProhibitPostfixControls~||~
+lib/file_processor.pm~|~2~|~259~|~92~|~Regular expression without "/s" flag~|~See pages 240,241 of PBP~|~RegularExpressions::RequireDotMatchAnything~||~
+lib/file_processor.pm~|~3~|~259~|~92~|~Regular expression without "/x" flag~|~See page 236 of PBP~|~RegularExpressions::RequireExtendedFormatting~||~
+lib/file_processor.pm~|~2~|~259~|~92~|~Regular expression without "/m" flag~|~See page 237 of PBP~|~RegularExpressions::RequireLineBoundaryMatching~||~
+lib/file_processor.pm~|~2~|~260~|~15~|~200 is not one of the allowed literal values (0, 1, 2). Use the Readonly or Const::Fast module or the "constant" pragma instead~|~Unnamed numeric literals make code less maintainable~|~ValuesAndExpressions::ProhibitMagicNumbers~||~
+lib/file_processor.pm~|~2~|~260~|~62~|~Postfix control "unless" used~|~See pages 96,97 of PBP~|~ControlStructures::ProhibitPostfixControls~||~
+lib/file_processor.pm~|~2~|~260~|~95~|~Regular expression without "/s" flag~|~See pages 240,241 of PBP~|~RegularExpressions::RequireDotMatchAnything~||~
+lib/file_processor.pm~|~3~|~260~|~95~|~Regular expression without "/x" flag~|~See page 236 of PBP~|~RegularExpressions::RequireExtendedFormatting~||~
+lib/file_processor.pm~|~2~|~260~|~95~|~Regular expression without "/m" flag~|~See page 237 of PBP~|~RegularExpressions::RequireLineBoundaryMatching~||~
+lib/file_processor.pm~|~2~|~280~|~10~|~100 is not one of the allowed literal values (0, 1, 2). Use the Readonly or Const::Fast module or the "constant" pragma instead~|~Unnamed numeric literals make code less maintainable~|~ValuesAndExpressions::ProhibitMagicNumbers~||~
+lib/file_processor.pm~|~2~|~281~|~4~|~101 is not one of the allowed literal values (0, 1, 2). Use the Readonly or Const::Fast module or the "constant" pragma instead~|~Unnamed numeric literals make code less maintainable~|~ValuesAndExpressions::ProhibitMagicNumbers~||~
+lib/file_processor.pm~|~2~|~282~|~4~|~102 is not one of the allowed literal values (0, 1, 2). Use the Readonly or Const::Fast module or the "constant" pragma instead~|~Unnamed numeric literals make code less maintainable~|~ValuesAndExpressions::ProhibitMagicNumbers~||~
+lib/file_processor.pm~|~2~|~283~|~4~|~200 is not one of the allowed literal values (0, 1, 2). Use the Readonly or Const::Fast module or the "constant" pragma instead~|~Unnamed numeric literals make code less maintainable~|~ValuesAndExpressions::ProhibitMagicNumbers~||~
+lib/file_processor.pm~|~5~|~287~|~5~|~"return" statement with explicit "undef"~|~See page 199 of PBP~|~Subroutines::ProhibitExplicitReturnUndef~||~
+lib/file_processor.pm~|~4~|~290~|~1~|~Subroutine "_add_error" does not end with "return"~|~See page 197 of PBP~|~Subroutines::RequireFinalReturn~||~
+lib/file_processor.pm~|~4~|~307~|~1~|~Subroutine "import_file" does not end with "return"~|~See page 197 of PBP~|~Subroutines::RequireFinalReturn~||~
+lib/file_processor.pm~|~2~|~310~|~34~|~Quotes used with a noisy string~|~See page 53 of PBP~|~ValuesAndExpressions::ProhibitNoisyQuotes~||~
+lib/file_processor.pm~|~2~|~315~|~16~|~102 is not one of the allowed literal values (0, 1, 2). Use the Readonly or Const::Fast module or the "constant" pragma instead~|~Unnamed numeric literals make code less maintainable~|~ValuesAndExpressions::ProhibitMagicNumbers~||~
+lib/file_processor.pm~|~5~|~321~|~9~|~Bareword file handle opened~|~See pages 202,204 of PBP~|~InputOutput::ProhibitBarewordFileHandles~||~
+lib/file_processor.pm~|~5~|~321~|~9~|~Two-argument "open" used~|~See page 207 of PBP~|~InputOutput::ProhibitTwoArgOpen~||~
+lib/file_processor.pm~|~4~|~321~|~9~|~Close filehandles as soon as possible after opening them~|~See page 209 of PBP~|~InputOutput::RequireBriefOpen~||~
+lib/file_processor.pm~|~2~|~325~|~9~|~Return value of "close" ignored~|~Check the return value of "close" for success~|~InputOutput::RequireCheckedClose~||~
+lib/file_processor.pm~|~2~|~327~|~22~|~100 is not one of the allowed literal values (0, 1, 2). Use the Readonly or Const::Fast module or the "constant" pragma instead~|~Unnamed numeric literals make code less maintainable~|~ValuesAndExpressions::ProhibitMagicNumbers~||~
+lib/file_processor.pm~|~4~|~335~|~1~|~Subroutine "_print_error" does not end with "return"~|~See page 197 of PBP~|~Subroutines::RequireFinalReturn~||~
+lib/file_processor.pm~|~4~|~347~|~1~|~Subroutine "cleanup" does not end with "return"~|~See page 197 of PBP~|~Subroutines::RequireFinalReturn~||~
+lib/file_processor.pm~|~2~|~353~|~12~|~Postfix control "unless" used~|~See pages 96,97 of PBP~|~ControlStructures::ProhibitPostfixControls~||~
+lib/file_processor.pm~|~2~|~355~|~15~|~Quotes used with a noisy string~|~See page 53 of PBP~|~ValuesAndExpressions::ProhibitNoisyQuotes~||~
+lib/file_processor.pm~|~2~|~355~|~35~|~Quotes used with a noisy string~|~See page 53 of PBP~|~ValuesAndExpressions::ProhibitNoisyQuotes~||~
+lib/file_processor.pm~|~4~|~365~|~1~|~Subroutine "debug" does not end with "return"~|~See page 197 of PBP~|~Subroutines::RequireFinalReturn~||~
+lib/file_processor.pm~|~3~|~367~|~5~|~"warn" used instead of "carp"~|~See page 283 of PBP~|~ErrorHandling::RequireCarping~||~
