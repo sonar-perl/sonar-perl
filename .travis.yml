@@ -5,7 +5,7 @@ branches:
   - /^\d+\.\d+(\.\d+)?(-\S*)?$/
 language: java
 jdk:
-- openjdk11
+- openjdk8
 addons:
   sonarcloud:
     organization: "sonar-perl"
