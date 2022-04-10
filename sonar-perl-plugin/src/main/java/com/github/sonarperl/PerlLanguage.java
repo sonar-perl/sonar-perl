@@ -3,7 +3,6 @@ package com.github.sonarperl;
 import java.util.Arrays;
 
 import org.sonar.api.config.Configuration;
-import org.sonar.api.config.Settings;
 import org.sonar.api.resources.AbstractLanguage;
 
 /**

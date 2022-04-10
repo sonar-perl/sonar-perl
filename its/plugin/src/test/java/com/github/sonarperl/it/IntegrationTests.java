@@ -34,8 +34,7 @@ public class IntegrationTests {
     static {
         try {
             for (Orchestrator orchestrator : new Orchestrator[]{
-                orchestratorBuilderFor("7.9").build(),
-                orchestratorBuilderFor("8.6.0.39681").build()}
+                orchestratorBuilderFor("8.9.8.54436").build()}
             ) {
                 register(orchestrator);
             }

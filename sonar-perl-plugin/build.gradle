@@ -1,21 +1,21 @@
 plugins {
     id "java-library"
-    id "eclipse"
-    id 'com.bmuschko.docker-remote-api' version '6.7.0'
+    id 'com.bmuschko.docker-remote-api' version '7.3.0'
     id "jacoco"
-    id "com.github.johnrengelman.shadow" version '6.1.0'
+    id "com.github.johnrengelman.shadow" version '7.1.2'
 }
 
 repositories {
-    jcenter()
+    mavenCentral()
 }
 
 ext {
-    sonarApiVersion = '7.9'
+    sonarApiVersion = '8.9.8.54436'
 }
 
 dependencies {
     compileOnly "org.sonarsource.sonarqube:sonar-plugin-api:${sonarApiVersion}"
+    testImplementation "org.sonarsource.sonarqube:sonar-plugin-api-impl:${sonarApiVersion}"
     testImplementation "org.sonarsource.sonarqube:sonar-plugin-api:${sonarApiVersion}"
     implementation 'org.apache.commons:commons-compress:1.18'
     implementation 'com.esotericsoftware.yamlbeans:yamlbeans:1.13'
