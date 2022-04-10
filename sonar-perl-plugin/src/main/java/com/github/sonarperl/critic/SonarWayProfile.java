@@ -12,6 +12,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import javax.xml.XMLConstants;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.InputStream;
@@ -34,6 +35,8 @@ public class SonarWayProfile implements BuiltInQualityProfilesDefinition {
                 .getResourceAsStream(PERL_PROFILE_XML)) {
 
             final DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+            factory.setAttribute(XMLConstants.ACCESS_EXTERNAL_DTD, "");
+            factory.setAttribute(XMLConstants.ACCESS_EXTERNAL_SCHEMA, "");
             final DocumentBuilder builder = factory.newDocumentBuilder();
             final Document xmlDoc = builder.parse(rulesXml);
             final NodeList nodes = xmlDoc.getElementsByTagName("key");
