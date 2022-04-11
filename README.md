@@ -11,7 +11,7 @@ This is a [SonarQube](http://www.sonarqube.org/) [plugin](http://docs.sonarqube.
 
 ## Version Compatibility
 
-We support the all SonarQube versions from 7.9 (LTS). Please report bugs
+We support the all SonarQube versions from 8.9 (LTS). Please report bugs
 or incompatibilities in our [bugtracker](https://github.com/sonar-perl/sonar-perl/issues).
 
 
@@ -129,7 +129,7 @@ sonar.sourceEncoding=UTF-8
 
 sonar.tests=t
 # testReport.tgz is the default for the report archive.
-sonar.perl.testHarness.archivePath=testReport.tgz
+sonar.perl.testHarness.archivePath=testReport.tar.gz
 
 sonar.coverageReportPaths=cover_db/sonar_generic.xml
 
@@ -139,10 +139,10 @@ sonar.coverageReportPaths=cover_db/sonar_generic.xml
 # sonar.exclusions=READ*,Change*,COPY*,AUTH*,perlcritic_report.txt
 ```
 
-- Execute your tests and save the report as `testReport.tgz`. We require a format compatible with `TAP::Harness::Archive`.
+- Execute your tests and save the report as `testReport.tar.gz`. We require a format compatible with `TAP::Harness::Archive`.
 
 ```sh
-prove -t -a testReport.tgz
+prove -t -a testReport.tar.gz
 ```
 
 We also support JUnit reports. There are mainly two CPAN modules that can
@@ -176,7 +176,7 @@ PERL_TEST_HARNESS_DUMP_TAP=junit_output prove --formatter TAP::Formatter::JUnit 
 sonar.perl.testHarness.junitPath=junit_output
 ```
 
-The plugin would firstly try to scan `testReport.tgz`, or whatever specified via
+The plugin would firstly try to scan `testReport.tar.gz`, or whatever specified via
 `sonar.perl.testHarness.archivePath`. Only if the archive report does not exist,
 it would look at the JUnit settings.
 

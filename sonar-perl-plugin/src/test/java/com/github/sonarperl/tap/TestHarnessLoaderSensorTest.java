@@ -62,7 +62,7 @@ public class TestHarnessLoaderSensorTest {
 
       try {
           InputStream stream = inputFile.inputStream();
-          return inputFile.setMetadata(new FileMetadata().readMetadata(stream, StandardCharsets.UTF_8, relativePath));
+          return inputFile.setMetadata(new FileMetadata(s->{}).readMetadata(stream, StandardCharsets.UTF_8, relativePath));
       } catch( IOException e) {
           throw new RuntimeException(e);
       }

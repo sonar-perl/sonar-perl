@@ -1,24 +1,55 @@
 package com.github.sonarperl.critic;
 
+import com.github.sonarperl.PerlLanguage;
 import org.sonar.api.profiles.ProfileDefinition;
 import org.sonar.api.profiles.RulesProfile;
 import org.sonar.api.profiles.XMLProfileParser;
+import org.sonar.api.server.profile.BuiltInQualityProfilesDefinition;
 import org.sonar.api.utils.ValidationMessages;
+import org.sonar.api.utils.log.Logger;
+import org.sonar.api.utils.log.Loggers;
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
-public final class SonarWayProfile extends ProfileDefinition {
+import javax.xml.XMLConstants;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import java.io.InputStream;
 
+
+public class SonarWayProfile implements BuiltInQualityProfilesDefinition {
+    private static final Logger LOGGER = Loggers.get(SonarWayProfile.class);
     private static final String PERL_PROFILE_XML = "com/github/sonarperl/sonar-way-profile.xml";
-    private final XMLProfileParser xmlProfileParser;
-
-    public SonarWayProfile(XMLProfileParser xmlProfileParser) {
-        this.xmlProfileParser = xmlProfileParser;
-    }
+    private static final String KEY = "PerlCritic";
+    private static final String NAME = "PerlCritic";
 
     @Override
-    public RulesProfile createProfile(ValidationMessages validation) {
-        RulesProfile parsedResource = xmlProfileParser.parseResource(getClass().getClassLoader(),
-                PERL_PROFILE_XML, validation);
-        parsedResource.setDefaultProfile(true);
-        return parsedResource;
+    public void define(final Context context) {
+
+        final NewBuiltInQualityProfile profile = context
+                .createBuiltInQualityProfile(NAME, PerlLanguage.KEY).setDefault(true);
+        final String repositoryKey = KEY;
+
+        try (final InputStream rulesXml = this.getClass().getClassLoader()
+                .getResourceAsStream(PERL_PROFILE_XML)) {
+
+            final DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+            factory.setAttribute(XMLConstants.ACCESS_EXTERNAL_DTD, "");
+            factory.setAttribute(XMLConstants.ACCESS_EXTERNAL_SCHEMA, "");
+            final DocumentBuilder builder = factory.newDocumentBuilder();
+            final Document xmlDoc = builder.parse(rulesXml);
+            final NodeList nodes = xmlDoc.getElementsByTagName("key");
+            for (int i = 0; i < nodes.getLength(); i++) {
+                final Node node = nodes.item(i);
+                final String key = node.getTextContent();
+                profile.activateRule(repositoryKey, key);
+            }
+
+        } catch (Exception e) {
+            LOGGER.warn("Unexpected error while registering rules", e);
+        }
+        profile.done();
     }
 }
+

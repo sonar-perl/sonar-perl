@@ -1,7 +1,7 @@
 apply plugin: 'java'
 
 repositories {
-    jcenter()
+    mavenCentral()
 }
 
 java {
@@ -13,8 +13,8 @@ java {
 dependencies {
     testImplementation 'junit:junit:4.12'
     testImplementation 'org.assertj:assertj-core:3.11.1'
-    testImplementation 'org.sonarsource.orchestrator:sonar-orchestrator:3.34.0.2692'
-    testImplementation 'org.sonarsource.sonarqube:sonar-ws:7.9.5'
+    testImplementation 'org.sonarsource.orchestrator:sonar-orchestrator:3.37.0.87'
+    testImplementation 'org.sonarsource.sonarqube:sonar-ws:8.9.8.54436'
     testImplementation project(':sonar-perl-plugin')
 }
 
