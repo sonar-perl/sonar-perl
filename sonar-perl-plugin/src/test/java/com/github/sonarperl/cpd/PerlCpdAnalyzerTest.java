@@ -38,41 +38,18 @@ public class PerlCpdAnalyzerTest {
         assertThat(line1.getStartLine()).isEqualTo(2);
         assertThat(line1.getEndLine()).isEqualTo(2);
         assertThat(line1.getStartUnit()).isEqualTo(1);
-        assertThat(line1.getEndUnit()).isEqualTo(1);
+        assertThat(line1.getEndUnit()).isEqualTo(2);
         List<String> values = lines.stream().map(TokensLine::getValue).collect(Collectors.toList());
         assertThat(values).containsExactly(
-                "00000",
-                "1111L",
-                "0x10000L",
-                "0X1111",
-                "0b1111L",
-                "0o12345",
-                "u\"lala\"",
-                "U\"lala\"",
-                "r\"lala\"",
-                "R\"lala\"",
-                "print",
-                "a=[1,",
+                "00000;",
+                "\"lala\";",
+                "print;",
+                "$a=[1,",
                 "2,",
-                "]",
-                "deffoo():pass",
-                "classbar(object):pass",
-                "deffoo2(x,y,z,):",
-                // \n materializes DEDENT
-                "pass\n",
-                "defbar(*baz):",
-                // \n materializes DEDENT
-                "foo(3,4,5)\n",
-                "defbar2(**baz):",
-                // \n materializes DEDENT
-                "yield;\n",
-                "items=[]",
-                "(itemforiteminitems)",
-                "[itemforiteminitems]",
-                "ifitemisnotNone:",
-                "pass\n",
-                "ifitemnotinitems:",
-                "pass\n");
+                "];",
+                "subfoo(){}",
+                "packagebar;",
+                "subfoo2($x,$y,$z);");
     }
 
     private DefaultInputFile inputFile(String fileName) {
