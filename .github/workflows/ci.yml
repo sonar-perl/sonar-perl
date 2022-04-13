@@ -10,9 +10,7 @@ permissions:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v3
     - name: Set up JDK 11
@@ -38,7 +36,15 @@ jobs:
             repo: context.repo.repo,
             body: '❌ ${{ github.workflow }} failed: ${{ steps.gradle.outputs.build-scan-url }}'
           })
-    - name: Release
+    - name: Release to DockerHub
+      if: startsWith(github.ref, 'refs/tags/') || github.ref == 'refs/heads/master'
+      env:
+        DOCKER_USER: ${{ secrets.DOCKER_USER }}
+        DOCKER_PASS: ${{ secrets.DOCKER_PASS }}
+      run: |
+        ./gradlew publish
+        ./scripts/docker-push.sh
+    - name: Release to Github
       uses: softprops/action-gh-release@v1
       if: startsWith(github.ref, 'refs/tags/')
       with:
