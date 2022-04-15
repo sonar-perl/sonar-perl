@@ -124,7 +124,8 @@ public class PerlCriticIssuesLoaderSensor implements Sensor {
             } else {
                 // known perlcritic rule
                 NewIssue issue = this.context.newIssue()
-                        .forRule(rule);
+                        .forRule(rule)
+                        .overrideSeverity(severity);
 
                 NewIssueLocation location = issue.newLocation().message(message).on(inputFile);
                 if (line > 0) {
