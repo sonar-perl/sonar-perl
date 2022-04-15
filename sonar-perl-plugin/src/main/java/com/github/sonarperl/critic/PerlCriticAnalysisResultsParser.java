@@ -40,7 +40,7 @@ class PerlCriticAnalysisResultsParser {
      *
      *  // %f~|~%s~|~%l~|~%c~|~%m~|~%e~|~%p~||~%n
      *
-     * See {@link https://github.com/jploski/epic-ide/blob/b70f1c5ccb3e528f3a8c727b04dc633439f1d35a/org.epic.perleditor/src/org/epic/perleditor/editors/util/SourceCritic.java}
+     * See {@link <a href="https://github.com/jploski/epic-ide/blob/b70f1c5ccb3e528f3a8c727b04dc633439f1d35a/org.epic.perleditor/src/org/epic/perleditor/editors/util/SourceCritic.java">...</a>}
      */
     private Optional<PerlCriticViolation> parseLine(String line) {
         if(line.endsWith("OK")) {
@@ -59,7 +59,7 @@ class PerlCriticAnalysisResultsParser {
         }
 
         // @see org.epic.perleditor.editors.util.SourceCritic
-        return Optional.of(new PerlCriticViolation(fields[6], fields[4], fields[0], "".equals(fields[2]) ? -1 : Integer.parseInt(fields[2])));
+        return Optional.of(new PerlCriticViolation(fields[6], fields[4], fields[0], "".equals(fields[2]) ? -1 : Integer.parseInt(fields[2]), Integer.parseInt(fields[1])));
     }
 
 }
