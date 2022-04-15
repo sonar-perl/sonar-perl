@@ -36,4 +36,16 @@ public class PerlCriticAnalysisResultsParserTest {
         return Paths.get(ClassLoader.getSystemResource("basic/perlcritic_report.txt").toURI()).toFile();
     }
 
+
+    @Test
+    public void should_convert_severity() {
+        assertThat(PerlCriticAnalysisResultsParser.severityString("1"), is("INFO"));
+        assertThat(PerlCriticAnalysisResultsParser.severityString("2"), is("MINOR"));
+        assertThat(PerlCriticAnalysisResultsParser.severityString("3"), is("MAJOR"));
+        assertThat(PerlCriticAnalysisResultsParser.severityString("4"), is("CRITICAL"));
+        assertThat(PerlCriticAnalysisResultsParser.severityString("5"), is("BLOCKER"));
+        // default
+        assertThat(PerlCriticAnalysisResultsParser.severityString("6"), is("MAJOR"));
+    }
+
 }

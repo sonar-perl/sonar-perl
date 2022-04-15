@@ -8,9 +8,9 @@ class PerlCriticViolation {
     private final String description;
     private final String filePath;
     private final int line;
-    private final int severity;
+    private final String severity;
 
-    public PerlCriticViolation(final String type, final String description, final String filePath, final int line, final int severity) {
+    public PerlCriticViolation(final String type, final String description, final String filePath, final int line, final String severity) {
         this.type = type;
         this.description = description;
         this.filePath = filePath;
@@ -35,15 +35,7 @@ class PerlCriticViolation {
     }
 
     public String getSeverity() {
-        // INFO, MINOR, MAJOR, CRITICAL, BLOCKER
-        switch (this.severity) {
-            case 1: return Severity.INFO;
-            case 2: return Severity.MINOR;
-            case 3: return Severity.MAJOR;
-            case 4: return Severity.CRITICAL;
-            case 5: return Severity.BLOCKER;
-        }
-        return Severity.defaultSeverity();
+        return severity;
     }
 
     @Override

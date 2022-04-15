@@ -133,7 +133,6 @@ public class PerlCriticIssuesLoaderSensor implements Sensor {
                 issue.at(location);
                 issue.save();
             }
-            return;
         }
 
     }
