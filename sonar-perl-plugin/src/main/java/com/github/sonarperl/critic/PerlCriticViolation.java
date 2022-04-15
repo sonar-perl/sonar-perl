@@ -1,17 +1,21 @@
 package com.github.sonarperl.critic;
 
+import org.sonar.api.rule.Severity;
+
 class PerlCriticViolation {
 
     private final String type;
     private final String description;
     private final String filePath;
     private final int line;
+    private final String severity;
 
-    public PerlCriticViolation(final String type, final String description, final String filePath, final int line) {
+    public PerlCriticViolation(final String type, final String description, final String filePath, final int line, final String severity) {
         this.type = type;
         this.description = description;
         this.filePath = filePath;
         this.line = line;
+        this.severity = severity;
     }
 
     public String getType() {
@@ -28,6 +32,10 @@ class PerlCriticViolation {
 
     public int getLine() {
         return line;
+    }
+
+    public String getSeverity() {
+        return severity;
     }
 
     @Override

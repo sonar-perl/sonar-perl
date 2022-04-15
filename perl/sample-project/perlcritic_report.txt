@@ -16,3 +16,4 @@ t/Project.t~|~4~|~1~|~1~|~Code not contained in explicit package~|~Violates enca
 t/Project.t~|~2~|~1~|~1~|~No package-scoped "$VERSION" variable found~|~See page 404 of PBP~|~Modules::RequireVersionVar~||~
 t/Project.t~|~5~|~5~|~1~|~Code before strictures are enabled~|~See page 429 of PBP~|~TestingAndDebugging::RequireUseStrict~||~
 t/Project.t~|~4~|~5~|~1~|~Code before warnings are enabled~|~See page 431 of PBP~|~TestingAndDebugging::RequireUseWarnings~||~
+t/Project.t~|~4~|~5~|~1~|~xy~|~test~|~Unknown::UnknownCriticRule~||~

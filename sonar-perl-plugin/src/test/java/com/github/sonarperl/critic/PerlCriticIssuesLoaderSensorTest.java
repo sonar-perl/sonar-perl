@@ -50,6 +50,7 @@ public class PerlCriticIssuesLoaderSensorTest {
         inputFile(relativePath);
         createSensor().execute(context);
         assertThat(context.allIssues()).hasSize(3);
+        assertThat(context.allExternalIssues()).hasSize(1);
     }
 
     @Test

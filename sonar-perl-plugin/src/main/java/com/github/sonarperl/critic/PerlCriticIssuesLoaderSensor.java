@@ -9,12 +9,15 @@ import org.sonar.api.batch.fs.FileSystem;
 import org.sonar.api.batch.fs.InputFile;
 import org.sonar.api.batch.fs.InputFile.Type;
 import org.sonar.api.batch.rule.ActiveRules;
+import org.sonar.api.batch.rule.Severity;
 import org.sonar.api.batch.sensor.Sensor;
 import org.sonar.api.batch.sensor.SensorContext;
 import org.sonar.api.batch.sensor.SensorDescriptor;
+import org.sonar.api.batch.sensor.issue.NewExternalIssue;
 import org.sonar.api.batch.sensor.issue.NewIssue;
 import org.sonar.api.batch.sensor.issue.NewIssueLocation;
 import org.sonar.api.rule.RuleKey;
+import org.sonar.api.rules.RuleType;
 import org.sonar.api.utils.log.Logger;
 import org.sonar.api.utils.log.Loggers;
 
@@ -84,31 +87,53 @@ public class PerlCriticIssuesLoaderSensor implements Sensor {
                     .inputFile(fileSystem.predicates().hasRelativePath(violation.getFilePath()));
 
             if (inputFile != null) {
-                saveIssue(inputFile, violation.getLine(), violation.getType(), violation.getDescription());
+                saveIssue(inputFile, violation);
             } else {
                 log.warn("Not able to find an input file with path '{}'", violation.getFilePath());
             }
         }
 
-        void saveIssue(InputFile inputFile, int line, String externalRuleKey, String message) {
+        void saveIssue(InputFile inputFile, PerlCriticViolation violation) {
+            int line = violation.getLine();
+            String externalRuleKey = violation.getType();
+            String message = violation.getDescription();
+            Severity severity = Severity.valueOf(violation.getSeverity());
+
             RuleKey rule = RuleKey.of(PerlCriticRulesDefinition.getRepositoryKey(), externalRuleKey);
-
-            if (activeRules.find(rule) == null) {
-                log.info("Ignoring unknown or deactivated issue of type {}", rule);
-                return;
-            }
-
             log.debug("Saving an issue of type {} on file {}", rule, inputFile);
+            if (activeRules.find(rule) == null) {
+                // unknown perlcritic rule
+                log.info("Found an unknown or deactivated issue of type {}", rule);
+                NewExternalIssue issue = this.context.newExternalIssue()
+                        .engineId(PerlCriticRulesDefinition.getRepositoryKey())
+                        .ruleId(externalRuleKey)
+                        // don't have any other indicators
+                        .type(RuleType.CODE_SMELL)
+                        .severity(severity);
 
-            NewIssue issue = this.context.newIssue().forRule(rule);
-            NewIssueLocation location = issue.newLocation().message(message).on(inputFile);
+                NewIssueLocation location = issue
+                        .newLocation()
+                        .message(message)
+                        .on(inputFile);
 
-            if (line > 0) {
-                location.at(inputFile.selectLine(line));
+                if (line > 0) {
+                    location.at(inputFile.selectLine(line));
+                }
+                issue.at(location);
+                issue.save();
+            } else {
+                // known perlcritic rule
+                NewIssue issue = this.context.newIssue()
+                        .forRule(rule)
+                        .overrideSeverity(severity);
+
+                NewIssueLocation location = issue.newLocation().message(message).on(inputFile);
+                if (line > 0) {
+                    location.at(inputFile.selectLine(line));
+                }
+                issue.at(location);
+                issue.save();
             }
-
-            issue.at(location);
-            issue.save();
         }
 
     }

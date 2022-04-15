@@ -8,6 +8,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import org.sonar.api.rule.Severity;
 import org.sonar.api.utils.log.Logger;
 import org.sonar.api.utils.log.Loggers;
 
@@ -40,7 +41,7 @@ class PerlCriticAnalysisResultsParser {
      *
      *  // %f~|~%s~|~%l~|~%c~|~%m~|~%e~|~%p~||~%n
      *
-     * See {@link https://github.com/jploski/epic-ide/blob/b70f1c5ccb3e528f3a8c727b04dc633439f1d35a/org.epic.perleditor/src/org/epic/perleditor/editors/util/SourceCritic.java}
+     * See {@link <a href="https://github.com/jploski/epic-ide/blob/b70f1c5ccb3e528f3a8c727b04dc633439f1d35a/org.epic.perleditor/src/org/epic/perleditor/editors/util/SourceCritic.java">...</a>}
      */
     private Optional<PerlCriticViolation> parseLine(String line) {
         if(line.endsWith("OK")) {
@@ -59,7 +60,21 @@ class PerlCriticAnalysisResultsParser {
         }
 
         // @see org.epic.perleditor.editors.util.SourceCritic
-        return Optional.of(new PerlCriticViolation(fields[6], fields[4], fields[0], "".equals(fields[2]) ? -1 : Integer.parseInt(fields[2])));
+        return Optional.of(new PerlCriticViolation(fields[6], fields[4], fields[0], "".equals(fields[2]) ? -1 : Integer.parseInt(fields[2]), severityString(fields[1])));
     }
 
+    static String severityString(String severity) {
+        // INFO, MINOR, MAJOR, CRITICAL, BLOCKER
+        switch (severity) {
+            case "1": return Severity.INFO;
+            case "2": return Severity.MINOR;
+            case "3": return Severity.MAJOR;
+            case "4": return Severity.CRITICAL;
+            case "5": return Severity.BLOCKER;
+            default: {
+                log.warn("unknown severity value '{}'", severity);
+                return Severity.defaultSeverity();
+            }
+        }
+    }
 }
