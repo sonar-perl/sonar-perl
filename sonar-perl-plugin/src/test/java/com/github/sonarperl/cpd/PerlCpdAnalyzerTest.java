@@ -5,6 +5,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import com.github.sonarperl.PerlLanguage;
 import com.github.sonarperl.PerlVisitorContext;
@@ -50,6 +51,18 @@ public class PerlCpdAnalyzerTest {
                 "subfoo(){}",
                 "packagebar;",
                 "subfoo2($x,$y,$z);");
+    }
+
+    @Test
+    public void detect_duplications() {
+        DefaultInputFile inputFile = inputFile("duplications.pl");
+        PerlVisitorContext visitorContext = TestPerlVisitorRunner.createContext(inputFile.path().toFile());
+        cpdAnalyzer.pushCpdTokens(inputFile, visitorContext);
+
+        List<TokensLine> lines = context.cpdTokens("moduleKey:duplications.pl");
+        assertThat(lines).hasSize(12);
+        assertThat(lines.get(0)).isNotEqualTo(lines.get(6));
+        IntStream.range(1, 6).forEach(i -> assertThat(lines.get(i).getValue()).isEqualTo(lines.get(i + 6).getValue()));
     }
 
     private DefaultInputFile inputFile(String fileName) {

@@ -1,4 +1,4 @@
-rootProject.name = 'perl'
+rootProject.name = 'sonar-perl'
 include ":sonar-perl-plugin"
 include ":perl-frontend"
 include ":it-perl-plugin"
