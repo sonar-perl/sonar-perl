@@ -54,7 +54,7 @@ public class PerlCpdAnalyzer {
     }
 
     private static boolean isIgnoredType(TokenType type) {
-        return type.equals(PerlTokenType.NEWLINE) || type.equals(GenericTokenType.EOF);
+        return type.equals(PerlTokenType.NEWLINE) || type.equals(GenericTokenType.EOF) || type.equals(GenericTokenType.COMMENT);
     }
 
     static class TokenVisitor extends PerlVisitor {
