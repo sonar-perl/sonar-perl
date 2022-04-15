@@ -1,5 +1,4 @@
 [![](https://images.microbadger.com/badges/version/sonarperl/sonar-perl.svg)](https://microbadger.com/images/sonarperl/sonar-perl "Get your own version badge on microbadger.com")
-[![Build Status](https://travis-ci.org/sonar-perl/sonar-perl.svg?branch=master)](https://travis-ci.org/sonar-perl/sonar-perl)
 [![Quality Gate](https://sonarcloud.io/api/project_badges/measure?project=sonar-perl_sonar-perl&metric=alert_status&branch=master)](https://sonarcloud.io/dashboard?id=sonar-perl_sonar-perl)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=sonar-perl_sonar-perl&metric=coverage&template=FLAT&branch=master)](https://sonarcloud.io/dashboard?id=sonar-perl_sonar-perl)
 
@@ -30,8 +29,9 @@ What we have so far...
 * Test metrics (duration, successful and failed test count)
 * Syntax highlighting of imported code
 * Attaching of Perl::Critic issues
-* Default profile containing 271 Perl::Critic rules
+* Default profile containing 271 Perl::Critic rules and accepting unknown violations from Perl::Critic reports
 * Test Coverage (via [Devel::Cover::Report::SonarGeneric](https://metacpan.org/pod/Devel::Cover::Report::SonarGeneric))
+* Copy-Paste Detection via the generic PMD-CPD module
 
 ## Screenshots
 
@@ -205,7 +205,7 @@ need to have a local docker daemon running for this.
 
 ## Performing a release
 
-We're using the `axion` plugin for standardising the release process. To craft a new release, we tag the latest master, and let TravisCI push the resulting build artifacts to our GitHub releases page, and to Docker Hub.
+We're using the `axion` plugin for standardising the release process. To craft a new release, we tag the latest master, finalize the draft release notes, and let Github Workflows push the resulting build artifacts to our GitHub releases page, and a demo Docker image to Docker Hub.
 
 You can start this process by calling:
 
@@ -213,18 +213,17 @@ You can start this process by calling:
 ./gradlew release
 ```
 
+While Github runs, make sure to fill in the release notes.
+
 In case the build doesn't succeed, you should remove the tag from GitHub, fix the issues in `master`, and release again. But, if unsure, increment and release a new version.
 
 Further details can be read on the [axion read-the-docs](https://axion-release-plugin.readthedocs.io/en/latest/) page.
-
-After TravisCI drafted the release and uploaded the artifacts, make sure to fill in the release notes on GitHub.
 
 ## Next steps
 
 Please look at the issues in our [bugtracker](https://github.com/sonar-perl/sonar-perl/issues) for
 the planning and status of the next steps. We also appreciate contributions from the community.
 So, if you're interested, get in touch with us!
-
 
 ## Links
 
