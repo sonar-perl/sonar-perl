@@ -10,8 +10,7 @@ This is a community-contributed [SonarQube](http://www.sonarqube.org/) [plugin](
 
 ## Version Compatibility
 
-We support the all SonarQube versions from 8.9 (LTS). Please report bugs
-or incompatibilities in our [bugtracker](https://github.com/sonar-perl/sonar-perl/issues).
+We support SonarQube LTS (9.9) and latest (10.0) releases. Please report bugs or incompatibilities in our [bugtracker](https://github.com/sonar-perl/sonar-perl/issues).
 
 
 ## Current State
