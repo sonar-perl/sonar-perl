@@ -47,7 +47,7 @@ public class QuoteLikeChannel extends Channel<Lexer> {
 
         switch (ch) {
             case '/':
-                if (output.getTokens().size() == 0) {
+                if (output.getTokens().isEmpty()) {
                     return false;
                 }
                 TokenType previousTokenType = output.getTokens().get(output.getTokens().size()-1).getType();
@@ -120,10 +120,8 @@ public class QuoteLikeChannel extends Channel<Lexer> {
             if (code.charAt(index) == EOF) {
                 return false;
             }
-            if (nestingAllowed) {
-                if (code.charAt(index) == quoteStart) {
+            if (nestingAllowed && code.charAt(index) == quoteStart) {
                     nesting++;
-                }
             }
             if (code.charAt(index) == quoteEnd && code.charAt(index-1) != '\\') {
                 nesting--;
