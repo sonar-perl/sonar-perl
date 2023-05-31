@@ -3,9 +3,9 @@
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=sonar-perl_sonar-perl&metric=coverage&template=FLAT&branch=master)](https://sonarcloud.io/dashboard?id=sonar-perl_sonar-perl)
 
 
-# Perl 5 Plugin for SonarQube
+# Community Perl 5 Plugin for SonarQube
 
-This is a [SonarQube](http://www.sonarqube.org/) [plugin](http://docs.sonarqube.org/display/PLUG/Plugin+Library) to integrate popular features like code coverage, Perl::Critic and test reporting for your Perl 5 projects.
+This is a community-contributed [SonarQube](http://www.sonarqube.org/) [plugin](http://docs.sonarqube.org/display/PLUG/Plugin+Library) to integrate popular features like code coverage, Perl::Critic and test reporting for your Perl 5 projects.
 
 
 ## Version Compatibility
