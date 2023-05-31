@@ -12,8 +12,6 @@ import java.util.List;
 
 import org.junit.Test;
 
-import com.github.sonarperl.critic.PerlCriticAnalysisResultsParser;
-import com.github.sonarperl.critic.PerlCriticViolation;
 
 public class PerlCriticAnalysisResultsParserTest {
 

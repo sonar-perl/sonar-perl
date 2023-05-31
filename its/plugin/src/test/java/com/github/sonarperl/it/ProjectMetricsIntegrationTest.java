@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.io.File;
 import java.util.Collection;
 
+import com.sonar.orchestrator.junit4.OrchestratorRule;
 import org.junit.ClassRule;
 import org.junit.Test;
 import org.junit.rules.TestRule;
@@ -12,7 +13,6 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
-import com.sonar.orchestrator.Orchestrator;
 import com.sonar.orchestrator.build.SonarScanner;
 
 @RunWith(Parameterized.class)
@@ -21,7 +21,7 @@ public class ProjectMetricsIntegrationTest {
     private static final String PROJECT_KEY = "metrics";
 
     @Parameters
-    public static Collection<Orchestrator> orchestrators() {
+    public static Collection<OrchestratorRule> orchestrators() {
         return IntegrationTests.orchestrators();
     }
 
@@ -41,7 +41,7 @@ public class ProjectMetricsIntegrationTest {
 
     private final TestSonarClient wsClient;
 
-    public ProjectMetricsIntegrationTest(Orchestrator orchestrator) {
+    public ProjectMetricsIntegrationTest(OrchestratorRule orchestrator) {
         orchestrator.executeBuild(build);
         wsClient = new TestSonarClient(orchestrator, PROJECT_KEY);
     }

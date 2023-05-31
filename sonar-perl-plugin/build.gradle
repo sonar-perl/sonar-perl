@@ -1,8 +1,8 @@
 plugins {
     id "java-library"
-    id 'com.bmuschko.docker-remote-api' version '7.3.0'
+    id 'com.bmuschko.docker-remote-api' version '9.3.1'
     id "jacoco"
-    id "com.github.johnrengelman.shadow" version '7.1.2'
+    id 'com.github.johnrengelman.shadow' version '8.1.1'
 }
 
 repositories {
@@ -10,19 +10,20 @@ repositories {
 }
 
 ext {
-    sonarApiVersion = '8.9.8.54436'
+    sonarApiVersion = '9.9.0.229'
+    sonarqubeVersion = '9.6.1.59531'
 }
 
 dependencies {
-    compileOnly "org.sonarsource.sonarqube:sonar-plugin-api:${sonarApiVersion}"
-    testImplementation "org.sonarsource.sonarqube:sonar-plugin-api-impl:${sonarApiVersion}"
-    testImplementation "org.sonarsource.sonarqube:sonar-plugin-api:${sonarApiVersion}"
-    implementation 'org.apache.commons:commons-compress:1.18'
+    compileOnly "org.sonarsource.api.plugin:sonar-plugin-api:${sonarApiVersion}"
+    testImplementation "org.sonarsource.api.plugin:sonar-plugin-api:${sonarApiVersion}"
+    testImplementation "org.sonarsource.sonarqube:sonar-plugin-api-impl:${sonarqubeVersion}"
+    implementation 'org.apache.commons:commons-compress:1.21'
     implementation 'com.esotericsoftware.yamlbeans:yamlbeans:1.13'
     implementation 'com.fasterxml.staxmate:staxmate:2.4.0'
     implementation 'commons-io:commons-io:2.7'
     implementation 'commons-lang:commons-lang:2.6'
-    testImplementation 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.13.1'
     testImplementation 'org.assertj:assertj-core:3.11.1'
     testImplementation 'org.mockito:mockito-core:2.23.4'
     implementation project(':perl-frontend')
@@ -30,7 +31,7 @@ dependencies {
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(11)
+        languageVersion = JavaLanguageVersion.of(17)
     }
 }
 
@@ -39,11 +40,11 @@ compileJava {
 }
 
 jacoco {
-    toolVersion = '0.8.6'
+    toolVersion = '0.8.10'
 }
 jacocoTestReport {
     reports {
-        xml.enabled true
+        xml.required = true
     }
 }
 
@@ -87,14 +88,14 @@ docker {
     }
 }
 
-task copyDockerfile (type: Copy) {
+tasks.register('copyDockerfile', Copy) {
     group = 'Docker'
     description = 'Copies the Dockerfile into its target directory.'
     from 'Dockerfile'
     into 'build/docker'
 }
 
-task copyDockerTargetArtifacts(type: Copy) {
+tasks.register('copyDockerTargetArtifacts', Copy) {
     group = 'Docker'
     description = 'Assembles contents for docker image.'
     dependsOn copyDockerfile, shadowJar
@@ -103,7 +104,7 @@ task copyDockerTargetArtifacts(type: Copy) {
     into "build/docker/build/libs/"
 }
 
-task buildDockerImage(type: DockerBuildImage) {
+tasks.register('buildDockerImage', DockerBuildImage) {
     description = 'Builds a new docker image.'
     dependsOn copyDockerTargetArtifacts
     inputDir = file('build/docker')
@@ -111,17 +112,17 @@ task buildDockerImage(type: DockerBuildImage) {
     noCache = true
 }
 
-task createDockerContainer(type: DockerCreateContainer) {
+tasks.register('createDockerContainer', DockerCreateContainer) {
     dependsOn buildDockerImage
     targetImageId buildDockerImage.getImageId()
     hostConfig.portBindings = [ '9000:9000', '9002:9002' ]
     hostConfig.autoRemove = true
 }
 
-task publish {}
+tasks.register('publish') {}
 publish.dependsOn(createDockerContainer)
 
-task startDockerContainer(type: DockerStartContainer) {
+tasks.register('startDockerContainer', DockerStartContainer) {
     dependsOn createDockerContainer
     targetContainerId createDockerContainer.getContainerId()
     doLast {
@@ -129,14 +130,14 @@ task startDockerContainer(type: DockerStartContainer) {
     }
 }
 
-task run {}
+tasks.register('run') {}
 run.dependsOn(startDockerContainer)
 
-task stopDockerContainer(type: DockerStopContainer) {
+tasks.register('stopDockerContainer', DockerStopContainer) {
     targetContainerId createDockerContainer.getContainerId()
 }
 
-task stop {}
+tasks.register('stop') {}
 stop.dependsOn stopDockerContainer
 
 

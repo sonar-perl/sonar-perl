@@ -4,6 +4,12 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import com.sonar.orchestrator.Orchestrator;
+import com.sonar.orchestrator.OrchestratorBuilder;
+import com.sonar.orchestrator.config.Configuration;
+import com.sonar.orchestrator.container.Edition;
+import com.sonar.orchestrator.junit4.OrchestratorRule;
+import com.sonar.orchestrator.junit4.OrchestratorRuleBuilder;
 import org.junit.Assert;
 import org.junit.ClassRule;
 import org.junit.rules.RuleChain;
@@ -11,10 +17,9 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized.Parameters;
 import org.junit.runners.Suite;
 
-import com.sonar.orchestrator.Orchestrator;
-import com.sonar.orchestrator.OrchestratorBuilder;
-import com.sonar.orchestrator.container.Edition;
 import com.sonar.orchestrator.locator.FileLocation;
+
+import static com.sonar.orchestrator.junit4.OrchestratorRule.builder;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({ 
@@ -26,19 +31,19 @@ import com.sonar.orchestrator.locator.FileLocation;
 })
 public class IntegrationTests {
 
-    private static Collection<Orchestrator> ORCHESTRATORS = new ArrayList<>(2);
+    private static Collection<OrchestratorRule> ORCHESTRATORS = new ArrayList<>(2);
 
     @ClassRule
     public static RuleChain RESOURCES = RuleChain.emptyRuleChain();
 
     static {
         try {
-            for (Orchestrator orchestrator : new Orchestrator[]{
-                orchestratorBuilderFor("8.9.8.54436").build(),
-                orchestratorBuilderFor("9.4.0.54424").build()
+            for (OrchestratorRule orchestratorRule : new OrchestratorRule[]{
+                orchestratorBuilderFor("9.6.1.59531").build(),
+                orchestratorBuilderFor("LATEST_RELEASE[10.0]").build(),
             }
             ) {
-                register(orchestrator);
+                register(orchestratorRule);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -46,25 +51,25 @@ public class IntegrationTests {
         }
     }
 
-    private static void register(Orchestrator orchestrator) {
-        ORCHESTRATORS.add(orchestrator);
-        RESOURCES = RESOURCES.around(orchestrator);
+    private static void register(OrchestratorRule orchestratorRule) {
+        ORCHESTRATORS.add(orchestratorRule);
+        RESOURCES = RESOURCES.around(orchestratorRule);
     }
 
     @Parameters
-    public static final Collection<Orchestrator> orchestrators() {
+    public static final Collection<OrchestratorRule> orchestrators() {
         return ORCHESTRATORS;
     }
 
-    private static OrchestratorBuilder orchestratorBuilderFor(String version) {
+    private static OrchestratorRuleBuilder orchestratorBuilderFor(String version) {
         FileLocation sonarPluginJar = FileLocation.byWildcardMavenFilename(new File("../../sonar-perl-plugin/build/libs"),
                 "sonar-perl-plugin-*-all.jar");
-        OrchestratorBuilder orchestratorBuilder = Orchestrator.builderEnv()
+
+        return builder(Configuration.createEnv())
                 .setSonarVersion(version)
                 .setEdition(Edition.COMMUNITY)
                 .defaultForceAuthentication()
                 .addPlugin(sonarPluginJar);
-        return orchestratorBuilder;
     }
 
 }

@@ -6,15 +6,15 @@ repositories {
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(11)
+        languageVersion = JavaLanguageVersion.of(17)
     }
 }
 
 dependencies {
     testImplementation 'junit:junit:4.12'
     testImplementation 'org.assertj:assertj-core:3.11.1'
-    testImplementation 'org.sonarsource.orchestrator:sonar-orchestrator:3.37.0.87'
-    testImplementation 'org.sonarsource.sonarqube:sonar-ws:8.9.8.54436'
+    testImplementation 'org.sonarsource.orchestrator:sonar-orchestrator-junit4:4.0.0.404'
+    testImplementation 'org.sonarsource.sonarqube:sonar-ws:9.9.1.69595'
     testImplementation project(':sonar-perl-plugin')
 }
 
