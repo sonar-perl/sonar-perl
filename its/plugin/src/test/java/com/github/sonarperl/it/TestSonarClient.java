@@ -3,6 +3,7 @@ package com.github.sonarperl.it;
 import java.util.Arrays;
 import java.util.List;
 
+import com.sonar.orchestrator.junit4.OrchestratorRule;
 import org.sonarqube.ws.Measures;
 import org.sonarqube.ws.Measures.Measure;
 import org.sonarqube.ws.client.HttpConnector;
@@ -11,14 +12,13 @@ import org.sonarqube.ws.client.WsClientFactories;
 import org.sonarqube.ws.client.issues.SearchRequest;
 import org.sonarqube.ws.client.measures.ComponentRequest;
 
-import com.sonar.orchestrator.Orchestrator;
 
 public class TestSonarClient {
 
     private final WsClient wsClient;
     private final String project;
 
-    public TestSonarClient(Orchestrator orchestrator, String project) {
+    public TestSonarClient(OrchestratorRule orchestrator, String project) {
         this.wsClient = WsClientFactories.getDefault().newClient(HttpConnector.newBuilder()
                 .url(orchestrator.getServer().getUrl())
                 .credentials("admin", "admin")

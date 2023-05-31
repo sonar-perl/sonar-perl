@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.io.File;
 import java.util.Collection;
 
+import com.sonar.orchestrator.junit4.OrchestratorRule;
 import org.junit.ClassRule;
 import org.junit.Test;
 import org.junit.rules.TestRule;
@@ -24,7 +25,7 @@ public class PerlCriticIntegrationTest {
     public static TestRule RESOURCES = IntegrationTests.RESOURCES;
 
     @Parameters
-    public static Collection<Orchestrator> orchestrators() {
+    public static Collection<OrchestratorRule> orchestrators() {
         return IntegrationTests.orchestrators();
     }
 
@@ -42,7 +43,7 @@ public class PerlCriticIntegrationTest {
 
     private final TestSonarClient wsClient;
 
-    public PerlCriticIntegrationTest(Orchestrator orchestrator) {
+    public PerlCriticIntegrationTest(OrchestratorRule orchestrator) {
         orchestrator.executeBuild(build);
         wsClient = new TestSonarClient(orchestrator, PROJECT_KEY);
     }

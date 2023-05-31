@@ -9,16 +9,16 @@ repositories {
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(11)
+        languageVersion = JavaLanguageVersion.of(17)
     }
 }
 
 jacoco {
-    toolVersion = '0.8.6'
+    toolVersion = '0.8.10'
 }
 jacocoTestReport {
     reports {
-        xml.enabled true
+        xml.required = true
     }
 }
 
