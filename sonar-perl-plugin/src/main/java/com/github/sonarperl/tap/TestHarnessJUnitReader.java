@@ -80,6 +80,7 @@ public class TestHarnessJUnitReader {
         dbf.setAttribute(XMLConstants.FEATURE_SECURE_PROCESSING, Boolean.TRUE);
 
         try {
+            dbf.setFeature("http://apache.org/xml/features/disallow-doctype-decl", true);
             InputSource is = new InputSource(
                                     Files.newBufferedReader(path, StandardCharsets.UTF_8));
             DocumentBuilder db = dbf.newDocumentBuilder();
