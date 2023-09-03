@@ -24,7 +24,7 @@ jobs:
     - name: Run build with Gradle wrapper
       id: gradle
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GH_RELEASE_TOKEN }}
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       run: ./gradlew build sonar --scan
     - name: Release to DockerHub
