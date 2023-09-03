@@ -44,7 +44,7 @@ public class TestHarnessLoaderSensorTest {
         assertThat(context.measure("moduleKey:t/Project.t", TEST_EXECUTION_TIME).value()).isEqualTo(26L);
         assertThat(context.measure("moduleKey:t/Project.t", TESTS).value()).isEqualTo(2);
         assertThat(context.measure("moduleKey:t/Project.t", TEST_FAILURES).value()).isEqualTo(1);
-        assertThat(context.measure("moduleKey:t/Project.t", SKIPPED_TESTS).value()).isEqualTo(0);
+        assertThat(context.measure("moduleKey:t/Project.t", SKIPPED_TESTS).value()).isZero();
     }
 
     private TestHarnessLoaderSensor createSensor() {

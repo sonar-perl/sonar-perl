@@ -34,7 +34,7 @@ public class TestHarnessArchiveReaderTest {
         assertThat(testDetail0.getPassed()).isEqualTo(1);
         assertThat(testDetail0.getFailed()).isEqualTo(1);
         assertThat(testDetail0.getNumberOfTests()).isEqualTo(2);
-        assertThat(testDetail0.getSkipped()).isEqualTo(0);
+        assertThat(testDetail0.getSkipped()).isZero();
     }
 
     @Test
