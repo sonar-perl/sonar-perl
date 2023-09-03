@@ -60,6 +60,7 @@ jar {
                    'Plugin-Key': 'communityperl',
                    'Plugin-Name': 'Community Perl',
                    'Plugin-Version': project.version,
+                   'Implementation-Build': getCheckedOutGitCommitHash(),
                    'Plugin-Class': 'com.github.sonarperl.PerlPlugin',
                    "Plugin-Description": 'Code Analyzer for Perl',
                    "Plugin-Developers": 'Oliver Trosien',
@@ -72,6 +73,10 @@ jar {
                    "Plugin-TermsConditionsUrl": 'https://github.com/sonar-perl/sonar-perl',
                    "Sonar-Version": project.ext.sonarApiVersion
     }
+}
+
+def getCheckedOutGitCommitHash() {
+    'git rev-parse --verify --short HEAD'.execute().text.trim()
 }
 
 import com.bmuschko.gradle.docker.tasks.image.*
