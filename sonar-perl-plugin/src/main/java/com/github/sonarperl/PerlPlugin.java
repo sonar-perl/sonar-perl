@@ -7,8 +7,6 @@ import java.util.List;
 import org.sonar.api.Plugin;
 import org.sonar.api.Properties;
 import org.sonar.api.Property;
-import org.sonar.api.utils.log.Logger;
-import org.sonar.api.utils.log.Loggers;
 
 import com.github.sonarperl.critic.PerlCriticIssuesLoaderSensor;
 import com.github.sonarperl.critic.PerlCriticProperties;

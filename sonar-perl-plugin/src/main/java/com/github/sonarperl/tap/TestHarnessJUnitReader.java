@@ -107,9 +107,9 @@ public class TestHarnessJUnitReader {
                 }
 
                 builder.addTest(
-                    new Test(String.valueOf(tsname),
+                    new Test(tsname,
                              BigDecimal.ZERO,
-                             new BigDecimal((String) testsuite.getAttribute("time"))));
+                             new BigDecimal(testsuite.getAttribute("time"))));
 
                 TestDetailBuilder detailBuilder = TestDetail.builder();
                 detailBuilder.filePath(filepath);

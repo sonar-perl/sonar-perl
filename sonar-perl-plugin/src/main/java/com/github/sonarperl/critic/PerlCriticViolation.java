@@ -1,7 +1,5 @@
 package com.github.sonarperl.critic;
 
-import org.sonar.api.rule.Severity;
-
 class PerlCriticViolation {
 
     private final String type;

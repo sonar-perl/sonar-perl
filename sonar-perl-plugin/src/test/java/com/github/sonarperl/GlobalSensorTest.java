@@ -62,8 +62,8 @@ public class GlobalSensorTest {
         createSensor().execute(context);
 
         String key = "moduleKey:" + relativePath;
-        assertThat(context.measure(key, CoreMetrics.CLASSES).value()).isEqualTo(0);
-        assertThat(context.measure(key, CoreMetrics.FUNCTIONS).value()).isEqualTo(0);
+        assertThat(context.measure(key, CoreMetrics.CLASSES).value()).isZero();
+        assertThat(context.measure(key, CoreMetrics.FUNCTIONS).value()).isZero();
     }
 
     private GlobalSensor createSensor() {
