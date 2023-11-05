@@ -18,14 +18,14 @@ dependencies {
     compileOnly "org.sonarsource.api.plugin:sonar-plugin-api:${sonarApiVersion}"
     testImplementation "org.sonarsource.api.plugin:sonar-plugin-api:${sonarApiVersion}"
     testImplementation "org.sonarsource.sonarqube:sonar-plugin-api-impl:${sonarqubeVersion}"
-    implementation 'org.apache.commons:commons-compress:1.23.0'
-    implementation 'com.esotericsoftware.yamlbeans:yamlbeans:1.13'
+    implementation 'org.apache.commons:commons-compress:1.24.0'
+    implementation 'com.esotericsoftware.yamlbeans:yamlbeans:1.15'
     implementation 'com.fasterxml.staxmate:staxmate:2.4.0'
-    implementation 'commons-io:commons-io:2.7'
-    implementation 'commons-lang:commons-lang:2.6'
-    testImplementation 'junit:junit:4.13.1'
-    testImplementation 'org.assertj:assertj-core:3.11.1'
-    testImplementation 'org.mockito:mockito-core:2.23.4'
+    implementation 'commons-io:commons-io:2.15.0'
+    implementation 'org.apache.commons:commons-lang3:3.13.0'
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation 'org.assertj:assertj-core:3.24.2'
+    testImplementation 'org.mockito:mockito-core:5.6.0'
     implementation project(':perl-frontend')
 }
 
