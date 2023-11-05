@@ -10,9 +10,13 @@ java {
     }
 }
 
+compileJava {
+    options.release = 11
+}
+
 dependencies {
-    testImplementation 'junit:junit:4.12'
-    testImplementation 'org.assertj:assertj-core:3.11.1'
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation 'org.assertj:assertj-core:3.24.2'
     testImplementation 'org.sonarsource.orchestrator:sonar-orchestrator-junit4:4.0.0.404'
     testImplementation 'org.sonarsource.sonarqube:sonar-ws:9.9.1.69595'
     testImplementation project(':sonar-perl-plugin')
