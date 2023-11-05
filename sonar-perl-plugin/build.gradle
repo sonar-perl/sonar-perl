@@ -112,7 +112,7 @@ tasks.register('buildDockerImage', DockerBuildImage) {
     description = 'Builds a new docker image.'
     dependsOn copyDockerTargetArtifacts
     inputDir = file('build/docker')
-    images.add("sonarperl/sonar-perl:latest")
+    images.add("ghcr.io/sonar-perl/sonar-perl:latest")
     noCache = true
 }
 

@@ -2,7 +2,7 @@ version: '2'
 
 services:
   sonarperl:
-    image: sonarperl/sonar-perl
+    image: ghcr.io/sonar-perl/sonar-perl:latest
     ports:
     - "9000:9000"
   dancer:
