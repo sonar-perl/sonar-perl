@@ -11,14 +11,14 @@ java {
 }
 
 compileJava {
-    options.release = 11
+    options.release = 17
 }
 
 dependencies {
     testImplementation 'junit:junit:4.13.2'
     testImplementation 'org.assertj:assertj-core:3.24.2'
-    testImplementation 'org.sonarsource.orchestrator:sonar-orchestrator-junit4:4.0.0.404'
-    testImplementation 'org.sonarsource.sonarqube:sonar-ws:9.9.1.69595'
+    testImplementation 'org.sonarsource.orchestrator:sonar-orchestrator-junit4:4.9.0.1920'
+    testImplementation 'org.sonarsource.sonarqube:sonar-ws:10.6.0.92116'
     testImplementation project(':sonar-perl-plugin')
 }
 
@@ -27,6 +27,7 @@ tasks.test.shouldRunAfter(tasks.findByPath(':sonar-perl-plugin:test'))
 
 // run test suite
 test {
+    environment "ARTIFACTORY_URL", "https://repo1.maven.org/maven2"
     include 'com/github/sonarperl/it/IntegrationTests.class'
     testLogging {
         outputs.upToDateWhen {false}
