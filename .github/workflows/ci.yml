@@ -14,6 +14,7 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions: write-all
     environment: SONAR_PROJECT
     steps:
     - uses: actions/checkout@v4
