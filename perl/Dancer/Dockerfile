@@ -1,7 +1,7 @@
-FROM sonarsource/sonar-scanner-cli:latest
+FROM sonarsource/sonar-scanner-cli
 
-ADD . /project
+COPY . /project
 WORKDIR /project
 
-CMD sonar-scanner -Dsonar.host.url=$SONAR_HOST_URL
+CMD ["sonar-scanner", "-Dsonar.host.url='$SONAR_HOST_URL'"]
 

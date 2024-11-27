@@ -16,8 +16,8 @@ public class PerlPluginTest {
     @SuppressWarnings("unchecked")
     @Test
     public void test() {
-        Version LTS = Version.create(7, 9);
-        assertThat(extensions(SonarRuntimeImpl.forSonarQube(LTS, SonarQubeSide.SERVER, SonarEdition.COMMUNITY))).hasSize(7);
+        Version LTS = Version.create(9, 9);
+        assertThat(extensions(SonarRuntimeImpl.forSonarQube(LTS, SonarQubeSide.SERVER, SonarEdition.COMMUNITY))).hasSize(10);
     }
 
     @SuppressWarnings("rawtypes")

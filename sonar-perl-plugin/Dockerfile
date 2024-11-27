@@ -1,3 +1,3 @@
-FROM sonarqube:10.2-community
+FROM sonarqube:community
 
-COPY --chown=sonarqube:sonarqube build/libs/*all.jar /opt/sonarqube/extensions/plugins/
+COPY --chown=sonarqube:root build/libs/*all.jar /opt/sonarqube/extensions/plugins/
