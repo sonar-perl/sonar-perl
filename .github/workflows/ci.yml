@@ -33,7 +33,7 @@ jobs:
         SONAR_PROJECT_KEY: ${{ vars.SONAR_PROJECT_KEY }}
         SONAR_ORG: ${{ vars.SONAR_ORG }} 
         SONAR_SCAN_BRANCH: ${{ github.ref_name }}
-      run: ./gradlew build sonar --scan
+      run: ./gradlew build sonar --scan --stacktrace
     - name: Release Docker image
       if: startsWith(github.ref, 'refs/tags/') || github.ref == 'refs/heads/master'
       run: |
