@@ -14,6 +14,7 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+    environment: SONAR_PROJECT
     steps:
     - uses: actions/checkout@v4
     - name: Set up JDK 17
@@ -30,8 +31,6 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GH_RELEASE_TOKEN }}
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        SONAR_PROJECT_KEY: ${{ vars.SONAR_PROJECT_KEY }}
-        SONAR_ORG: ${{ vars.SONAR_ORG }} 
         SONAR_SCAN_BRANCH: ${{ github.ref_name }}
       run: ./gradlew build sonar --scan --stacktrace
     - name: Release Docker image
