@@ -1,4 +1,4 @@
-FROM sonarsource/sonar-scanner-cli
+FROM sonarsource/sonar-scanner-cli:11.1
 
 COPY . /project
 WORKDIR /project
