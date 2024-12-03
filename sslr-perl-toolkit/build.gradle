@@ -14,7 +14,7 @@ java {
 }
 
 jacoco {
-    toolVersion = '0.8.10'
+    toolVersion = '0.8.11'
 }
 jacocoTestReport {
     reports {
@@ -27,9 +27,9 @@ test {
 }
 
 dependencies {
-    implementation group: 'org.sonarsource.sslr', name: 'sslr-toolkit', version: '1.23'
-    runtimeOnly group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
-    testImplementation group: 'org.assertj', name: 'assertj-core', version: '3.11.1'
-    testImplementation group: 'junit', name: 'junit', version: '4.12'
+    implementation group: 'org.sonarsource.sslr', name: 'sslr-toolkit', version: '1.24.0.633'
+    runtimeOnly group: 'ch.qos.logback', name: 'logback-classic', version: '1.5.12'
+    testImplementation group: 'org.assertj', name: 'assertj-core', version: '3.26.3'
+    testImplementation group: 'junit', name: 'junit', version: '4.13.2'
     implementation project(":perl-frontend")
 }

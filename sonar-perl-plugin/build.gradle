@@ -1,6 +1,6 @@
 plugins {
     id "java-library"
-    id 'com.bmuschko.docker-remote-api' version '9.3.1'
+    id 'com.bmuschko.docker-remote-api' version '9.4.0'
     id "jacoco"
     id 'com.github.johnrengelman.shadow' version '8.1.1'
 }
@@ -21,15 +21,15 @@ dependencies {
     // there doesn't seem to be test-fixtures for 9.14.0.375 for some reason, ie.
     // 9.9 compatibility needs to be tested via integration-testing.
     testImplementation "org.sonarsource.api.plugin:sonar-plugin-api-test-fixtures:9.17.0.587"
-    implementation 'org.apache.commons:commons-compress:1.24.0'
-    implementation 'com.esotericsoftware.yamlbeans:yamlbeans:1.15'
-    implementation 'com.fasterxml.staxmate:staxmate:2.4.0'
-    implementation 'commons-io:commons-io:2.15.0'
+    implementation 'org.apache.commons:commons-compress:1.27.1'
+    implementation 'com.esotericsoftware.yamlbeans:yamlbeans:1.17'
+    implementation 'com.fasterxml.staxmate:staxmate:2.4.1'
+    implementation 'commons-io:commons-io:2.18.0'
     testImplementation 'junit:junit:4.13.2'
-    testImplementation 'org.assertj:assertj-core:3.24.2'
-    testImplementation 'org.mockito:mockito-core:5.6.0'
+    testImplementation 'org.assertj:assertj-core:3.26.3'
+    testImplementation 'org.mockito:mockito-core:5.14.2'
     implementation project(':perl-frontend')
-    implementation "org.apache.commons:commons-lang3:3.14.0"
+    implementation "org.apache.commons:commons-lang3:3.17.0"
 }
 
 java {
@@ -43,7 +43,7 @@ compileJava {
 }
 
 jacoco {
-    toolVersion = '0.8.10'
+    toolVersion = '0.8.11'
 }
 jacocoTestReport {
     reports {

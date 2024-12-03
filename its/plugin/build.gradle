@@ -16,7 +16,7 @@ compileJava {
 
 dependencies {
     testImplementation 'junit:junit:4.13.2'
-    testImplementation 'org.assertj:assertj-core:3.24.2'
+    testImplementation 'org.assertj:assertj-core:3.26.3'
     testImplementation 'org.sonarsource.orchestrator:sonar-orchestrator-junit4:4.9.0.1920'
     testImplementation 'org.sonarsource.sonarqube:sonar-ws:10.7.0.96327'
     testImplementation project(':sonar-perl-plugin')
