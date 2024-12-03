@@ -38,7 +38,7 @@ It is always best to discuss your plans beforehand, to ensure that your contribu
 - As you push your changes, update the pull request with new infomation and tasks as you complete them
 - Project maintainers might comment on your work as you progress
 - When you are done, remove the `work in progess` label and ping the maintainers for a review
-- Your pull request must receive a :thumbsup: from two [maintainers](MAINTAINERS)
+- Your pull request must receive a :thumbsup: from one of the [maintainers](MAINTAINERS)
 
 Thanks for your contributions!
 
