@@ -20,7 +20,7 @@ dependencies {
     testImplementation "org.sonarsource.sonarqube:sonar-plugin-api-impl:${sonarqubeVersion}"
     // there doesn't seem to be test-fixtures for 9.14.0.375 for some reason, ie.
     // 9.9 compatibility needs to be tested via integration-testing.
-    testImplementation "org.sonarsource.api.plugin:sonar-plugin-api-test-fixtures:9.17.0.587"
+    testImplementation "org.sonarsource.api.plugin:sonar-plugin-api-test-fixtures:10.14.0.2599"
     implementation 'org.apache.commons:commons-compress:1.27.1'
     implementation 'com.esotericsoftware.yamlbeans:yamlbeans:1.17'
     implementation 'com.fasterxml.staxmate:staxmate:2.4.1'
