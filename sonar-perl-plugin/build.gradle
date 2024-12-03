@@ -10,7 +10,7 @@ repositories {
 }
 
 ext {
-    sonarApiVersion = '9.14.0.375'
+    sonarApiVersion = '10.14.0.2599'
     sonarqubeVersion = '10.7.0.96327'
 }
 
