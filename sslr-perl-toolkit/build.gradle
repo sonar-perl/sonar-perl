@@ -29,7 +29,7 @@ test {
 dependencies {
     implementation group: 'org.sonarsource.sslr', name: 'sslr-toolkit', version: '1.24.0.633'
     runtimeOnly group: 'ch.qos.logback', name: 'logback-classic', version: '1.5.12'
-    testImplementation group: 'org.assertj', name: 'assertj-core', version: '3.26.3'
+    testImplementation group: 'org.assertj', name: 'assertj-core', version: '3.27.0'
     testImplementation group: 'junit', name: 'junit', version: '4.13.2'
     implementation project(":perl-frontend")
 }
