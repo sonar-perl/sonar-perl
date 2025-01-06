@@ -27,7 +27,7 @@ dependencies {
     implementation 'commons-io:commons-io:2.18.0'
     testImplementation 'junit:junit:4.13.2'
     testImplementation 'org.assertj:assertj-core:3.26.3'
-    testImplementation 'org.mockito:mockito-core:5.14.2'
+    testImplementation 'org.mockito:mockito-core:5.15.2'
     implementation project(':perl-frontend')
     implementation "org.apache.commons:commons-lang3:3.17.0"
 }
