@@ -10,11 +10,10 @@ import com.sonar.sslr.impl.channel.IdentifierAndKeywordChannel;
 import com.sonar.sslr.impl.channel.PunctuatorChannel;
 import com.sonar.sslr.impl.channel.UnknownCharacterChannel;
 
-
-import static com.sonar.sslr.impl.channel.RegexpChannelBuilder.o2n;
 import static com.sonar.sslr.impl.channel.RegexpChannelBuilder.and;
-import static com.sonar.sslr.impl.channel.RegexpChannelBuilder.regexp;
 import static com.sonar.sslr.impl.channel.RegexpChannelBuilder.commentRegexp;
+import static com.sonar.sslr.impl.channel.RegexpChannelBuilder.o2n;
+import static com.sonar.sslr.impl.channel.RegexpChannelBuilder.regexp;
 
 public final class PerlLexer {
 

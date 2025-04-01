@@ -1,10 +1,6 @@
 package com.github.sonarperl.critic;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.List;
-import java.util.Optional;
-
+import com.github.sonarperl.PerlLanguage;
 import org.sonar.api.batch.fs.FileSystem;
 import org.sonar.api.batch.fs.InputFile;
 import org.sonar.api.batch.fs.InputFile.Type;
@@ -21,7 +17,10 @@ import org.sonar.api.rules.RuleType;
 import org.sonar.api.utils.log.Logger;
 import org.sonar.api.utils.log.Loggers;
 
-import com.github.sonarperl.PerlLanguage;
+import java.io.File;
+import java.io.IOException;
+import java.util.List;
+import java.util.Optional;
 
 public class PerlCriticIssuesLoaderSensor implements Sensor {
 

@@ -1,15 +1,10 @@
 package com.github.sonarperl.it;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Collection;
-
-import com.sonar.orchestrator.Orchestrator;
-import com.sonar.orchestrator.OrchestratorBuilder;
 import com.sonar.orchestrator.config.Configuration;
 import com.sonar.orchestrator.container.Edition;
 import com.sonar.orchestrator.junit4.OrchestratorRule;
 import com.sonar.orchestrator.junit4.OrchestratorRuleBuilder;
+import com.sonar.orchestrator.locator.FileLocation;
 import org.junit.Assert;
 import org.junit.ClassRule;
 import org.junit.rules.RuleChain;
@@ -17,7 +12,9 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized.Parameters;
 import org.junit.runners.Suite;
 
-import com.sonar.orchestrator.locator.FileLocation;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Collection;
 
 import static com.sonar.orchestrator.junit4.OrchestratorRule.builder;
 
@@ -31,7 +28,7 @@ import static com.sonar.orchestrator.junit4.OrchestratorRule.builder;
 })
 public class IntegrationTests {
 
-    private static Collection<OrchestratorRule> ORCHESTRATORS = new ArrayList<>(2);
+    private static final Collection<OrchestratorRule> ORCHESTRATORS = new ArrayList<>(2);
 
     @ClassRule
     public static RuleChain RESOURCES = RuleChain.emptyRuleChain();

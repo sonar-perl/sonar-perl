@@ -13,7 +13,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class TokenLocationTest {
 
-    private Lexer lexer = PerlLexer.create(new PerlConfiguration(StandardCharsets.UTF_8));
+    private final Lexer lexer = PerlLexer.create(new PerlConfiguration(StandardCharsets.UTF_8));
 
     @Test
     public void test_newline_token() {

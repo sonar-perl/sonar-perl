@@ -1,5 +1,11 @@
 package com.github.sonarperl.critic;
 
+import com.github.sonarperl.PerlLanguage;
+import org.sonar.api.server.debt.DebtRemediationFunction;
+import org.sonar.api.server.rule.RulesDefinition;
+import org.sonar.api.server.rule.RulesDefinitionXmlLoader;
+import org.sonar.api.utils.MessageException;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -9,13 +15,6 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Stream;
-
-import org.sonar.api.server.debt.DebtRemediationFunction;
-import org.sonar.api.server.rule.RulesDefinition;
-import org.sonar.api.server.rule.RulesDefinitionXmlLoader;
-import org.sonar.api.utils.MessageException;
-
-import com.github.sonarperl.PerlLanguage;
 
 public final class PerlCriticRulesDefinition implements RulesDefinition {
 

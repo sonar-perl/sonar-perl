@@ -3,8 +3,8 @@ package com.github.sonarperl.api;
 import org.sonar.sslr.grammar.GrammarRuleKey;
 import org.sonar.sslr.grammar.LexerfulGrammarBuilder;
 
-import static com.sonar.sslr.api.GenericTokenType.EOF;
 import static com.github.sonarperl.api.PerlTokenType.NEWLINE;
+import static com.sonar.sslr.api.GenericTokenType.EOF;
 
 public enum PerlGrammar implements GrammarRuleKey {
 

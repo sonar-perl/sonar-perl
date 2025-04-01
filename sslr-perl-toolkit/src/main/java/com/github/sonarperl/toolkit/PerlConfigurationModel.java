@@ -14,7 +14,6 @@ import org.sonar.sslr.toolkit.ConfigurationProperty;
 import org.sonar.sslr.toolkit.Validators;
 
 import java.nio.charset.Charset;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -46,8 +45,8 @@ public class PerlConfigurationModel extends AbstractConfigurationModel {
 
         @Override
         public List<Tokenizer> doGetTokenizers() {
-            return Arrays.asList(
-                    (Tokenizer) new KeywordsTokenizer("<span class=\"k\">", "</span>", PerlKeyword.keywordValues()));
+            return List.of(
+                    new KeywordsTokenizer("<span class=\"k\">", "</span>", PerlKeyword.keywordValues()));
         }
 
         // VisibleForTesting

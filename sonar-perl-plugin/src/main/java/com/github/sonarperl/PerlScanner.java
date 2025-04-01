@@ -7,11 +7,12 @@ import com.github.sonarperl.parser.PerlParser;
 import com.sonar.sslr.api.Grammar;
 import com.sonar.sslr.api.RecognitionException;
 import com.sonar.sslr.impl.Parser;
-import java.util.List;
 import org.sonar.api.batch.fs.InputFile;
 import org.sonar.api.batch.sensor.SensorContext;
 import org.sonar.api.utils.log.Logger;
 import org.sonar.api.utils.log.Loggers;
+
+import java.util.List;
 
 public class PerlScanner {
 

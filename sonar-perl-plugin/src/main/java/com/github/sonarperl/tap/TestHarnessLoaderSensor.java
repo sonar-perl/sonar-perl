@@ -1,9 +1,8 @@
 package com.github.sonarperl.tap;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.Optional;
-
+import com.github.sonarperl.PerlLanguage;
+import com.github.sonarperl.tap.TestHarnessReport.Test;
+import com.github.sonarperl.tap.TestHarnessReport.TestDetail;
 import org.sonar.api.batch.fs.FilePredicates;
 import org.sonar.api.batch.fs.FileSystem;
 import org.sonar.api.batch.fs.InputFile;
@@ -15,9 +14,9 @@ import org.sonar.api.measures.CoreMetrics;
 import org.sonar.api.utils.log.Logger;
 import org.sonar.api.utils.log.Loggers;
 
-import com.github.sonarperl.PerlLanguage;
-import com.github.sonarperl.tap.TestHarnessReport.Test;
-import com.github.sonarperl.tap.TestHarnessReport.TestDetail;
+import java.io.File;
+import java.io.IOException;
+import java.util.Optional;
 
 public class TestHarnessLoaderSensor implements Sensor {
 
@@ -91,7 +90,7 @@ public class TestHarnessLoaderSensor implements Sensor {
             for(Test t : fileReport.getTests()) {
                 InputFile testFile = getUnitTestInputFile(t.getFilePath());
                 if(testFile != null) {
-                    context.<Long>newMeasure().on(testFile).withValue((long)t.getDuration()).forMetric(CoreMetrics.TEST_EXECUTION_TIME).save();
+                    context.<Long>newMeasure().on(testFile).withValue(t.getDuration()).forMetric(CoreMetrics.TEST_EXECUTION_TIME).save();
                 }
             }
             for(TestDetail d : fileReport.getTestDetails()) {

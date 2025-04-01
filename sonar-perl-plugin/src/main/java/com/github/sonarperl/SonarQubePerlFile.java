@@ -1,7 +1,8 @@
 package com.github.sonarperl;
 
-import java.io.IOException;
 import org.sonar.api.batch.fs.InputFile;
+
+import java.io.IOException;
 
 public abstract class SonarQubePerlFile implements PerlFile {
 

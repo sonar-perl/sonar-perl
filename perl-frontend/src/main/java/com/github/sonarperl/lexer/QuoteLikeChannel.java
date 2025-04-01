@@ -10,6 +10,7 @@ import org.sonar.sslr.channel.CodeReader;
 
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -68,7 +69,7 @@ public class QuoteLikeChannel extends Channel<Lexer> {
                 twoIterations = true;
                 break;
             case 't':
-                if (! expectNext(code, new HashSet<>(Arrays.asList('r')))) {
+                if (! expectNext(code, new HashSet<>(List.of('r')))) {
                     return false;
                 }
                 twoIterations = true;
@@ -90,7 +91,7 @@ public class QuoteLikeChannel extends Channel<Lexer> {
         }
         if (twoIterations) {
             if (quoteStart != quoteEnd) {
-                if (! expectNext(code, new HashSet<>(Arrays.asList(quoteStart)))) {
+                if (! expectNext(code, new HashSet<>(List.of(quoteStart)))) {
                     return false;
                 }
             }

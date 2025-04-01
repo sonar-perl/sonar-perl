@@ -3,23 +3,19 @@ package com.github.sonarperl.cpd;
 import com.github.sonarperl.PerlVisitor;
 import com.github.sonarperl.PerlVisitorContext;
 import com.github.sonarperl.TokenLocation;
-
 import com.github.sonarperl.api.PerlGrammar;
 import com.github.sonarperl.api.PerlTokenType;
 import com.sonar.sslr.api.AstNodeType;
 import com.sonar.sslr.api.GenericTokenType;
 import com.sonar.sslr.api.Token;
-
 import com.sonar.sslr.api.TokenType;
 import org.sonar.api.batch.fs.InputFile;
 import org.sonar.api.batch.sensor.SensorContext;
 import org.sonar.api.batch.sensor.cpd.NewCpdTokens;
-
 import org.sonar.api.utils.log.Logger;
 import org.sonar.api.utils.log.Loggers;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -61,7 +57,7 @@ public class PerlCpdAnalyzer {
 
         private final PerlVisitorContext visitorContext;
         private final List<Token> tokenValues = new ArrayList<>();
-        private static Set<AstNodeType> subscribedKinds = new HashSet<>(Arrays.asList(PerlGrammar.ATOM));
+        private static final Set<AstNodeType> subscribedKinds = new HashSet<>(List.of(PerlGrammar.ATOM));
 
         private TokenVisitor(PerlVisitorContext visitorContext) {
             this.visitorContext = visitorContext;

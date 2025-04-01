@@ -5,6 +5,7 @@ import com.github.sonarperl.parser.PerlParser;
 import com.sonar.sslr.api.AstNode;
 import com.sonar.sslr.api.Grammar;
 import com.sonar.sslr.impl.Parser;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;

@@ -1,5 +1,9 @@
 package com.github.sonarperl.critic;
 
+import org.sonar.api.rule.Severity;
+import org.sonar.api.utils.log.Logger;
+import org.sonar.api.utils.log.Loggers;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -7,10 +11,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-
-import org.sonar.api.rule.Severity;
-import org.sonar.api.utils.log.Logger;
-import org.sonar.api.utils.log.Loggers;
 
 class PerlCriticAnalysisResultsParser {
 

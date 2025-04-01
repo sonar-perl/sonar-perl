@@ -1,13 +1,6 @@
 package com.github.sonarperl.critic;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatCode;
-
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.charset.StandardCharsets;
-
+import com.github.sonarperl.PerlLanguage;
 import org.junit.Before;
 import org.junit.Test;
 import org.sonar.api.batch.fs.InputFile.Type;
@@ -20,7 +13,13 @@ import org.sonar.api.batch.sensor.internal.DefaultSensorDescriptor;
 import org.sonar.api.batch.sensor.internal.SensorContextTester;
 import org.sonar.api.rule.RuleKey;
 
-import com.github.sonarperl.PerlLanguage;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatCode;
 
 public class PerlCriticIssuesLoaderSensorTest {
 
