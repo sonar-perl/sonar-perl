@@ -28,10 +28,8 @@ public class ProjectMetricsIntegrationTest {
     @ClassRule
     public static TestRule RESOURCES = IntegrationTests.RESOURCES;
 
-    private static final SonarScanner build;
-
-    static {
-        build = TestSonarScanner.create()
+    private SonarScanner scanner(OrchestratorRule orchestrator) {
+        return TestSonarScanner.create(orchestrator)
                 .setProjectDir(new File("projects/metrics"))
                 .setProjectKey(PROJECT_KEY)
                 .setProjectName(PROJECT_KEY)
@@ -42,7 +40,7 @@ public class ProjectMetricsIntegrationTest {
     private final TestSonarClient wsClient;
 
     public ProjectMetricsIntegrationTest(OrchestratorRule orchestrator) {
-        orchestrator.executeBuild(build);
+        orchestrator.executeBuild(scanner(orchestrator));
         wsClient = new TestSonarClient(orchestrator, PROJECT_KEY);
     }
 

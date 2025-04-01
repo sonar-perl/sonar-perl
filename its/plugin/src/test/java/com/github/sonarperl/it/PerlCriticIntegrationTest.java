@@ -29,10 +29,8 @@ public class PerlCriticIntegrationTest {
         return IntegrationTests.orchestrators();
     }
 
-    private static final SonarScanner build;
-
-    static {
-        build = TestSonarScanner.create()
+    private SonarScanner scanner(OrchestratorRule orchestrator) {
+        return TestSonarScanner.create(orchestrator)
                 .setProjectDir(new File("projects/critic"))
                 .setProjectKey(PROJECT_KEY)
                 .setProjectName(PROJECT_KEY)
@@ -44,7 +42,7 @@ public class PerlCriticIntegrationTest {
     private final TestSonarClient wsClient;
 
     public PerlCriticIntegrationTest(OrchestratorRule orchestrator) {
-        orchestrator.executeBuild(build);
+        orchestrator.executeBuild(scanner(orchestrator));
         wsClient = new TestSonarClient(orchestrator, PROJECT_KEY);
     }
 
