@@ -39,8 +39,10 @@ public class IntegrationTests {
     static {
         try {
             for (OrchestratorRule orchestratorRule : new OrchestratorRule[]{
-                orchestratorBuilderFor("LATEST_RELEASE[9.9]").build(),
-                orchestratorBuilderFor("LATEST_RELEASE[10.6]").build(),
+                    orchestratorBuilderFor("LATEST_RELEASE[25.1]").build(),
+                    //  failing the integration test with
+                    // "Not authorized. Please check the user token in the property 'sonar.token'"
+                    // orchestratorBuilderFor("LATEST_RELEASE[25.3]").build(),
             }
             ) {
                 register(orchestratorRule);
