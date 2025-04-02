@@ -1,6 +1,5 @@
 plugins {
     id "java-library"
-    id 'com.bmuschko.docker-remote-api' version '9.4.0'
     id "jacoco"
     id 'com.github.johnrengelman.shadow' version '8.1.1'
 }
@@ -43,6 +42,7 @@ compileJava {
 jacoco {
     toolVersion = '0.8.11'
 }
+
 jacocoTestReport {
     reports {
         xml.required = true
@@ -79,71 +79,4 @@ jar {
 def getCheckedOutGitCommitHash() {
     'git rev-parse --verify --short HEAD'.execute().text.trim()
 }
-
-import com.bmuschko.gradle.docker.tasks.image.*
-import com.bmuschko.gradle.docker.tasks.container.*
-
-docker {
-    if (System.env.DOCKER_HOST) {
-        url = "$System.env.DOCKER_HOST".replace("tcp","https")
-        if (System.env.DOCKER_CERT_PATH) {
-            certPath = new File(System.env.DOCKER_CERT_PATH)
-        }
-    } else {
-        url = 'unix:///var/run/docker.sock'
-    }
-}
-
-tasks.register('copyDockerfile', Copy) {
-    group = 'Docker'
-    description = 'Copies the Dockerfile into its target directory.'
-    from 'Dockerfile'
-    into 'build/docker'
-}
-
-tasks.register('copyDockerTargetArtifacts', Copy) {
-    group = 'Docker'
-    description = 'Assembles contents for docker image.'
-    dependsOn copyDockerfile, shadowJar
-    from "build/libs/" 
-    include "*-all.jar"
-    into "build/docker/build/libs/"
-}
-
-tasks.register('buildDockerImage', DockerBuildImage) {
-    description = 'Builds a new docker image.'
-    dependsOn copyDockerTargetArtifacts
-    inputDir = file('build/docker')
-    images.add("ghcr.io/sonar-perl/sonar-perl:latest")
-    noCache = true
-}
-
-tasks.register('createDockerContainer', DockerCreateContainer) {
-    dependsOn buildDockerImage
-    targetImageId buildDockerImage.getImageId()
-    hostConfig.portBindings = [ '9000:9000', '9002:9002' ]
-    hostConfig.autoRemove = true
-}
-
-tasks.register('publish') {}
-publish.dependsOn(createDockerContainer)
-
-tasks.register('startDockerContainer', DockerStartContainer) {
-    dependsOn createDockerContainer
-    targetContainerId createDockerContainer.getContainerId()
-    doLast {
-        println createDockerContainer.getContainerId()
-    }
-}
-
-tasks.register('run') {}
-run.dependsOn(startDockerContainer)
-
-tasks.register('stopDockerContainer', DockerStopContainer) {
-    targetContainerId createDockerContainer.getContainerId()
-}
-
-tasks.register('stop') {}
-stop.dependsOn stopDockerContainer
-
 

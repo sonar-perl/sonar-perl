@@ -6,6 +6,10 @@ export REPO=ghcr.io/sonar-perl/sonar-perl
 
 RAW_REF=${GITHUB_REF##*/}
 
+cd sonar-perl-plugin
+# build multi-arch docker image
+docker buildx build --platform linux/amd64,linux/arm64 -t $REPO:latest .
+
 if [[ "$GITHUB_REF" =~ ^refs/tags/[0-9.]+$ ]] ; then
 	docker tag $REPO:latest $REPO:$RAW_REF
 	# push version tag and latest
