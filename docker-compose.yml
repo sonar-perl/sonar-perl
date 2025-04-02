@@ -1,15 +1,30 @@
-version: '2'
-
 services:
   sonarperl:
     image: ghcr.io/sonar-perl/sonar-perl:latest
     ports:
-    - "9000:9000"
+      - "9000:9000"
+    networks:
+      - sonar-network
+    security_opt:
+      - seccomp=unconfined
+    environment:
+      - SONAR_ES_BOOTSTRAP_CHECKS_DISABLE=true
+      - SQ_JAVA_OPTS=-Dsonar.web.javaOpts=-Djava.security.egd=file:/dev/./urandom
   dancer:
     build: ./perl/Dancer
-    environment:
-      - SONAR_HOST_URL=http://host.docker.internal:9000
+    command: sonar-scanner -Dsonar.host.url=http://sonarperl:9000
+    networks:
+      - sonar-network
+    depends_on:
+      - sonarperl
   sample:
     build: ./perl/sample-project
-    environment:
-      - SONAR_HOST_URL=http://host.docker.internal:9000
+    command: sonar-scanner -Dsonar.host.url=http://sonarperl:9000
+    networks:
+      - sonar-network
+    depends_on:
+      - sonarperl
+
+networks:
+  sonar-network:
+    driver: bridge
