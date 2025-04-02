@@ -1,8 +1,9 @@
 package com.github.sonarperl;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.Test;
 import org.sonar.api.config.internal.MapSettings;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class PerlLanguageTest {
 

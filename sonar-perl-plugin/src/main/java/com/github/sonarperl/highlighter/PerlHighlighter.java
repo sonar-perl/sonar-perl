@@ -26,7 +26,7 @@ public class PerlHighlighter extends PerlVisitor {
 
     private static final Logger log = Loggers.get(PerlHighlighter.class);
 
-    private NewHighlighting newHighlighting;
+    private final NewHighlighting newHighlighting;
 
     public PerlHighlighter(SensorContext context, InputFile inputFile) {
         newHighlighting = context.newHighlighting();

@@ -4,11 +4,12 @@ import com.github.sonarperl.api.PerlGrammar;
 import com.google.common.collect.ImmutableSet;
 import com.sonar.sslr.api.AstNode;
 import com.sonar.sslr.api.AstNodeType;
+import org.junit.Test;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
-import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -25,7 +26,7 @@ public class PerlVisitorTest {
 
     public class TestVisitor extends PerlVisitor {
 
-        private List<String> atomValues = new ArrayList<>();
+        private final List<String> atomValues = new ArrayList<>();
         private String fileName;
 
         @Override

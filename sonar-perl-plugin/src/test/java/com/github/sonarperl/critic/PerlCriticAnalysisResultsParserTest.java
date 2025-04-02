@@ -1,8 +1,6 @@
 package com.github.sonarperl.critic;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.CoreMatchers.notNullValue;
-import static org.junit.Assert.assertThat;
+import org.junit.Test;
 
 import java.io.File;
 import java.io.IOException;
@@ -10,7 +8,9 @@ import java.net.URISyntaxException;
 import java.nio.file.Paths;
 import java.util.List;
 
-import org.junit.Test;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.notNullValue;
+import static org.junit.Assert.assertThat;
 
 
 public class PerlCriticAnalysisResultsParserTest {

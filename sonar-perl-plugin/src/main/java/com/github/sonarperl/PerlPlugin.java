@@ -1,16 +1,15 @@
 package com.github.sonarperl;
 
-import org.sonar.api.Plugin;
-import org.sonar.api.PropertyType;
-import org.sonar.api.config.PropertyDefinition;
-import org.sonar.api.resources.Qualifiers;
-
 import com.github.sonarperl.critic.PerlCriticIssuesLoaderSensor;
 import com.github.sonarperl.critic.PerlCriticProperties;
 import com.github.sonarperl.critic.PerlCriticRulesDefinition;
 import com.github.sonarperl.critic.SonarWayProfile;
 import com.github.sonarperl.tap.TestHarnessArchiveProperties;
 import com.github.sonarperl.tap.TestHarnessLoaderSensor;
+import org.sonar.api.Plugin;
+import org.sonar.api.PropertyType;
+import org.sonar.api.config.PropertyDefinition;
+import org.sonar.api.resources.Qualifiers;
 
 public class PerlPlugin implements Plugin {
     public static final String CATEGORY_NAME = "Community Perl";

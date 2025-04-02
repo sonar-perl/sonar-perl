@@ -1,9 +1,5 @@
 package com.github.sonarperl.it;
 
-import java.util.Arrays;
-import java.util.List;
-
-import com.sonar.orchestrator.container.Server;
 import com.sonar.orchestrator.junit4.OrchestratorRule;
 import org.sonarqube.ws.Measures;
 import org.sonarqube.ws.Measures.Measure;
@@ -12,6 +8,9 @@ import org.sonarqube.ws.client.WsClient;
 import org.sonarqube.ws.client.WsClientFactories;
 import org.sonarqube.ws.client.issues.SearchRequest;
 import org.sonarqube.ws.client.measures.ComponentRequest;
+
+import java.util.Collections;
+import java.util.List;
 
 
 public class TestSonarClient {
@@ -30,7 +29,7 @@ public class TestSonarClient {
     private Measure getMeasure(String componentKey, String metricKey) {
       Measures.ComponentWsResponse response = wsClient.measures().component(new ComponentRequest()
         .setComponent(componentKey)
-        .setMetricKeys(Arrays.asList(metricKey)));
+        .setMetricKeys(Collections.singletonList(metricKey)));
       List<Measure> measures = response.getComponent().getMeasuresList();
       return measures.size() == 1 ? measures.get(0) : null;
     }
@@ -58,8 +57,8 @@ public class TestSonarClient {
 
     public Integer issueCount(String severity, String rule) {
         return wsClient.issues().search(new SearchRequest()
-                .setSeverities(Arrays.asList(severity))
-                .setRules(Arrays.asList(rule)))
+                .setSeverities(Collections.singletonList(severity))
+                .setRules(Collections.singletonList(rule)))
                 .getIssuesCount();
     }
  

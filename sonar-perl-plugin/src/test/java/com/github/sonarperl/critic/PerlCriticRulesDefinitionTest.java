@@ -1,16 +1,14 @@
 package com.github.sonarperl.critic;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.sonar.api.server.debt.DebtRemediationFunction.Type.LINEAR;
-
-import java.util.List;
-
+import com.github.sonarperl.PerlLanguage;
 import org.junit.Test;
 import org.sonar.api.server.rule.RulesDefinition;
 import org.sonar.api.server.rule.RulesDefinition.Rule;
 
-import com.github.sonarperl.PerlLanguage;
-import com.github.sonarperl.critic.PerlCriticRulesDefinition;
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.sonar.api.server.debt.DebtRemediationFunction.Type.LINEAR;
 
 public class PerlCriticRulesDefinitionTest {
 

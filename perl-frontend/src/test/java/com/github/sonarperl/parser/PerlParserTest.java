@@ -4,11 +4,12 @@ import com.github.sonarperl.PerlConfiguration;
 import com.sonar.sslr.api.AstNode;
 import com.sonar.sslr.api.Grammar;
 import com.sonar.sslr.impl.Parser;
+import org.apache.commons.io.FileUtils;
+import org.junit.Test;
+
 import java.io.File;
 import java.nio.charset.StandardCharsets;
 import java.util.Collection;
-import org.apache.commons.io.FileUtils;
-import org.junit.Test;
 
 import static org.junit.Assert.assertNotNull;
 

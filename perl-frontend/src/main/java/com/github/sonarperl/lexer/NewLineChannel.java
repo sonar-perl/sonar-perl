@@ -1,9 +1,9 @@
 package com.github.sonarperl.lexer;
 
 
+import com.github.sonarperl.api.PerlTokenType;
 import com.sonar.sslr.api.Token;
 import com.sonar.sslr.impl.Lexer;
-import com.github.sonarperl.api.PerlTokenType;
 import org.sonar.sslr.channel.Channel;
 import org.sonar.sslr.channel.CodeReader;
 

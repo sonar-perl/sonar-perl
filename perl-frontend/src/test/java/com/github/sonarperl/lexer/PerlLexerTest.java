@@ -10,10 +10,18 @@ import org.junit.Test;
 
 import java.nio.charset.StandardCharsets;
 
-import static com.github.sonarperl.PerlPunctuator.*;
+import static com.github.sonarperl.PerlPunctuator.BL_ASSIGN3;
+import static com.github.sonarperl.PerlPunctuator.DIV;
+import static com.github.sonarperl.PerlPunctuator.GT;
+import static com.github.sonarperl.PerlPunctuator.LTLT;
+import static com.github.sonarperl.PerlPunctuator.PLUS_ASSIGN;
+import static com.github.sonarperl.PerlPunctuator.RCURLYBRACE;
+import static com.github.sonarperl.PerlPunctuator.SEMICOLON;
 import static com.github.sonarperl.api.PerlKeyword.EXIT;
 import static com.github.sonarperl.api.PerlKeyword.IF;
-import static com.github.sonarperl.api.PerlTokenType.*;
+import static com.github.sonarperl.api.PerlTokenType.NEWLINE;
+import static com.github.sonarperl.api.PerlTokenType.NUMBER;
+import static com.github.sonarperl.api.PerlTokenType.STRING;
 import static com.sonar.sslr.api.GenericTokenType.COMMENT;
 import static com.sonar.sslr.api.GenericTokenType.IDENTIFIER;
 import static com.sonar.sslr.test.lexer.LexerMatchers.hasComment;

@@ -5,7 +5,6 @@ import org.sonar.colorizer.KeywordsTokenizer;
 import org.sonar.colorizer.Tokenizer;
 import org.sonar.sslr.toolkit.Toolkit;
 
-import java.util.Arrays;
 import java.util.List;
 
 public final class PerlToolkit {
@@ -19,8 +18,8 @@ public final class PerlToolkit {
 
 
     public static List<Tokenizer> getPerlTokenizers() {
-        return Arrays.asList(
-                (Tokenizer) new KeywordsTokenizer("<span class=\"k\">", "</span>", PerlKeyword.keywordValues()));
+        return List.of(
+                new KeywordsTokenizer("<span class=\"k\">", "</span>", PerlKeyword.keywordValues()));
     }
 
 }

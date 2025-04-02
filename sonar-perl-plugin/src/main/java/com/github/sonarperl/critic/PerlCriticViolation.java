@@ -38,15 +38,14 @@ class PerlCriticViolation {
 
     @Override
     public String toString() {
-        StringBuilder s = new StringBuilder();
-        s.append(type);
-        s.append("|");
-        s.append(description);
-        s.append("|");
-        s.append(filePath);
-        s.append("(");
-        s.append(line);
-        s.append(")");
-        return s.toString();
+        String s = type +
+                "|" +
+                description +
+                "|" +
+                filePath +
+                "(" +
+                line +
+                ")";
+        return s;
     }
 }

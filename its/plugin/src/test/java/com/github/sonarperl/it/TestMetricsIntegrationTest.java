@@ -1,10 +1,6 @@
 package com.github.sonarperl.it;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
-import java.io.File;
-import java.util.Collection;
-
+import com.sonar.orchestrator.build.SonarScanner;
 import com.sonar.orchestrator.junit4.OrchestratorRule;
 import org.junit.ClassRule;
 import org.junit.Test;
@@ -13,8 +9,10 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
-import com.sonar.orchestrator.Orchestrator;
-import com.sonar.orchestrator.build.SonarScanner;
+import java.io.File;
+import java.util.Collection;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(Parameterized.class)
 public class TestMetricsIntegrationTest {

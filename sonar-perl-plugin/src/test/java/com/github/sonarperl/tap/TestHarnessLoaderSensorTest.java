@@ -1,16 +1,6 @@
 package com.github.sonarperl.tap;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.sonar.api.measures.CoreMetrics.SKIPPED_TESTS;
-import static org.sonar.api.measures.CoreMetrics.TESTS;
-import static org.sonar.api.measures.CoreMetrics.TEST_EXECUTION_TIME;
-import static org.sonar.api.measures.CoreMetrics.TEST_FAILURES;
-
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.charset.StandardCharsets;
-
+import com.github.sonarperl.PerlLanguage;
 import org.junit.Test;
 import org.sonar.api.batch.fs.InputFile.Type;
 import org.sonar.api.batch.fs.internal.DefaultInputFile;
@@ -19,7 +9,16 @@ import org.sonar.api.batch.fs.internal.TestInputFileBuilder;
 import org.sonar.api.batch.sensor.internal.DefaultSensorDescriptor;
 import org.sonar.api.batch.sensor.internal.SensorContextTester;
 
-import com.github.sonarperl.PerlLanguage;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.sonar.api.measures.CoreMetrics.SKIPPED_TESTS;
+import static org.sonar.api.measures.CoreMetrics.TESTS;
+import static org.sonar.api.measures.CoreMetrics.TEST_EXECUTION_TIME;
+import static org.sonar.api.measures.CoreMetrics.TEST_FAILURES;
 
 public class TestHarnessLoaderSensorTest {
 

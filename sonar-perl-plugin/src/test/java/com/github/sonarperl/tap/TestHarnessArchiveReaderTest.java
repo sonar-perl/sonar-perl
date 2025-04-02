@@ -1,6 +1,6 @@
 package com.github.sonarperl.tap;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import org.junit.Test;
 
 import java.io.File;
 import java.math.BigDecimal;
@@ -8,10 +8,7 @@ import java.net.URISyntaxException;
 import java.nio.file.Paths;
 import java.util.Optional;
 
-import org.junit.Test;
-
-import com.github.sonarperl.tap.TestHarnessArchiveReader;
-import com.github.sonarperl.tap.TestHarnessReport;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class TestHarnessArchiveReaderTest {
 

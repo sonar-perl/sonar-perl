@@ -1,12 +1,11 @@
 package com.github.sonarperl;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-
 import org.apache.commons.lang3.StringUtils;
 import org.sonar.api.config.Configuration;
 import org.sonar.api.resources.AbstractLanguage;
+
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * This class defines the perl language.

@@ -1,12 +1,5 @@
 package com.github.sonarperl.cpd;
 
-import java.io.File;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Paths;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-
 import com.github.sonarperl.PerlLanguage;
 import com.github.sonarperl.PerlVisitorContext;
 import com.github.sonarperl.TestPerlVisitorRunner;
@@ -18,14 +11,21 @@ import org.sonar.api.batch.fs.internal.TestInputFileBuilder;
 import org.sonar.api.batch.sensor.cpd.internal.TokensLine;
 import org.sonar.api.batch.sensor.internal.SensorContextTester;
 
+import java.io.File;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Paths;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
 import static java.nio.charset.StandardCharsets.UTF_8;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class PerlCpdAnalyzerTest {
 
     private static final String BASE_DIR = "src/test/resources/cpd";
-    private SensorContextTester context = SensorContextTester.create(new File(BASE_DIR));
-    private PerlCpdAnalyzer cpdAnalyzer = new PerlCpdAnalyzer(context);
+    private final SensorContextTester context = SensorContextTester.create(new File(BASE_DIR));
+    private final PerlCpdAnalyzer cpdAnalyzer = new PerlCpdAnalyzer(context);
 
     @Test
     public void code_chunks() {

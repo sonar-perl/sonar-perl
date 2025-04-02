@@ -1,11 +1,11 @@
 package com.github.sonarperl.tap;
 
-import static java.util.Collections.unmodifiableList;
-
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+
+import static java.util.Collections.unmodifiableList;
 
 public class TestHarnessReport {
 
@@ -132,8 +132,8 @@ public class TestHarnessReport {
     public static class TestHarnessReportBuilder {
         private BigDecimal startTime;
         private BigDecimal endTime;
-        private List<Test> tests = new ArrayList<>();
-        private List<TestDetail> testDetails = new ArrayList<>();
+        private final List<Test> tests = new ArrayList<>();
+        private final List<TestDetail> testDetails = new ArrayList<>();
 
         TestHarnessReportBuilder() {
         }
