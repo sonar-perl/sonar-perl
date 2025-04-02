@@ -9,7 +9,6 @@ import com.github.sonarperl.tap.TestHarnessLoaderSensor;
 import org.sonar.api.Plugin;
 import org.sonar.api.PropertyType;
 import org.sonar.api.config.PropertyDefinition;
-import org.sonar.api.resources.Qualifiers;
 
 public class PerlPlugin implements Plugin {
     public static final String CATEGORY_NAME = "Community Perl";
@@ -31,7 +30,6 @@ public class PerlPlugin implements Plugin {
                 .defaultValue(String.join(",", PerlLanguage.FILE_SUFFIXES))
                 .category(CATEGORY_NAME)
                 .subCategory("General")
-                .onQualifiers(Qualifiers.PROJECT)
                 .type(PropertyType.STRING)
                 .multiValues(true)
                 .build());
@@ -41,7 +39,6 @@ public class PerlPlugin implements Plugin {
                 .defaultValue(PerlCriticProperties.PERLCRITIC_REPORT_PATH_DEFAULT)
                 .category(CATEGORY_NAME)
                 .subCategory("Perl::Critic")
-                .onQualifiers(Qualifiers.PROJECT)
                 .type(PropertyType.STRING)
                 .build());
         context.addExtension(PropertyDefinition.builder(TestHarnessArchiveProperties.HARNESS_ARCHIVE_PATH_KEY)
@@ -50,7 +47,6 @@ public class PerlPlugin implements Plugin {
                 .defaultValue(TestHarnessArchiveProperties.HARNESS_ARCHIVE_PATH_DEFAULT)
                 .category(CATEGORY_NAME)
                 .subCategory("Test::Harness")
-                .onQualifiers(Qualifiers.PROJECT)
                 .type(PropertyType.STRING)
                 .build());
         
