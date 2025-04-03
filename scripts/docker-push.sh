@@ -7,6 +7,8 @@ export REPO=ghcr.io/sonar-perl/sonar-perl
 RAW_REF=${GITHUB_REF##*/}
 
 cd sonar-perl-plugin
+# check if the plugin is built
+ls -l build/libs
 # build multi-arch docker image
 docker buildx build --platform linux/amd64,linux/arm64 -t $REPO:latest .
 

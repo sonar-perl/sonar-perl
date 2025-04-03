@@ -80,3 +80,4 @@ def getCheckedOutGitCommitHash() {
     'git rev-parse --verify --short HEAD'.execute().text.trim()
 }
 
+build.dependsOn shadowJar
