@@ -30,5 +30,6 @@ sonar {
         property "sonar.scm.provider", "git"
         property "sonar.sourceEncoding", "UTF-8"
         property "sonar.gradle.scanAll", "true"
+        property "sonar.scanner.skipJreProvisioning", "true"
     }
 }
