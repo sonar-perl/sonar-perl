@@ -27,7 +27,7 @@ jobs:
         distribution: 'temurin'
     
     - name: Setup Gradle
-      uses: gradle/actions/setup-gradle@af1da67850ed9a4cedd57bfd976089dd991e2582 # v4.0.0
+      uses: gradle/actions/setup-gradle@0723195856401067f7a2779048b490ace7a47d7c # v5
 
     - name: Run build with Gradle wrapper
       id: gradle
@@ -35,7 +35,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GH_RELEASE_TOKEN }}
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         SONAR_SCAN_BRANCH: ${{ github.ref_name }}
-      run: ./gradlew build sonar -x :it-perl-plugin:test --scan --stacktrace
+      run: ./gradlew build sonar -x :it-perl-plugin:test -Dsonar.token=$SONAR_TOKEN --stacktrace
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v3
     - name: Set up Docker Buildx
