@@ -9,12 +9,12 @@ repositories {
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(17)
+        languageVersion = JavaLanguageVersion.of(21)
     }
 }
 
 compileJava {
-    options.release = 11
+    options.release = 21
 }
 
 jacoco {
@@ -31,9 +31,9 @@ test {
 }
 
 dependencies {
-    api group: 'org.sonarsource.sslr', name: 'sslr-core', version: '1.24.0.633'
-    testImplementation group: 'org.sonarsource.sslr', name: 'sslr-testing-harness', version: '1.24.0.633'
-    testImplementation group: 'org.assertj', name: 'assertj-core', version: '3.26.3'
-    testImplementation group: 'org.mockito', name: 'mockito-core', version: '5.14.2'
+    api group: 'org.sonarsource.sslr', name: 'sslr-core', version: '1.25.1.3886'
+    testImplementation group: 'org.sonarsource.sslr', name: 'sslr-testing-harness', version: '1.25.1.3886'
+    testImplementation group: 'org.assertj', name: 'assertj-core', version: '3.27.3'
+    testImplementation group: 'org.mockito', name: 'mockito-core', version: '5.23.0'
 }
 

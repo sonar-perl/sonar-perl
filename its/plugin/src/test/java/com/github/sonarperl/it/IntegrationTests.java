@@ -37,9 +37,9 @@ public class IntegrationTests {
         try {
             for (OrchestratorRule orchestratorRule : new OrchestratorRule[]{
                     // LTA
-                    orchestratorBuilderFor("LATEST_RELEASE[25.1]").build(),
+                    orchestratorBuilderFor("LATEST_RELEASE[26.1]").build(),
                     // Latest Release
-                    orchestratorBuilderFor("LATEST_RELEASE[25.3]").build(),
+                    orchestratorBuilderFor("LATEST_RELEASE[26.3]").build(),
             }
             ) {
                 register(orchestratorRule);
