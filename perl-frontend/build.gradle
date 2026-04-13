@@ -33,7 +33,7 @@ test {
 dependencies {
     api group: 'org.sonarsource.sslr', name: 'sslr-core', version: '1.25.1.3886'
     testImplementation group: 'org.sonarsource.sslr', name: 'sslr-testing-harness', version: '1.25.1.3886'
-    testImplementation group: 'org.assertj', name: 'assertj-core', version: '3.27.3'
+    testImplementation group: 'org.assertj', name: 'assertj-core', version: '3.27.7'
     testImplementation group: 'org.mockito', name: 'mockito-core', version: '5.23.0'
 }
 
