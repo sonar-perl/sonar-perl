@@ -17,7 +17,7 @@ dependencies {
     compileOnly "org.sonarsource.api.plugin:sonar-plugin-api:${sonarApiVersion}"
     testImplementation "org.sonarsource.api.plugin:sonar-plugin-api:${sonarApiVersion}"
     testImplementation "org.sonarsource.sonarqube:sonar-plugin-api-impl:${sonarqubeVersion}"
-    testImplementation "org.sonarsource.api.plugin:sonar-plugin-api-test-fixtures:13.4.3.4290"
+    testImplementation "org.sonarsource.api.plugin:sonar-plugin-api-test-fixtures:13.5.0.4319"
     implementation 'org.apache.commons:commons-compress:1.28.0'
     implementation 'com.esotericsoftware.yamlbeans:yamlbeans:1.17'
     implementation 'com.fasterxml.staxmate:staxmate:2.4.1'
