@@ -23,7 +23,7 @@ dependencies {
     implementation 'com.fasterxml.staxmate:staxmate:2.4.1'
     implementation 'commons-io:commons-io:2.21.0'
     testImplementation 'junit:junit:4.13.2'
-    testImplementation 'org.assertj:assertj-core:3.27.3'
+    testImplementation 'org.assertj:assertj-core:3.27.7'
     testImplementation 'org.mockito:mockito-core:5.23.0'
     implementation project(':perl-frontend')
     implementation "org.apache.commons:commons-lang3:3.20.0"
