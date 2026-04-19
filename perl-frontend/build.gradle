@@ -7,19 +7,14 @@ repositories {
     mavenCentral()
 }
 
-java {
-    toolchain {
-        languageVersion = JavaLanguageVersion.of(21)
-    }
-}
-
 compileJava {
     options.release = 21
 }
 
 jacoco {
-    toolVersion = '0.8.11'
+    toolVersion = '0.8.14'
 }
+
 jacocoTestReport {
     reports {
         xml.required = true
